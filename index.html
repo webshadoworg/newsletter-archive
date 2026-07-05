@@ -1,24 +1,533 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GYE Newsletter Drafts</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GYE Newsletter — Matos-Masei 5786</title>
   <style>
-    body { font-family: Georgia, serif; max-width: 700px; margin: 60px auto; padding: 0 20px; color: #222; background: #fafaf8; }
-    h1 { font-size: 1.6rem; border-bottom: 2px solid #c8a96e; padding-bottom: 10px; margin-bottom: 30px; }
-    ul { list-style: none; padding: 0; }
-    li { padding: 12px 0; border-bottom: 1px solid #e8e4db; }
-    a { color: #1a4a8a; text-decoration: none; font-size: 1.05rem; }
-    a:hover { text-decoration: underline; }
-    .date { color: #888; font-size: 0.85rem; margin-left: 10px; }
-    .empty { color: #aaa; font-style: italic; }
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap');
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #f5f0e8;
+      font-family: 'Inter', Georgia, serif;
+      color: #2d2a24;
+      line-height: 1.7;
+    }
+
+    .email-wrap {
+      max-width: 640px;
+      margin: 0 auto;
+      background: #ffffff;
+    }
+
+    /* HEADER */
+    .header {
+      background: linear-gradient(135deg, #1a3a5c 0%, #0d2340 100%);
+      padding: 40px 32px 32px;
+      text-align: center;
+    }
+    .header-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 13px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: #c8a96e;
+      margin-bottom: 8px;
+    }
+    .header-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 30px;
+      font-weight: 700;
+      color: #ffffff;
+      line-height: 1.2;
+      margin-bottom: 6px;
+    }
+    .header-subtitle {
+      font-size: 13px;
+      color: #8faecc;
+      letter-spacing: 1px;
+    }
+    .header-parsha {
+      display: inline-block;
+      margin-top: 16px;
+      background: rgba(200, 169, 110, 0.15);
+      border: 1px solid rgba(200, 169, 110, 0.4);
+      color: #c8a96e;
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 5px 16px;
+      border-radius: 20px;
+    }
+
+    /* INTRO */
+    .intro {
+      padding: 36px 40px 28px;
+      border-bottom: 1px solid #ede8df;
+    }
+    .intro p {
+      font-size: 15.5px;
+      color: #3d3830;
+      margin-bottom: 14px;
+    }
+    .signature {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 15px;
+      color: #1a3a5c;
+      margin-top: 18px;
+    }
+
+    /* TABLE OF CONTENTS */
+    .toc {
+      background: #f9f6f1;
+      border-left: 4px solid #c8a96e;
+      margin: 0 40px 0;
+      padding: 22px 28px;
+    }
+    .toc-title {
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #8a7a5a;
+      margin-bottom: 14px;
+      font-weight: 600;
+    }
+    .toc-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 10px;
+      font-size: 14px;
+      color: #3d3830;
+    }
+    .toc-emoji { font-size: 15px; flex-shrink: 0; margin-top: 1px; }
+    .toc-item strong { color: #1a3a5c; }
+
+    /* DIVIDERS */
+    .section-divider {
+      height: 1px;
+      background: linear-gradient(to right, transparent, #d4c9b5, transparent);
+      margin: 36px 40px;
+    }
+    .ribbon {
+      background: #f9f6f1;
+      border-top: 1px solid #ede8df;
+      border-bottom: 1px solid #ede8df;
+      text-align: center;
+      padding: 10px;
+      font-size: 18px;
+      letter-spacing: 6px;
+      color: #c8a96e;
+      margin: 36px 0 0;
+    }
+
+    /* SECTION */
+    .section { padding: 0 40px; margin-bottom: 8px; }
+    .section-label {
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #c8a96e;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 24px;
+      font-weight: 700;
+      color: #1a3a5c;
+      line-height: 1.25;
+      margin-bottom: 18px;
+    }
+    .section-body p {
+      font-size: 15.5px;
+      color: #3d3830;
+      margin-bottom: 16px;
+    }
+    .section-body p:last-child { margin-bottom: 0; }
+
+    /* PULL QUOTE */
+    .pullquote {
+      margin: 24px 0;
+      padding: 20px 24px;
+      background: #f0ede6;
+      border-left: 4px solid #1a3a5c;
+      border-radius: 0 6px 6px 0;
+    }
+    .pullquote p {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 17px;
+      color: #1a3a5c;
+      line-height: 1.5;
+      margin: 0 !important;
+    }
+
+    /* TIP BOX */
+    .tip-box {
+      background: #eaf2ec;
+      border: 1px solid #b8d4bc;
+      border-radius: 8px;
+      padding: 20px 24px;
+      margin: 22px 0;
+    }
+    .tip-box-title {
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #2d6a35;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+    .tip-box p { font-size: 14.5px; color: #2d3d2e; margin-bottom: 10px; }
+    .tip-box p:last-child { margin-bottom: 0; }
+
+    /* MEMBER STORY */
+    .member-story {
+      background: #f9f6f1;
+      border-radius: 10px;
+      padding: 28px 30px;
+      margin: 0 40px;
+    }
+    .member-byline { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; }
+    .member-avatar {
+      width: 44px; height: 44px;
+      background: #1a3a5c;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: #fff;
+      font-family: 'Playfair Display', serif;
+      font-size: 18px; flex-shrink: 0;
+    }
+    .member-info-name { font-size: 14px; font-weight: 600; color: #1a3a5c; }
+    .member-info-streak { font-size: 12px; color: #8a7a5a; }
+    .streak-badge {
+      display: inline-block;
+      background: #c8a96e;
+      color: #fff;
+      font-size: 10px; font-weight: 600;
+      letter-spacing: 1px;
+      padding: 2px 8px;
+      border-radius: 10px;
+      text-transform: uppercase;
+    }
+    .story-label {
+      font-size: 11px; letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #8a7a5a; margin-bottom: 8px; font-weight: 600;
+    }
+    .story-text { font-size: 15px; color: #3d3830; margin-bottom: 14px; line-height: 1.7; }
+    .story-separator { border: none; border-top: 1px dashed #cdc5b5; margin: 20px 0; }
+
+    /* POEM */
+    .poem-block {
+      background: #1a3a5c;
+      border-radius: 8px;
+      padding: 28px 30px;
+      margin: 18px 0 0;
+    }
+    .poem-title {
+      font-family: 'Playfair Display', serif;
+      font-style: italic; font-size: 16px;
+      color: #c8a96e; margin-bottom: 16px; text-align: center;
+    }
+    .poem-line {
+      font-family: 'Playfair Display', serif;
+      font-size: 15px; color: #e8e0d0;
+      line-height: 1.9; text-align: center; display: block;
+    }
+    .poem-ps { margin-top: 18px; font-size: 13px; color: #8faecc; font-style: italic; text-align: center; }
+
+    /* FORUM */
+    .forum-tip { border-left: 3px solid #c8a96e; padding: 4px 0 4px 18px; margin-bottom: 20px; }
+    .forum-tip-heading { font-size: 13px; font-weight: 700; color: #1a3a5c; letter-spacing: 0.3px; margin-bottom: 5px; }
+    .forum-tip p { font-size: 14.5px; color: #3d3830; margin-bottom: 8px; }
+    .forum-tip p:last-child { margin-bottom: 0; }
+    .member-quote {
+      display: inline;
+      background: #e8f0f7; border-radius: 3px;
+      padding: 1px 6px; font-size: 13.5px; color: #1a3a5c; font-style: italic;
+    }
+    .cta-box {
+      background: #f9f6f1; border: 1px solid #ddd5c2;
+      border-radius: 8px; padding: 18px 22px;
+      margin-top: 24px; text-align: center;
+    }
+    .cta-box p { font-size: 14px; color: #5a5040; margin-bottom: 8px; }
+    .cta-link { color: #1a3a5c; font-weight: 600; text-decoration: none; }
+
+    /* MARRIAGE SECTION */
+    .mistake-number {
+      display: inline-block;
+      background: #1a3a5c; color: #c8a96e;
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 1px; padding: 3px 12px;
+      border-radius: 3px; text-transform: uppercase; margin-bottom: 10px;
+    }
+    .marriage-author { font-size: 12px; color: #8a7a5a; margin-bottom: 18px; }
+    .marriage-author a { color: #1a3a5c; text-decoration: none; }
+    .subheading {
+      font-family: 'Playfair Display', serif;
+      font-size: 17px; font-weight: 700;
+      color: #1a3a5c; margin: 22px 0 8px;
+    }
+
+    /* ACTION STEPS */
+    .action-steps {
+      background: #1a3a5c; border-radius: 10px;
+      padding: 24px 28px; margin-top: 24px;
+    }
+    .action-steps-title {
+      font-size: 11px; letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #c8a96e; font-weight: 600; margin-bottom: 16px;
+    }
+    .action-step { display: flex; gap: 14px; margin-bottom: 14px; align-items: flex-start; }
+    .action-step:last-child { margin-bottom: 0; }
+    .step-num {
+      width: 26px; height: 26px;
+      background: #c8a96e; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px; font-weight: 700; color: #1a3a5c;
+      flex-shrink: 0; margin-top: 1px;
+    }
+    .step-text { font-size: 14.5px; color: #d4cfc8; line-height: 1.6; }
+
+    /* FOOTER */
+    .footer {
+      background: #1a3a5c; padding: 32px 40px;
+      text-align: center; margin-top: 40px;
+    }
+    .footer-logo { font-family: 'Playfair Display', serif; font-size: 18px; color: #c8a96e; margin-bottom: 8px; }
+    .footer-tagline { font-size: 12px; color: #6a8aaa; margin-bottom: 18px; }
+    .footer-links { margin-bottom: 16px; }
+    .footer-links a { color: #8faecc; font-size: 12px; text-decoration: none; margin: 0 10px; }
+    .footer-unsubscribe { font-size: 11px; color: #4a6a88; }
   </style>
 </head>
 <body>
-  <h1>GYE Newsletter Drafts</h1>
-  <ul id="drafts">
-    <li class="empty">No drafts yet.</li>
-  </ul>
+<div class="email-wrap">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-logo">Guard Your Eyes</div>
+    <div class="header-title">What You Put First<br>Is Who You Are</div>
+    <div class="header-subtitle">The Weekly GYE Newsletter</div>
+    <div class="header-parsha">Parshas Matos-Masei · 5786</div>
+  </div>
+
+  <!-- INTRO -->
+  <div class="intro">
+    <p>Dear Friends,</p>
+    <p>Klal Yisrael was finally about to enter Eretz Yisrael. After forty years in the desert, the dream was one river-crossing away. And right in the middle of the excitement, the tribes of Reuven and Gad came to Moshe with a strange request: they'd rather stay behind. But hidden inside their words — and inside Moshe's response — is one tiny difference that reveals everything about what we truly value.</p>
+    <p>This week's newsletter is about priorities.</p>
+    <div class="signature">Gut Shabbos,<br>Mendy &amp; Chaim</div>
+  </div>
+
+  <!-- TABLE OF CONTENTS -->
+  <div style="padding: 28px 40px 0;">
+    <div class="toc">
+      <div class="toc-title">What's inside</div>
+      <div class="toc-item"><span class="toc-emoji">✨</span><span><strong>What You Put First Is Who You Are</strong> — Reuven and Gad said "livestock, then children." Moshe said "children, then livestock." The order gives away everything.</span></div>
+      <div class="toc-item"><span class="toc-emoji">🚀</span><span><strong>"He's No Faller. Back and Better."</strong> — After 2,000+ days, a member stumbles, and shows us in real time how to get back up without losing himself.</span></div>
+      <div class="toc-item"><span class="toc-emoji">📚</span><span><strong>Wisdom from the Forum</strong> — "How do I stay clean while I'm traveling away from home?"</span></div>
+      <div class="toc-item"><span class="toc-emoji">💍</span><span><strong>10 Really Dumb Mistakes: Mistake #6</strong> — Trying to Change Your Spouse. Why pushing harder never opens the door — and what does.</span></div>
+    </div>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <!-- SECTION 1: DVAR TORAH -->
+  <div class="section">
+    <div class="section-label">Dvar Torah · Matos-Masei</div>
+    <div class="section-title">What You Put First<br>Is Who You Are</div>
+    <div class="section-body">
+      <p>In this week's parsha, Klal Yisrael stood on the edge of a dream. They had left Mitzrayim, marched to Har Sinai, received the Torah weeks later. Ten months after that, they were told it was time to enter the Promised Land — and then, because of the spies, it all collapsed. Forty years in the desert. Imagine the frustration of watching the dream slip away.</p>
+      <p>So they waited. A full forty years, until finally the green light came. And right in the middle of all that joy, the tribes of Reuven and Gad approached Moshe and said, in effect: we'd rather stay on this side of the Jordan. Their words were: <em>"Pens for the flock shall we build here for our livestock, and cities for our small children."</em></p>
+
+      <div class="pullquote">
+        <p>Reuven and Gad said: <em>livestock first, then children.</em><br>Moshe said: <em>children first, then livestock.</em><br>The order gives away everything.</p>
+      </div>
+
+      <p>Does the order really matter? It matters more than almost anything. In recovery, we learn that the whole battle comes down to the destruction of self-centeredness — and nothing exposes self-centeredness faster than what a person puts first.</p>
+      <p>Livestock represents our material wealth: the possessions, the pleasures, the appetites of the moment. Children represent our spiritual wealth: the future, the legacy, the eternal link we carry forward. Moshe gently flipped the order. He wasn't just correcting their grammar. He was correcting their hearts.</p>
+      <p>This is the question the parsha puts to each of us — and it's the question at the very center of our struggle. <strong>What do you put first?</strong></p>
+      <p>Because the Yetzer Hara is, at bottom, the voice of "livestock first." It always argues for the here and now — the pleasure in this moment, the craving that feels urgent right now. It never mentions the children, the marriage, the neshamah, the eternal, until after it has already put the material in front. And the tragedy is that the order feels so natural we don't even notice we've made it.</p>
+      <p>The work of recovery is learning to consciously reorder the list. To put the children first, the marriage first, the connection to Hashem first — and to let the material take its proper place behind them. Not because the physical world is bad; Reuven and Gad were allowed to keep their flocks. But because the flock is not what a life is for.</p>
+
+      <div class="tip-box">
+        <div class="tip-box-title">Practical Tool</div>
+        <p>The next time you feel the pull — the moment the Yetzer Hara starts listing "livestock first" — pause and ask yourself the parsha's question: <em>what comes first?</em></p>
+        <p>Name what actually matters. Your wife. Your children. The person you want to be. Your connection to Hashem. Put it back at the front of the line where it belongs. The urge is Reuven and Gad. Your job is to be Moshe — and quietly flip the order.</p>
+      </div>
+
+      <p>Your priorities are always showing. What you put first is who you are. The only question is whether the front of your list is pointing at the flock — or at the future.</p>
+    </div>
+  </div>
+
+  <div class="ribbon">· · ·</div>
+  <div class="section-divider"></div>
+
+  <!-- SECTION 2: MEMBER STORY -->
+  <div class="section">
+    <div class="section-label">Member Spotlight</div>
+    <div class="section-title">"He's No Faller.<br>Back and Better."</div>
+    <p style="font-size:15px; color:#5a5040; margin-bottom:22px; line-height:1.7;">This week we're doing something a little different — sharing two posts from the same member, a day apart. The first was written in a moment of crisis. The second, the morning after.</p>
+  </div>
+
+  <div class="member-story">
+    <div class="member-byline">
+      <div class="member-avatar">IM</div>
+      <div>
+        <div class="member-info-name">@ish_migrodno</div>
+        <div class="member-info-streak"><span class="streak-badge">&#x1F525; 2,057 days</span></div>
+      </div>
+    </div>
+
+    <div class="story-label">The Night Of</div>
+    <div class="story-text">Fell last night. Not mamash porn, but certainly "soft" porn.</div>
+    <div class="story-text">For those of you who know me, my 2k+ streak was everything. It's what got me over the hump, and what kept me going.</div>
+    <div class="story-text">On one hand, I can argue that this wasn't really a fall, and just continue my streak. Be'ezras Hashem, that would let me get right back up and continue where I left off. Yet on the other hand, "continuing" the streak means I'm not condemning this behavior. And so it's feasible, and quite possible, that I'd be perpetuating the problem, leaving the door wide open to repeat it.</div>
+    <div class="story-text">I'm not looking for long-winded answers, just practical pointers from the chevra: should I label this a fall and restart at ground zero?</div>
+    <div class="story-text" style="color:#8a7a5a; font-style:italic;">Thank you for not asking how this happened (where's your filter, etc.). This is embarrassing and difficult. And thank you for your support and friendship.</div>
+
+    <hr class="story-separator" />
+
+    <div class="story-label">The Next Morning</div>
+    <div class="story-text" style="font-weight:600; color:#1a3a5c; font-size:16px;">Well, actually, it IS day 2,054... you got a problem with that?</div>
+
+    <div class="poem-block">
+      <div class="poem-title">Rolling On</div>
+      <span class="poem-line">streak's alive? it's deep in kever! yet unbroke, intact as ever.</span>
+      <span class="poem-line">surge still there? nope… help me hide! yet still on Rushmore, sayin' with pride:</span>
+      <span class="poem-line">no one's gonna steal my bliss, though satan tries a billion tricks.</span>
+      <span class="poem-line">and G-d, please heal this ailing run, thru songs and joy, and even fun.</span>
+      <span class="poem-line">repair it, mend it, make it greater than before… and say to hater:</span>
+      <span class="poem-line" style="font-weight:700; color:#c8a96e; font-size:17px; margin-top:6px;">though he erred, he's now unfettered,<br>he's no faller! back and better!</span>
+      <div class="poem-ps">P.S. This poem could never have been written without the undying support of my GYE brothers, thread responses, texts, and all.</div>
+    </div>
+  </div>
+
+  <div style="padding: 18px 40px 0;">
+    <p style="font-size:14.5px; color:#5a5040; font-style:italic; line-height:1.7;">This pairs beautifully with today's dvar Torah. Ish Migrodno's whole struggle across these two posts is about what he puts first — not the streak number, not the shame, but getting back up and refusing to let one stumble define him. He literally talks himself, in verse, from crisis back to pride.</p>
+  </div>
+
+  <div class="ribbon">· · ·</div>
+  <div class="section-divider"></div>
+
+  <!-- SECTION 3: FORUM WISDOM -->
+  <div class="section">
+    <div class="section-label">Wisdom from the Forum</div>
+    <div class="section-title">"How Do I Stay Clean While<br>Traveling Away From Home?"</div>
+    <div class="section-body">
+      <p>Fittingly for Masei — the parsha of the forty-two journeys — this week's question is about the road. Traveling is one of the toughest tests members face: a hotel room to yourself, no routine, no one watching, and long stretches of boredom that the Yetzer Hara knows exactly how to exploit. Here's what the community has learned.</p>
+    </div>
+  </div>
+
+  <div style="padding: 0 40px;">
+    <div class="forum-tip">
+      <div class="forum-tip-heading">Prepare before you pack.</div>
+      <p>The single most repeated piece of advice is to decide before you leave. Mentally prepare and commit to staying clean, facing each challenge one <em>nisayon</em> at a time. Don't wait until you're alone in the room at 11 p.m. to figure out your plan. Walk in knowing where the danger points are and what you'll do when they come.</p>
+    </div>
+
+    <div class="forum-tip">
+      <div class="forum-tip-heading">Don't travel into isolation.</div>
+      <p>Isolation is the enemy. Several members do whatever they can to avoid a solo room. <span class="member-quote">@cordnoy: "I will only go if I figure out a way to bring my wife with me."</span> <span class="member-quote">@godhelp</span> said the same about an upcoming trip to Vegas. If that's not practical, <span class="member-quote">@blackbigday: "Can you set yourself up with a male roommate?"</span> Either way — don't spend the trip alone.</p>
+    </div>
+
+    <div class="forum-tip">
+      <div class="forum-tip-heading">Keep your guard up in the small choices.</div>
+      <p>Limit socializing with women to only what is honestly necessary. Stay connected to your <em>shmiras einayim</em> chizuk so your eyes stay trained even in an unfamiliar environment. Small boundaries, kept consistently, are what hold when the structure of home is gone.</p>
+    </div>
+
+    <div class="forum-tip">
+      <div class="forum-tip-heading">Know your own weak points.</div>
+      <p>Travel doesn't create new vulnerabilities so much as amplify existing ones. <span class="member-quote">@alexeliezer</span> noted that sometimes the fear of traveling comes from losing a "safer" outlet you'd quietly been relying on — worth being honest with yourself about. For married men, being away during niddah periods can stack one vulnerable time on top of another. <span class="member-quote">@colincolin</span> noted that falls are often driven by "extra stress in your life, or unfulfilled ambition, or work problems" — exactly what a business trip piles on. Name your triggers before the trip so they don't ambush you during it.</p>
+    </div>
+
+    <div class="forum-tip">
+      <div class="forum-tip-heading">Lean on the community — and take it one day at a time.</div>
+      <p>You can bring the whole community with you in your pocket. The forum itself provides tremendous chizuk — just reading and knowing that others are in the same fight can carry you through a lonely night in a hotel. On the road, you're not trying to conquer the whole trip at once. You're just staying clean today, in this city, in this room.</p>
+    </div>
+
+    <div class="cta-box">
+      <p><strong>Have a question for a future column?</strong></p>
+      <p>No question is too basic, and no struggle is too specific. We want this series driven by what members are actually wrestling with.</p>
+      <p><a class="cta-link" href="mailto:chaim@guardyoureyes.org">chaim@guardyoureyes.org</a></p>
+    </div>
+  </div>
+
+  <div class="ribbon">· · ·</div>
+  <div class="section-divider"></div>
+
+  <!-- SECTION 4: MARRIAGE -->
+  <div class="section">
+    <div class="mistake-number">Mistake #6 of 10</div>
+    <div class="section-title">Trying to Change<br>Your Spouse</div>
+    <div class="marriage-author">By Rabbi Benzion Shafier · <a href="https://theshmuz.com">TheShmuz.com</a></div>
+
+    <div class="section-body">
+      <p>Last week we saw that a woman's deepest need in marriage is to feel cherished. This week we turn to a habit so common — and so well-intentioned — that most people don't even realize it's tearing their marriage apart.</p>
+
+      <div class="subheading">The ten-point home improvement plan</div>
+      <p>Rabbi Shafier only half-jokes that the average kallah walks down the aisle with a ten-point home-improvement policy focused on that fellow standing under the chuppah. She's patient — she waits a week or so after the wedding. Then, when he can't find the checkbook, she gently points out that if he were just a bit more organized, it would save him so much time. And to her complete bewilderment, he doesn't melt with gratitude. In fact, the more she "helps," the worse it seems to get.</p>
+
+      <div class="subheading">Two different worlds</div>
+      <p>In a woman's world, helping is one of the highest expressions of love — a good friend notices what you could do better and tells you, because she cares. But a man's world runs on independence. Self-reliance is a source of pride: <em>I've got this. It's under control.</em> To offer advice implies he can't get the job done himself.</p>
+
+      <div class="pullquote">
+        <p>What she means is "I care about you."<br>What he hears is "You're not capable. You're only half a man."</p>
+      </div>
+
+      <div class="subheading">The sixth really dumb mistake</div>
+      <p>When you direct, guide, correct, or "improve" your husband, he doesn't think, <em>Look how much she loves me.</em> He thinks, <em>She believes I'm not good enough.</em> And it cuts both ways. Trying to change your spouse sends one message in either direction: <strong>"You're just not good enough"</strong> — and no one responds well to that.</p>
+
+      <div class="subheading">Socks on the floor</div>
+      <p>A woman once told Rabbi Shafier that her husband, forty years old, still leaves his socks on the bedroom floor no matter how many times she asks. <em>Is he a nice guy? Considerate? Does he help around the house?</em> "Yes, yes, yes." "So here's the hard truth: he may never change. And then the real question is — what do you do about it?"</p>
+      <p>The answer came from a woman in Chicago. Her husband used to drape a jacket over a different dining room chair every night until his whole wardrobe was in the dining room by Thursday. She used to scream about it — it never worked. So she tried something else: every night, she quietly took the jacket upstairs and hung it up. "How's your shalom bayis now?" Rabbi Shafier asked. <em>"Wonderful," she said.</em></p>
+
+      <div class="subheading">Right — or happily married?</div>
+      <p>You might be completely right. But you have a choice, and you don't get both: <strong>you can be right, or you can be happily married.</strong> If you've tried and tried and nothing has changed, every time you point it out you're not fixing the problem — you're damaging the relationship.</p>
+      <p>None of this means becoming a doormat. If something genuinely bothers you, it's healthy to say so — tactfully, once or twice. But once you've said it and the habit is still there, you face a decision: keep pushing your spouse to become something they're not, or accept that they're simply different from you. Change is hard, for you and for them. Just as you can't flip a switch and change yourself, neither can your spouse.</p>
+
+      <div class="subheading">Pushing when you should be pulling</div>
+      <p>There is one way — the only way — to actually get your spouse to change. Rabbi Shafier tells it as a mashal. A man is locked in a room with cement walls and one door. He pushes. Nothing. He pushes harder, throws his whole body against it, day after day, until he collapses in exhaustion. Then he looks up and sees, on the bottom of the door, one word: <strong>Pull.</strong></p>
+      <p>Stop trying to change your spouse and work instead on accepting them exactly as they are. When a husband feels respected and a wife feels cherished, something remarkable happens: both become far more eager to please the other. In a climate of respect and love, at least change becomes possible — which is more than pushing will ever get you.</p>
+
+      <div class="action-steps">
+        <div class="action-steps-title">Your Action Steps This Week</div>
+        <div class="action-step">
+          <div class="step-num">1</div>
+          <div class="step-text">Catch yourself once this week — right before you correct, coach, or "improve" your spouse — and simply don't. Notice what happens instead.</div>
+        </div>
+        <div class="action-step">
+          <div class="step-num">2</div>
+          <div class="step-text">Pick the one habit that bothers you most and quietly decide to stop fighting it. Like the jacket on the chair, just handle it — and watch what it does to the temperature of your home.</div>
+        </div>
+        <div class="action-step">
+          <div class="step-num">3</div>
+          <div class="step-text">When the urge to change your spouse rises, say it to yourself: <em>My job is to change me. My job is to accept my spouse for who they are.</em> Then keep your eyes on your own side of the mechitzah.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-logo">Guard Your Eyes</div>
+    <div class="footer-tagline">Helping Jewish men and their families since 2006</div>
+    <div class="footer-links">
+      <a href="#">Forum</a>
+      <a href="#">Website</a>
+      <a href="#">Contact</a>
+      <a href="#">Donate</a>
+    </div>
+    <div class="footer-unsubscribe">You're receiving this because you subscribed to the GYE Newsletter.<br>To unsubscribe, reply with "unsubscribe" in the subject line.</div>
+  </div>
+
+</div>
 </body>
 </html>
