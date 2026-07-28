@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<!--
+  GYE — Support reply notification email
+  ======================================
+  Merge fields (populate at send time):
+    {{agent_first_name}}   e.g. "Chaim"        → from name, subject, heading, signature
+    {{agent_initial}}      e.g. "C"            → avatar circle
+    {{email_preview}}      inbox preview line. Server logic:
+                             IF message opens with a safe greeting (Hi / Hello / Hey /
+                             Thank you… , < ~60 chars) → use that first line.
+                             ELSE → "A reply is waiting for you on GYE."
+    {{message_snippet}}    opening line(s) of the reply, safe portion only (no specifics)
+    {{conversation_url}}   deep link into the web chat (Read & reply / Continue reading)
+    {{preferenceUrl}}      "Manage Your Preferences" link  — same field the weekly newsletter uses
+    {{unsubscribeFromAll}} unsubscribe link                — same field the weekly newsletter uses
+
+  Envelope (set in the send headers, NOT in this body):
+    From name:     {{agent_first_name}} from GYE
+    From address:  no-reply@gye.org   (until inbound email is supported)
+    Subject:       {{agent_first_name}} replied to your conversation
+
+  Footer: the block below the white card mirrors the weekly Shabbos newsletter footer —
+  same 'open sans' stack, #1376C8 links, #333333 text, hairline divider, then
+  "Manage Your Preferences or Unsubscribe" and the GYE CORP address / contact / phone.
+  The newsletter's "How did you like this email?" 3-star rating row is intentionally
+  omitted: this is a transactional 1:1 notification, not a content issue.
+-->
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="color-scheme" content="light">
+  <meta name="supported-color-schemes" content="light">
+  <title>Reply from GYE</title>
+  <!--[if mso]>
+  <noscript><xml><o:OfficeDocumentSettings><o:PixelsPerInch>96</o:PixelsPerInch></o:OfficeDocumentSettings></xml></noscript>
+  <![endif]-->
+  <style>
+    body { margin:0; padding:0; width:100% !important; -webkit-text-size-adjust:100%; -ms-text-size-adjust:100%; background:#eef0f6; }
+    table { border-collapse:collapse; }
+    img { border:0; line-height:100%; outline:none; text-decoration:none; -ms-interpolation-mode:bicubic; }
+    a { text-decoration:none; }
+    @media only screen and (max-width:620px) {
+      .container { width:100% !important; }
+      .px { padding-left:20px !important; padding-right:20px !important; }
+    }
+  </style>
+</head>
+<body style="margin:0; padding:0; background:#eef0f6;">
+
+  <!-- Preheader: becomes the inbox preview line. Hidden in the body. -->
+  <div style="display:none; max-height:0; overflow:hidden; mso-hide:all; font-size:1px; line-height:1px; color:#eef0f6; opacity:0;">
+    {{email_preview}}
+    &#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;
+  </div>
+
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#eef0f6;">
+    <tr>
+      <td align="center" style="padding:28px 12px;">
+
+        <table role="presentation" class="container" width="600" cellpadding="0" cellspacing="0" style="width:600px; max-width:600px; background:#ffffff; border-radius:12px; overflow:hidden;">
+
+          <!-- Header -->
+          <tr>
+            <td align="center" style="background:#7B93F5; padding:22px; font-family:Arial,Helvetica,sans-serif; font-size:24px; font-weight:bold; letter-spacing:2px; color:#ffffff;">
+              GYE
+            </td>
+          </tr>
+
+          <!-- Body -->
+          <tr>
+            <td class="px" style="padding:28px 32px 8px 32px; font-family:Arial,Helvetica,sans-serif;">
+              <div style="font-size:18px; font-weight:bold; color:#1a2233; margin:0 0 4px 0;">{{agent_first_name}} replied to your conversation</div>
+              <div style="font-size:13px; color:#6b7385; margin:0;">This is a reply to your conversation on GYE.</div>
+            </td>
+          </tr>
+
+          <!-- Message card -->
+          <tr>
+            <td class="px" style="padding:16px 32px 0 32px;">
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#f5f6fb; border:1px solid #e3e6f2; border-radius:10px;">
+                <tr>
+                  <td style="padding:16px 18px; font-family:Arial,Helvetica,sans-serif;">
+                    <table role="presentation" cellpadding="0" cellspacing="0">
+                      <tr>
+                        <td width="34" style="padding-right:10px;">
+                          <table role="presentation" width="34" height="34" cellpadding="0" cellspacing="0" style="width:34px; height:34px;">
+                            <tr>
+                              <td align="center" valign="middle" style="width:34px; height:34px; background:#dfe4fb; border-radius:50%; font-family:Arial,Helvetica,sans-serif; font-size:14px; font-weight:bold; color:#3a4a9e;">{{agent_initial}}</td>
+                            </tr>
+                          </table>
+                        </td>
+                        <td style="font-family:Arial,Helvetica,sans-serif; font-size:13px; font-weight:bold; color:#3a4a9e;">{{agent_first_name}} &middot; GYE</td>
+                      </tr>
+                    </table>
+                    <div style="font-family:Arial,Helvetica,sans-serif; font-size:15px; line-height:1.6; color:#2a3140; margin-top:12px;">{{message_snippet}}</div>
+                    <div style="font-family:Arial,Helvetica,sans-serif; font-size:15px; line-height:1.6; color:#2a3140; margin-top:8px;">&mdash; {{agent_first_name}}</div>
+                    <div style="margin-top:12px;">
+                      <a href="{{conversation_url}}" style="font-family:Arial,Helvetica,sans-serif; font-size:14px; color:#5468d4;">Continue reading on GYE &rarr;</a>
+                    </div>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- CTA button (bulletproof) -->
+          <tr>
+            <td align="center" style="padding:22px 32px 30px 32px;">
+              <!--[if mso]>
+              <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="{{conversation_url}}" style="height:44px;v-text-anchor:middle;width:220px;" arcsize="18%" strokecolor="#7B93F5" fillcolor="#7B93F5">
+                <w:anchorlock/>
+                <center style="color:#ffffff;font-family:Arial,sans-serif;font-size:15px;font-weight:bold;">Read &amp; reply</center>
+              </v:roundrect>
+              <![endif]-->
+              <!--[if !mso]><!-- -->
+              <a href="{{conversation_url}}" style="display:inline-block; background:#7B93F5; color:#ffffff; font-family:Arial,Helvetica,sans-serif; font-size:15px; font-weight:bold; line-height:44px; text-align:center; padding:0 34px; border-radius:8px;">Read &amp; reply</a>
+              <!--<![endif]-->
+            </td>
+          </tr>
+
+        </table>
+        <!-- /white card -->
+
+        <!-- FOOTER — mirrors the weekly newsletter footer -->
+        <table role="none" class="container" cellpadding="0" cellspacing="0" align="center" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;width:600px;max-width:600px;background-color:transparent;">
+          <tr style="border-collapse:collapse">
+            <td align="center" class="px" style="padding:20px 20px 0;Margin:0">
+
+              <!-- Divider -->
+              <table role="presentation" border="0" width="100%" cellpadding="0" cellspacing="0" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
+                <tr style="border-collapse:collapse">
+                  <td style="padding:0;Margin:0;border-bottom:1px solid #cccccc;background:unset;height:0px;width:100%;margin:0px"></td>
+                </tr>
+              </table>
+
+              <!-- Manage Your Preferences / Unsubscribe -->
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
+                <tr style="border-collapse:collapse">
+                  <td align="center" style="padding:20px 0 15px;Margin:0"><p style="Margin:0;mso-line-height-rule:exactly;font-family:'open sans','helvetica neue',helvetica,arial,sans-serif;line-height:21px;letter-spacing:0;color:#333333;font-size:14px"><a target="_blank" href="{{preferenceUrl}}" style="mso-line-height-rule:exactly;text-decoration:underline;color:#1376C8;font-size:14px;text-align:center">Manage Your Preferences</a> or <a target="_blank" href="{{unsubscribeFromAll}}" style="mso-line-height-rule:exactly;text-decoration:underline;color:#1376C8;font-size:14px">Unsubscribe</a></p></td>
+                </tr>
+                <tr style="border-collapse:collapse">
+                  <td align="center" style="padding:10px 0 20px;Margin:0"><p style="Margin:0;mso-line-height-rule:exactly;font-family:'open sans','helvetica neue',helvetica,arial,sans-serif;line-height:16.5px;letter-spacing:0;color:#333333;font-size:11px">GYE CORP, 4403 15TH AVE #305, BROOKLYN, NY 11219-1604, USA<br/>editor@guardyoureyes.org<br/>+1(646) 600-8100</p></td>
+                </tr>
+              </table>
+
+            </td>
+          </tr>
+        </table>
+
+      </td>
+    </tr>
+  </table>
+
+</body>
+</html>
