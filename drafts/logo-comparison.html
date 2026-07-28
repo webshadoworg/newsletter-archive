@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<!-- Side-by-side comparison of the two corner-logo options, shown inside the
-     person-forward support email layout. Preview scaffold only — not sendable email HTML. -->
+<!-- Corner-logo options for the GYE support email, shown inside the person-forward layout.
+     Preview scaffold only — not sendable email HTML.
+     Tiles rebuilt by build-logos.mjs on the brand pair #624b78 / #f9d772. -->
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -17,29 +18,55 @@
   .corner { padding:16px 22px 0 22px; }
   .corner img { display:block; border:0; }
   .hero { text-align:center; padding:16px 26px 0 26px; }
-  .av { width:64px; height:64px; border-radius:50%; background:#dfe4fb; display:inline-flex;
-        align-items:center; justify-content:center; color:#3a4a9e; font-size:26px; font-weight:700; }
+  .av { width:64px; height:64px; border-radius:50%; background:#eee8f3; display:inline-flex;
+        align-items:center; justify-content:center; color:#624b78; font-size:26px; font-weight:700; }
   .who { font-size:17px; font-weight:700; color:#1a2233; margin-top:12px; }
   .role { font-size:13px; color:#8a91a3; margin-top:2px; }
   .subj { font-size:20px; color:#333333; margin-top:14px; line-height:28px; }
   .snipwrap { padding:18px 26px 0 26px; }
-  .snip { background:#f5f6fb; border:1px solid #e3e6f2; border-radius:14px; padding:16px 18px;
+  .snip { background:#f7f5fa; border:1px solid #eee8f3; border-radius:14px; padding:16px 18px;
           font-size:15px; color:#2a3140; line-height:24px; }
   .ctawrap { text-align:center; padding:22px 26px 26px 26px; }
-  .cta { display:inline-block; background:#1376C8; color:#ffffff; font-size:15px; font-weight:700;
+  .cta { display:inline-block; color:#ffffff; font-size:15px; font-weight:700;
          padding:12px 40px; border-radius:24px; }
   .swatches { margin:6px 2px 0; font-size:11px; color:#8a91a3; }
   .sw { display:inline-block; width:11px; height:11px; border-radius:2px; vertical-align:-1px;
         margin:0 3px 0 8px; border:1px solid rgba(0,0,0,.12); }
+  .banner { max-width:600px; margin:0 auto 28px; background:#ffffff; border:0.5px solid #e3e6f2;
+            border-radius:12px; padding:18px 22px; }
+  .banner h1 { font-size:15px; color:#1a2233; margin:0 0 8px; }
+  .banner p { font-size:13px; color:#5b6376; line-height:20px; margin:0 0 6px; }
+  .old { display:inline-block; margin:8px 10px 0 0; vertical-align:top; text-align:center; }
+  .old img { display:block; border:1px solid #e3e6f2; }
+  .old span { font-size:10px; color:#9aa0b0; display:block; margin-top:4px; }
 </style>
 </head>
 <body>
+
+<div class="banner">
+  <h1>Colors unified to the GYE brand pair</h1>
+  <p>Both tiles now use one purple and one yellow, so they are exact inversions of each other:
+    <strong style="color:#624b78">#624b78</strong> purple and
+    <strong style="color:#a8862a">#f9d772</strong> yellow.</p>
+  <p><strong>#624b78</strong> is the established brand purple &mdash; it appears 70 times across GYE&rsquo;s
+    existing branded emails, and the purple tile you sent was already this color before JPEG
+    compression nudged it to #614c77.</p>
+  <p>Rebuilt as PNG at 110&times;114 and displayed at 38px, so the letters are sharp on retina.
+    The letterforms in the two files you sent were pixel-identical, so both tiles are driven
+    from one shared mask.</p>
+  <div>
+    <div class="old"><img src="assets/logo-yellow.jpg" width="46" height="48" alt=""><span>was #f9d772 / #6d518d</span></div>
+    <div class="old"><img src="assets/logo-purple.jpg" width="46" height="48" alt=""><span>was #614c77 / #eed15f</span></div>
+    <div class="old"><img src="assets/logo-yellow-2x.png" width="46" height="48" alt=""><span>now</span></div>
+    <div class="old"><img src="assets/logo-purple-2x.png" width="46" height="48" alt=""><span>now</span></div>
+  </div>
+</div>
 
 <!-- ================= OPTION A: yellow tile ================= -->
 <div class="col">
   <p class="tag">Option A &middot; yellow tile</p>
   <div class="card">
-    <div class="corner"><img src="assets/logo-yellow.jpg" width="36" height="37" alt="GYE"></div>
+    <div class="corner"><img src="assets/logo-yellow-2x.png" width="38" height="39" alt="GYE"></div>
     <div class="hero">
       <div class="av">C</div>
       <div class="who">Chaim from GYE</div>
@@ -51,19 +78,19 @@
       to know none of it is too much to bring here. Let&rsquo;s take it one step at a time&hellip;
       <div style="margin-top:8px;">&mdash; Chaim</div>
     </div></div>
-    <div class="ctawrap"><span class="cta">Read &amp; reply</span></div>
+    <div class="ctawrap"><span class="cta" style="background:#624b78;">Read &amp; reply</span></div>
   </div>
   <p class="swatches">background <span class="sw" style="background:#f9d772"></span>#f9d772
-    &nbsp;&nbsp;letters <span class="sw" style="background:#6d518d"></span>#6d518d</p>
+    &nbsp;&nbsp;letters <span class="sw" style="background:#624b78"></span>#624b78</p>
   <p class="note">Brighter, reads as a badge. But a saturated yellow square is the loudest thing
     in the email &mdash; it pulls attention away from the person, which is the whole point of this layout.</p>
 </div>
 
 <!-- ================= OPTION B: purple tile ================= -->
 <div class="col">
-  <p class="tag">Option B &middot; purple tile</p>
+  <p class="tag">Option B &middot; purple tile &nbsp;&mdash;&nbsp; recommended</p>
   <div class="card">
-    <div class="corner"><img src="assets/logo-purple.jpg" width="36" height="37" alt="GYE"></div>
+    <div class="corner"><img src="assets/logo-purple-2x.png" width="38" height="39" alt="GYE"></div>
     <div class="hero">
       <div class="av">C</div>
       <div class="who">Chaim from GYE</div>
@@ -75,15 +102,15 @@
       to know none of it is too much to bring here. Let&rsquo;s take it one step at a time&hellip;
       <div style="margin-top:8px;">&mdash; Chaim</div>
     </div></div>
-    <div class="ctawrap"><span class="cta">Read &amp; reply</span></div>
+    <div class="ctawrap"><span class="cta" style="background:#624b78;">Read &amp; reply</span></div>
   </div>
-  <p class="swatches">background <span class="sw" style="background:#614c77"></span>#614c77
-    &nbsp;&nbsp;letters <span class="sw" style="background:#eed15f"></span>#eed15f</p>
-  <p class="note">Sits quieter and lets the avatar lead. The dark purple also sits closer to the
-    <span style="color:#3a4a9e">#3a4a9e</span> already used for the avatar and name.</p>
+  <p class="swatches">background <span class="sw" style="background:#624b78"></span>#624b78
+    &nbsp;&nbsp;letters <span class="sw" style="background:#f9d772"></span>#f9d772</p>
+  <p class="note">Sits quieter and lets the avatar lead, and the tile now matches the button and
+    the avatar exactly &mdash; one purple across the whole email.</p>
 </div>
 
-<!-- ================= For reference: the mark in use today ================= -->
+<!-- ================= For reference ================= -->
 <div class="col">
   <p class="tag">For reference &middot; the mark the newsletter uses today</p>
   <div class="card">
@@ -99,10 +126,11 @@
       to know none of it is too much to bring here. Let&rsquo;s take it one step at a time&hellip;
       <div style="margin-top:8px;">&mdash; Chaim</div>
     </div></div>
-    <div class="ctawrap"><span class="cta">Read &amp; reply</span></div>
+    <div class="ctawrap"><span class="cta" style="background:#1376C8;">Read &amp; reply</span></div>
   </div>
   <p class="note">Transparent PNG, black <strong>GYE!</strong> wordmark with the exclamation point,
-    shown at 93&times;36 in the weekly newsletter. Neither new option has the exclamation point.</p>
+    shown at 93&times;36 in the weekly newsletter with the #1376C8 blue button. Neither tile option
+    has the exclamation point.</p>
 </div>
 
 </body>
