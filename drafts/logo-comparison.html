@@ -39,9 +39,35 @@
   .old { display:inline-block; margin:8px 10px 0 0; vertical-align:top; text-align:center; }
   .old img { display:block; border:1px solid #e3e6f2; }
   .old span { font-size:10px; color:#9aa0b0; display:block; margin-top:4px; }
+  .noreply { font-size:13px; color:#8a91a3; line-height:20px; margin:16px 0 0; }
+  .specs { max-width:600px; margin:0 auto 28px; background:#ffffff; border:0.5px solid #e3e6f2;
+           border-radius:12px; padding:18px 22px; }
+  .specs h1 { font-size:15px; color:#1a2233; margin:0 0 10px; }
+  .specs table { border-collapse:collapse; width:100%; }
+  .specs th, .specs td { font-size:13px; color:#333333; text-align:left; vertical-align:top;
+           padding:6px 10px 6px 0; border-bottom:1px solid #f0f2f7; line-height:19px; }
+  .specs th { color:#8a91a3; font-weight:700; white-space:nowrap; }
+  .specs code { font-family:'SFMono-Regular',Consolas,monospace; font-size:12px; color:#624b78; }
+  .specs .open { color:#a8862a; font-weight:700; }
+  .specs p { font-size:12px; color:#8a91a3; line-height:18px; margin:10px 0 0; }
 </style>
 </head>
 <body>
+
+<div class="specs">
+  <h1>Technical specs</h1>
+  <table>
+    <tr><th>From name</th><td><code>GYE</code><br><span style="color:#8a91a3;font-size:12px">Not &ldquo;Chaim from GYE&rdquo; &mdash; the From info does not name the agent. His name still leads the body, which is the point of this layout.</span></td></tr>
+    <tr><th>From address</th><td><code>no-reply@gye.org</code><br><span style="color:#8a91a3;font-size:12px">Interim, until members can reply to the email directly.</span></td></tr>
+    <tr><th>Reply-To</th><td><span class="open">Open</span> &mdash; point at the Intercom inbound address once routing exists</td></tr>
+    <tr><th>Subject</th><td><code>{{agent_first_name}} replied to your conversation</code><br><span style="color:#8a91a3;font-size:12px">Note: From says GYE but the subject names the agent. Flagged, not yet resolved.</span></td></tr>
+    <tr><th>Preheader</th><td><code>{{email_preview}}</code> &mdash; the reply&rsquo;s first line only if it is a safe short greeting, otherwise &ldquo;A reply is waiting for you on GYE.&rdquo;</td></tr>
+    <tr><th>Snippet</th><td><code>{{message_snippet}}</code> &mdash; <span class="open">rule still open.</span> Proposal: first paragraph, skipping a greeting-only first paragraph, with a ~500-character backstop.</td></tr>
+    <tr><th>Inbound replies</th><td>Route to Intercom + autoresponder. Interim &mdash; direct replies are being scoped, and when they ship <code>no-reply@</code>, the autoresponder and the notice under the button all come out.</td></tr>
+  </table>
+  <p>Merge fields: <code>{{agent_first_name}}</code> <code>{{agent_initial}}</code> <code>{{email_preview}}</code> <code>{{message_snippet}}</code> <code>{{conversation_url}}</code> <code>{{preferenceUrl}}</code> <code>{{unsubscribeFromAll}}</code></p>
+  <p><strong>This page is a preview scaffold, not sendable email HTML</strong> &mdash; it uses <code>inline-flex</code>, a Google Fonts link, and no table layout. If this person-forward design is the direction, it still needs building as real email HTML.</p>
+</div>
 
 <div class="banner">
   <h1>Colors unified to the GYE brand pair</h1>
@@ -69,8 +95,8 @@
     <div class="corner"><img src="assets/logo-yellow-2x.png" width="38" height="39" alt="GYE"></div>
     <div class="hero">
       <div class="av">C</div>
-      <div class="who">Chaim from GYE</div>
-      <div class="role">Support team</div>
+      <div class="who">Chaim</div>
+      <div class="role">GYE Support team</div>
       <div class="subj">Chaim replied to your conversation</div>
     </div>
     <div class="snipwrap"><div class="snip">
@@ -78,7 +104,9 @@
       to know none of it is too much to bring here. Let&rsquo;s take it one step at a time&hellip;
       <div style="margin-top:8px;">&mdash; Chaim</div>
     </div></div>
-    <div class="ctawrap"><span class="cta" style="background:#624b78;">Read &amp; reply</span></div>
+    <div class="ctawrap"><span class="cta" style="background:#624b78;">Read &amp; reply</span>
+      <p class="noreply">Replies to this email aren&rsquo;t seen - use the button above so Chaim gets your message.</p>
+    </div>
   </div>
   <p class="swatches">background <span class="sw" style="background:#f9d772"></span>#f9d772
     &nbsp;&nbsp;letters <span class="sw" style="background:#624b78"></span>#624b78</p>
@@ -93,8 +121,8 @@
     <div class="corner"><img src="assets/logo-purple-2x.png" width="38" height="39" alt="GYE"></div>
     <div class="hero">
       <div class="av">C</div>
-      <div class="who">Chaim from GYE</div>
-      <div class="role">Support team</div>
+      <div class="who">Chaim</div>
+      <div class="role">GYE Support team</div>
       <div class="subj">Chaim replied to your conversation</div>
     </div>
     <div class="snipwrap"><div class="snip">
@@ -102,7 +130,9 @@
       to know none of it is too much to bring here. Let&rsquo;s take it one step at a time&hellip;
       <div style="margin-top:8px;">&mdash; Chaim</div>
     </div></div>
-    <div class="ctawrap"><span class="cta" style="background:#624b78;">Read &amp; reply</span></div>
+    <div class="ctawrap"><span class="cta" style="background:#624b78;">Read &amp; reply</span>
+      <p class="noreply">Replies to this email aren&rsquo;t seen - use the button above so Chaim gets your message.</p>
+    </div>
   </div>
   <p class="swatches">background <span class="sw" style="background:#624b78"></span>#624b78
     &nbsp;&nbsp;letters <span class="sw" style="background:#f9d772"></span>#f9d772</p>
