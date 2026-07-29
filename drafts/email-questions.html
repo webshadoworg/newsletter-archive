@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<!-- Open decisions for the GYE support notification email. -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GYE support email &mdash; 6 questions</title>
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700" rel="stylesheet">
+<link href="support-email.css" rel="stylesheet">
+</head>
+<body>
+
+<nav class="nav">
+  <a href="email-v1.html">1 &middot; Ship this</a>
+  <a class="on" href="email-questions.html">2 &middot; 6 questions</a>
+  <a href="email-options.html">3 &middot; Options compared</a>
+  <a href="email-later.html">4 &middot; Later</a>
+</nav>
+
+<h1 class="pg">6 questions</h1>
+<p class="lede">Filled dot = what I&rsquo;d pick. If you agree with all six, say &ldquo;go with your
+  picks&rdquo; and I build it. Otherwise just give me the numbers you want changed.</p>
+
+<div class="q">
+  <p class="qn">Question 1 &mdash; logo</p>
+  <h2>Small logo at the top plus an initial avatar, or the logo <em>is</em> the avatar?</h2>
+  <ul>
+    <li class="pick">Small centered logo + lavender circle with the agent&rsquo;s initial
+      <span class="small">&mdash; what page 1 shows</span></li>
+    <li>Logo becomes the avatar, no separate logo
+      <span class="small">&mdash; Option E on <a href="email-options.html">page 3</a></span></li>
+  </ul>
+  <p class="rec"><b>Why:</b> the person should be the hero. Every real notification email I looked at
+    (LinkedIn is the closest match) keeps the logo small and lets the sender&rsquo;s face and name
+    dominate. Logo-as-avatar looks good but makes the email lead with an institution.</p>
+</div>
+
+<div class="q">
+  <p class="qn">Question 2 &mdash; subject</p>
+  <h2>Which subject line?</h2>
+  <ul>
+    <li>&ldquo;{name} replied to your conversation&rdquo;
+      <span class="small">&mdash; 34 chars as Chaim, 37 as Yehoshua</span></li>
+    <li class="pick">&ldquo;{name} just messaged you&rdquo;
+      <span class="small">&mdash; 23 chars, 26 with a long name</span></li>
+  </ul>
+  <p class="rec"><b>Why:</b> see the lock-screen preview on <a href="email-v1.html">page 1</a> &mdash; the
+    first one clips for agents with longer names, the second fits every name. It also covers the case
+    where an agent writes first rather than replying, so one line works for both. If sends ever get
+    queued, drop &ldquo;just&rdquo;: <code>{name} messaged you</code>.</p>
+</div>
+
+<div class="q blocker">
+  <p class="qn">Question 3 &mdash; preheader &nbsp;&middot;&nbsp; the one I&rsquo;d push on</p>
+  <h2>Does the agent&rsquo;s real first line go into the preview text in v1?</h2>
+  <ul>
+    <li>Yes &mdash; first line of the reply, 90-char cap</li>
+    <li class="pick">No &mdash; fixed generic line for everyone in v1, real first line only once a member
+      has actively chosen it</li>
+  </ul>
+  <p class="rec"><b>Why:</b> the argument for showing the real line is &ldquo;the member chose the
+    detailed version.&rdquo; But in v1 nobody has chosen anything &mdash; detailed is the default and
+    opting out means knowing the option exists and asking staff. So everyone gets the agent&rsquo;s raw
+    words on their lock screen by default. The ~250-char snippet <em>inside</em> the email is fine either
+    way, because reading it means opening the email. This is one conditional, not a redesign.</p>
+</div>
+
+<div class="q">
+  <p class="qn">Question 4 &mdash; from name</p>
+  <h2>Pick one and freeze it.</h2>
+  <ul>
+    <li class="pick">GYE Support <span class="small">&mdash; 11 chars</span></li>
+    <li>GYE Team <span class="small">&mdash; 8 chars</span></li>
+    <li>GYE Personal Support <span class="small">&mdash; 20 chars</span></li>
+  </ul>
+  <p class="rec"><b>Why:</b> you were right to flag the third one &mdash; &ldquo;Personal Support&rdquo;
+    reads like a helpline to anyone glancing at an inbox list. I&rsquo;d also change the role line in the
+    body to match, so the email says &ldquo;GYE Support team&rdquo; under Chaim&rsquo;s name.</p>
+</div>
+
+<div class="q">
+  <p class="qn">Question 5 &mdash; avatars</p>
+  <h2>Will staff ever have real profile photos?</h2>
+  <ul>
+    <li>Yes, soon</li>
+    <li class="pick">Not soon / probably never</li>
+  </ul>
+  <p class="rec"><b>Why it matters:</b> it decides question 1 permanently. Real photos make the
+    person-forward layout much stronger and rule out logo-as-avatar. No photos means the avatar is a
+    letter forever, which is the weakest version of the person-as-hero idea and the main argument for
+    Option E.</p>
+</div>
+
+<div class="q">
+  <p class="qn">Question 6 &mdash; not a design question</p>
+  <h2>Who watches <code>help@gye.org</code>, and how often?</h2>
+  <ul>
+    <li class="pick">Needs a name</li>
+  </ul>
+  <p class="rec"><b>Why:</b> members can reply to these emails, and the reply lands in a real inbox. If
+    nobody reads it, someone writes something vulnerable and gets silence &mdash; worse than a bounce.
+    Volume will be low because most people click the button, but this is what the whole approach rests on.</p>
+</div>
+
+<div class="box" style="margin-top:26px;">
+  <h2>Already decided, not asking again</h2>
+  <ul>
+    <li>Send from <code>help@gye.org</code>, no <code>no-reply@</code> anywhere visible</li>
+    <li>Replies routed to a human, never bounced. No &ldquo;do not reply&rdquo; copy</li>
+    <li>Links point at <code>app.gye.org</code></li>
+    <li><code>bounces@mail.gye.org</code> in the Return-Path</li>
+    <li>No new sending subdomain &mdash; <code>gye.org</code> has reputation already, warm-up from zero at
+      launch is the worst timing</li>
+    <li>Snippet cut at the last sentence end before 250 chars</li>
+    <li>No rating widget. Asking someone to rate a supportive message 1-3-5 is jarring</li>
+  </ul>
+</div>
+
+</body>
+</html>
