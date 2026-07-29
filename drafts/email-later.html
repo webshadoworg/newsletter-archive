@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<!-- Deferred work for the GYE support notification email. -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GYE support email &mdash; later</title>
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700" rel="stylesheet">
+<link href="support-email.css" rel="stylesheet">
+</head>
+<body>
+
+<nav class="nav">
+  <a href="email-v1.html">1 &middot; Ship this</a>
+  <a href="email-questions.html">2 &middot; 6 questions</a>
+  <a href="email-options.html">3 &middot; Options compared</a>
+  <a class="on" href="email-later.html">4 &middot; Later</a>
+</nav>
+
+<h1 class="pg">Later</h1>
+<p class="lede">Parked deliberately. Members currently get <em>no</em> notification when staff reply,
+  which is the worst possible state &mdash; none of this is worth delaying v1 for. Nothing here requires
+  changing the v1 design.</p>
+
+<p class="sec">Next up &mdash; the discreet version</p>
+
+<div class="box">
+  <h2>A second, quieter template members can switch to</h2>
+  <p>Some members use a dedicated anonymous address, where preview exposure barely matters. Others are on
+    a primary or shared inbox, usually because making a second address was too much friction. Neither GYE
+    nor an algorithm can guess right for an individual, so the member picks.</p>
+  <p><b>Roughly:</b> from name <code>GYE</code>, subject &ldquo;You have a new message,&rdquo; fixed
+    preheader, and no message text in the body. Same skeleton, same button, same footer geometry as v1,
+    with each footer linking to the other.</p>
+  <p><b>Make it a member-level flag, not a per-email toggle.</b> Someone who asks for discretion should
+    not then get a newsletter with a loud subject line.</p>
+  <p><b>One open question when we get there:</b> the body says &ldquo;Chaim sent you a message.&rdquo; A
+    bare first name reveals almost nothing and keeps a trace of warmth. Fully anonymous would be
+    &ldquo;A message is waiting for you.&rdquo;</p>
+  <p><b>Worth deciding separately:</b> stripping the envelope and stripping the body are two different
+    things. Discretion is about what is visible <em>without</em> opening. Removing the message text too
+    also throws away the &ldquo;show the specific thing&rdquo; effect that makes the email feel like a
+    reply to <em>you</em>. Unless the worry is a shared inbox someone else opens &mdash; then it is right.</p>
+</div>
+
+<div class="box">
+  <h2>Letting members choose it themselves</h2>
+  <p>The template is the cheap half. The choice mechanism &mdash; link, page, member flag, propagation
+    across every email type &mdash; is the expensive half, and in v1 it stands between members and getting
+    notified at all. Until it exists, staff flip the flag on request.</p>
+  <p><b>Use a confirmation page, not a one-click link.</b> Corporate mail scanners and inbox prefetchers
+    follow links automatically and would silently switch people to the discreet version. One small page
+    with one confirm button.</p>
+  <p><b>Put the offer in the welcome email.</b> No sensitive content there, and the member gets the choice
+    before a real support reply ever arrives. Better than asking a privacy question at signup, where the
+    beta already showed people balking at handing over an email at all.</p>
+</div>
+
+<p class="sec">When replies thread into GYE Connect</p>
+
+<div class="box">
+  <h2>Four changes, nothing structural</h2>
+  <ul>
+    <li>Reply-To becomes <code>reply+{{conversation_id}}@mail.gye.org</code></li>
+    <li>One line under the button: &ldquo;Or just reply to this email, it goes straight to Chaim.&rdquo;</li>
+    <li>Inbound processing strips quoted text and signatures before the reply enters the thread</li>
+    <li>Revisit the from name &mdash; this is the moment &ldquo;Chaim from GYE&rdquo; earns its keep,
+      because hitting reply genuinely emails Chaim</li>
+  </ul>
+  <p>Getting v1 right means the member-facing experience never has to migrate.</p>
+</div>
+
+<p class="sec">Loose ends</p>
+
+<div class="box">
+  <table class="t">
+    <tr><th>Peer template</th><td>Community / peer messages. Same skeleton, different identity layer.</td></tr>
+    <tr><th>Stream split</th><td>Separating transactional from bulk sending protects support-reply
+      delivery from newsletter reputation events. Optional, not a launch blocker.</td></tr>
+    <tr><th>Global<br>unsubscribe</th><td>Lead with notification settings, not unsubscribe. Someone
+      annoyed at 11pm should not be one click from losing the channel their support arrives on.
+      Transactional mail is generally exempt from the CAN-SPAM unsubscribe requirement, which supports
+      this &mdash; worth confirming with whoever owns compliance.</td></tr>
+    <tr><th>Old files</th><td><code>support-reply-notification.html</code> and the two mockups predate
+      this spec. They need the merge-field renaming and the 250-char snippet rule, or deleting.</td></tr>
+  </table>
+</div>
+
+<p class="sec">Why the layout looks the way it does</p>
+
+<div class="box">
+  <p>From real notification emails by Google Ads, Google Account, Facebook, LinkedIn and Google Maps:</p>
+  <ul>
+    <li><b>A logo is customary but small.</b> Corner or a compact centered mark. None use a full-width
+      coloured brand band. The logo is an anti-phishing signal, not a billboard.</li>
+    <li><b>The person is the hero.</b> LinkedIn&rsquo;s message notification is the closest analogue &mdash;
+      sender photo, name and title centered and dominant, logo a small afterthought.</li>
+    <li><b>Warm framing first, mechanics demoted.</b> Google Maps leads with &ldquo;Thanks for sharing your
+      knowledge&rdquo; and pushes status into small metadata below.</li>
+    <li><b>Show the specific thing.</b> Google Maps embeds the actual map of the place you edited. Here
+      that is the agent&rsquo;s real opening line rather than a generic &ldquo;you have a message.&rdquo;</li>
+    <li><b>A short &ldquo;why you&rsquo;re getting this&rdquo; line</b> is standard.</li>
+  </ul>
+  <p>This is a 1:1 transactional email, not a broadcast, which is why the newsletter&rsquo;s rating widget
+    and editorial chrome are out.</p>
+</div>
+
+</body>
+</html>
