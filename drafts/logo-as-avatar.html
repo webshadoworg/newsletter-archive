@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<!-- Variant study: the GYE logo tile moved OUT of the top-left corner and INTO the hero avatar slot,
+     replacing the agent's initial. Preview scaffold only - not sendable email HTML.
+     Tiles from build-logos.mjs on the brand pair #624b78 / #f9d772. -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GYE support email - logo as the avatar</title>
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700" rel="stylesheet">
+<style>
+  body { margin:0; background:#eef0f6; padding:24px 12px 56px; font-family:'Open Sans',Helvetica,Arial,sans-serif; }
+  .col { max-width:600px; margin:0 auto 40px; }
+  .tag { font-size:12px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase;
+         color:#8a91a3; margin:0 0 10px 2px; }
+  .note { font-size:12px; color:#8a91a3; margin:8px 2px 0; line-height:18px; }
+  .card { background:#ffffff; border:0.5px solid #e3e6f2; border-radius:12px; overflow:hidden; }
+  .corner { padding:16px 22px 0 22px; }
+  .corner img { display:block; border:0; }
+  .hero { text-align:center; padding:26px 26px 0 26px; }
+  .hero-tight { padding-top:16px; }
+  .av { width:64px; height:64px; border-radius:50%; background:#eee8f3; display:inline-flex;
+        align-items:center; justify-content:center; color:#624b78; font-size:26px; font-weight:700; }
+  .avtile { display:inline-block; border-radius:14px; overflow:hidden; line-height:0; }
+  .avtile img { display:block; border:0; }
+  .avring { width:64px; height:64px; border-radius:50%; background:#eee8f3; display:inline-flex;
+            align-items:center; justify-content:center; }
+  .avring img { display:block; border:0; border-radius:4px; }
+  .who { font-size:17px; font-weight:700; color:#1a2233; margin-top:12px; }
+  .role { font-size:13px; color:#8a91a3; margin-top:2px; }
+  .subj { font-size:20px; color:#333333; margin-top:14px; line-height:28px; }
+  .snipwrap { padding:18px 26px 0 26px; }
+  .snip { background:#f7f5fa; border:1px solid #eee8f3; border-radius:14px; padding:16px 18px;
+          font-size:15px; color:#2a3140; line-height:24px; }
+  .ctawrap { text-align:center; padding:22px 26px 26px 26px; }
+  .cta { display:inline-block; color:#ffffff; font-size:15px; font-weight:700;
+         padding:12px 40px; border-radius:24px; }
+  .noreply { font-size:13px; color:#8a91a3; line-height:20px; margin:16px 0 0; }
+  .banner { max-width:600px; margin:0 auto 28px; background:#ffffff; border:0.5px solid #e3e6f2;
+            border-radius:12px; padding:18px 22px; }
+  .banner h1 { font-size:15px; color:#1a2233; margin:0 0 8px; }
+  .banner p { font-size:13px; color:#5b6376; line-height:20px; margin:0 0 8px; }
+  .banner p:last-child { margin-bottom:0; }
+  .banner code { font-family:'SFMono-Regular',Consolas,monospace; font-size:12px; color:#624b78; }
+  .flag { color:#a8862a; font-weight:700; }
+  .mini { max-width:600px; margin:0 auto 28px; background:#ffffff; border:0.5px solid #e3e6f2;
+          border-radius:12px; padding:18px 22px; }
+  .mini h1 { font-size:15px; color:#1a2233; margin:0 0 4px; }
+  .mini p { font-size:13px; color:#5b6376; line-height:20px; margin:0; }
+</style>
+</head>
+<body>
+
+<div class="banner">
+  <h1>What changed</h1>
+  <p>The GYE tile has moved out of the top-left corner and into the hero slot that used to hold
+    the agent's initial. There is no corner logo any more - one mark, centered, at the top of the
+    email. Three treatments below.</p>
+  <p><span class="flag">The tradeoff to decide:</span> the point of the person-forward layout was
+    that the avatar stood for a human being. With the tile there, the first thing the member sees is
+    an institution and the person's name comes second, in text. That is not automatically wrong -
+    the From name is already plain <code>GYE</code>, so this is arguably more honest about who is
+    writing - but it is a real change in what the email leads with.</p>
+  <p><span class="flag">Image quality:</span> the tile is a 110&times;114 PNG. At 64px it renders at
+    1.8&times;, just under retina, so the letters will be a touch soft on a phone. Option 3 sidesteps
+    this by showing the tile smaller inside a ring. A vector or larger PNG from the designer fixes it
+    for all three, and is needed anyway before the tile is used at this size in production.</p>
+</div>
+
+<!-- ================= OPTION 1 ================= -->
+<div class="col">
+  <p class="tag">Option 1 &middot; purple tile as the avatar</p>
+  <div class="card">
+    <div class="hero">
+      <div class="avtile"><img src="assets/logo-purple-2x.png" width="62" height="64" alt="GYE"></div>
+      <div class="who">Chaim</div>
+      <div class="role">GYE Support team</div>
+      <div class="subj">Chaim replied to your conversation</div>
+    </div>
+    <div class="snipwrap"><div class="snip">
+      Hi - thanks for reaching out. I've read through everything you shared, and I want you
+      to know none of it is too much to bring here. Let's take it one step at a time...
+      <div style="margin-top:8px;">- Chaim</div>
+    </div></div>
+    <div class="ctawrap"><span class="cta" style="background:#624b78;">Read &amp; reply</span>
+      <p class="noreply">Replies to this email aren't seen - use the button above so Chaim gets your message.</p>
+    </div>
+  </div>
+  <p class="note">Cleanest of the three. The tile, the name, the button and the snippet border are
+    all one purple, so the top of the email reads as a single deliberate block instead of two
+    competing marks. Rounded square, 14px radius, so the letterforms are not clipped.</p>
+</div>
+
+<!-- ================= OPTION 2 ================= -->
+<div class="col">
+  <p class="tag">Option 2 &middot; yellow tile as the avatar</p>
+  <div class="card">
+    <div class="hero">
+      <div class="avtile"><img src="assets/logo-yellow-2x.png" width="62" height="64" alt="GYE"></div>
+      <div class="who">Chaim</div>
+      <div class="role">GYE Support team</div>
+      <div class="subj">Chaim replied to your conversation</div>
+    </div>
+    <div class="snipwrap"><div class="snip">
+      Hi - thanks for reaching out. I've read through everything you shared, and I want you
+      to know none of it is too much to bring here. Let's take it one step at a time...
+      <div style="margin-top:8px;">- Chaim</div>
+    </div></div>
+    <div class="ctawrap"><span class="cta" style="background:#624b78;">Read &amp; reply</span>
+      <p class="noreply">Replies to this email aren't seen - use the button above so Chaim gets your message.</p>
+    </div>
+  </div>
+  <p class="note">Warmer and it does catch the eye. But at 64px in the center of the card the
+    saturated yellow is the loudest thing in the email by a wide margin - louder than it was at 38px
+    in the corner - and it no longer matches the button. This was the weaker option in the corner
+    comparison and the move to the hero makes that gap bigger, not smaller.</p>
+</div>
+
+<!-- ================= OPTION 3 ================= -->
+<div class="col">
+  <p class="tag">Option 3 &middot; tile inside a round avatar ring</p>
+  <div class="card">
+    <div class="hero">
+      <div class="avring"><img src="assets/logo-purple-2x.png" width="42" height="44" alt="GYE"></div>
+      <div class="who">Chaim</div>
+      <div class="role">GYE Support team</div>
+      <div class="subj">Chaim replied to your conversation</div>
+    </div>
+    <div class="snipwrap"><div class="snip">
+      Hi - thanks for reaching out. I've read through everything you shared, and I want you
+      to know none of it is too much to bring here. Let's take it one step at a time...
+      <div style="margin-top:8px;">- Chaim</div>
+    </div></div>
+    <div class="ctawrap"><span class="cta" style="background:#624b78;">Read &amp; reply</span>
+      <p class="noreply">Replies to this email aren't seen - use the button above so Chaim gets your message.</p>
+    </div>
+  </div>
+  <p class="note">Keeps the round avatar silhouette the layout was built around, so the slot still
+    reads as "who this is from" rather than as a masthead. Also the sharpest of the three - the tile
+    is drawn at 2.6&times; here, comfortably past retina. Cost is a small tile inside a circle inside
+    a card: three nested shapes where option 1 has one.</p>
+</div>
+
+<!-- ================= REFERENCE ================= -->
+<div class="mini">
+  <h1>For comparison - the current layout</h1>
+  <p>Corner logo plus the agent's initial in the avatar, as on
+    <code>logo-comparison.html</code>.</p>
+</div>
+<div class="col">
+  <p class="tag">Current &middot; corner logo + initial</p>
+  <div class="card">
+    <div class="corner"><img src="assets/logo-purple-2x.png" width="38" height="39" alt="GYE"></div>
+    <div class="hero hero-tight">
+      <div class="av">C</div>
+      <div class="who">Chaim</div>
+      <div class="role">GYE Support team</div>
+      <div class="subj">Chaim replied to your conversation</div>
+    </div>
+    <div class="snipwrap"><div class="snip">
+      Hi - thanks for reaching out. I've read through everything you shared, and I want you
+      to know none of it is too much to bring here. Let's take it one step at a time...
+      <div style="margin-top:8px;">- Chaim</div>
+    </div></div>
+    <div class="ctawrap"><span class="cta" style="background:#624b78;">Read &amp; reply</span>
+      <p class="noreply">Replies to this email aren't seen - use the button above so Chaim gets your message.</p>
+    </div>
+  </div>
+</div>
+
+<div class="banner">
+  <h1>Still unbuilt either way</h1>
+  <p>None of this is sendable email HTML - the page uses <code>inline-flex</code> and a Google Fonts
+    link. Whichever avatar treatment wins, the person-forward layout still needs porting to the
+    table-based shell, and the purple-vs-blue button question is still open.</p>
+</div>
+
+</body>
+</html>
