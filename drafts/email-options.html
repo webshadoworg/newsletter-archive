@@ -86,21 +86,72 @@
     question 5 is &ldquo;no photos, ever.&rdquo;</p>
 </div>
 
-<p class="sec">Body opening &mdash; settled</p>
+<p class="sec">The message count &mdash; in, as of Jul 29</p>
+
+<div class="box gold">
+  <h2>Mendy was right and I was wrong about this</h2>
+  <p>My objection was &ldquo;the count is permanently 1, because there is one email per message.&rdquo;
+    That was wrong, because it counted the wrong thing. <b>The number is unread messages in the
+    conversation, not messages in this send.</b> Ignore four emails and the fifth honestly says five. It
+    climbs on its own, with no batching and no extra architecture &mdash; and a rising number is real
+    information: it means this person has stopped opening them.</p>
+  <p><b>Two things carried over from the objection, both cheap:</b></p>
+  <ul>
+    <li><b>Hide it at 1.</b> &ldquo;1 message waiting&rdquo; is weaker than saying nothing, and hiding it
+      kills the singular/plural conditionals in one move. One condition instead of three.</li>
+    <li><b>&ldquo;waiting for you,&rdquo; not &ldquo;awaits your response.&rdquo;</b> Same number, same
+      urgency, but a fact instead of a debt. These are often people not answering <em>because</em> it
+      already feels like too much, and an email that opens by telling them what they owe is the one they
+      leave unread.</li>
+  </ul>
+  <p>And the person stays the headline, so the email still sounds like Chaim rather than a ticket queue.
+    The count sits under his line as a small pill.</p>
+</div>
+
+<div class="col">
+  <p class="tag">Count = 1 &middot; pill hidden</p>
+  <div class="card">
+    <div class="mast"><img src="assets/logo-purple-2x.png" width="32" height="33" alt="GYE"></div>
+    <div class="hero">
+      <div class="av">C</div>
+      <div class="who">Chaim</div>
+      <div class="role">GYE Support team</div>
+      <div class="subj">Chaim just messaged you</div>
+    </div>
+    <div class="snipwrap"><div class="snip">Hi, thanks for reaching out, and for trusting me with
+      what&rsquo;s going on. I read through everything you wrote&hellip;</div></div>
+    <div class="ctawrap"><span class="cta">View Message</span></div>
+    <div class="foot"><p class="whyline">You&rsquo;re getting this because you have an open conversation on GYE.</p></div>
+  </div>
+</div>
+
+<div class="col">
+  <p class="tag">Count = 5 &middot; pill shown</p>
+  <div class="card">
+    <div class="mast"><img src="assets/logo-purple-2x.png" width="32" height="33" alt="GYE"></div>
+    <div class="hero">
+      <div class="av">C</div>
+      <div class="who">Chaim</div>
+      <div class="role">GYE Support team</div>
+      <div class="subj">Chaim just messaged you</div>
+      <div class="cnt">5 messages waiting for you</div>
+    </div>
+    <div class="snipwrap"><div class="snip">Hi, thanks for reaching out, and for trusting me with
+      what&rsquo;s going on. I read through everything you wrote&hellip;</div></div>
+    <div class="ctawrap"><span class="cta">View Messages</span></div>
+    <div class="foot"><p class="whyline">You&rsquo;re getting this because you have an open conversation on GYE.</p></div>
+  </div>
+  <p class="note">If the button has to stay one fixed string, <b>View Messages</b> works for both and
+    &ldquo;View Message&rdquo; disappears &mdash; your call whether the plural is worth a second
+    conditional.</p>
+</div>
 
 <div class="box">
-  <h2>&ldquo;1 new message awaits your response&rdquo; &mdash; not shipping it</h2>
-  <p><b>Grammar:</b> singular and plural both switch (&ldquo;1 new message awaits&rdquo; / &ldquo;3 new
-    messages await&rdquo;) and so does the button, so it costs three conditionals.</p>
-  <p><b>The bigger problem is &ldquo;awaits your response.&rdquo;</b> It tells the member they owe
-    something. These are often people not answering <em>because</em> it already feels like too much, and
-    an email that opens with an obligation is the one they leave unread. It also replaces a name with a
-    counter, so the email stops sounding like Chaim and starts sounding like a ticket queue.</p>
-  <p><b>And a count above 1 is only possible if notifications get batched.</b> One email per reply means
-    the line is permanently &ldquo;1 new message&rdquo; and the counter earns nothing.</p>
-  <p><b>If you still want the count:</b> keep the person as the headline and add a small grey line
-    underneath &mdash; &ldquo;and 2 earlier messages are still waiting&rdquo; &mdash; shown only when it is
-    2 or more. One conditional, never reads &ldquo;1 new message,&rdquo; never demands anything.</p>
+  <h2>The thing the count unlocks &mdash; worth revisiting later</h2>
+  <p>One email per message, to somebody who is not opening them, is how a sender ends up in spam. Once a
+    real count exists, GYE can send <em>fewer</em> emails instead of more: after two unopened, drop to one
+    a day &mdash; &ldquo;3 messages waiting for you.&rdquo; Same urgency, a third of the volume, better
+    deliverability. Not v1, but the count is the piece that makes it possible.</p>
 </div>
 
 <div class="box">
