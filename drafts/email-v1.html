@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<!-- GYE support notification email - v1, the version to sign off.
+     Preview scaffold only, not sendable email HTML. -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GYE support email &mdash; v1</title>
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700" rel="stylesheet">
+<link href="support-email.css" rel="stylesheet">
+</head>
+<body>
+
+<nav class="nav">
+  <a class="on" href="email-v1.html">1 &middot; Ship this</a>
+  <a href="email-questions.html">2 &middot; 6 questions</a>
+  <a href="email-options.html">3 &middot; Options compared</a>
+  <a href="email-later.html">4 &middot; Later</a>
+</nav>
+
+<h1 class="pg">Version 1</h1>
+<p class="lede">One email, sent when staff reply in GYE Connect. Everything below is decided.
+  Six things still need your call &mdash; they are on
+  <a href="email-questions.html">page 2</a>, each one a pick-one.</p>
+
+<p class="sec">What the member sees before opening</p>
+
+<div class="pv">
+  <p class="pvcap">Gmail &mdash; desktop</p>
+  <div class="gd">
+    <span class="gdfrom">GYE Support</span>
+    <span class="gdmid"><span class="gdsubj">Chaim replied to your conversation</span>
+      <span class="gdpre">&nbsp;- A reply is waiting for you on GYE.</span></span>
+    <span class="gdtime">10:54 PM</span>
+  </div>
+  <p class="pvnote">Three things, and only three: <b>from name</b>, <b>subject</b> (bold), <b>preheader</b>
+    (grey, same line). Nothing else about the message escapes the inbox.</p>
+</div>
+
+<div class="pv">
+  <p class="pvcap">Gmail &mdash; phone</p>
+  <div class="gm">
+    <div class="gmav">G</div>
+    <div class="gmtxt">
+      <div class="gmr1"><span class="gmfrom">GYE Support</span><span class="gmtime">10:54 PM</span></div>
+      <div class="gmsubj">Chaim replied to your conversation</div>
+      <div class="gmpre">A reply is waiting for you on GYE.</div>
+    </div>
+  </div>
+</div>
+
+<div class="pv">
+  <p class="pvcap">iPhone lock screen &mdash; the tightest case</p>
+  <div class="ioswrap">
+    <p class="ioscap">Subject A &mdash; &ldquo;replied to your conversation&rdquo;</p>
+    <div class="ios">
+      <div class="iosr1"><span class="iosapp">Mail</span><span class="iost">now</span></div>
+      <div class="iosfrom">GYE Support</div>
+      <div class="iossubj">Yehoshua replied to your conver&hellip;</div>
+      <div class="iospre">A reply is waiting for you on GYE.</div>
+    </div>
+    <p class="ioscap">Subject B &mdash; &ldquo;just messaged you&rdquo;</p>
+    <div class="ios">
+      <div class="iosr1"><span class="iosapp">Mail</span><span class="iost">now</span></div>
+      <div class="iosfrom">GYE Support</div>
+      <div class="iossubj">Yehoshua just messaged you</div>
+      <div class="iospre">A reply is waiting for you on GYE.</div>
+    </div>
+  </div>
+  <p class="pvnote">The lock screen cuts around 35-40 characters. Subject A is 34 with a short name and
+    37 with a long one, so it clips for some agents and not others. Subject B fits any name.
+    <span class="qref">That is <a href="email-questions.html">question 2</a>.</span></p>
+</div>
+
+<div class="box gold">
+  <h2>The preheader is the only anonymity risk</h2>
+  <p>The from name and subject are fixed strings we control. The preheader is the one slot that can
+    carry the agent&rsquo;s actual words onto a lock screen. Compare:</p>
+  <p style="font-size:13px;color:#333;padding-left:12px;border-left:2px solid #e3e6f2;">
+    <b>Generic:</b> A reply is waiting for you on GYE.<br>
+    <b>Real first line:</b> Hi, thanks for reaching out, and for trusting me with what&rsquo;s&hellip;</p>
+  <p>The second one implies a confided problem to anyone holding the phone.
+    <span class="qref"><a href="email-questions.html">Question 3</a>.</span></p>
+</div>
+
+<p class="sec">The email</p>
+
+<div class="col">
+  <div class="card">
+    <div class="mast"><img src="assets/logo-purple-2x.png" width="32" height="33" alt="GYE"></div>
+    <div class="hero">
+      <div class="av">C</div>
+      <div class="who">Chaim</div>
+      <div class="role">GYE Support team</div>
+      <div class="subj">Chaim replied to your conversation</div>
+    </div>
+    <div class="snipwrap"><div class="snip">
+      Hi, thanks for reaching out, and for trusting me with what&rsquo;s going on. I read through
+      everything you wrote, and I want to say clearly that none of it is too much to bring here. A lot
+      of people arrive feeling like they&rsquo;re the only one who&hellip;
+      <span class="more">Continue reading on GYE &rarr;</span>
+    </div></div>
+    <div class="ctawrap"><span class="cta">Read &amp; reply</span></div>
+    <div class="foot">
+      <p class="whyline">You&rsquo;re getting this because you have an open conversation on GYE.</p>
+      <hr class="footdiv">
+      <p class="footlinks"><a href="#">Notification settings</a><br>
+        GYE CORP, 4403 15th Ave #305, Brooklyn, NY 11219</p>
+    </div>
+  </div>
+  <p class="note">No &ldquo;do not reply&rdquo; notice, because replies go to a monitored inbox and a
+    human answers. That single decision removed a whole paragraph from the design.</p>
+</div>
+
+<p class="sec">Send headers</p>
+
+<div class="box">
+  <table class="t">
+    <tr><th>From name</th><td><code>GYE Support</code> <span class="chars">11 chars</span><br>
+      <span class="chars">Never the agent&rsquo;s name &mdash; a stable sender survives handoffs and does not look spoofed.</span></td></tr>
+    <tr><th>From</th><td><code>help@gye.org</code> &mdash; a real monitored inbox. No <code>no-reply@</code> anywhere visible.</td></tr>
+    <tr><th>Reply-To</th><td>Omitted. <code>help@</code> is already the reply target.</td></tr>
+    <tr><th>Return-Path</th><td><code>bounces@mail.gye.org</code> &mdash; invisible plumbing, the one slot a subdomain belongs in.</td></tr>
+    <tr><th>Subject</th><td><code>{{agent_first_name}} replied to your conversation</code> <span class="qref">Q2</span></td></tr>
+    <tr><th>Preheader</th><td><code>{{email_preview}}</code> &mdash; hidden div, first element in the body, 90-char cap. <span class="qref">Q3</span></td></tr>
+    <tr><th>Snippet</th><td><code>{{message_snippet}}</code> &mdash; first ~250 chars of the reply, cut at the last sentence end before 250, greeting included.</td></tr>
+    <tr><th>Links</th><td>All point at <code>app.gye.org</code>. Mail comes from <code>gye.org</code>, people go to <code>app.gye.org</code>.</td></tr>
+  </table>
+  <p style="font-size:12px;color:#8a91a3;line-height:18px;margin-top:12px;">From name and subject are
+    send-time headers, not template HTML &mdash; a branch in the sending logic.</p>
+</div>
+
+<div class="box">
+  <h2>Merge fields</h2>
+  <p><code>{{agent_first_name}}</code> <code>{{agent_initial}}</code> <code>{{email_preview}}</code>
+    <code>{{message_snippet}}</code> <code>{{conversation_url}}</code> <code>{{preferenceUrl}}</code></p>
+  <p style="font-size:12px;">Not in v1: <code>{{agent_photo_url}}</code> (<span class="qref">Q5</span>),
+    <code>{{unsubscribeFromAll}}</code> (<a href="email-later.html">page 4</a>).</p>
+</div>
+
+<div class="box">
+  <h2>Two things that block the send, not the design</h2>
+  <ul>
+    <li><b>Somebody has to watch <code>help@gye.org</code>.</b> The whole no-bounce approach rests on it.
+      <span class="qref">Q6</span></li>
+    <li><b>Confirm <code>mail.gye.org</code> aligns with <code>gye.org</code> for DMARC.</b> Relaxed
+      alignment handles it &mdash; just verify.</li>
+  </ul>
+</div>
+
+<p class="lede" style="margin-top:26px;">This page is a preview scaffold, not sendable email HTML &mdash;
+  it uses <code>inline-flex</code> and web fonts. Once the six questions are answered I build it as real
+  table-based email HTML.</p>
+
+</body>
+</html>
