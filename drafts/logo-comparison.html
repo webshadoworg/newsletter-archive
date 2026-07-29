@@ -84,8 +84,8 @@
     <p class="val"><code>GYE Personal Support</code></p>
     <p class="why">No agent name, and nothing that says what GYE is - it tells the member why they are
       getting the email without saying what it is about. The From line is what sets expectations:
-      <strong>&ldquo;Chaim from GYE&rdquo; reads like a personal note and invites a reply</strong>,
-      which currently dead-ends at <code>no-reply@</code>. It is also the same sender for every agent,
+      <strong>&ldquo;Chaim from GYE&rdquo; reads like a personal note and invites a reply</strong> that
+      Chaim himself will not see. It is also the same sender for every agent,
       so the member&rsquo;s existing thread and filters keep working when a different person picks up
       the conversation. At 20 characters it shows in full in an inbox list; Gmail on a narrow phone
       cuts sender names around 20-25.</p>
@@ -97,11 +97,44 @@
 
   <div class="field">
     <p class="lab">From address</p>
-    <p class="val"><code>no-reply@gye.org</code> &nbsp;<span class="open">interim</span></p>
-    <p class="why">Comes out as soon as members can reply to the email directly. Until then, set
-      <strong>Reply-To to the Intercom inbound address</strong> so anything a member sends back is read
-      by a human - a hard bounce, or silence, at the moment someone writes something painful is the
-      one failure this email cannot have.</p>
+    <p class="val"><code>help@gye.org</code></p>
+    <p class="why">Mendy&rsquo;s call Jul 29 and the right one - it matches a From name of
+      &ldquo;GYE Personal Support,&rdquo; and it does not open the email by announcing that nobody is
+      listening. Reveals nothing about the subject matter, same as the From name.</p>
+  </div>
+
+  <div class="field">
+    <p class="lab">Reply-To</p>
+    <p class="val"><code>the Intercom inbound address</code> &nbsp;<span class="open">not no-reply@</span></p>
+    <p class="why"><strong>This is the one to flip.</strong> Reply-To is not a label - it is literally
+      where the mail goes when the member presses Reply. Point it at <code>no-reply@</code> and every
+      reply either bounces or is silently dropped, which is the exact failure we ruled out yesterday:
+      someone writes something painful and GYE answers with a bounce. And it is worse paired with
+      <code>help@gye.org</code> in the From, because that address looks monitored, so it invites the
+      reply it then throws away.</p>
+    <p class="why">Where <code>no-reply@</code> belonged was the <em>From</em> - as a warning label,
+      back when nothing was monitored. Now that replies route to Intercom, that job is gone and the
+      address should not appear in either header.</p>
+    <p class="why"><strong>Simplest working config:</strong> route <code>help@gye.org</code> itself into
+      Intercom and set <strong>no Reply-To at all</strong>. One address, monitored, human-looking, and
+      nothing to keep in sync. Set Reply-To only if the monitored address has to differ from the
+      visible one.</p>
+  </div>
+
+  <div class="field">
+    <p class="lab">Return-Path / envelope sender &mdash; the machine address</p>
+    <p class="val"><code>bounces@mail.gye.org</code> &nbsp;<span style="font-weight:400;color:#8a91a3;font-size:13px;">invisible to the member</span></p>
+    <p class="why"><strong>This is where the no-reply subdomain belongs.</strong> Every email carries a
+      third address the member never sees, and it is the one that catches bounces and carries this
+      stream&rsquo;s sending reputation. Putting it on a subdomain is exactly right: a bad patch here
+      cannot damage <code>gye.org</code>&rsquo;s deliverability, so a support-notification problem can
+      never stop the weekly newsletter from landing, and vice versa. Same subdomain in the DKIM
+      <code>d=</code>.</p>
+    <p class="why">So there are three addresses doing three different jobs:
+      <strong>From</strong> is what the member sees and trusts (<code>help@gye.org</code>),
+      <strong>Reply-To</strong> is where a reply actually lands so it must be monitored, and
+      <strong>Return-Path</strong> is the machine address on the subdomain. A no-reply address is a
+      legitimate thing to have - just in the third slot, not the second.</p>
   </div>
 
   <div class="field">
@@ -153,8 +186,9 @@
   <h1>Technical specs</h1>
   <table>
     <tr><th>From name</th><td><code>GYE Personal Support</code><br><span style="color:#8a91a3;font-size:12px">Set Jul 29, 2026. Not &ldquo;Chaim from GYE&rdquo; &mdash; the From info does not name the agent. His name still leads the body, which is the point of this layout.</span></td></tr>
-    <tr><th>From address</th><td><code>no-reply@gye.org</code><br><span style="color:#8a91a3;font-size:12px">Interim, until members can reply to the email directly.</span></td></tr>
-    <tr><th>Reply-To</th><td><span class="open">Open</span> &mdash; point at the Intercom inbound address once routing exists</td></tr>
+    <tr><th>From address</th><td><code>help@gye.org</code><br><span style="color:#8a91a3;font-size:12px">Set Jul 29, 2026 &mdash; Mendy. Replaces <code>no-reply@gye.org</code>.</span></td></tr>
+    <tr><th>Reply-To</th><td>The Intercom inbound address, or omit the header entirely if <code>help@gye.org</code> is itself routed to Intercom.<br><span style="color:#8a91a3;font-size:12px"><strong>Not</strong> a no-reply address &mdash; this is where a reply physically goes, so it has to be monitored.</span></td></tr>
+    <tr><th>Return-Path</th><td><code>bounces@mail.gye.org</code> or similar &mdash; the machine address on its own subdomain, invisible to the member, carries bounces and sending reputation.<br><span style="color:#8a91a3;font-size:12px">This is the slot the no-reply subdomain belongs in.</span></td></tr>
     <tr><th>Subject</th><td><span class="open">Two candidates</span> &mdash; <code>{{agent_first_name}} replied to your conversation</code> or <code>{{agent_first_name}} just messaged you</code><br><span style="color:#8a91a3;font-size:12px">See the panel at the top. Both name the agent while the From name does not; that mismatch is deliberate.</span></td></tr>
     <tr><th>Preheader</th><td><code>{{email_preview}}</code> &mdash; the reply&rsquo;s first line only if it is a safe short greeting, otherwise &ldquo;A reply is waiting for you on GYE.&rdquo;</td></tr>
     <tr><th>Snippet</th><td><code>{{message_snippet}}</code> &mdash; <span class="open">rule still open.</span> Proposal: first paragraph, skipping a greeting-only first paragraph, with a ~500-character backstop.</td></tr>
