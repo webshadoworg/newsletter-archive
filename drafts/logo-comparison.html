@@ -81,12 +81,18 @@
 
   <div class="field">
     <p class="lab">From name</p>
-    <p class="val"><code>GYE</code></p>
-    <p class="why">Three letters, no agent name, nothing that says what GYE is. The From line is what
-      sets expectations - <strong>&ldquo;Chaim from GYE&rdquo; reads like a personal note and invites a
-      reply</strong>, which currently dead-ends at <code>no-reply@</code>. It is also the same sender
-      for every agent, so the member&rsquo;s existing thread and filters keep working when a different
-      person picks up the conversation.</p>
+    <p class="val"><code>GYE Personal Support</code></p>
+    <p class="why">No agent name, and nothing that says what GYE is - it tells the member why they are
+      getting the email without saying what it is about. The From line is what sets expectations:
+      <strong>&ldquo;Chaim from GYE&rdquo; reads like a personal note and invites a reply</strong>,
+      which currently dead-ends at <code>no-reply@</code>. It is also the same sender for every agent,
+      so the member&rsquo;s existing thread and filters keep working when a different person picks up
+      the conversation. At 20 characters it shows in full in an inbox list; Gmail on a narrow phone
+      cuts sender names around 20-25.</p>
+    <p class="why" style="color:#8a91a3">The card below says &ldquo;GYE Personal Support team&rdquo;
+      under the agent&rsquo;s name - the word <em>team</em> reads well as a role line in the body but
+      makes the sender name longer than it needs to be, so the From name drops it. Say the word if you
+      want them identical.</p>
   </div>
 
   <div class="field">
@@ -119,7 +125,7 @@
   <hr>
 
   <p class="lab">On the From / Subject mismatch - flagged Jul 28, now recommend keeping it</p>
-  <p class="why">From says <code>GYE</code> but the subject names Chaim. That is deliberate, not an
+  <p class="why">From says <code>GYE Personal Support</code> but the subject names Chaim. That is deliberate, not an
     oversight: it is the standard support-tool pattern (Intercom and Zendesk both do exactly this).
     The institutional sender governs reply expectations and inbox threading; the human name in the
     subject is what earns the open. <strong>The only reason to change it</strong> would be a decision
@@ -131,7 +137,7 @@
 <div class="specs">
   <h1>Technical specs</h1>
   <table>
-    <tr><th>From name</th><td><code>GYE</code><br><span style="color:#8a91a3;font-size:12px">Not &ldquo;Chaim from GYE&rdquo; &mdash; the From info does not name the agent. His name still leads the body, which is the point of this layout.</span></td></tr>
+    <tr><th>From name</th><td><code>GYE Personal Support</code><br><span style="color:#8a91a3;font-size:12px">Set Jul 29, 2026. Not &ldquo;Chaim from GYE&rdquo; &mdash; the From info does not name the agent. His name still leads the body, which is the point of this layout.</span></td></tr>
     <tr><th>From address</th><td><code>no-reply@gye.org</code><br><span style="color:#8a91a3;font-size:12px">Interim, until members can reply to the email directly.</span></td></tr>
     <tr><th>Reply-To</th><td><span class="open">Open</span> &mdash; point at the Intercom inbound address once routing exists</td></tr>
     <tr><th>Subject</th><td><code>{{agent_first_name}} replied to your conversation</code><br><span style="color:#8a91a3;font-size:12px">Note: From says GYE but the subject names the agent. Flagged, not yet resolved.</span></td></tr>
@@ -170,7 +176,7 @@
     <div class="hero">
       <div class="av">C</div>
       <div class="who">Chaim</div>
-      <div class="role">GYE Support team</div>
+      <div class="role">GYE Personal Support team</div>
       <div class="subj">Chaim replied to your conversation</div>
     </div>
     <div class="snipwrap"><div class="snip">
@@ -196,7 +202,7 @@
     <div class="hero">
       <div class="av">C</div>
       <div class="who">Chaim</div>
-      <div class="role">GYE Support team</div>
+      <div class="role">GYE Personal Support team</div>
       <div class="subj">Chaim replied to your conversation</div>
     </div>
     <div class="snipwrap"><div class="snip">
@@ -215,65 +221,19 @@
 </div>
 
 <div class="banner">
-  <h1>Options C-E: the logo becomes the avatar</h1>
+  <h1>Option E: the logo becomes the avatar</h1>
   <p>Same layout, but the tile moves out of the top-left corner and into the hero slot that held the
-    agent's initial. No corner logo - one mark, centered.</p>
+    agent's initial. No corner logo - one mark, centered. <span style="color:#8a91a3">C and D, the
+    square-tile versions, were cut Jul 29 - E keeps its letter so it stays the same thing we have been
+    calling E.</span></p>
   <p><strong style="color:#a8862a">The tradeoff:</strong> the point of the person-forward layout was
     that the avatar stood for a human being. With the tile there, the member sees an institution
-    first and the agent's name second, in text. Not automatically wrong - the From name is already
-    plain <strong>GYE</strong> - but it is a real change in what the email leads with.</p>
-  <p><strong style="color:#a8862a">Image quality:</strong> the tile is a 110&times;114 PNG. At 64px it
-    renders at 1.8&times;, just under retina, so the letters go slightly soft on a phone. Option E
-    sidesteps that by drawing the tile smaller. A vector or larger PNG from the designer fixes all of
-    them, and is needed anyway before the tile ships at this size.</p>
-</div>
-
-<!-- ================= OPTION C: purple tile as the avatar ================= -->
-<div class="col">
-  <p class="tag">Option C &middot; purple tile as the avatar</p>
-  <div class="card">
-    <div class="hero hero-solo">
-      <div class="avtile"><img src="assets/logo-purple-2x.png" width="62" height="64" alt="GYE"></div>
-      <div class="who">Chaim</div>
-      <div class="role">GYE Support team</div>
-      <div class="subj">Chaim replied to your conversation</div>
-    </div>
-    <div class="snipwrap"><div class="snip">
-      Hi &mdash; thanks for reaching out. I&rsquo;ve read through everything you shared, and I want you
-      to know none of it is too much to bring here. Let&rsquo;s take it one step at a time&hellip;
-      <div style="margin-top:8px;">&mdash; Chaim</div>
-    </div></div>
-    <div class="ctawrap"><span class="cta" style="background:#624b78;">Read &amp; reply</span>
-      <p class="noreply">Replies to this email aren&rsquo;t seen - use the button above so Chaim gets your message.</p>
-    </div>
-  </div>
-  <p class="note">Cleanest of the three. Tile, name, button and snippet border are all one purple, so
-    the top of the email reads as a single deliberate block instead of two competing marks. Rounded
-    square at 14px radius, so the letterforms are not clipped.</p>
-</div>
-
-<!-- ================= OPTION D: yellow tile as the avatar ================= -->
-<div class="col">
-  <p class="tag">Option D &middot; yellow tile as the avatar</p>
-  <div class="card">
-    <div class="hero hero-solo">
-      <div class="avtile"><img src="assets/logo-yellow-2x.png" width="62" height="64" alt="GYE"></div>
-      <div class="who">Chaim</div>
-      <div class="role">GYE Support team</div>
-      <div class="subj">Chaim replied to your conversation</div>
-    </div>
-    <div class="snipwrap"><div class="snip">
-      Hi &mdash; thanks for reaching out. I&rsquo;ve read through everything you shared, and I want you
-      to know none of it is too much to bring here. Let&rsquo;s take it one step at a time&hellip;
-      <div style="margin-top:8px;">&mdash; Chaim</div>
-    </div></div>
-    <div class="ctawrap"><span class="cta" style="background:#624b78;">Read &amp; reply</span>
-      <p class="noreply">Replies to this email aren&rsquo;t seen - use the button above so Chaim gets your message.</p>
-    </div>
-  </div>
-  <p class="note">Warmer, and it does catch the eye. But at 64px dead center the saturated yellow is
-    the loudest thing in the email by a wide margin - louder than it was at 38px in the corner - and
-    it no longer matches the button.</p>
+    first and the agent's name second, in text. Not automatically wrong - the From name is
+    institutional too - but it is a real change in what the email leads with.</p>
+  <p><strong style="color:#a8862a">Image quality:</strong> the tile is a 110&times;114 PNG, and this is
+    the one avatar treatment with no resolution problem - drawn at 42px it renders at 2.6&times;,
+    comfortably past retina. A vector from the designer is still worth having before the tile ships at
+    any larger size.</p>
 </div>
 
 <!-- ================= OPTION E: tile inside a round avatar ring ================= -->
@@ -283,7 +243,7 @@
     <div class="hero hero-solo">
       <div class="avring"><img src="assets/logo-purple-2x.png" width="42" height="44" alt="GYE"></div>
       <div class="who">Chaim</div>
-      <div class="role">GYE Support team</div>
+      <div class="role">GYE Personal Support team</div>
       <div class="subj">Chaim replied to your conversation</div>
     </div>
     <div class="snipwrap"><div class="snip">
@@ -298,8 +258,8 @@
   <p class="note">Circle filled with the tile&rsquo;s own <strong style="color:#624b78">#624b78</strong>,
     so the square edge disappears and it reads as one round purple mark rather than a tile sitting on
     a swatch. Keeps the avatar silhouette the layout was built around, so the slot still reads as
-    &ldquo;who this is from&rdquo; rather than as a masthead - and it is the sharpest of the three,
-    with the letters drawn at 2.6&times;.</p>
+    &ldquo;who this is from&rdquo; rather than as a masthead - and the letters are drawn at 2.6&times;,
+    so it is sharp on a phone.</p>
 </div>
 
 </body>
