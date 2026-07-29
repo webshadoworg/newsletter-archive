@@ -56,9 +56,77 @@
   .specs code { font-family:'SFMono-Regular',Consolas,monospace; font-size:12px; color:#624b78; }
   .specs .open { color:#a8862a; font-weight:700; }
   .specs p { font-size:12px; color:#8a91a3; line-height:18px; margin:10px 0 0; }
+  .rec { max-width:600px; margin:0 auto 28px; background:#fefcf3; border:0.5px solid #efe6cf;
+         border-left:3px solid #e9b308; border-radius:12px; padding:18px 22px; }
+  .rec h1 { font-size:15px; color:#1a2233; margin:0 0 4px; }
+  .rec .sub { font-size:12px; color:#8a91a3; margin:0 0 14px; }
+  .rec .field { margin:0 0 14px; }
+  .rec .field:last-of-type { margin-bottom:0; }
+  .rec .lab { font-size:11px; font-weight:700; letter-spacing:1.2px; text-transform:uppercase;
+              color:#8a91a3; margin:0 0 3px; }
+  .rec .val { font-size:15px; color:#1a2233; font-weight:700; line-height:22px; margin:0; }
+  .rec .val code { font-family:'SFMono-Regular',Consolas,monospace; font-size:14px; color:#624b78; }
+  .rec .why { font-size:12px; color:#5b6376; line-height:18px; margin:4px 0 0; }
+  .rec .why strong { color:#333333; }
+  .rec .open { color:#a8862a; font-weight:700; }
+  .rec hr { border:0; border-top:1px solid #efe6cf; margin:16px 0; }
 </style>
 </head>
 <body>
+
+<div class="rec">
+  <h1>Use this for FROM and SUBJECT</h1>
+  <p class="sub">Set in the send headers, not in the HTML body. Nothing below is affected by which
+    logo option wins.</p>
+
+  <div class="field">
+    <p class="lab">From name</p>
+    <p class="val"><code>GYE</code></p>
+    <p class="why">Three letters, no agent name, nothing that says what GYE is. The From line is what
+      sets expectations - <strong>&ldquo;Chaim from GYE&rdquo; reads like a personal note and invites a
+      reply</strong>, which currently dead-ends at <code>no-reply@</code>. It is also the same sender
+      for every agent, so the member&rsquo;s existing thread and filters keep working when a different
+      person picks up the conversation.</p>
+  </div>
+
+  <div class="field">
+    <p class="lab">From address</p>
+    <p class="val"><code>no-reply@gye.org</code> &nbsp;<span class="open">interim</span></p>
+    <p class="why">Comes out as soon as members can reply to the email directly. Until then, set
+      <strong>Reply-To to the Intercom inbound address</strong> so anything a member sends back is read
+      by a human - a hard bounce, or silence, at the moment someone writes something painful is the
+      one failure this email cannot have.</p>
+  </div>
+
+  <div class="field">
+    <p class="lab">Subject</p>
+    <p class="val"><code>{{agent_first_name}} replied to your conversation</code></p>
+    <p class="why">With a short name that is <strong>34 characters</strong>, so it survives the
+      iOS lock-screen cut at roughly 35-40 and the member sees the whole thing. Says a specific person
+      answered - which is the reason to open it - while revealing nothing about the subject matter or
+      the member&rsquo;s situation.</p>
+  </div>
+
+  <div class="field">
+    <p class="lab">Preheader</p>
+    <p class="val"><code>{{email_preview}}</code></p>
+    <p class="why">Hidden div, first element in the body. The reply&rsquo;s first line only when it is a
+      short safe greeting (Hi / Hello / Thank you, under ~60 characters), otherwise
+      <strong>&ldquo;A reply is waiting for you on GYE.&rdquo;</strong> Raw reply text must never reach
+      preview text - that is the one place an anonymity leak would land on a lock screen.</p>
+  </div>
+
+  <hr>
+
+  <p class="lab">On the From / Subject mismatch - flagged Jul 28, now recommend keeping it</p>
+  <p class="why">From says <code>GYE</code> but the subject names Chaim. That is deliberate, not an
+    oversight: it is the standard support-tool pattern (Intercom and Zendesk both do exactly this).
+    The institutional sender governs reply expectations and inbox threading; the human name in the
+    subject is what earns the open. <strong>The only reason to change it</strong> would be a decision
+    to keep agents' names out of the subject entirely, and the fallback -
+    <em>&ldquo;A reply is waiting for you&rdquo;</em> - reads like marketing and will be opened less.
+    The agent&rsquo;s name stays in the body either way: heading, byline, signature.</p>
+</div>
 
 <div class="specs">
   <h1>Technical specs</h1>
