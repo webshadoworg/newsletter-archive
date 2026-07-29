@@ -97,16 +97,18 @@
   <ul>
     <li class="pick">Needs a name</li>
   </ul>
-  <p class="rec"><b>Why:</b> members can reply to these emails, and the reply lands in a real inbox. If
-    nobody reads it, someone writes something vulnerable and gets silence &mdash; worse than a bounce.
-    Volume will be low because most people click the button, but this is what the whole approach rests on.</p>
+  <p class="rec"><b>Why:</b> the email tells people to use the button, but some will hit reply anyway and
+    that reply lands in a real inbox. Someone has to read it and move it into the support system by hand.
+    If nobody does, a member writes something vulnerable and gets silence &mdash; worse than a bounce.
+    Volume should be low, but this is the one manual dependency in the whole design.</p>
 </div>
 
 <div class="box" style="margin-top:26px;">
   <h2>Already decided, not asking again</h2>
   <ul>
     <li>Send from <code>help@gye.org</code>, no <code>no-reply@</code> anywhere visible</li>
-    <li>Replies routed to a human, never bounced. No &ldquo;do not reply&rdquo; copy</li>
+    <li>Replies land in <code>help@gye.org</code>, get read, and are hand-carried into the support
+      system. Never bounced. The email nudges people to the button but never claims replies go unseen</li>
     <li>Links point at <code>app.gye.org</code></li>
     <li><code>bounces@mail.gye.org</code> in the Return-Path</li>
     <li>No new sending subdomain &mdash; <code>gye.org</code> has reputation already, warm-up from zero at
