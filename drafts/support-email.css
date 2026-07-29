@@ -98,6 +98,8 @@ table.t tr:last-child th, table.t tr:last-child td { border-bottom:0; }
 .who { font-size:17px; font-weight:700; color:#1a2233; margin-top:12px; }
 .role { font-size:13px; color:#8a91a3; margin-top:2px; }
 .subj { font-size:20px; color:#333333; margin-top:14px; line-height:28px; }
+.cnt { display:inline-block; margin-top:12px; background:#eee8f3; color:#624b78; font-size:13px;
+        font-weight:700; padding:5px 14px; border-radius:14px; }
 .snipwrap { padding:18px 26px 0 26px; }
 .snip { background:#f7f5fa; border:1px solid #eee8f3; border-radius:14px; padding:16px 18px;
         font-size:15px; color:#2a3140; line-height:24px; }
