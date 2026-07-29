@@ -15,9 +15,18 @@
     {{unsubscribeFromAll}} unsubscribe link                — same field the weekly newsletter uses
 
   Envelope (set in the send headers, NOT in this body):
-    From name:     {{agent_first_name}} from GYE
+    From name:     GYE
+                     Decided Jul 29, 2026 — the From info must NOT name the agent.
+                     The agent's name still appears in the body (heading, byline, signature).
     From address:  no-reply@gye.org   (until inbound email is supported)
+    Reply-To:      not set yet — point at the Intercom inbound address once routing exists
     Subject:       {{agent_first_name}} replied to your conversation
+                     NOTE: From says GYE but the subject names the agent. Flagged, unresolved.
+
+  Inbound replies (decided Jul 29, 2026): route to Intercom so a human reads them, plus an
+  autoresponder pointing back to the web chat. Interim only — direct email replies are on the
+  roadmap and being scoped, at which point no-reply@, the autoresponder, and the "don't reply"
+  notice all come out. See README.md.
 
   Footer: the block below the white card mirrors the weekly Shabbos newsletter footer —
   same 'open sans' stack, #1376C8 links, #333333 text, hairline divider, then
@@ -117,6 +126,15 @@
               <!--[if !mso]><!-- -->
               <a href="{{conversation_url}}" style="display:inline-block; background:#7B93F5; color:#ffffff; font-family:Arial,Helvetica,sans-serif; font-size:15px; font-weight:bold; line-height:44px; text-align:center; padding:0 34px; border-radius:8px;">Read &amp; reply</a>
               <!--<![endif]-->
+            </td>
+          </tr>
+
+          <!-- "Don't reply" notice.
+               INTERIM ONLY — remove this whole <tr> once members can reply to the email
+               directly (feature being scoped as of Jul 29, 2026). -->
+          <tr>
+            <td class="px" align="center" style="padding:0 32px 30px 32px; font-family:Arial,Helvetica,sans-serif; font-size:13px; line-height:1.5; color:#6b7385;">
+              Replies to this email aren&rsquo;t seen - use the button above so {{agent_first_name}} gets your message.
             </td>
           </tr>
 
