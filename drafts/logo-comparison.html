@@ -20,6 +20,12 @@
   .hero { text-align:center; padding:16px 26px 0 26px; }
   .av { width:64px; height:64px; border-radius:50%; background:#eee8f3; display:inline-flex;
         align-items:center; justify-content:center; color:#624b78; font-size:26px; font-weight:700; }
+  .hero-solo { padding-top:26px; }
+  .avtile { display:inline-block; border-radius:14px; overflow:hidden; line-height:0; }
+  .avtile img { display:block; border:0; }
+  .avring { width:64px; height:64px; border-radius:50%; background:#eee8f3; display:inline-flex;
+            align-items:center; justify-content:center; }
+  .avring img { display:block; border:0; border-radius:4px; }
   .who { font-size:17px; font-weight:700; color:#1a2233; margin-top:12px; }
   .role { font-size:13px; color:#8a91a3; margin-top:2px; }
   .subj { font-size:20px; color:#333333; margin-top:14px; line-height:28px; }
@@ -116,7 +122,7 @@
 
 <!-- ================= OPTION B: purple tile ================= -->
 <div class="col">
-  <p class="tag">Option B &middot; purple tile &nbsp;&mdash;&nbsp; recommended</p>
+  <p class="tag">Option B &middot; purple tile &nbsp;&mdash;&nbsp; best of the corner pair</p>
   <div class="card">
     <div class="corner"><img src="assets/logo-purple-2x.png" width="38" height="39" alt="GYE"></div>
     <div class="hero">
@@ -138,6 +144,93 @@
     &nbsp;&nbsp;letters <span class="sw" style="background:#f9d772"></span>#f9d772</p>
   <p class="note">Sits quieter and lets the avatar lead, and the tile now matches the button and
     the avatar exactly &mdash; one purple across the whole email.</p>
+</div>
+
+<div class="banner">
+  <h1>Options C-E: the logo becomes the avatar</h1>
+  <p>Same layout, but the tile moves out of the top-left corner and into the hero slot that held the
+    agent's initial. No corner logo - one mark, centered.</p>
+  <p><strong style="color:#a8862a">The tradeoff:</strong> the point of the person-forward layout was
+    that the avatar stood for a human being. With the tile there, the member sees an institution
+    first and the agent's name second, in text. Not automatically wrong - the From name is already
+    plain <strong>GYE</strong> - but it is a real change in what the email leads with.</p>
+  <p><strong style="color:#a8862a">Image quality:</strong> the tile is a 110&times;114 PNG. At 64px it
+    renders at 1.8&times;, just under retina, so the letters go slightly soft on a phone. Option E
+    sidesteps that by drawing the tile smaller. A vector or larger PNG from the designer fixes all of
+    them, and is needed anyway before the tile ships at this size.</p>
+</div>
+
+<!-- ================= OPTION C: purple tile as the avatar ================= -->
+<div class="col">
+  <p class="tag">Option C &middot; purple tile as the avatar</p>
+  <div class="card">
+    <div class="hero hero-solo">
+      <div class="avtile"><img src="assets/logo-purple-2x.png" width="62" height="64" alt="GYE"></div>
+      <div class="who">Chaim</div>
+      <div class="role">GYE Support team</div>
+      <div class="subj">Chaim replied to your conversation</div>
+    </div>
+    <div class="snipwrap"><div class="snip">
+      Hi &mdash; thanks for reaching out. I&rsquo;ve read through everything you shared, and I want you
+      to know none of it is too much to bring here. Let&rsquo;s take it one step at a time&hellip;
+      <div style="margin-top:8px;">&mdash; Chaim</div>
+    </div></div>
+    <div class="ctawrap"><span class="cta" style="background:#624b78;">Read &amp; reply</span>
+      <p class="noreply">Replies to this email aren&rsquo;t seen - use the button above so Chaim gets your message.</p>
+    </div>
+  </div>
+  <p class="note">Cleanest of the three. Tile, name, button and snippet border are all one purple, so
+    the top of the email reads as a single deliberate block instead of two competing marks. Rounded
+    square at 14px radius, so the letterforms are not clipped.</p>
+</div>
+
+<!-- ================= OPTION D: yellow tile as the avatar ================= -->
+<div class="col">
+  <p class="tag">Option D &middot; yellow tile as the avatar</p>
+  <div class="card">
+    <div class="hero hero-solo">
+      <div class="avtile"><img src="assets/logo-yellow-2x.png" width="62" height="64" alt="GYE"></div>
+      <div class="who">Chaim</div>
+      <div class="role">GYE Support team</div>
+      <div class="subj">Chaim replied to your conversation</div>
+    </div>
+    <div class="snipwrap"><div class="snip">
+      Hi &mdash; thanks for reaching out. I&rsquo;ve read through everything you shared, and I want you
+      to know none of it is too much to bring here. Let&rsquo;s take it one step at a time&hellip;
+      <div style="margin-top:8px;">&mdash; Chaim</div>
+    </div></div>
+    <div class="ctawrap"><span class="cta" style="background:#624b78;">Read &amp; reply</span>
+      <p class="noreply">Replies to this email aren&rsquo;t seen - use the button above so Chaim gets your message.</p>
+    </div>
+  </div>
+  <p class="note">Warmer, and it does catch the eye. But at 64px dead center the saturated yellow is
+    the loudest thing in the email by a wide margin - louder than it was at 38px in the corner - and
+    it no longer matches the button.</p>
+</div>
+
+<!-- ================= OPTION E: tile inside a round avatar ring ================= -->
+<div class="col">
+  <p class="tag">Option E &middot; tile inside a round avatar ring</p>
+  <div class="card">
+    <div class="hero hero-solo">
+      <div class="avring"><img src="assets/logo-purple-2x.png" width="42" height="44" alt="GYE"></div>
+      <div class="who">Chaim</div>
+      <div class="role">GYE Support team</div>
+      <div class="subj">Chaim replied to your conversation</div>
+    </div>
+    <div class="snipwrap"><div class="snip">
+      Hi &mdash; thanks for reaching out. I&rsquo;ve read through everything you shared, and I want you
+      to know none of it is too much to bring here. Let&rsquo;s take it one step at a time&hellip;
+      <div style="margin-top:8px;">&mdash; Chaim</div>
+    </div></div>
+    <div class="ctawrap"><span class="cta" style="background:#624b78;">Read &amp; reply</span>
+      <p class="noreply">Replies to this email aren&rsquo;t seen - use the button above so Chaim gets your message.</p>
+    </div>
+  </div>
+  <p class="note">Keeps the round avatar silhouette the layout was built around, so the slot still
+    reads as &ldquo;who this is from&rdquo; rather than as a masthead. Sharpest of the three - the
+    tile is drawn at 2.6&times;, comfortably past retina. Cost is three nested shapes where option C
+    has one.</p>
 </div>
 
 </body>
