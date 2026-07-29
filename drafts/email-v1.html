@@ -100,7 +100,9 @@
       of people arrive feeling like they&rsquo;re the only one who&hellip;
       <span class="more">Continue reading on GYE &rarr;</span>
     </div></div>
-    <div class="ctawrap"><span class="cta">Read &amp; reply</span></div>
+    <div class="ctawrap"><span class="cta">Read &amp; reply</span>
+      <p class="whyline" style="margin:16px 0 0;">This is only a preview. Use the button so Chaim gets
+        your message right away.</p></div>
     <div class="foot">
       <p class="whyline">You&rsquo;re getting this because you have an open conversation on GYE.</p>
       <hr class="footdiv">
@@ -108,8 +110,12 @@
         GYE CORP, 4403 15th Ave #305, Brooklyn, NY 11219</p>
     </div>
   </div>
-  <p class="note">No &ldquo;do not reply&rdquo; notice, because replies go to a monitored inbox and a
-    human answers. That single decision removed a whole paragraph from the design.</p>
+  <p class="note"><b>The line under the button nudges without lying.</b> Mendy&rsquo;s call Jul 29: point
+    everyone at the button, but read <code>help@gye.org</code> anyway and hand-carry any stray replies
+    into the support system. So the copy discourages replying &mdash; and the true reason, that they are
+    only looking at a preview, is the reason &mdash; without ever claiming the reply goes nowhere.
+    <b>Do not write &ldquo;replies aren&rsquo;t seen.&rdquo;</b> It would be false, and a member who
+    cannot get into the app would read it and say nothing at all.</p>
 </div>
 
 <p class="sec">Send headers</p>
@@ -119,7 +125,9 @@
     <tr><th>From name</th><td><code>GYE Support</code> <span class="chars">11 chars</span><br>
       <span class="chars">Never the agent&rsquo;s name &mdash; a stable sender survives handoffs and does not look spoofed.</span></td></tr>
     <tr><th>From</th><td><code>help@gye.org</code> &mdash; a real monitored inbox. No <code>no-reply@</code> anywhere visible.</td></tr>
-    <tr><th>Reply-To</th><td>Omitted. <code>help@</code> is already the reply target.</td></tr>
+    <tr><th>Reply-To</th><td>Omitted. <code>help@</code> is already the reply target.<br>
+      <span class="chars">Stray replies get read and hand-carried into the support system. Manual, low
+      volume, and it means nobody ever writes into a void.</span></td></tr>
     <tr><th>Return-Path</th><td><code>bounces@mail.gye.org</code> &mdash; invisible plumbing, the one slot a subdomain belongs in.</td></tr>
     <tr><th>Subject</th><td><code>{{agent_first_name}} replied to your conversation</code> <span class="qref">Q2</span></td></tr>
     <tr><th>Preheader</th><td><code>{{email_preview}}</code> &mdash; hidden div, first element in the body, 90-char cap. <span class="qref">Q3</span></td></tr>
