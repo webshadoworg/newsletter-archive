@@ -277,5 +277,103 @@
     so it is sharp on a phone.</p>
 </div>
 
+<div class="banner">
+  <h1>Body opening and CTA - three to compare</h1>
+  <p>All three use the option E avatar, so the only thing changing is the big line and the button.
+    Opening 2 is yours, with the grammar fixed; opening 3 is what I would actually ship.</p>
+  <p><strong style="color:#a8862a">&ldquo;View Message&rdquo; is the right call either way</strong> -
+    taking it in all three below. &ldquo;Read &amp; reply&rdquo; asks for two things and one of them is
+    work, and for a member who is avoiding the conversation that is a reason to close the email. A
+    button that only promises to show you something is easier to press, and once they are in the chat
+    the reply follows on its own.</p>
+  <p><strong style="color:#a8862a">The count needs a decision above the copy:</strong> a number only
+    ever reads higher than 1 if notifications are batched. If GYE sends one email per reply - which is
+    what <code>{{message_snippet}}</code> and a &ldquo;just messaged you&rdquo; subject both assume -
+    the line is permanently &ldquo;1 new message&rdquo; and the counter earns nothing.</p>
+</div>
+
+<!-- ================= OPENING 1: current ================= -->
+<div class="col">
+  <p class="tag">Opening 1 &middot; current</p>
+  <div class="card">
+    <div class="hero hero-solo">
+      <div class="avring"><img src="assets/logo-purple-2x.png" width="42" height="44" alt="GYE"></div>
+      <div class="who">Chaim</div>
+      <div class="role">GYE Personal Support team</div>
+      <div class="subj">Chaim replied to your conversation</div>
+    </div>
+    <div class="snipwrap"><div class="snip">
+      Hi &mdash; thanks for reaching out. I&rsquo;ve read through everything you shared, and I want you
+      to know none of it is too much to bring here. Let&rsquo;s take it one step at a time&hellip;
+      <div style="margin-top:8px;">&mdash; Chaim</div>
+    </div></div>
+    <div class="ctawrap"><span class="cta" style="background:#624b78;">View Message</span>
+      <p class="noreply">Replies to this email aren&rsquo;t seen - use the button above so Chaim gets your message.</p>
+    </div>
+  </div>
+  <p class="note">A person did something. No demand on the reader.</p>
+</div>
+
+<!-- ================= OPENING 2: count-based ================= -->
+<div class="col">
+  <p class="tag">Opening 2 &middot; count-based</p>
+  <div class="card">
+    <div class="hero hero-solo">
+      <div class="avring"><img src="assets/logo-purple-2x.png" width="42" height="44" alt="GYE"></div>
+      <div class="who">Chaim</div>
+      <div class="role">GYE Personal Support team</div>
+      <div class="subj">1 new message awaits your response</div>
+    </div>
+    <div class="snipwrap"><div class="snip">
+      Hi &mdash; thanks for reaching out. I&rsquo;ve read through everything you shared, and I want you
+      to know none of it is too much to bring here. Let&rsquo;s take it one step at a time&hellip;
+      <div style="margin-top:8px;">&mdash; Chaim</div>
+    </div></div>
+    <div class="ctawrap"><span class="cta" style="background:#624b78;">View Messages</span>
+      <p class="noreply">Replies to this email aren&rsquo;t seen - use the button above so Chaim gets your message.</p>
+    </div>
+  </div>
+  <p class="note"><strong>Grammar:</strong> as written it was &ldquo;1 new message<u>s</u>
+    <u>awaits</u>&rdquo;. Correct is <strong>&ldquo;1 new message awaits&rdquo;</strong> /
+    <strong>&ldquo;3 new messages await&rdquo;</strong> - the noun and the verb both switch, and the
+    button goes View Message / View Message<u>s</u>. That is three conditionals in the send template.
+    If the tool cannot do conditionals, the count-free version is
+    <em>&ldquo;New messages are waiting for you.&rdquo;</em></p>
+  <p class="note"><strong>The real objection is &ldquo;awaits your response.&rdquo;</strong> It tells
+    the member they owe something. These are people who often are not answering <em>because</em> it
+    feels like too much, and an email that opens with an obligation is the one they leave unread. It
+    also puts a counter where a name was, so the email stops sounding like Chaim and starts sounding
+    like a ticket queue - which is the opposite of what the whole person-forward layout is for.</p>
+  <p class="note">And it fights the subject line you just picked: &ldquo;Chaim just messaged you&rdquo;
+    promises one person, one moment; &ldquo;3 new messages await your response&rdquo; is a digest.</p>
+</div>
+
+<!-- ================= OPENING 3: hybrid ================= -->
+<div class="col">
+  <p class="tag">Opening 3 &middot; person + optional count &nbsp;&mdash;&nbsp; what I would ship</p>
+  <div class="card">
+    <div class="hero hero-solo">
+      <div class="avring"><img src="assets/logo-purple-2x.png" width="42" height="44" alt="GYE"></div>
+      <div class="who">Chaim</div>
+      <div class="role">GYE Personal Support team</div>
+      <div class="subj">Chaim sent you a message</div>
+      <div class="role" style="margin-top:8px;">and 2 earlier messages are still waiting</div>
+    </div>
+    <div class="snipwrap"><div class="snip">
+      Hi &mdash; thanks for reaching out. I&rsquo;ve read through everything you shared, and I want you
+      to know none of it is too much to bring here. Let&rsquo;s take it one step at a time&hellip;
+      <div style="margin-top:8px;">&mdash; Chaim</div>
+    </div></div>
+    <div class="ctawrap"><span class="cta" style="background:#624b78;">View Message</span>
+      <p class="noreply">Replies to this email aren&rsquo;t seen - use the button above so Chaim gets your message.</p>
+    </div>
+  </div>
+  <p class="note">Keeps the person as the headline and matches the &ldquo;just messaged you&rdquo;
+    subject word for word, so the inbox and the email say the same thing. The count survives as the
+    small grey line, <strong>shown only when it is 2 or more</strong> - so it informs without ever
+    reading &ldquo;1 new message,&rdquo; and it never demands a response. One conditional instead of
+    three.</p>
+</div>
+
 </body>
 </html>
