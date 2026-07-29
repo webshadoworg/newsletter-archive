@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<!-- Design options considered for the GYE support notification email.
+     Kept for reference - decisions live on page 1 and 2. -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GYE support email &mdash; options compared</title>
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700" rel="stylesheet">
+<link href="support-email.css" rel="stylesheet">
+</head>
+<body>
+
+<nav class="nav">
+  <a href="email-v1.html">1 &middot; Ship this</a>
+  <a href="email-questions.html">2 &middot; 6 questions</a>
+  <a class="on" href="email-options.html">3 &middot; Options compared</a>
+  <a href="email-later.html">4 &middot; Later</a>
+</nav>
+
+<h1 class="pg">Options compared</h1>
+<p class="lede">Reference page. Nothing here needs reading unless you want to see the alternatives
+  behind <a href="email-questions.html">questions 1 and 2</a>.</p>
+
+<p class="sec">Logo placement &mdash; question 1</p>
+
+<div class="col">
+  <p class="tag">Option A &middot; corner tile, yellow</p>
+  <div class="card">
+    <div class="corner"><img src="assets/logo-yellow-2x.png" width="38" height="39" alt="GYE"></div>
+    <div class="hero">
+      <div class="av">C</div>
+      <div class="who">Chaim</div>
+      <div class="role">GYE Support team</div>
+      <div class="subj">Chaim just messaged you</div>
+    </div>
+    <div class="snipwrap"><div class="snip">Hi, thanks for reaching out, and for trusting me with
+      what&rsquo;s going on. I read through everything you wrote&hellip;</div></div>
+    <div class="ctawrap"><span class="cta">Read &amp; reply</span></div>
+    <div class="foot"><p class="whyline">You&rsquo;re getting this because you have an open conversation on GYE.</p></div>
+  </div>
+  <p class="note">A saturated yellow square is the loudest thing in the email and pulls attention off the
+    person. <b>Cut.</b></p>
+</div>
+
+<div class="col">
+  <p class="tag">Option B &middot; corner tile, purple</p>
+  <div class="card">
+    <div class="corner"><img src="assets/logo-purple-2x.png" width="38" height="39" alt="GYE"></div>
+    <div class="hero">
+      <div class="av">C</div>
+      <div class="who">Chaim</div>
+      <div class="role">GYE Support team</div>
+      <div class="subj">Chaim just messaged you</div>
+    </div>
+    <div class="snipwrap"><div class="snip">Hi, thanks for reaching out, and for trusting me with
+      what&rsquo;s going on. I read through everything you wrote&hellip;</div></div>
+    <div class="ctawrap"><span class="cta">Read &amp; reply</span></div>
+    <div class="foot"><p class="whyline">You&rsquo;re getting this because you have an open conversation on GYE.</p></div>
+  </div>
+  <p class="note">Quiet, lets the avatar lead, one purple across the whole email. <b>Became v1</b> &mdash;
+    with the tile centered at 32px instead of in the corner, which reads more like a masthead and less
+    like a stray badge.</p>
+</div>
+
+<div class="col">
+  <p class="tag">Option E &middot; the logo becomes the avatar</p>
+  <div class="card">
+    <div class="hero hero-solo">
+      <div class="avring"><img src="assets/logo-purple-2x.png" width="42" height="44" alt="GYE"></div>
+      <div class="who">Chaim</div>
+      <div class="role">GYE Support team</div>
+      <div class="subj">Chaim just messaged you</div>
+    </div>
+    <div class="snipwrap"><div class="snip">Hi, thanks for reaching out, and for trusting me with
+      what&rsquo;s going on. I read through everything you wrote&hellip;</div></div>
+    <div class="ctawrap"><span class="cta">Read &amp; reply</span></div>
+    <div class="foot"><p class="whyline">You&rsquo;re getting this because you have an open conversation on GYE.</p></div>
+  </div>
+  <p class="note">The circle is filled with the tile&rsquo;s own <b style="color:#624b78">#624b78</b>, so
+    the square edge disappears and it reads as one round mark. Sharp on retina (42px from a 110px PNG).
+    Outlook drops the rounded corner and it degrades to a purple square, which still looks intentional.</p>
+  <p class="note"><b>The tradeoff:</b> the avatar slot existed to stand for a human being. With the logo
+    there, the member meets the institution first and Chaim second, in text. Still live as
+    <a href="email-questions.html">question 1</a> &mdash; and it gets stronger if the answer to
+    question 5 is &ldquo;no photos, ever.&rdquo;</p>
+</div>
+
+<p class="sec">Body opening &mdash; settled</p>
+
+<div class="box">
+  <h2>&ldquo;1 new message awaits your response&rdquo; &mdash; not shipping it</h2>
+  <p><b>Grammar:</b> singular and plural both switch (&ldquo;1 new message awaits&rdquo; / &ldquo;3 new
+    messages await&rdquo;) and so does the button, so it costs three conditionals.</p>
+  <p><b>The bigger problem is &ldquo;awaits your response.&rdquo;</b> It tells the member they owe
+    something. These are often people not answering <em>because</em> it already feels like too much, and
+    an email that opens with an obligation is the one they leave unread. It also replaces a name with a
+    counter, so the email stops sounding like Chaim and starts sounding like a ticket queue.</p>
+  <p><b>And a count above 1 is only possible if notifications get batched.</b> One email per reply means
+    the line is permanently &ldquo;1 new message&rdquo; and the counter earns nothing.</p>
+  <p><b>If you still want the count:</b> keep the person as the headline and add a small grey line
+    underneath &mdash; &ldquo;and 2 earlier messages are still waiting&rdquo; &mdash; shown only when it is
+    2 or more. One conditional, never reads &ldquo;1 new message,&rdquo; never demands anything.</p>
+</div>
+
+<div class="box">
+  <h2>&ldquo;View Message&rdquo; vs &ldquo;Read &amp; reply&rdquo;</h2>
+  <p>Your instinct on <b>View Message</b> was right and I keep going back and forth on it.
+    &ldquo;Read &amp; reply&rdquo; asks for two things and one of them is work &mdash; for a member who
+    is avoiding the conversation, that is a reason to close the email. A button that only promises to
+    show you something is easier to press, and the reply follows once they are in the chat.</p>
+  <p>v1 currently shows &ldquo;Read &amp; reply.&rdquo; Say the word and it becomes
+    &ldquo;View Message&rdquo; &mdash; I did not want to add a seventh question over one label.</p>
+</div>
+
+<p class="sec">Brand colors &mdash; settled</p>
+
+<div class="box">
+  <p>Both tiles use one purple and one yellow, exact inversions of each other:
+    <b style="color:#624b78">#624b78</b> and <b style="color:#a8862a">#f9d772</b>.
+    #624b78 appears 70 times across GYE&rsquo;s existing branded emails.</p>
+  <p>Rebuilt as PNG at 110&times;114 from one shared letterform mask, so they are sharp on retina at any
+    size we use. <b>A vector from the designer is still worth having</b> before the tile ships larger
+    than ~45px.</p>
+</div>
+
+</body>
+</html>
