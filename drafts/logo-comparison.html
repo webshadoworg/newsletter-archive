@@ -105,12 +105,27 @@
   </div>
 
   <div class="field">
-    <p class="lab">Subject</p>
-    <p class="val"><code>{{agent_first_name}} replied to your conversation</code></p>
-    <p class="why">With a short name that is <strong>34 characters</strong>, so it survives the
-      iOS lock-screen cut at roughly 35-40 and the member sees the whole thing. Says a specific person
-      answered - which is the reason to open it - while revealing nothing about the subject matter or
-      the member&rsquo;s situation.</p>
+    <p class="lab">Subject &mdash; two candidates</p>
+    <p class="val" style="margin-bottom:2px;">1. <code>{{agent_first_name}} replied to your conversation</code>
+      <span style="font-weight:400;color:#8a91a3;font-size:13px;">&nbsp;34 chars as &ldquo;Chaim&hellip;&rdquo;, 37 as &ldquo;Yehoshua&hellip;&rdquo;</span></p>
+    <p class="val">2. <code>{{agent_first_name}} just messaged you</code>
+      <span style="font-weight:400;color:#8a91a3;font-size:13px;">&nbsp;23 chars, 26 with a long name</span>
+      &nbsp;<span style="color:#624b78;font-size:12px;">&larr; I&rsquo;d take this one</span></p>
+    <p class="why">Both name a person and neither reveals anything about the subject matter, so the
+      anonymity test is a wash. Two things separate them. <strong>Length:</strong> the iOS lock screen
+      cuts around 35-40 characters, so option 1 fits for &ldquo;Chaim&rdquo; but a longer agent name
+      pushes it over - <em>&ldquo;Yehoshua replied to your conver&hellip;&rdquo;</em> - while option 2
+      fits whatever the name is. <strong>Tone:</strong> &ldquo;just messaged you&rdquo; is immediate and
+      lands like a person, not a system notice, which is what gets it opened. It also covers the case
+      where an agent writes first rather than replying, so one subject line works for both.</p>
+    <p class="why"><strong>Two caveats on option 2, both easy to live with.</strong> The word
+      <em>just</em> is only true if the email goes out immediately - if sends are ever queued or
+      batched, drop it: <code>{{agent_first_name}} messaged you</code>, 18 characters, keeps everything
+      else. And &ldquo;X just messaged you&rdquo; is the LinkedIn / Facebook notification cadence, so it
+      reads slightly like a social alert; harmless here, but worth knowing that is the echo.</p>
+    <p class="why" style="color:#8a91a3">If option 2 wins, the big line inside the card should change
+      to match it - right now the card still reads &ldquo;Chaim replied to your conversation.&rdquo;
+      Not changed yet, since that is the design and you have not picked.</p>
   </div>
 
   <div class="field">
@@ -140,7 +155,7 @@
     <tr><th>From name</th><td><code>GYE Personal Support</code><br><span style="color:#8a91a3;font-size:12px">Set Jul 29, 2026. Not &ldquo;Chaim from GYE&rdquo; &mdash; the From info does not name the agent. His name still leads the body, which is the point of this layout.</span></td></tr>
     <tr><th>From address</th><td><code>no-reply@gye.org</code><br><span style="color:#8a91a3;font-size:12px">Interim, until members can reply to the email directly.</span></td></tr>
     <tr><th>Reply-To</th><td><span class="open">Open</span> &mdash; point at the Intercom inbound address once routing exists</td></tr>
-    <tr><th>Subject</th><td><code>{{agent_first_name}} replied to your conversation</code><br><span style="color:#8a91a3;font-size:12px">Note: From says GYE but the subject names the agent. Flagged, not yet resolved.</span></td></tr>
+    <tr><th>Subject</th><td><span class="open">Two candidates</span> &mdash; <code>{{agent_first_name}} replied to your conversation</code> or <code>{{agent_first_name}} just messaged you</code><br><span style="color:#8a91a3;font-size:12px">See the panel at the top. Both name the agent while the From name does not; that mismatch is deliberate.</span></td></tr>
     <tr><th>Preheader</th><td><code>{{email_preview}}</code> &mdash; the reply&rsquo;s first line only if it is a safe short greeting, otherwise &ldquo;A reply is waiting for you on GYE.&rdquo;</td></tr>
     <tr><th>Snippet</th><td><code>{{message_snippet}}</code> &mdash; <span class="open">rule still open.</span> Proposal: first paragraph, skipping a greeting-only first paragraph, with a ~500-character backstop.</td></tr>
     <tr><th>Inbound replies</th><td>Route to Intercom + autoresponder. Interim &mdash; direct replies are being scoped, and when they ship <code>no-reply@</code>, the autoresponder and the notice under the button all come out.</td></tr>
