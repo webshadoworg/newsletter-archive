@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<!-- Changes needed on the GYE email preference page, so the notification email has somewhere to point.
+     Source mockup from Mendy, Jul 30 2026: preference-center-additions-jul30.html -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GYE support email &mdash; preference page</title>
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700" rel="stylesheet">
+<link href="support-email.css" rel="stylesheet">
+<style>
+  .pref { max-width:600px; margin:0 auto 12px; background:#ffffff; border:0.5px solid #e3e6f2;
+          border-radius:12px; padding:20px 22px; }
+  .pref .grp { font-size:12px; letter-spacing:.06em; text-transform:uppercase; color:#8a91a3;
+               margin:0 0 12px; }
+  .pref .grp.mt { margin-top:18px; padding-top:18px; border-top:1px solid #e3e6f2; }
+  .pref .blurb { font-size:13px; color:#6b7385; line-height:20px; margin:0 0 12px; }
+  .row { display:flex; align-items:flex-start; gap:10px; padding:9px 0; }
+  .row input { margin-top:3px; flex:0 0 auto; }
+  .row .lbl { font-size:14px; color:#1a2233; }
+  .row .hint { font-size:12px; color:#8a91a3; margin-top:2px; }
+  .row.old { opacity:.55; }
+  .row.new .lbl:after { content:'NEW'; font-size:9.5px; font-weight:700; letter-spacing:.8px;
+        color:#ffffff; background:#624b78; border-radius:3px; padding:2px 5px; margin-left:8px;
+        vertical-align:1px; }
+  .diff { font-size:13.5px; color:#333333; line-height:22px; margin:0; }
+  .diff ins { background:#e6f4ea; color:#137333; text-decoration:none; font-weight:700;
+              border-radius:3px; padding:1px 3px; }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="email-v1.html">1 &middot; Ship this</a>
+  <a href="email-questions.html">2 &middot; Questions</a>
+  <a href="email-options.html">3 &middot; Options compared</a>
+  <a class="on" href="email-preferences.html">4 &middot; Preference page</a>
+  <a href="email-later.html">5 &middot; Later</a>
+</nav>
+
+<h1 class="pg">Preference page changes</h1>
+<p class="lede">Three changes on the existing email preference page, from Mendy Jul 30. The
+  &ldquo;Notification settings&rdquo; link in the new email points here, so this page has to make sense
+  before the email ships.</p>
+
+<p class="sec">1 &middot; Unsubscribe-from-all copy &mdash; one insertion</p>
+
+<div class="box">
+  <p class="diff">&ldquo;By choosing to unsubscribe from all, you will be removed from all our mailing
+    lists, including our weekly newsletter. However, as a GYE member, you will still receive essential
+    account-related emails, like password reset instructions <ins>and replies from the GYE team to
+    conversations you started</ins>. To completely halt all communications, please log into your profile
+    and either update your email address or delete your account.&rdquo;</p>
+</div>
+
+<div class="box gold">
+  <p><b>Why this matters more than it looks.</b> It is what makes support replies survive
+    unsubscribe-from-all, and it puts that in writing before the member clicks. Someone who unsubscribes
+    at 11pm and then gets a reply from Chaim two days later has been told to expect it, which is the
+    difference between a trusted email and a complaint.</p>
+  <p>It also matches the always-on toggle below, so the two places say the same thing.</p>
+</div>
+
+<p class="sec">2 &amp; 3 &middot; New options on the page</p>
+
+<div class="pref">
+  <p class="grp">Notifications</p>
+
+  <div class="row new">
+    <input type="checkbox" checked disabled>
+    <div>
+      <div class="lbl">Replies from the GYE team</div>
+      <div class="hint">Always on. These are replies to conversations you started.</div>
+    </div>
+  </div>
+
+  <div class="row new">
+    <input type="checkbox" checked>
+    <div class="lbl">Messages from other members</div>
+  </div>
+
+  <div class="row old">
+    <input type="checkbox" checked>
+    <div class="lbl">Forum notifications <span class="hint" style="display:inline">(existing)</span></div>
+  </div>
+
+  <div class="row old">
+    <input type="checkbox" checked>
+    <div class="lbl">Partner Program notifications <span class="hint" style="display:inline">(existing)</span></div>
+  </div>
+
+  <p class="grp mt">Email privacy</p>
+  <p class="blurb">Choose how much shows up in your inbox before you open anything.</p>
+
+  <div class="row new">
+    <input type="radio" name="detail" checked>
+    <div>
+      <div class="lbl">Show message details</div>
+      <div class="hint">Emails show who wrote to you and the beginning of their message.</div>
+    </div>
+  </div>
+
+  <div class="row new">
+    <input type="radio" name="detail">
+    <div>
+      <div class="lbl">Keep emails short</div>
+      <div class="hint">Emails only say that a message is waiting. Nothing about who wrote or what it says.</div>
+    </div>
+  </div>
+</div>
+<p class="note">Rendered from Mendy&rsquo;s mockup, Jul 30. Purple <b>NEW</b> tags mark what is being added;
+  the greyed rows already exist.</p>
+
+<p class="sec">What this settles</p>
+
+<div class="box gold">
+  <h2>&ldquo;Email privacy&rdquo; is the answer to question 3</h2>
+  <p>My one push-back on the spec was that v1 puts the agent&rsquo;s real first line into preview text
+    with nobody having chosen it. <b>This radio is the choice.</b> Once it exists, &ldquo;Show message
+    details&rdquo; is a real decision the member made and the detailed preheader is legitimate.</p>
+  <p><b>So question 3 becomes a sequencing question, not a design one:</b> generic preheader for everyone
+    until this ships, real first line after. If this page ships alongside the email, the objection is
+    gone on day one.</p>
+</div>
+
+<div class="box">
+  <h2>&ldquo;Keep emails short&rdquo; is the second template</h2>
+  <p>It is the discreet template from the decision doc, and it needs building before this radio can do
+    anything: from name <code>GYE</code>, subject &ldquo;You have a new message,&rdquo; fixed preheader,
+    no message text in the body. Sketched on <a href="email-later.html">page 5</a>.</p>
+  <p><b>Make it a member-level flag, not per-email-type.</b> Someone who picks &ldquo;keep emails
+    short&rdquo; should not then get a newsletter with a loud subject line.</p>
+</div>
+
+<div class="box">
+  <h2>Two small things worth deciding</h2>
+  <ul>
+    <li><b>The always-on row is a checked, greyed-out checkbox.</b> That reads as broken to some people
+      &mdash; a control that looks interactive and is not. The &ldquo;Always on&rdquo; label carries it,
+      but a lock icon or a plain &ldquo;Always on&rdquo; badge with no checkbox would read cleaner.</li>
+    <li><b>Splitting team replies from member messages is the right split</b> and it is worth saying why
+      out loud: a member who mutes peer messages still needs to hear from staff. Those are two different
+      relationships and they were sharing one toggle.</li>
+  </ul>
+</div>
+
+<p class="lede" style="margin-top:26px;">Source mockup kept at
+  <code>support-templates/preference-center-additions-jul30.html</code>.</p>
+
+</body>
+</html>
