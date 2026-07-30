@@ -25,7 +25,7 @@
 
 <h1 class="pg">The email</h1>
 <p class="lede">Sent to a member when staff reply in GYE Connect. This is the real sendable email HTML,
-  embedded live &mdash; not a mockup. <b>One wording call is waiting for you</b>, in the gold box.</p>
+  embedded live &mdash; not a mockup. Everything below is decided.</p>
 
 <p class="sec">What the member sees before opening</p>
 
@@ -91,15 +91,13 @@
 <div class="frame"><iframe src="build/render-multi.html" height="672" scrolling="no"
   title="Support reply email, five unread"></iframe></div>
 
-<div class="box gold">
-  <h2>The pill &mdash; one call for you</h2>
-  <p>The headline inside the email mirrors the subject, so a pill also reading &ldquo;5 new messages from
-    Chaim&rdquo; would put his name in the top five lines four times. The pill is now just
-    <b>&ldquo;5 new messages.&rdquo;</b></p>
-  <p>It fixes the handoff case too: if the thread passed to a second agent, some of those five are
-    someone else&rsquo;s, and <em>&ldquo;5 new messages&rdquo;</em> stays true where &ldquo;from
-    Chaim&rdquo; wouldn&rsquo;t. His name is still in the subject, the avatar and the headline. Say the
-    word and I put the full sentence back.</p>
+<div class="box">
+  <h2>Where the count lives</h2>
+  <p>The two emails above differ in exactly two places: the <b>subject</b>, and the <b>pill</b>. The
+    headline is always <code>Chaim wrote back to you</code> &mdash; it never changes with the count.</p>
+  <p>So the count appears once in the inbox, to pull the member in, and once inside, in the pill. Nothing
+    is said twice, and <code>5 new messages</code> stays accurate if the thread was handed to a second
+    agent partway through.</p>
 </div>
 
 <p class="sec">Send headers</p>
@@ -127,7 +125,8 @@
   </table>
   <p style="font-size:12px;color:#8a91a3;line-height:18px;margin-top:12px;">From name, subject and
     preheader are send-time values, not template HTML. The subject is one branch on
-    <code>unread_count &gt; 1</code> &mdash; the same branch that shows the pill.</p>
+    <code>unread_count &gt; 1</code> &mdash; the same branch that shows the pill. The headline inside the
+    email doesn&rsquo;t branch at all.</p>
 </div>
 
 <div class="box">
@@ -150,8 +149,8 @@
     <code>{{unread_count}}</code> <code>{{multiple}}</code> <code>{{message_snippet}}</code>
     <code>{{conversation_url}}</code> <code>{{preferenceUrl}}</code> <code>{{asset_base}}</code></p>
   <p style="font-size:12px;"><code>{{multiple}}</code> is just <code>unread_count &gt; 1</code>; it gates
-    the subject, the headline and the pill together. <code>{{unsubscribeFromAll}}</code> stays out &mdash;
-    see <a href="email-later.html">page 3</a>.</p>
+    the subject and the pill. It&rsquo;s the only conditional in the template.
+    <code>{{unsubscribeFromAll}}</code> stays out &mdash; see <a href="email-later.html">page 3</a>.</p>
 </div>
 
 <div class="box">
