@@ -58,9 +58,8 @@
     <div class="ctawrap"><span class="cta">Read &amp; reply</span></div>
     <div class="foot"><p class="whyline">You&rsquo;re getting this because you have an open conversation on GYE.</p></div>
   </div>
-  <p class="note">Quiet, lets the avatar lead, one purple across the whole email. <b>Became v1</b> &mdash;
-    with the tile centered at 32px instead of in the corner, which reads more like a masthead and less
-    like a stray badge.</p>
+  <p class="note">Quiet, lets the avatar lead, one purple across the whole email. <b>This is v1</b> &mdash; tile top-left at
+    34px, confirmed by Mendy Jul 30.</p>
 </div>
 
 <div class="col">
@@ -99,10 +98,10 @@
   <ul>
     <li><b>Hide it at 1.</b> &ldquo;1 message waiting&rdquo; is weaker than saying nothing, and hiding it
       kills the singular/plural conditionals in one move. One condition instead of three.</li>
-    <li><b>&ldquo;waiting for you,&rdquo; not &ldquo;awaits your response.&rdquo;</b> Same number, same
-      urgency, but a fact instead of a debt. These are often people not answering <em>because</em> it
-      already feels like too much, and an email that opens by telling them what they owe is the one they
-      leave unread.</li>
+    <li><b>Not &ldquo;awaits your response.&rdquo;</b> Same number, same urgency, but a fact instead of a
+      debt. These are often people not answering <em>because</em> it already feels like too much, and an
+      email that opens by telling them what they owe is the one they leave unread. Final wording, set by
+      Mendy Jul 30: <b>&ldquo;{count} new messages from {name}.&rdquo;</b></li>
   </ul>
   <p>And the person stays the headline, so the email still sounds like Chaim rather than a ticket queue.
     The count sits under his line as a small pill.</p>
@@ -111,7 +110,7 @@
 <div class="col">
   <p class="tag">Count = 1 &middot; pill hidden</p>
   <div class="card">
-    <div class="mast"><img src="assets/logo-purple-2x.png" width="32" height="33" alt="GYE"></div>
+    <div class="corner"><img src="assets/logo-purple-2x.png" width="34" height="35" alt="GYE"></div>
     <div class="hero">
       <div class="av">C</div>
       <div class="who">Chaim</div>
@@ -120,7 +119,7 @@
     </div>
     <div class="snipwrap"><div class="snip">Hi, thanks for reaching out, and for trusting me with
       what&rsquo;s going on. I read through everything you wrote&hellip;</div></div>
-    <div class="ctawrap"><span class="cta">View Message</span></div>
+    <div class="ctawrap"><span class="cta">Open conversation</span></div>
     <div class="foot"><p class="whyline">You&rsquo;re getting this because you have an open conversation on GYE.</p></div>
   </div>
 </div>
@@ -128,35 +127,37 @@
 <div class="col">
   <p class="tag">Count = 5 &middot; pill shown</p>
   <div class="card">
-    <div class="mast"><img src="assets/logo-purple-2x.png" width="32" height="33" alt="GYE"></div>
+    <div class="corner"><img src="assets/logo-purple-2x.png" width="34" height="35" alt="GYE"></div>
     <div class="hero">
       <div class="av">C</div>
       <div class="who">Chaim</div>
       <div class="role">GYE Support team</div>
       <div class="subj">Chaim just messaged you</div>
-      <div class="cnt">5 messages waiting for you</div>
+      <div class="cnt">5 new messages from Chaim</div>
     </div>
     <div class="snipwrap"><div class="snip">Hi, thanks for reaching out, and for trusting me with
       what&rsquo;s going on. I read through everything you wrote&hellip;</div></div>
-    <div class="ctawrap"><span class="cta">View Messages</span></div>
+    <div class="ctawrap"><span class="cta">Open conversation</span></div>
     <div class="foot"><p class="whyline">You&rsquo;re getting this because you have an open conversation on GYE.</p></div>
   </div>
-  <p class="note">If the button has to stay one fixed string, <b>View Messages</b> works for both and
-    &ldquo;View Message&rdquo; disappears &mdash; your call whether the plural is worth a second
-    conditional.</p>
+  <p class="note"><b>&ldquo;Open conversation&rdquo; solves the plural for free</b> &mdash; it reads
+    correctly at 1 unread or 5, so the button needs no conditional to match the pill.</p>
+  <p class="note">Open on the wording: Chaim is named three times in the top four lines now, and
+    &ldquo;from Chaim&rdquo; is wrong if the thread was handed to a second agent. Both noted on
+    <a href="email-v1.html">page 1</a>.</p>
 </div>
 
 <div class="box">
   <h2>The thing the count unlocks &mdash; worth revisiting later</h2>
   <p>One email per message, to somebody who is not opening them, is how a sender ends up in spam. Once a
     real count exists, GYE can send <em>fewer</em> emails instead of more: after two unopened, drop to one
-    a day &mdash; &ldquo;3 messages waiting for you.&rdquo; Same urgency, a third of the volume, better
+    a day &mdash; &ldquo;3 new messages from Chaim.&rdquo; Same urgency, a third of the volume, better
     deliverability. Not v1, but the count is the piece that makes it possible.</p>
 </div>
 
 <div class="box">
-  <h2>&ldquo;View Message&rdquo; vs &ldquo;Read &amp; reply&rdquo;</h2>
-  <p>Your instinct on <b>View Message</b> was right and I keep going back and forth on it.
+  <h2>Button label &mdash; settled on &ldquo;Open conversation&rdquo;</h2>
+  <p>Mendy, Jul 30. The instinct to move off <b>Read &amp; reply</b> was right.
     &ldquo;Read &amp; reply&rdquo; asks for two things and one of them is work &mdash; for a member who
     is avoiding the conversation, that is a reason to close the email. A button that only promises to
     show you something is easier to press, and the reply follows once they are in the chat.</p>
