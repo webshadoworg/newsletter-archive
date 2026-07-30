@@ -1,12 +1,16 @@
 <!DOCTYPE html>
-<!-- Open decisions for the GYE support notification email. -->
+<!-- Decisions log for the GYE support notification email. All 6 answered Jul 30, 2026. -->
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>GYE support email &mdash; 6 questions</title>
+<title>GYE support email &mdash; all 6 answered</title>
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700" rel="stylesheet">
 <link href="support-email.css" rel="stylesheet">
+<style>
+  .q.ans { border-left:3px solid #137333; }
+  .ansline { font-size:14px; font-weight:700; color:#137333; margin:0 0 6px; }
+</style>
 </head>
 <body>
 
@@ -18,91 +22,85 @@
   <a href="email-later.html">5 &middot; Later</a>
 </nav>
 
-<h1 class="pg">6 questions</h1>
-<p class="lede">Filled dot = what I&rsquo;d pick. If you agree with all six, say &ldquo;go with your
-  picks&rdquo; and I build it. Otherwise just give me the numbers you want changed.</p>
+<h1 class="pg">All 6 answered</h1>
+<p class="lede">Nothing open on this page &mdash; it&rsquo;s the record of what was decided and why. The
+  built email is on <a href="email-v1.html">page 1</a>, and one small wording call is waiting for you
+  there in the gold box.</p>
 
-<div class="q" style="opacity:.72;">
-  <p class="qn">Question 1 &mdash; answered Jul 30</p>
-  <h2><s>Logo at the top, or the logo <em>is</em> the avatar?</s> Small logo, top-left. Initial avatar stays.</h2>
-  <p class="rec">Mendy, Jul 30. The person stays the hero and the logo does its real job &mdash; an
-    anti-phishing signal, not a masthead. Option E (logo-as-avatar) is retired unless question 5 comes back
-    &ldquo;no photos ever.&rdquo;</p>
+<div class="q ans">
+  <p class="qn">Question 1 &mdash; logo &nbsp;&middot;&nbsp; Jul 30</p>
+  <p class="ansline">Small logo, top-left. Initial avatar stays.</p>
+  <p class="rec">The person stays the hero and the logo does its real job &mdash; an anti-phishing signal,
+    not a masthead. Option E (logo-as-avatar) is retired for good, since Q5 came back
+    &ldquo;cartoon avatars.&rdquo;</p>
 </div>
 
-<div class="q">
-  <p class="qn">Question 2 &mdash; subject</p>
-  <h2>Which subject line?</h2>
+<div class="q ans">
+  <p class="qn">Question 2 &mdash; subject &nbsp;&middot;&nbsp; Jul 30</p>
+  <p class="ansline">The subject follows the count, same branch as the pill.</p>
   <ul>
-    <li>&ldquo;{name} replied to your conversation&rdquo;
-      <span class="small">&mdash; 34 chars as Chaim, 37 as Yehoshua</span></li>
-    <li class="pick">&ldquo;{name} just messaged you&rdquo;
-      <span class="small">&mdash; 23 chars, 26 with a long name</span></li>
+    <li>1 unread &mdash; <b>&ldquo;Chaim wrote back to you&rdquo;</b> <span class="small">&mdash; 23 chars,
+      26 with the longest staff name</span></li>
+    <li>2+ unread &mdash; <b>&ldquo;5 new messages from Chaim&rdquo;</b> <span class="small">&mdash; 25
+      chars, 28 with the longest name</span></li>
   </ul>
-  <p class="rec"><b>Why:</b> see the lock-screen preview on <a href="email-v1.html">page 1</a> &mdash; the
-    first one clips for agents with longer names, the second fits every name. It also covers the case
-    where an agent writes first rather than replying, so one line works for both. If sends ever get
-    queued, drop &ldquo;just&rdquo;: <code>{name} messaged you</code>.</p>
+  <p class="rec">Mendy&rsquo;s wording, and better than either of my candidates: it clears the ~35-char
+    lock-screen cut in both states, and it does something neither of mine did &mdash; <b>it puts the
+    urgency in the subject line instead of only inside the email.</b> A count buried in the body only
+    nudges someone who already opened it. This one reaches the person who hasn&rsquo;t, which is the whole
+    point of having a count. <a href="email-v1.html">Both states previewed on page 1.</a></p>
 </div>
 
-<div class="q blocker">
-  <p class="qn">Question 3 &mdash; preheader &nbsp;&middot;&nbsp; the one I&rsquo;d push on</p>
-  <h2>Does the agent&rsquo;s real first line go into the preview text in v1?</h2>
-  <ul>
-    <li>Yes &mdash; first line of the reply, 90-char cap</li>
-    <li class="pick">No &mdash; fixed generic line for everyone in v1, real first line only once a member
-      has actively chosen it</li>
-  </ul>
-  <p class="rec"><b>Why:</b> the argument for showing the real line is &ldquo;the member chose the
-    detailed version.&rdquo; But in v1 nobody has chosen anything &mdash; detailed is the default and
-    opting out means knowing the option exists and asking staff. So everyone gets the agent&rsquo;s raw
-    words on their lock screen by default. The ~250-char snippet <em>inside</em> the email is fine either
-    way, because reading it means opening the email. This is one conditional, not a redesign.</p>
+<div class="q ans">
+  <p class="qn">Question 3 &mdash; preheader &nbsp;&middot;&nbsp; Jul 30</p>
+  <p class="ansline">Generic for now: &ldquo;Read it whenever you&rsquo;re ready.&rdquo;</p>
+  <p class="rec">The agent&rsquo;s real first line never reaches a lock screen. Also better than the
+    generic line I proposed (&ldquo;A reply is waiting for you on GYE&rdquo;), because it removes pressure
+    instead of adding it &mdash; these are often people not answering <em>because</em> it already feels
+    like too much.</p>
+  <p class="rec"><b>&ldquo;For now&rdquo; has a specific end:</b> the
+    <a href="email-preferences.html">Email privacy radio</a> on the preference page. Once a member has
+    actively picked &ldquo;Show message details,&rdquo; the real first line is a choice they made and can
+    go in. Until then it&rsquo;s a default nobody consented to.</p>
 </div>
 
-<div class="q">
-  <p class="qn">Question 4 &mdash; from name</p>
-  <h2>Pick one and freeze it.</h2>
-  <ul>
-    <li class="pick">GYE Support <span class="small">&mdash; 11 chars</span></li>
-    <li>GYE Team <span class="small">&mdash; 8 chars</span></li>
-    <li>GYE Personal Support <span class="small">&mdash; 20 chars</span></li>
-  </ul>
-  <p class="rec"><b>Why:</b> you were right to flag the third one &mdash; &ldquo;Personal Support&rdquo;
-    reads like a helpline to anyone glancing at an inbox list. I&rsquo;d also change the role line in the
-    body to match, so the email says &ldquo;GYE Support team&rdquo; under Chaim&rsquo;s name.</p>
+<div class="q ans">
+  <p class="qn">Question 4 &mdash; from name &nbsp;&middot;&nbsp; Jul 30</p>
+  <p class="ansline">GYE Support. Frozen.</p>
+  <p class="rec">11 characters, so it survives Gmail&rsquo;s narrow-phone sender truncation.
+    &ldquo;GYE Personal Support&rdquo; is out &mdash; &ldquo;Personal Support&rdquo; reads like a helpline
+    to anyone glancing at an inbox list. The role line under the agent&rsquo;s name matches: &ldquo;GYE
+    Support team.&rdquo;</p>
 </div>
 
-<div class="q">
-  <p class="qn">Question 5 &mdash; avatars</p>
-  <h2>Will staff ever have real profile photos?</h2>
-  <ul>
-    <li>Yes, soon</li>
-    <li class="pick">Not soon / probably never</li>
-  </ul>
-  <p class="rec"><b>Why it matters:</b> it decides question 1 permanently. Real photos make the
-    person-forward layout much stronger and rule out logo-as-avatar. No photos means the avatar is a
-    letter forever, which is the weakest version of the person-as-hero idea and the main argument for
-    Option E.</p>
+<div class="q ans">
+  <p class="qn">Question 5 &mdash; avatars &nbsp;&middot;&nbsp; Jul 30</p>
+  <p class="ansline">Cartoon avatars are coming.</p>
+  <p class="rec">Good outcome &mdash; it makes the person-forward layout the right call permanently, and a
+    cartoon is better here than a real photo would be: warm and identifiable without a staff member&rsquo;s
+    actual face sitting in an anonymity-sensitive inbox. The slot is already built as
+    <code>{{agent_photo_url}}</code> falling back to the letter, so nothing changes when the art lands.
+    <a href="email-v1.html">Two notes for the illustrator on page 1.</a></p>
 </div>
 
-<div class="q" style="opacity:.72;">
-  <p class="qn">Question 6 &mdash; answered Jul 29</p>
-  <h2><s>Who watches <code>help@gye.org</code>?</s> Already monitored today.</h2>
-  <p class="rec">The team reads that inbox now. Stray replies get moved into the support system by hand
-    until routing exists. <b>Nothing blocking.</b></p>
+<div class="q ans">
+  <p class="qn">Question 6 &mdash; <code>help@gye.org</code> &nbsp;&middot;&nbsp; Jul 29</p>
+  <p class="ansline">Already monitored today.</p>
+  <p class="rec">Stray replies get read and moved into the support system by hand until routing exists.
+    Nothing blocking.</p>
 </div>
 
 <div class="box" style="margin-top:26px;">
-  <h2>Already decided, not asking again</h2>
+  <h2>Decided earlier, not revisited</h2>
   <ul>
     <li>Send from <code>help@gye.org</code>, no <code>no-reply@</code> anywhere visible</li>
-    <li>Replies land in <code>help@gye.org</code>, get read, and are hand-carried into the support
-      system. Never bounced. The email nudges people to the button but never claims replies go unseen</li>
-    <li>Links point at <code>app.gye.org</code></li>
-    <li><code>bounces@mail.gye.org</code> in the Return-Path</li>
-    <li>No new sending subdomain &mdash; <code>gye.org</code> has reputation already, warm-up from zero at
-      launch is the worst timing</li>
+    <li>Replies land in <code>help@gye.org</code>, get read, and are hand-carried into the support system.
+      Never bounced, and the email never claims replies go unseen</li>
+    <li>No reply notice in the email at all (Mendy, Jul 30)</li>
+    <li>Button: <b>Open conversation</b> &mdash; correct at any unread count, so no plural to match</li>
+    <li>Count pill hidden entirely at 1</li>
+    <li>Links point at <code>app.gye.org</code>; <code>bounces@mail.gye.org</code> in the Return-Path</li>
+    <li>No new sending subdomain &mdash; <code>gye.org</code> has reputation already</li>
     <li>Snippet cut at the last sentence end before 250 chars</li>
     <li>No rating widget. Asking someone to rate a supportive message 1-3-5 is jarring</li>
   </ul>
