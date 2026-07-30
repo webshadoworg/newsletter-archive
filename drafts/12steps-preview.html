@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>12 Steps Hebrew - inbox preview</title>
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700" rel="stylesheet">
+<link href="support-email.css" rel="stylesheet">
+<style>
+  /* RTL overrides for the inbox-preview components, which are built LTR */
+  .rtl .gd, .rtl .gm, .rtl .ios, .rtl .gmtxt { direction:rtl; }
+  .rtl .gdmid { padding-right:0; padding-left:12px; }
+  .rtl .gmtime { padding-left:0; padding-right:8px; }
+  .rtl .pvcap, .rtl .pvnote { direction:ltr; }
+  .frame { width:100%; max-width:600px; height:1500px; border:0.5px solid #e3e6f2;
+           border-radius:12px; background:#ffffff; display:block; margin:0 auto; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <h1 class="pg">12 Steps (Hebrew) - what the inbox shows</h1>
+  <p class="lede">Preheader is now set to Mendy's line. Everything below is the real sendable HTML.</p>
+
+  <div class="pv rtl">
+    <p class="pvcap">Gmail desktop</p>
+    <div class="gd">
+      <span class="gdfrom">GYE שמור עיניך</span>
+      <span class="gdmid"><span class="gdsubj">חדש! קבוצת 12 צעדים להתמודדות עם התמכרות לאינטרנט</span>
+        <span class="gdpre">&nbsp;- ההרשמה לקבוצה הקרובה בעיצומה. מספר המקומות מוגבל על מנת לשמור על אינטימיות ואיכות התהליך.</span></span>
+      <span class="gdtime">5:52 PM</span>
+    </div>
+    <p class="pvnote">On desktop the subject runs nearly full-length and the preheader gets cut mid-sentence.
+      That's fine - the opening clause is the one that sells.</p>
+  </div>
+
+  <div class="pv rtl">
+    <p class="pvcap">Gmail - phone</p>
+    <div class="gm">
+      <div class="gmav">G</div>
+      <div class="gmtxt">
+        <div class="gmr1"><span class="gmfrom">GYE שמור עיניך</span><span class="gmtime">5:52 PM</span></div>
+        <div class="gmsubj">חדש! קבוצת 12 צעדים להתמודדות עם התמכרות לאינטרנט</div>
+        <div class="gmpre">ההרשמה לקבוצה הקרובה בעיצומה. מספר המקומות מוגבל על מנת לשמור על אינטימיות ואיכות התהליך.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pv rtl">
+    <p class="pvcap">iPhone lock screen - tightest case</p>
+    <div class="ioswrap">
+      <div class="ios">
+        <div class="iosr1"><span class="iosapp">Mail</span><span class="iost">now</span></div>
+        <div class="iosfrom">GYE שמור עיניך</div>
+        <div class="iossubj">חדש! קבוצת 12 צעדים להתמודדות עם התמכרות לאינטרנט</div>
+        <div class="iospre">ההרשמה לקבוצה הקרובה בעיצומה. מספר המקומות מוגבל על מנת לשמור על אינטימיות ואיכות התהליך.</div>
+      </div>
+    </div>
+    <p class="pvnote">Lock screen wraps rather than truncating, so both lines survive here.
+      <b>The from name is my guess</b> - confirm what GYE actually sends Hebrew mail as.</p>
+  </div>
+
+  <p class="sec">The email</p>
+  <div class="col">
+    <iframe class="frame" src="12steps-hebrew.html" title="12 Steps Hebrew email"></iframe>
+    <p class="note">Live embed of <b>drafts/12steps-hebrew.html</b>. Open it directly for a clean view.</p>
+  </div>
+
+</div>
+</body>
+</html>
