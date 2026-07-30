@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<!-- GYE support notification email - v1, the version to sign off.
-     Preview scaffold only, not sendable email HTML. -->
+<!-- GYE support notification email - v1. All six questions answered Jul 30, 2026.
+     The email shown here is the REAL sendable HTML, embedded live from build/. -->
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -8,6 +8,15 @@
 <title>GYE support email &mdash; v1</title>
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700" rel="stylesheet">
 <link href="support-email.css" rel="stylesheet">
+<style>
+  .frame { max-width:640px; margin:0 auto; }
+  .frame iframe { display:block; width:100%; border:0; background:#f4f5f9; border-radius:12px; }
+  .done { max-width:600px; margin:0 auto 18px; background:#f2f9f4; border:1px solid #cfe8d8;
+          border-left:3px solid #137333; border-radius:8px; padding:14px 18px; }
+  .done h2 { font-size:14px; margin:0 0 8px; color:#137333; }
+  .done ul { margin:0; padding-left:18px; font-size:13.5px; color:#333; line-height:22px; }
+  .done code { font-size:12.5px; background:#e6f4ea; border-radius:3px; padding:1px 4px; }
+</style>
 </head>
 <body>
 
@@ -20,22 +29,43 @@
 </nav>
 
 <h1 class="pg">Version 1</h1>
-<p class="lede">One email, sent when staff reply in GYE Connect. Everything below is decided.
-  Six things still need your call &mdash; they are on
-  <a href="email-questions.html">page 2</a>, each one a pick-one.</p>
+<p class="lede"><b>All six questions are answered.</b> What&rsquo;s below is no longer a mockup &mdash; it
+  is the real table-based sendable email HTML, embedded live. One thing needs your eye: the pill wording,
+  in the gold box under the previews.</p>
+
+<div class="done">
+  <h2>Answered Jul 30</h2>
+  <ul>
+    <li><b>Q1</b> logo top-left, 34px &middot; <b>Q4</b> from name <code>GYE Support</code> &middot;
+      <b>Q6</b> <code>help@gye.org</code> already monitored</li>
+    <li><b>Q2</b> subject follows the count: <code>Chaim wrote back to you</code> at 1,
+      <code>5 new messages from Chaim</code> at 2+</li>
+    <li><b>Q3</b> generic preheader for now: <code>Read it whenever you&rsquo;re ready.</code></li>
+    <li><b>Q5</b> staff get cartoon avatars &rarr; the photo slot is built in, with the letter as the
+      images-off fallback</li>
+  </ul>
+</div>
 
 <p class="sec">What the member sees before opening</p>
 
 <div class="pv">
-  <p class="pvcap">Gmail &mdash; desktop</p>
+  <p class="pvcap">Gmail desktop &mdash; one unread</p>
   <div class="gd">
     <span class="gdfrom">GYE Support</span>
-    <span class="gdmid"><span class="gdsubj">Chaim replied to your conversation</span>
-      <span class="gdpre">&nbsp;- A reply is waiting for you on GYE.</span></span>
+    <span class="gdmid"><span class="gdsubj">Chaim wrote back to you</span>
+      <span class="gdpre">&nbsp;- Read it whenever you&rsquo;re ready.</span></span>
     <span class="gdtime">10:54 PM</span>
   </div>
-  <p class="pvnote">Three things, and only three: <b>from name</b>, <b>subject</b> (bold), <b>preheader</b>
-    (grey, same line). Nothing else about the message escapes the inbox.</p>
+  <p class="pvcap">Gmail desktop &mdash; five unread</p>
+  <div class="gd">
+    <span class="gdfrom">GYE Support</span>
+    <span class="gdmid"><span class="gdsubj">5 new messages from Chaim</span>
+      <span class="gdpre">&nbsp;- Read it whenever you&rsquo;re ready.</span></span>
+    <span class="gdtime">10:54 PM</span>
+  </div>
+  <p class="pvnote">Three things escape the inbox and only three: <b>from name</b>, <b>subject</b> (bold),
+    <b>preheader</b> (grey, same line). The preheader is a fixed string, so the agent&rsquo;s own words
+    never appear here &mdash; that was question 3.</p>
 </div>
 
 <div class="pv">
@@ -44,137 +74,122 @@
     <div class="gmav">G</div>
     <div class="gmtxt">
       <div class="gmr1"><span class="gmfrom">GYE Support</span><span class="gmtime">10:54 PM</span></div>
-      <div class="gmsubj">Chaim replied to your conversation</div>
-      <div class="gmpre">A reply is waiting for you on GYE.</div>
+      <div class="gmsubj">Chaim wrote back to you</div>
+      <div class="gmpre">Read it whenever you&rsquo;re ready.</div>
     </div>
   </div>
 </div>
 
 <div class="pv">
-  <p class="pvcap">iPhone lock screen &mdash; the tightest case</p>
+  <p class="pvcap">iPhone lock screen &mdash; the tightest case, longest staff name</p>
   <div class="ioswrap">
-    <p class="ioscap">Subject A &mdash; &ldquo;replied to your conversation&rdquo;</p>
+    <p class="ioscap">One unread</p>
     <div class="ios">
       <div class="iosr1"><span class="iosapp">Mail</span><span class="iost">now</span></div>
       <div class="iosfrom">GYE Support</div>
-      <div class="iossubj">Yehoshua replied to your conver&hellip;</div>
-      <div class="iospre">A reply is waiting for you on GYE.</div>
+      <div class="iossubj">Yehoshua wrote back to you</div>
+      <div class="iospre">Read it whenever you&rsquo;re ready.</div>
     </div>
-    <p class="ioscap">Subject B &mdash; &ldquo;just messaged you&rdquo;</p>
+    <p class="ioscap">Five unread</p>
     <div class="ios">
       <div class="iosr1"><span class="iosapp">Mail</span><span class="iost">now</span></div>
       <div class="iosfrom">GYE Support</div>
-      <div class="iossubj">Yehoshua just messaged you</div>
-      <div class="iospre">A reply is waiting for you on GYE.</div>
+      <div class="iossubj">5 new messages from Yehoshua</div>
+      <div class="iospre">Read it whenever you&rsquo;re ready.</div>
     </div>
   </div>
-  <p class="pvnote">The lock screen cuts around 35-40 characters. Subject A is 34 with a short name and
-    37 with a long one, so it clips for some agents and not others. Subject B fits any name.
-    <span class="qref">That is <a href="email-questions.html">question 2</a>.</span></p>
+  <p class="pvnote">The cut is around 35&ndash;40 characters. Both of your subjects clear it with the
+    longest staff name we have: <b>26</b> and <b>28</b>. Nothing clips.</p>
 </div>
+
+<p class="sec">The email &mdash; one unread</p>
+<div class="frame"><iframe src="build/render-single.html" height="810" scrolling="no"
+  title="Support reply email, one unread"></iframe></div>
+
+<p class="sec">The email &mdash; five unread</p>
+<div class="frame"><iframe src="build/render-multi.html" height="860" scrolling="no"
+  title="Support reply email, five unread"></iframe></div>
 
 <div class="box gold">
-  <h2>The preheader is the only anonymity risk</h2>
-  <p>The from name and subject are fixed strings we control. The preheader is the one slot that can
-    carry the agent&rsquo;s actual words onto a lock screen. Compare:</p>
-  <p style="font-size:13px;color:#333;padding-left:12px;border-left:2px solid #e3e6f2;">
-    <b>Generic:</b> A reply is waiting for you on GYE.<br>
-    <b>Real first line:</b> Hi, thanks for reaching out, and for trusting me with what&rsquo;s&hellip;</p>
-  <p>The second one implies a confided problem to anyone holding the phone.
-    <span class="qref"><a href="email-questions.html">Question 3</a>.</span></p>
+  <h2>One change I made to the pill &mdash; say if you want it back</h2>
+  <p>Your subject for 2+ is now <b>&ldquo;5 new messages from Chaim&rdquo;</b>, and the headline inside the
+    email mirrors the subject. A pill repeating the <em>same sentence</em> four lines under it would put
+    Chaim&rsquo;s name in the top five lines four times. So the pill is now just
+    <b>&ldquo;5 new messages.&rdquo;</b></p>
+  <p>It also fixes the handoff case for free: if the thread passed to a second agent, some of those five
+    are someone else&rsquo;s, and <em>&ldquo;5 new messages&rdquo;</em> stays true where
+    &ldquo;from Chaim&rdquo; wouldn&rsquo;t. <b>Nothing is lost</b> &mdash; his name is in the subject, the
+    avatar and the headline. Say the word and I put the full sentence back.</p>
 </div>
 
-<p class="sec">The email</p>
-
-<div class="col">
-  <div class="card">
-    <div class="corner"><img src="assets/logo-purple-2x.png" width="34" height="35" alt="GYE"></div>
-    <div class="hero">
-      <div class="av">C</div>
-      <div class="who">Chaim</div>
-      <div class="role">GYE Support team</div>
-      <div class="subj">Chaim replied to your conversation</div>
-      <div class="cnt">5 new messages from Chaim</div>
-    </div>
-    <div class="snipwrap"><div class="snip">
-      Hi, thanks for reaching out, and for trusting me with what&rsquo;s going on. I read through
-      everything you wrote, and I want to say clearly that none of it is too much to bring here. A lot
-      of people arrive feeling like they&rsquo;re the only one who&hellip;
-      <span class="more">Continue reading on GYE &rarr;</span>
-    </div></div>
-    <div class="ctawrap"><span class="cta">Open conversation</span></div>
-    <div class="foot">
-      <p class="whyline">You&rsquo;re getting this because you have an open conversation on GYE.</p>
-      <hr class="footdiv">
-      <p class="footlinks"><a href="#">Notification settings</a><br>
-        GYE CORP, 4403 15th Ave #305, Brooklyn, NY 11219</p>
-    </div>
-  </div>
-  <p class="note"><b>Logo top-left and &ldquo;Open conversation&rdquo; &mdash; Mendy, Jul 30.</b> The
-    button label is a free win: it works whether there is 1 unread or 5, so the count pill needs no
-    matching plural on the button. One string, no conditional. It also promises less work than
-    &ldquo;Read &amp; reply&rdquo; did, which is the whole reason for changing it.</p>
-  <p class="note"><b>The count line appears only when it is 2 or more.</b> With one unread it is hidden
-    entirely, so the email never says &ldquo;1 message waiting.&rdquo; The number counts <em>unread
-    messages in the conversation</em>, not messages in this send &mdash; so it climbs on its own each time
-    a member does not open the last one, which is exactly where a nudge is worth something. Wording set
-    by Mendy Jul 30: <code>{count} new messages from {name}</code>. Because it is hidden at 1 it is always
-    plural, so there is still no singular/plural conditional.
-    <a href="email-options.html">Both states shown on page 3.</a></p>
-  <p class="note"><b>Two things to check on that wording.</b> (1) Chaim&rsquo;s name now appears three
-    times in the top four lines &mdash; avatar block, headline, pill. If that reads heavy, the headline
-    can drop the name and become <em>&ldquo;You have new messages waiting&rdquo;</em> once the pill is
-    showing. (2) &ldquo;from Chaim&rdquo; is wrong if the conversation was handed to another agent
-    mid-thread and some unread messages are someone else&rsquo;s. Safe wording for that case only:
-    <em>&ldquo;5 new messages in your conversation.&rdquo;</em></p>
-  <p class="note"><b>No reply notice, per Mendy Jul 30.</b> The line under the button is gone. Replies
-    still land in <code>help@gye.org</code>, which the team already monitors, and get hand-carried into
-    the support system &mdash; the email just doesn&rsquo;t mention it. <b>If a notice ever goes back in,
-    do not write &ldquo;replies aren&rsquo;t seen&rdquo;</b> &mdash; it would be false, and a member who
-    cannot get into the app would read it and say nothing at all.</p>
-</div>
-
-<p class="sec">Send headers</p>
+<p class="sec">Send headers &mdash; final</p>
 
 <div class="box">
   <table class="t">
     <tr><th>From name</th><td><code>GYE Support</code> <span class="chars">11 chars</span><br>
-      <span class="chars">Never the agent&rsquo;s name &mdash; a stable sender survives handoffs and does not look spoofed.</span></td></tr>
-    <tr><th>From</th><td><code>help@gye.org</code> &mdash; a real monitored inbox. No <code>no-reply@</code> anywhere visible.</td></tr>
+      <span class="chars">Never the agent&rsquo;s name &mdash; a stable sender survives handoffs and doesn&rsquo;t look spoofed.</span></td></tr>
+    <tr><th>From</th><td><code>help@gye.org</code> &mdash; a real monitored inbox. No <code>no-reply@</code> anywhere.</td></tr>
     <tr><th>Reply-To</th><td>Omitted. <code>help@</code> is already the reply target.<br>
       <span class="chars">Stray replies get read and hand-carried into the support system. Manual, low
-      volume, and it means nobody ever writes into a void.</span></td></tr>
-    <tr><th>Return-Path</th><td><code>bounces@mail.gye.org</code> &mdash; invisible plumbing, the one slot a subdomain belongs in.</td></tr>
-    <tr><th>Subject</th><td><code>{{agent_first_name}} replied to your conversation</code> <span class="qref">Q2</span></td></tr>
-    <tr><th>Preheader</th><td><code>{{email_preview}}</code> &mdash; hidden div, first element in the body, 90-char cap. <span class="qref">Q3</span></td></tr>
-    <tr><th>Snippet</th><td><code>{{message_snippet}}</code> &mdash; first ~250 chars of the reply, cut at the last sentence end before 250, greeting included.</td></tr>
-    <tr><th>Links</th><td>All point at <code>app.gye.org</code>. Mail comes from <code>gye.org</code>, people go to <code>app.gye.org</code>.</td></tr>
+      volume, and nobody ever writes into a void.</span></td></tr>
+    <tr><th>Return-Path</th><td><code>bounces@mail.gye.org</code></td></tr>
+    <tr><th>Subject</th><td>1 unread &rarr; <code>{{agent_first_name}} wrote back to you</code><br>
+      2+ unread &rarr; <code>{{unread_count}} new messages from {{agent_first_name}}</code></td></tr>
+    <tr><th>Preheader</th><td><code>Read it whenever you&rsquo;re ready.</code> &mdash; fixed string,
+      hidden div, first element in the body, followed by spacer characters so the client can&rsquo;t
+      scrape the reply text into the preview line instead.</td></tr>
+    <tr><th>Snippet</th><td><code>{{message_snippet}}</code> &mdash; first ~250 chars of the reply, cut at
+      the last sentence end before 250, greeting included. Inside the email only.</td></tr>
+    <tr><th>Links</th><td>All point at <code>app.gye.org</code>. Mail comes from <code>gye.org</code>.</td></tr>
   </table>
-  <p style="font-size:12px;color:#8a91a3;line-height:18px;margin-top:12px;">From name and subject are
-    send-time headers, not template HTML &mdash; a branch in the sending logic.</p>
+  <p style="font-size:12px;color:#8a91a3;line-height:18px;margin-top:12px;">From name, subject and
+    preheader are send-time values, not template HTML &mdash; the subject is one branch on
+    <code>unread_count &gt; 1</code>, the same branch that shows the pill.</p>
+</div>
+
+<div class="box">
+  <h2>Cartoon avatars &mdash; how the slot is built</h2>
+  <p>The avatar is a 64px lavender circle. When <code>{{agent_photo_url}}</code> is set the cartoon fills
+    it; when it isn&rsquo;t, the circle shows the initial. Two things to hand the illustrator:</p>
+  <ul>
+    <li><b>Draw the circle into the PNG</b>, on <code>#eee8f3</code>. Outlook ignores
+      <code>border-radius</code> and would square off a rectangular image.</li>
+    <li><b>Ship at 128&times;128</b> for a 64px slot, so it&rsquo;s sharp on retina.</li>
+  </ul>
+  <p>The <code>alt</code> text is the agent&rsquo;s initial, styled to match the circle &mdash; so with
+    images off (Outlook&rsquo;s default) it degrades to exactly the letter version above, not a
+    broken-image box.</p>
 </div>
 
 <div class="box">
   <h2>Merge fields</h2>
-  <p><code>{{agent_first_name}}</code> <code>{{agent_initial}}</code> <code>{{email_preview}}</code>
-    <code>{{message_snippet}}</code> <code>{{conversation_url}}</code> <code>{{preferenceUrl}}</code></p>
-  <p style="font-size:12px;">Not in v1: <code>{{agent_photo_url}}</code> (<span class="qref">Q5</span>),
-    <code>{{unsubscribeFromAll}}</code> (<a href="email-later.html">page 5</a>).</p>
+  <p><code>{{agent_first_name}}</code> <code>{{agent_initial}}</code> <code>{{agent_photo_url}}</code>
+    <code>{{unread_count}}</code> <code>{{multiple}}</code> <code>{{message_snippet}}</code>
+    <code>{{conversation_url}}</code> <code>{{preferenceUrl}}</code> <code>{{asset_base}}</code></p>
+  <p style="font-size:12px;"><code>{{multiple}}</code> is just <code>unread_count &gt; 1</code>; it gates
+    the subject, the headline and the pill together. <code>{{unsubscribeFromAll}}</code> stays out &mdash;
+    see <a href="email-later.html">page 5</a>.</p>
 </div>
 
 <div class="box">
-  <h2>Two things that block the send, not the design</h2>
-  <ul>
-    <li><b>Somebody has to watch <code>help@gye.org</code>.</b> The whole no-bounce approach rests on it.
-      <span class="qref">Q6</span></li>
-    <li><b>Confirm <code>mail.gye.org</code> aligns with <code>gye.org</code> for DMARC.</b> Relaxed
-      alignment handles it &mdash; just verify.</li>
-  </ul>
+  <h2>Files</h2>
+  <table class="t">
+    <tr><th>Template</th><td><code>build/support-reply-v1.html</code> &mdash; the sendable one, with
+      <code>{{#if multiple}}</code> conditionals. <b>This is what the devs get.</b></td></tr>
+    <tr><th>Renders</th><td><code>build/render-single.html</code>, <code>build/render-multi.html</code>
+      &mdash; the two iframes above, generated from the same source so they can&rsquo;t drift.</td></tr>
+    <tr><th>Generator</th><td><code>build-email.mjs</code> &mdash; <code>node
+      support-templates/build-email.mjs</code> rebuilds all three.</td></tr>
+  </table>
+  <p style="font-size:12px;color:#8a91a3;line-height:18px;margin-top:12px;">Table layout, inline styles,
+    MSO conditionals, VML button, no web fonts, no flexbox. A dark-mode guard keeps the card white.</p>
 </div>
 
-<p class="lede" style="margin-top:26px;">This page is a preview scaffold, not sendable email HTML &mdash;
-  it uses <code>inline-flex</code> and web fonts. Once the six questions are answered I build it as real
-  table-based email HTML.</p>
+<div class="box">
+  <h2>The one thing left that isn&rsquo;t design</h2>
+  <p>Confirm <code>mail.gye.org</code> aligns with <code>gye.org</code> for DMARC. Relaxed alignment
+    handles it &mdash; just verify before the first send.</p>
+</div>
 
 </body>
 </html>
