@@ -44,13 +44,14 @@
     </div>
 
     <div class="pad">
-      <video controls preload="metadata" playsinline
+      <!-- שני לחצני המדיה במייל מצביעים לכאן: #video לסרטון, #audio לשיר -->
+      <video id="video" controls preload="metadata" playsinline
              poster="https://gyenewsletters.netlify.app/images/no-shtus-art-1280.jpg">
         <source src="https://gyenewsletters.netlify.app/media/no-shtus-avraham-fried-720p.mp4" type="video/mp4">
         הדפדפן שלך אינו תומך בנגן הווידאו. אפשר להוריד את הקובץ בקישור שלמטה.
       </video>
 
-      <h2>להאזנה בלבד</h2>
+      <h2 id="audio">להאזנה בלבד</h2>
       <audio controls preload="none"
              src="https://gyenewsletters.netlify.app/media/no-shtus-avraham-fried.mp3"></audio>
 
