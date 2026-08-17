@@ -39,7 +39,9 @@
   .page { max-width:420px; margin:0 auto; border:1px solid #e2ebf2; border-radius:6px; overflow:hidden; }
   .page .ptop { background:var(--ink); color:#fff; text-align:center; padding:16px; font-weight:700; font-size:17px; }
   .page .pbody { padding:22px 20px 24px; text-align:center; }
-  .page .big { font-size:40px; line-height:1; margin:0 0 10px; }
+  .page .disc { width:52px; height:52px; border-radius:50%; background:var(--ink); margin:0 auto 14px; position:relative; }
+  .page .disc i { position:absolute; top:14px; left:16px; width:20px; height:10px;
+                  border-left:4px solid #fff; border-bottom:4px solid #fff; transform:rotate(-45deg); }
   .page h3 { margin:0 0 6px; font-size:19px; color:var(--ink); }
   .page .sub { margin:0 0 18px; font-size:14px; color:#6a6a6a; line-height:1.7; }
   .page textarea { width:100%; height:78px; border:1px solid var(--rule); border-radius:4px; padding:10px;
@@ -212,7 +214,7 @@
     <div class="page">
       <div class="ptop">רק חזק ואמץ! - העלון השבועי</div>
       <div class="pbody">
-        <p class="big">✓</p>
+        <div class="disc"><i></i></div>
         <h3>תודה, נרשם.</h3>
         <p class="sub">סימנת שהמדור <b>מתוק לנפש</b> עזר לך.<br>זה מגיע אלינו ומשפיע על מה שנכתוב בשבוע הבא.</p>
         <textarea placeholder="רוצה להוסיף מילה? מה עזר, ומה היה חסר. (לא חייב)"></textarea>
