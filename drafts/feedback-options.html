@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>לחצני משוב - אפשרויות עיצוב ומיקום</title>
+<meta name="robots" content="noindex">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root { --ink:#1c4587; --bg:#e4eef0; --bar:#dbe8f5; --rule:#b9cfe6; --fill:#f4f8f9; }
+  * { box-sizing:border-box; }
+  html,body { margin:0; padding:0; }
+  body { background:var(--bg); direction:rtl;
+         font-family:'Open Sans','Arial Hebrew',Arial,sans-serif; color:#3d3d3d; }
+  .wrap { max-width:760px; margin:0 auto; padding:0 10px 44px; }
+  .top { background:var(--ink); color:#fff; padding:22px 30px; text-align:center; border-radius:0 0 6px 6px; }
+  .top h1 { margin:0; font-size:24px; font-weight:700; }
+  .top p { margin:8px 0 0; font-size:15px; opacity:.9; line-height:1.65; }
+  .nav { background:#fff; border-radius:6px; margin:14px 0; padding:12px 16px; text-align:center; font-size:15px; }
+  .nav a { color:var(--ink); font-weight:600; text-decoration:none; margin:0 7px; }
+  .box { background:#fff; border-radius:6px; margin:0 0 22px; padding:24px 26px 26px; }
+  .box > h2 { margin:0 0 4px; font-size:29px; color:var(--ink); font-weight:700; line-height:1.25; }
+  .box > h2 small { display:block; font-size:17px; font-weight:600; opacity:.75; margin-top:4px; }
+  .box > .note { margin:0 0 18px; font-size:14px; line-height:1.75; color:#6a6a6a; }
+  .box > .note b { color:#3d3d3d; }
+  .pick { background:#fffbe9; border:1px solid #e9d9a0; border-radius:5px; padding:12px 14px;
+          font-size:14px; line-height:1.7; margin:16px 0 0; }
+  ul { margin:0 0 0 0; padding-inline-start:20px; font-size:15px; line-height:1.85; }
+  li { margin-bottom:7px; }
+  .rec { color:var(--ink); font-weight:700; }
+
+  /* ---- mock newsletter frame: everything inside is email-safe markup ---- */
+  .mock { background:#fff; border:1px solid #e2ebf2; border-radius:5px; padding:0; overflow:hidden; }
+  .mock .body { padding:16px 20px 4px; font-size:15px; line-height:1.9; color:#3d3d3d; text-align:justify; }
+  .mock .body .fade { color:#a8b4bd; }
+  .mocklabel { font-size:12px; color:#8d9aa4; margin:0 0 7px; }
+
+  /* thank-you page mock */
+  .page { max-width:420px; margin:0 auto; border:1px solid #e2ebf2; border-radius:6px; overflow:hidden; }
+  .page .ptop { background:var(--ink); color:#fff; text-align:center; padding:16px; font-weight:700; font-size:17px; }
+  .page .pbody { padding:22px 20px 24px; text-align:center; }
+  .page .big { font-size:40px; line-height:1; margin:0 0 10px; }
+  .page h3 { margin:0 0 6px; font-size:19px; color:var(--ink); }
+  .page .sub { margin:0 0 18px; font-size:14px; color:#6a6a6a; line-height:1.7; }
+  .page textarea { width:100%; height:78px; border:1px solid var(--rule); border-radius:4px; padding:10px;
+                   font-family:inherit; font-size:14px; direction:rtl; resize:none; background:#fbfdfe; }
+  .page .send { display:inline-block; margin:12px 0 0; background:var(--ink); color:#fff; border-radius:4px;
+                padding:11px 26px; font-size:15px; font-weight:700; text-decoration:none; }
+  .page .skip { display:block; margin:10px 0 0; font-size:13px; color:#8d9aa4; }
+
+  @media (max-width:700px){ .wrap{padding:0 0 30px;} .box,.nav,.top{border-radius:0;}
+    .box{padding:18px 15px 20px;} .box > h2{font-size:24px;} }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="top">
+    <h1>לחצני משוב - עיצוב ומיקום</h1>
+    <p>חמש אפשרויות עיצוב, מה קורה אחרי הקליק, ואיפה למקם.<br>תבחר אות - ואני מטמיע בגיליון.</p>
+  </div>
+
+  <div class="nav">
+    <a href="#a">א</a>·<a href="#b">ב</a>·<a href="#c">ג</a>·<a href="#d">ד</a>·<a href="#e">ה</a>
+    &nbsp;|&nbsp; <a href="#after">אחרי הקליק</a> · <a href="#where">מיקום</a> · <a href="#tech">מה נדרש</a>
+  </div>
+
+  <!-- ===== א ===== -->
+  <div class="box" id="a">
+    <h2>אפשרות א <small>בדיוק כמו בעלון האנגלי - שלושה אמוג'ים בסוף הגיליון</small></h2>
+    <p class="note">אלה האמוג'ים והכיתוב מהעלון האנגלי, מתורגמים. <b>יתרון:</b> מוכח, מוכר, ומתחבר לאותה
+      מערכת דירוג שכבר עובדת. <b>חיסרון:</b> אמוג'י צבעוני בגוף העלון מוריד את הרצינות של העיצוב שבנינו,
+      ומודד את הגיליון כמכלול - לא מדור מדור.</p>
+    <p class="mocklabel">כך זה ייראה בתחתית הגיליון:</p>
+    <div class="mock">
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" dir="rtl" style="border-collapse:collapse;">
+        <tr><td align="center" style="padding:22px 20px 8px;">
+          <div style="font-family:'Open Sans',Arial,sans-serif; font-size:17px; font-weight:700; color:#3d3d3d;">אנחנו קוראים כל מייל וכל הערה.</div>
+          <div style="font-family:'Open Sans',Arial,sans-serif; font-size:15px; color:#6a6a6a; padding-top:5px;">איך היה הגיליון הזה?</div>
+        </td></tr>
+        <tr><td style="padding:6px 20px 22px;">
+          <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;">
+            <tr>
+              <td width="33%" align="center" style="padding:10px 5px;">
+                <a href="#after" style="text-decoration:none; color:#1376c8; font-family:'Open Sans',Arial,sans-serif; font-size:14px;">
+                  <img src="https://gyenewsletters.netlify.app/images/rating-5.png" width="28" height="40" alt="אהבתי" style="border:0; display:inline-block; padding-bottom:5px;"><br>אהבתי!</a></td>
+              <td width="33%" align="center" style="padding:10px 5px;">
+                <a href="#after" style="text-decoration:none; color:#1376c8; font-family:'Open Sans',Arial,sans-serif; font-size:14px;">
+                  <img src="https://gyenewsletters.netlify.app/images/rating-3.png" width="28" height="40" alt="בסדר" style="border:0; display:inline-block; padding-bottom:5px;"><br>בסדר, לא וואוו</a></td>
+              <td width="33%" align="center" style="padding:10px 5px;">
+                <a href="#after" style="text-decoration:none; color:#1376c8; font-family:'Open Sans',Arial,sans-serif; font-size:14px;">
+                  <img src="https://gyenewsletters.netlify.app/images/rating-1.png" width="28" height="40" alt="לא התחברתי" style="border:0; display:inline-block; padding-bottom:5px;"><br>לא התחברתי</a></td>
+            </tr>
+          </table>
+        </td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- ===== ב ===== -->
+  <div class="box" id="b">
+    <h2>אפשרות ב <small>שלושה לחצנים בעברית, בשפת העיצוב של העלון - בסוף הגיליון</small></h2>
+    <p class="note">אותה שאלה, בלי אמוג'י: שלושה לחצנים בתכלת ובכחול של העלון. <b>יתרון:</b> יושב בתוך
+      העיצוב ולא נראה כמו סקר שיווקי. <b>חיסרון:</b> לחצן טקסט מזמין פחות קליק מאמוג'י - אין את הפיתוי
+      של הפרצוף.</p>
+    <p class="mocklabel">כך זה ייראה בתחתית הגיליון:</p>
+    <div class="mock">
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" dir="rtl" style="border-collapse:collapse;">
+        <tr><td align="center" style="padding:22px 20px 4px; font-family:'Open Sans',Arial,sans-serif; font-size:17px; font-weight:700; color:#1c4587;">
+          איך היה הגיליון הזה?</td></tr>
+        <tr><td align="center" style="padding:2px 20px 14px; font-family:'Open Sans',Arial,sans-serif; font-size:14px; color:#6a6a6a;">
+          קליק אחד. אם תרצה להוסיף מילה, יהיה לך מקום.</td></tr>
+        <tr><td style="padding:0 16px 22px;">
+          <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;">
+            <tr>
+              <td width="33%" align="center" style="padding:0 5px;">
+                <a href="#after" style="display:block; background:#dbe8f5; border:1px solid #b9cfe6; border-radius:4px; padding:12px 6px; text-decoration:none; font-family:'Open Sans',Arial,sans-serif; font-size:15px; font-weight:700; color:#1c4587;">עזר לי מאוד</a></td>
+              <td width="33%" align="center" style="padding:0 5px;">
+                <a href="#after" style="display:block; background:#f4f8f9; border:1px solid #dfe8ec; border-radius:4px; padding:12px 6px; text-decoration:none; font-family:'Open Sans',Arial,sans-serif; font-size:15px; font-weight:600; color:#4f6b84;">בסדר</a></td>
+              <td width="33%" align="center" style="padding:0 5px;">
+                <a href="#after" style="display:block; background:#f4f8f9; border:1px solid #dfe8ec; border-radius:4px; padding:12px 6px; text-decoration:none; font-family:'Open Sans',Arial,sans-serif; font-size:15px; font-weight:600; color:#4f6b84;">לא התחברתי</a></td>
+            </tr>
+          </table>
+        </td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- ===== ג ===== -->
+  <div class="box" id="c">
+    <h2>אפשרות ג <small>פס דק בסוף כל מדור - כדי לדעת איזה מדור עובד</small></h2>
+    <p class="note">שורה אחת, בצבע המדור, מיד אחרי הטקסט - בזמן שהקורא בדיוק סיים לקרוא. שלושה פסים
+      בגיליון. <b>יתרון:</b> זה מה שנותן לך את מה שביקשת - דיוק לפי מדור. <b>חיסרון:</b> שלוש שאלות
+      בגיליון אחד יכולות להרגיש כמו טופס. הפתרון הוא שהפס יהיה מאוד קטן, בשורה אחת, ובלי כותרת.
+      <b>זו ההמלצה שלי.</b></p>
+    <p class="mocklabel">כך זה ייראה בסוף כל מדור:</p>
+    <div class="mock">
+      <div class="body">...ומה שנשאר בסוף הוא לא הכרעה גדולה אחת, אלא ההחלטה הקטנה של הרגע הזה.
+        <span class="fade">[סוף המדור]</span></div>
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" dir="rtl" style="border-collapse:collapse;">
+        <tr><td style="padding:14px 20px 20px;">
+          <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse; background:#f4f8f9; border-top:1px solid #dfe8ec; border-bottom:1px solid #dfe8ec;">
+            <tr>
+              <td align="right" style="padding:11px 14px; font-family:'Open Sans',Arial,sans-serif; font-size:14px; color:#6a6a6a; white-space:nowrap;">
+                המדור הזה עזר לך?</td>
+              <td align="left" style="padding:11px 14px; white-space:nowrap; font-family:'Open Sans',Arial,sans-serif; font-size:14px;">
+                <a href="#after" style="color:#1c4587; font-weight:700; text-decoration:none;">כן</a>
+                <span style="color:#c7d4dc;">&nbsp;|&nbsp;</span>
+                <a href="#after" style="color:#1c4587; font-weight:700; text-decoration:none;">בערך</a>
+                <span style="color:#c7d4dc;">&nbsp;|&nbsp;</span>
+                <a href="#after" style="color:#1c4587; font-weight:700; text-decoration:none;">לא</a></td>
+            </tr>
+          </table>
+        </td></tr>
+      </table>
+      <div class="body" style="padding-top:10px;"><span class="fade">[באנר המדור הבא]</span></div>
+    </div>
+  </div>
+
+  <!-- ===== ד ===== -->
+  <div class="box" id="d">
+    <h2>אפשרות ד <small>שתי בחירות בלבד בסוף כל מדור - הסף הנמוך ביותר</small></h2>
+    <p class="note">שתי אפשרויות במקום שלוש. <b>למה זה עובד:</b> שלוש אפשרויות דורשות מהקורא לכייל את
+      עצמו; שתיים דורשות רק לענות. בפועל שתי אפשרויות מקבלות יותר קליקים - אבל מוסרות פחות מידע
+      (אין דירוג אמצע).</p>
+    <p class="mocklabel">כך זה ייראה בסוף כל מדור:</p>
+    <div class="mock">
+      <div class="body">...ומה שנשאר בסוף הוא לא הכרעה גדולה אחת, אלא ההחלטה הקטנה של הרגע הזה.
+        <span class="fade">[סוף המדור]</span></div>
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" dir="rtl" style="border-collapse:collapse;">
+        <tr><td align="center" style="padding:16px 20px 22px;">
+          <span style="font-family:'Open Sans',Arial,sans-serif; font-size:15px; color:#3d3d3d;">דיבר אליך המדור הזה?&nbsp;&nbsp;</span>
+          <a href="#after" style="display:inline-block; background:#dbe8f5; border:1px solid #b9cfe6; border-radius:20px; padding:8px 22px; margin:4px 3px 0; text-decoration:none; font-family:'Open Sans',Arial,sans-serif; font-size:15px; font-weight:700; color:#1c4587;">כן</a>
+          <a href="#after" style="display:inline-block; background:#f4f8f9; border:1px solid #dfe8ec; border-radius:20px; padding:8px 22px; margin:4px 3px 0; text-decoration:none; font-family:'Open Sans',Arial,sans-serif; font-size:15px; font-weight:600; color:#4f6b84;">פחות</a>
+        </td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- ===== ה ===== -->
+  <div class="box" id="e">
+    <h2>אפשרות ה <small>סולם חמש דרגות - מדידה מדויקת, סף גבוה</small></h2>
+    <p class="note">חמישה מספרים או חמישה כוכבים. <b>יתרון:</b> ממוצע מדויק שאפשר להשוות בין גיליונות
+      ובין מדורים. <b>חיסרון:</b> חמש אפשרויות בעברית ובמובייל זה חמישה יעדי לחיצה קטנים, והקורא
+      עוצר לחשוב. אני לא ממליץ עליה כהתחלה.</p>
+    <p class="mocklabel">כך זה ייראה:</p>
+    <div class="mock">
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" dir="rtl" style="border-collapse:collapse;">
+        <tr><td align="center" style="padding:20px 20px 6px; font-family:'Open Sans',Arial,sans-serif; font-size:15px; color:#3d3d3d;">
+          כמה המדור הזה עזר לך? (1 = בכלל לא, 5 = מאוד)</td></tr>
+        <tr><td align="center" style="padding:4px 20px 20px;">
+          <a href="#after" style="display:inline-block; width:40px; height:40px; line-height:40px; margin:0 3px; background:#f4f8f9; border:1px solid #dfe8ec; border-radius:50%; text-decoration:none; font-family:'Open Sans',Arial,sans-serif; font-size:16px; font-weight:700; color:#4f6b84;">1</a>
+          <a href="#after" style="display:inline-block; width:40px; height:40px; line-height:40px; margin:0 3px; background:#f4f8f9; border:1px solid #dfe8ec; border-radius:50%; text-decoration:none; font-family:'Open Sans',Arial,sans-serif; font-size:16px; font-weight:700; color:#4f6b84;">2</a>
+          <a href="#after" style="display:inline-block; width:40px; height:40px; line-height:40px; margin:0 3px; background:#f4f8f9; border:1px solid #dfe8ec; border-radius:50%; text-decoration:none; font-family:'Open Sans',Arial,sans-serif; font-size:16px; font-weight:700; color:#4f6b84;">3</a>
+          <a href="#after" style="display:inline-block; width:40px; height:40px; line-height:40px; margin:0 3px; background:#dbe8f5; border:1px solid #b9cfe6; border-radius:50%; text-decoration:none; font-family:'Open Sans',Arial,sans-serif; font-size:16px; font-weight:700; color:#1c4587;">4</a>
+          <a href="#after" style="display:inline-block; width:40px; height:40px; line-height:40px; margin:0 3px; background:#dbe8f5; border:1px solid #b9cfe6; border-radius:50%; text-decoration:none; font-family:'Open Sans',Arial,sans-serif; font-size:16px; font-weight:700; color:#1c4587;">5</a>
+        </td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- ===== אחרי הקליק ===== -->
+  <div class="box" id="after">
+    <h2>מה קורה אחרי הקליק <small>הדירוג נרשם מיד, והפירוט הוא בונוס - לא תנאי</small></h2>
+    <p class="note">הכלל: <b>הקליק עצמו הוא כל מה שנדרש.</b> הקורא לא צריך למלא כלום כדי שהמשוב יגיע
+      אליך. הדף שנפתח מודה לו, מספר שזה נרשם, ורק אז מציע - בלי חובה - להוסיף שורה. כך אף אחד לא
+      מרגיש שנפל לתוך שאלון.</p>
+    <div class="page">
+      <div class="ptop">רק חזק ואמץ! - העלון השבועי</div>
+      <div class="pbody">
+        <p class="big">✓</p>
+        <h3>תודה, נרשם.</h3>
+        <p class="sub">סימנת שהמדור <b>מתוק לנפש</b> עזר לך.<br>זה מגיע אלינו ומשפיע על מה שנכתוב בשבוע הבא.</p>
+        <textarea placeholder="רוצה להוסיף מילה? מה עזר, ומה היה חסר. (לא חייב)"></textarea>
+        <a class="send" href="#">שליחה</a>
+        <span class="skip">אפשר גם לסגור את החלון - הדירוג כבר נשמר.</span>
+      </div>
+    </div>
+    <p class="pick">שתי הערות: (1) הדף לא מבקש שם ולא מייל - אנונימי לגמרי, וזה חשוב לקהל הזה.
+      (2) אם הוא כותב משהו, זה יגיע ל-shmor.help@gmail.com עם שם המדור והדירוג בשורת הנושא, כך שאין
+      מה לחפש.</p>
+  </div>
+
+  <!-- ===== מיקום ===== -->
+  <div class="box" id="where">
+    <h2>איפה למקם <small>התחלה, סוף, או סוף כל מדור</small></h2>
+    <ul>
+      <li><b>בהתחלה - לא.</b> בקשת דירוג לפני שקראו משהו מודדת את הכותרת, לא את התוכן, ומסמנת לקורא
+        שהעלון עסוק בעצמו.</li>
+      <li><b>בסוף הגיליון בלבד</b> - קליק אחד, מדידה נקייה של הגיליון כמכלול. זה מה שהאנגלי עושה.
+        החיסרון: לא תדע איזה מדור עבד, וזה בדיוק מה שאתה רוצה לדעת.</li>
+      <li><b>בסוף כל מדור</b> <span class="rec">← ההמלצה שלי</span> - הקורא מדרג בזמן שהרושם טרי, ואתה
+        מקבל שלוש נקודות נתונים בכל שבוע. אחרי שלושה-ארבעה גיליונות זה כבר תמונה: איזה מדור עובד,
+        לְמי, ומה כדאי להאריך או לקצר.</li>
+      <li><b>גם וגם - לא בהתחלה.</b> פס בסוף כל מדור <i>ועוד</i> בלוק בסוף העלון זה ארבע בקשות
+        באימייל אחד. אם תרצה בכל זאת מדידה כוללת, אפשר לחשב אותה מהשלושה.</li>
+    </ul>
+    <p class="pick"><b>ההמלצה בשורה אחת:</b> אפשרות <b>ג</b> (פס דק, שלוש בחירות) בסוף כל אחד משלושת
+      המדורים, ובלי בלוק נוסף בסוף העלון. אם בגיליון-שניים נראה שכמעט אין קליקים, נעבור לאפשרות
+      <b>ד</b> (שתי בחירות) - היא תמיד מקבלת יותר.</p>
+  </div>
+
+  <!-- ===== מה נדרש טכנית ===== -->
+  <div class="box" id="tech">
+    <h2>מה נדרש כדי שזה יעבוד <small>שלוש דרכים, לפי כמה עבודה מעורבת</small></h2>
+    <ul>
+      <li><b>1. הכתובת של GYE שכבר קיימת.</b> בעלון האנגלי הלחצנים מצביעים על
+        <code>app.guardyoureyes.com/feedback/?id={{mailingCampaignId}}&amp;rating=1|3|5</code> - כלומר
+        מערכת דירוג פעילה שכבר רושמת. זה עובד <b>היום</b>, בלי פיתוח. המחיר: הדירוג נרשם על הגיליון,
+        לא על המדור, ואי אפשr להוסיף את חלון הפירוט - זה דף שלהם.</li>
+      <li><b>2. אותה כתובת + שני פרמטרים.</b> להוסיף <code>section</code> (שם המדור) ו-<code>redirect</code>
+        (אליו הקורא מועבר אחרי הרישום). זה שינוי קטן אצל מי שמתחזק את המערכת, ואיתו מקבלים גם דיוק
+        לפי מדור וגם את דף התודה עם תיבת הפירוט. <span class="rec">זה מה שהייתי מבקש.</span></li>
+      <li><b>3. בלי אף אחד.</b> הלחצנים כ-<code>mailto:</code> עם נושא מוכן מראש
+        (למשל: משוב - מתוק לנפש - עזר לי). עובד מיד, מגיע לתיבה שלך, אבל דורש מהקורא ללחוץ
+        גם שליחה, והספירה ידנית. טוב כגיליון-בדיקה אחד, לא לטווח ארוך.</li>
+    </ul>
+  </div>
+
+  <div class="nav">
+    <a href="https://gyenewsletters.netlify.app/drafts/nitzavim-5786.html">גיליון 4</a> ·
+    <a href="https://gyenewsletters.netlify.app/drafts/ki-tetze-2026.html">גיליון 2</a>
+  </div>
+
+</div>
+</body>
+</html>
