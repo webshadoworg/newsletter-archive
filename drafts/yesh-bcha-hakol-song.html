@@ -27,17 +27,18 @@
         font-size:15px; font-weight:600; }
   .dl span { float:left; font-weight:400; opacity:.72; font-size:13px; }
   .dl:hover { background:#cfe0f1; }
-  .lyr { background:#f4f8f9; border-right:4px solid var(--ink); border-radius:0 4px 4px 0;
-         padding:20px 22px; margin:0; }
-  .lyr p { margin:0 0 18px; font-size:16px; line-height:1.95; }
-  .lyr p:last-child { margin-bottom:0; }
-  .lyr .chorus { padding-right:32px; color:var(--ink); font-weight:600; }
+  .lyr { margin:0; }
+  .lyr p { margin:0 0 22px; font-size:17px; line-height:1.9; text-align:center; }
+  .lyr .band { background:#e8f1f9; border-radius:5px; padding:20px 14px; margin:0 0 22px; }
+  .lyr .band p { color:var(--ink); font-weight:600; }
+  .lyr .band p:last-child { margin-bottom:0; }
+  .lyr > p:last-child { margin-bottom:0; }
   .note { font-size:13px; line-height:1.7; color:#6a6a6a; margin:22px 0 0; }
   .foot { text-align:center; padding:20px 30px 26px; font-size:13px; color:#6a6a6a; }
   .foot a { color:var(--ink); }
   @media (max-width:680px){ .wrap{padding:0 0 22px;} .card{border-radius:0;}
     .pad{padding:18px 18px 8px;} .top{padding:18px 18px 16px;} .top h1{font-size:20px;}
-    .lyr{padding:16px 16px;} .lyr .chorus{padding-right:22px;} }
+    .lyr .band{padding:16px 10px;} }
 </style>
 </head>
 <body>
@@ -75,15 +76,17 @@
            ורק אל תפחד ליפול<br>
            רק אל תפחד לגדול</p>
 
-        <p class="chorus">כל עוד לא הפסקת לחלום<br>
+        <div class="band">
+          <p class="chorus">כל עוד לא הפסקת לחלום<br>
            אתה מנצח<br>
            כאילו אין מחר, לחיות היום<br>
            תחזיק רק להיום</p>
 
-        <p class="chorus">כל עוד לא הפסקת לחלום<br>
+          <p class="chorus">כל עוד לא הפסקת לחלום<br>
            אתה מנצח<br>
            תעוף הכי רחוק שאתה יכול<br>
            כי יש בך הכל</p>
+        </div>
 
         <p>קח מכחול צייר את הציור שלך<br>
            יש לך אחד יפה<br>
@@ -92,15 +95,17 @@
            רק אל תפחד ליפול<br>
            רק אל תפחד לגדול</p>
 
-        <p class="chorus">כל עוד לא הפסקת לחלום<br>
+        <div class="band">
+          <p class="chorus">כל עוד לא הפסקת לחלום<br>
            אתה מנצח<br>
            כאילו אין מחר, לחיות היום<br>
            תחזיק רק להיום</p>
 
-        <p class="chorus">כל עוד לא הפסקת לחלום<br>
+          <p class="chorus">כל עוד לא הפסקת לחלום<br>
            אתה מנצח<br>
            תעוף הכי רחוק שאתה יכול<br>
            כי יש בך הכל</p>
+        </div>
       </div>
 
       <p class="note">אנו מודים לבעלי הזכויות שנתנו את רשותם.</p>
