@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>איסוף המשוב לגוגל שיטס - הקמה</title>
+<meta name="robots" content="noindex">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root { --ink:#1c4587; --bg:#e4eef0; --rule:#b9cfe6; }
+  * { box-sizing:border-box; }
+  html,body { margin:0; padding:0; }
+  body { background:var(--bg); direction:rtl;
+         font-family:'Open Sans','Arial Hebrew',Arial,sans-serif; color:#3d3d3d; }
+  .wrap { max-width:760px; margin:0 auto; padding:0 10px 44px; }
+  .top { background:var(--ink); color:#fff; padding:22px 30px; text-align:center; border-radius:0 0 6px 6px; }
+  .top h1 { margin:0; font-size:24px; font-weight:700; }
+  .top p { margin:8px 0 0; font-size:15px; opacity:.9; line-height:1.65; }
+  .box { background:#fff; border-radius:6px; margin:16px 0 0; padding:24px 26px 26px; }
+  .box h2 { margin:0 0 14px; font-size:24px; color:var(--ink); font-weight:700; }
+  ol { margin:0; padding-inline-start:22px; font-size:15px; line-height:1.8; }
+  ol > li { margin-bottom:14px; }
+  ol > li > b.t { color:var(--ink); font-size:16px; }
+  ul { margin:0; padding-inline-start:20px; font-size:15px; line-height:1.8; }
+  ul > li { margin-bottom:10px; }
+  code { background:#f1f5f8; border-radius:3px; padding:1px 5px; font-size:13.5px; direction:ltr; display:inline-block; }
+  .codewrap { position:relative; margin:14px 0 0; }
+  pre { background:#0f1b2d; color:#dbe8f5; border-radius:6px; padding:18px 16px; overflow:auto;
+        direction:ltr; text-align:left; font-size:12.5px; line-height:1.6; max-height:420px; margin:0; }
+  .copy { position:absolute; top:10px; left:10px; background:#dbe8f5; color:var(--ink); border:0;
+          border-radius:4px; padding:7px 14px; font-family:inherit; font-size:13px; font-weight:700; cursor:pointer; }
+  .pick { background:#fffbe9; border:1px solid #e9d9a0; border-radius:5px; padding:12px 14px;
+          font-size:14px; line-height:1.75; margin:16px 0 0; }
+  @media (max-width:700px){ .wrap{padding:0 0 30px;} .box,.top{border-radius:0;} .box{padding:18px 15px 20px;} }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <h1>איסוף המשוב לגוגל שיטס</h1>
+    <p>שבע דקות של הקמה, פעם אחת. מכאן והלאה הכל אוטומטי.</p>
+  </div>
+
+  <div class="box">
+    <h2>מה יקרה בפועל</h2>
+    <ul>
+      <li>הקורא לוחץ על כוכב בסוף מדור. נפתח דף תודה שלנו - הדירוג נרשם באותו רגע, בלי שיצטרך לעשות עוד משהו.</li>
+      <li>בדף יש תיבת טקסט אופציונלית ותיבת סימון &quot;אפשר לחזור אליי במייל&quot;, וכפתור <b>חזרה לגיליון</b>.</li>
+      <li>כל זה נכתב כשורה בגיליון שלך. עילום שם, אלא אם סימן את התיבה.</li>
+      <li>פעם בשבוע אני קורא את הגיליון ושולח לך דוח קצר: מספרים לפי מדור, מגמה, וכל ההערות במלואן.</li>
+    </ul>
+  </div>
+
+  <div class="box">
+    <h2>ההקמה - שלב שלב</h2>
+    <ol>
+      <li><b class="t">פותחים גיליון חדש</b><br>ב-Google Drive: חדש &gt; Google Sheets. השם לא משנה - למשל <b>משוב עלון שבועי</b>.</li>
+      <li><b class="t">נכנסים ל-Apps Script</b><br>בתפריט של הגיליון: <b>הרחבות &gt; Apps Script</b>. נפתחת לשונית עם קובץ Code.gs וכמה שורות ריקות.</li>
+      <li><b class="t">מדביקים את הקוד</b><br>מוחקים את מה שיש שם, מדביקים את כל הקוד מהתיבה למטה (יש כפתור העתקה), ושומרים - אייקון הדיסקט או Ctrl+S.</li>
+      <li><b class="t">מריצים פעם אחת setupSheets</b><br>למעלה יש תיבת בחירה של פונקציה. בוחרים <b>setupSheets</b> ולוחצים <b>Run</b>. גוגל תבקש אישור הרשאה - זה החשבון שלך על הגיליון שלך, מאשרים. אחרי שנייה יופיעו בגיליון חמש לשוניות מוכנות.</li>
+      <li><b class="t">מפרסמים כ-Web App</b><br>בפינה: <b>Deploy &gt; New deployment</b>, ובגלגל השיניים בוחרים <b>Web app</b>. שם: משוב. <b>Execute as: Me</b>. <b>Who has access: Anyone</b> - זה הכרחי, אחרת קליק של קורא לא ייכתב. לוחצים Deploy.</li>
+      <li><b class="t">שולחים לי את הכתובת</b><br>מתקבלת כתובת שמסתיימת ב-<code>/exec</code>. מעתיקים אותה ושולחים לי בסלאק. אני משתיל אותה בדף שנפתח אחרי הקליק - וזה מתחיל לעבוד.</li>
+      <li><b class="t">פרסום ה-CSV (רק לדוח השבועי)</b><br>בגיליון: <b>קובץ &gt; שיתוף &gt; פרסום באינטרנט</b>, בוחרים את הלשונית <b>נתונים</b> ואת הפורמט <b>CSV</b>, ושולחים לי גם את הלינק הזה. משם אני קורא את הנתונים פעם בשבוע ושולח לך דוח מסודר - בלי שאצטרך גישה לחשבון גוגל שלך.</li>
+    </ol>
+    <p class="pick">אם משהו נתקע באמצע - תשלח לי צילום מסך של מה שאתה רואה ואני אגיד בדיוק מה ללחוץ.</p>
+  </div>
+
+  <div class="box">
+    <h2>הקוד להדבקה</h2>
+    <div class="codewrap">
+      <button class="copy" id="copy">העתקה</button>
+      <pre id="code">/**
+ * GYE - העלון השבועי: איסוף דירוגי מדורים לגוגל שיטס.
+ *
+ * להדביק ב-Apps Script של הגיליון (תפריט: הרחבות &gt; Apps Script), לשמור,
+ * ואז: Deploy &gt; New deployment &gt; Web app &gt; Execute as: Me &gt; Who has access: Anyone.
+ * את כתובת ה-exec שמתקבלת שולחים לבוט.
+ *
+ * הרצה חד-פעמית של setupSheets() תיצור את כל הגליונות והנוסחאות.
+ * מכאן והלאה הכל מתעדכן מעצמו - אין מה לתחזק, גם אחרי שנה.
+ */
+
+var RAW = 'נתונים';
+var SECTIONS = { '1': 'המאור שבה', '2': 'מתוק לנפש', '3': 'צעדני ואושעה', '4': 'צידה לדרך' };
+// עמודה G נשמרת רק אם הקורא סימן בעצמו "אפשר לחזור אליי במייל". אחרת היא נשארת ריקה.
+var HEADERS = ['חתימת זמן', 'גיליון', 'פרשה', 'מדור', 'דירוג', 'הערה', 'מייל לחזרה', 'מזהה'];
+
+function doGet(e)  { return json_(record_(e.parameter || {})); }
+function doPost(e) {
+  var d = {};
+  try { d = JSON.parse(e.postData.contents); } catch (err) { d = e.parameter || {}; }
+  return json_(record_(d));
+}
+
+/** כל קליק על כוכב נרשם כשורה. הערה חופשית מתחברת לאותה שורה לפי המזהה. */
+function record_(d) {
+  var lock = LockService.getScriptLock();
+  lock.waitLock(20000);
+  try {
+    var sh = raw_();
+    var id = String(d.id || Utilities.getUuid());
+    var comment = String(d.c || '').trim();
+    var email = String(d.e || '').trim();
+
+    if (comment || email) {
+      var n = Math.max(sh.getLastRow() - 1, 0);
+      if (n) {
+        var ids = sh.getRange(2, 8, n, 1).getValues();
+        for (var i = ids.length - 1; i &gt;= 0; i--) {
+          if (String(ids[i][0]) === id) {
+            if (comment &amp;&amp; comment !== '-') sh.getRange(i + 2, 6).setValue(comment);
+            if (email) sh.getRange(i + 2, 7).setValue(email);
+            return { ok: true, updated: true, id: id };
+          }
+        }
+      }
+    }
+
+    var rating = Number(d.r || 0);
+    sh.appendRow([
+      new Date(),
+      Number(d.g || 0),
+      String(d.p || ''),
+      SECTIONS[String(d.s)] || String(d.s || ''),
+      rating &gt; 0 ? rating : '',
+      comment === '-' ? '' : comment,
+      email,
+      id,
+    ]);
+    return { ok: true, id: id };
+  } finally {
+    lock.releaseLock();
+  }
+}
+
+function raw_() {
+  var ss = SpreadsheetApp.getActiveSpreadsheet();
+  var sh = ss.getSheetByName(RAW);
+  if (!sh) {
+    sh = ss.insertSheet(RAW, 0);
+    sh.getRange(1, 1, 1, HEADERS.length).setValues([HEADERS])
+      .setFontWeight('bold').setBackground('#dbe8f5').setFontColor('#1c4587');
+    sh.setFrozenRows(1);
+    sh.setRightToLeft(true);
+    sh.getRange('A:A').setNumberFormat('dd/MM/yyyy HH:mm');
+    sh.setColumnWidth(1, 130); sh.setColumnWidth(3, 110);
+    sh.setColumnWidth(4, 130); sh.setColumnWidth(6, 380); sh.setColumnWidth(7, 200);
+    sh.hideColumns(8);
+  }
+  return sh;
+}
+
+/** נוסחאות QUERY - הן מתרעננות לבד, כך שאין צורך לגעת בגיליון אחרי שבועות. */
+function setupSheets() {
+  var ss = SpreadsheetApp.getActiveSpreadsheet();
+  raw_();
+
+  var tabs = [
+    { name: 'סיכום לפי מדור',
+      head: ['גיליון', 'מדור', 'מספר דירוגים', 'ממוצע'],
+      f: '=IFERROR(QUERY(\'' + RAW + '\'!A2:H, "select B, D, count(E), avg(E) where E &gt; 0 group by B, D order by B desc, D", 0), "אין נתונים עדיין")' },
+    { name: 'מגמה לפי מדור',
+      head: [],
+      f: '=IFERROR(QUERY(\'' + RAW + '\'!A2:H, "select B, avg(E) where E &gt; 0 group by B order by B desc pivot D", 0), "אין נתונים עדיין")' },
+    { name: 'הערות',
+      head: ['תאריך', 'גיליון', 'מדור', 'ההערה', 'מייל לחזרה (אם ביקש)'],
+      f: '=IFERROR(QUERY(\'' + RAW + '\'!A2:H, "select A, B, D, F, G where F is not null and F &lt;&gt; \'\' order by A desc", 0), "אין הערות עדיין")' },
+    { name: 'מבקשים חזרה במייל',
+      head: ['תאריך', 'גיליון', 'מדור', 'דירוג', 'ההערה', 'מייל'],
+      f: '=IFERROR(QUERY(\'' + RAW + '\'!A2:H, "select A, B, D, E, F, G where G is not null and G &lt;&gt; \'\' order by A desc", 0), "אין בקשות עדיין")' },
+    { name: 'פילוח דירוגים',
+      head: ['דירוג', 'כמה פעמים'],
+      f: '=IFERROR(QUERY(\'' + RAW + '\'!A2:H, "select E, count(E) where E &gt; 0 group by E order by E desc", 0), "אין נתונים עדיין")' },
+  ];
+
+  tabs.forEach(function (t) {
+    var sh = ss.getSheetByName(t.name) || ss.insertSheet(t.name);
+    sh.clear();
+    sh.setRightToLeft(true);
+    var row = 1;
+    if (t.head.length) {
+      sh.getRange(1, 1, 1, t.head.length).setValues([t.head])
+        .setFontWeight('bold').setBackground('#dbe8f5').setFontColor('#1c4587');
+      sh.setFrozenRows(1);
+      row = 2;
+    }
+    sh.getRange(row, 1).setFormula(t.f);
+    sh.setColumnWidth(1, 130);
+    if (t.name === 'הערות') { sh.setColumnWidth(4, 480); sh.setColumnWidth(5, 200); }
+    if (t.name === 'מבקשים חזרה במייל') { sh.setColumnWidth(5, 380); sh.setColumnWidth(6, 200); }
+    if (t.name === 'סיכום לפי מדור') sh.getRange('D2:D').setNumberFormat('0.00');
+    if (t.name === 'מגמה לפי מדור') sh.getRange('B2:F').setNumberFormat('0.00');
+  });
+
+  ss.setActiveSheet(ss.getSheetByName('סיכום לפי מדור'));
+  return 'נוצרו ' + (tabs.length + 1) + ' גליונות';
+}
+</pre>
+    </div>
+  </div>
+
+  <div class="box">
+    <h2>איך הגיליון יישאר ברור גם אחרי חצי שנה</h2>
+    <ul>
+      <li><b>נתונים</b> - כל קליק שורה אחת: תאריך, גיליון, פרשה, מדור, דירוג, הערה, ומייל - רק אם הקורא סימן שאפשר לחזור אליו. זו הטבלה הגולמית, ממנה הכל נגזר.</li>
+      <li><b>סיכום לפי מדור</b> - לכל גיליון ולכל מדור: כמה דירוגים וממוצע. הגיליון החדש נכנס למעלה, אז אין גלילה של חצי שנה.</li>
+      <li><b>מגמה לפי מדור</b> - טבלה צולבת: שורה לכל גיליון, עמודה לכל מדור, בתוכה הממוצע. זו הלשונית שבה רואים בעין אם מדור מתחזק או נחלש.</li>
+      <li><b>הערות</b> - רק השורות שיש בהן טקסט, מהחדש לישן, עם המדור והמייל לצידן.</li>
+      <li><b>מבקשים חזרה במייל</b> - רק מי שסימן במפורש. זו רשימת המענה שלך.</li>
+      <li><b>פילוח דירוגים</b> - כמה 5, כמה 4 וכן הלאה - על כל הזמנים.</li>
+    </ul>
+    <p class="pick">כל הלשוניות חוץ מ<b>נתונים</b> בנויות על נוסחאות QUERY שמתעדכנות לבד. אין מה לגרור,
+      אין מה לרענן, ואף שורה לא נמחקת - הגיליון פשוט ממשיך לגדול למטה.</p>
+  </div>
+</div>
+<script>
+document.getElementById('copy').onclick = function () {
+  navigator.clipboard.writeText(document.getElementById('code').innerText);
+  this.textContent = 'הועתק';
+  var b = this; setTimeout(function () { b.textContent = 'העתקה'; }, 1800);
+};
+</script>
+</body>
+</html>
