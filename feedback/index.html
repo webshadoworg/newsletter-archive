@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>תודה על הדירוג - העלון השבועי</title>
+<meta name="robots" content="noindex">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root { --ink:#1c4587; --bg:#e4eef0; --bar:#dbe8f5; --rule:#b9cfe6; }
+  * { box-sizing:border-box; }
+  html,body { margin:0; padding:0; }
+  body { background:var(--bg); direction:rtl; min-height:100vh;
+         font-family:'Open Sans','Arial Hebrew',Arial,sans-serif; color:#3d3d3d; }
+  .wrap { max-width:460px; margin:0 auto; padding:26px 12px 40px; }
+  .card { background:#fff; border-radius:6px; overflow:hidden; }
+  .top { background:var(--ink); color:#fff; text-align:center; padding:16px 18px; font-weight:700; font-size:17px; }
+  .body { padding:24px 22px 26px; text-align:center; }
+  .disc { width:52px; height:52px; border-radius:50%; background:var(--ink); margin:0 auto 14px; position:relative; }
+  .disc i { position:absolute; top:14px; left:16px; width:20px; height:10px;
+            border-left:4px solid #fff; border-bottom:4px solid #fff; transform:rotate(-45deg); }
+  h1 { margin:0 0 6px; font-size:21px; color:var(--ink); }
+  .sub { margin:0 0 16px; font-size:14px; color:#6a6a6a; line-height:1.75; }
+  .stars { margin:0 0 18px; display:flex; justify-content:center; gap:5px; direction:rtl; }
+  .stars svg { width:34px; height:34px; }
+  .chk { display:block; margin:11px 0 2px; font-size:13.5px; color:#4f6b84; text-align:right; cursor:pointer; }
+  .chk input { vertical-align:-2px; margin-inline-end:5px; }
+  .mail { width:100%; margin:6px 0 0; border:1px solid var(--rule); border-radius:4px; padding:9px 10px;
+          font-family:inherit; font-size:14px; direction:ltr; text-align:left; background:#fbfdfe; }
+  textarea { width:100%; height:82px; border:1px solid var(--rule); border-radius:4px; padding:10px;
+             font-family:inherit; font-size:14px; direction:rtl; resize:none; background:#fbfdfe; color:#3d3d3d; }
+  .send { display:inline-block; margin:12px 0 0; background:var(--ink); color:#fff; border:0; border-radius:4px;
+          padding:11px 30px; font-size:15px; font-weight:700; font-family:inherit; cursor:pointer; }
+  .send[disabled] { opacity:.5; cursor:default; }
+  .back { display:inline-block; margin:16px 0 0; padding:10px 24px; border:1px solid var(--rule);
+          border-radius:4px; background:#f4f8f9; color:var(--ink); font-size:14px; font-weight:700; text-decoration:none; }
+  .tiny { display:block; margin:9px 0 0; font-size:12.5px; color:#8d9aa4; }
+  .ok { color:#1c4587; font-weight:700; font-size:15px; margin:14px 0 0; }
+  .foot { text-align:center; padding:16px 20px 22px; font-size:12.5px; color:#7d8a94; line-height:1.7; }
+  .foot a { color:var(--ink); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="card">
+    <div class="top">רק חזק ואמץ! - העלון השבועי</div>
+    <div class="body">
+      <div class="disc"><i></i></div>
+      <h1>תודה, נרשם.</h1>
+      <p class="sub" id="sub">הדירוג שלך התקבל.</p>
+      <div class="stars" id="stars"></div>
+
+      <div id="ask">
+        <textarea id="c" maxlength="1200"
+          placeholder="רוצה להוסיף מילה? מה עזר, ומה היה חסר. (לא חייב)"></textarea>
+        <label class="chk"><input type="checkbox" id="okmail"> אפשר לחזור אליי במייל בנוגע לזה</label>
+        <input class="mail" type="email" id="mail" placeholder="כתובת המייל שלך" style="display:none">
+        <span class="tiny" id="anon">בלי סימון - הדירוג וההערה נשמרים בעילום שם.</span>
+        <br><button class="send" id="send">שליחה</button>
+      </div>
+      <p class="ok" id="thanks" style="display:none">תודה. קראנו.</p>
+
+      <a class="back" id="back" href="https://gye.org.il">חזרה לגיליון</a>
+      <span class="tiny">הדירוג שלך כבר נשמר.</span>
+    </div>
+    <div class="foot">
+      אנחנו קוראים כל הערה. אפשר גם לכתוב ישירות:
+      <a href="mailto:shmor.help@gmail.com">shmor.help@gmail.com</a>
+    </div>
+  </div>
+</div>
+
+<script>
+// כתובת ה-Web App של הגיליון (Apps Script). ריק = מצב תצוגה, בלי רישום.
+var ENDPOINT = "";
+
+var q = new URLSearchParams(location.search);
+var SECTIONS = { "1":"המאור שבה", "2":"מתוק לנפש", "3":"צעדני ואושעה", "4":"צידה לדרך" };
+var ISSUES = {
+  "2":"https://gyenewsletters.netlify.app/drafts/ki-tetze-2026.html",
+  "4":"https://gyenewsletters.netlify.app/drafts/nitzavim-5786.html"
+};
+
+var g = q.get("g") || "", p = q.get("p") || "", s = q.get("s") || "";
+var r = Math.max(0, Math.min(5, parseInt(q.get("r") || "0", 10)));
+var name = SECTIONS[s] || "";
+var id = (crypto && crypto.randomUUID) ? crypto.randomUUID()
+       : String(Date.now()) + "-" + Math.round(Math.random() * 1e6);
+
+document.getElementById("sub").innerHTML = name
+  ? "דירגת את המדור <b>" + name + "</b>" + (p ? " (פרשת " + p + ")" : "") +
+    ".<br>זה מגיע אלינו ומשפיע על מה שנכתוב בשבוע הבא."
+  : "זה מגיע אלינו ומשפיע על מה שנכתוב בשבוע הבא.";
+
+// הכוכבים בדף כן נצבעים - כאן זה דף רגיל, לא אימייל
+var svg = "";
+for (var n = 1; n <= 5; n++) {
+  var on = n <= r;
+  svg += '<svg viewBox="0 0 100 100" aria-hidden="true">' +
+    '<path d="M50 6 61.8 38.2 96 39.5 68.9 60.4 78.5 93.2 50 74 21.5 93.2 31.1 60.4 4 39.5 38.2 38.2Z" ' +
+    'fill="' + (on ? "#f0b429" : "#eef2f5") + '" stroke="' + (on ? "#c98f10" : "#cdd7de") + '" stroke-width="6" stroke-linejoin="round"/>' +
+    '<text x="50" y="58" text-anchor="middle" font-family="Arial" font-weight="bold" font-size="40" ' +
+    'fill="' + (on ? "#5c3d00" : "#aab6bf") + '">' + n + '</text></svg>';
+}
+document.getElementById("stars").innerHTML = svg;
+
+var back = ISSUES[g];
+if (back) document.getElementById("back").href = back;
+
+function post(payload) {
+  if (!ENDPOINT) { console.log("[preview] ", payload); return; }
+  fetch(ENDPOINT, {
+    method: "POST", mode: "no-cors", keepalive: true,
+    headers: { "Content-Type": "text/plain;charset=utf-8" },
+    body: JSON.stringify(payload)
+  }).catch(function () {});
+}
+
+if (r > 0) post({ id: id, g: g, p: p, s: s, r: r });
+else document.getElementById("sub").textContent = "אפשר לכתוב לנו כאן מה חשבת על הגיליון.";
+
+// כתובת המייל מגיעה מהלינק עצמו (טוקן מערכת השליחה). אם היא לא הגיעה - שדה הקלדה נפתח בסימון.
+var mailFromLink = (q.get("e") || "").trim();
+var okmail = document.getElementById("okmail"), mail = document.getElementById("mail");
+okmail.onchange = function () {
+  mail.style.display = (this.checked && !mailFromLink) ? "block" : "none";
+  if (this.checked && !mailFromLink) mail.focus();
+};
+
+document.getElementById("send").onclick = function () {
+  var c = document.getElementById("c").value.trim();
+  var e = okmail.checked ? (mailFromLink || mail.value.trim()) : "";
+  if (okmail.checked && !e) { mail.style.display = "block"; mail.focus(); return; }
+  if (!c && !e) return;
+  this.disabled = true;
+  post({ id: id, g: g, p: p, s: s, c: c || "-", e: e });
+  document.getElementById("ask").style.display = "none";
+  document.getElementById("thanks").textContent =
+    e ? "תודה. קראנו, ונחזור אליך." : "תודה. קראנו.";
+  document.getElementById("thanks").style.display = "block";
+};
+</script>
+</body>
+</html>
