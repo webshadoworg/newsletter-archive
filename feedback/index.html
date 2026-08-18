@@ -22,7 +22,7 @@
   h1 { margin:0 0 6px; font-size:21px; color:var(--ink); }
   .sub { margin:0 0 16px; font-size:14px; color:#6a6a6a; line-height:1.75; }
   .stars { margin:0 0 18px; display:flex; justify-content:center; gap:5px; direction:rtl; }
-  .stars svg { width:34px; height:34px; }
+  .stars svg { width:42px; height:42px; }   /* כמו במייל - ו1, 44px */
   .chk { display:block; margin:11px 0 2px; font-size:13.5px; color:#4f6b84; text-align:right; cursor:pointer; }
   .chk input { vertical-align:-2px; margin-inline-end:5px; }
   .mail { width:100%; margin:6px 0 0; border:1px solid var(--rule); border-radius:4px; padding:9px 10px;
@@ -92,15 +92,17 @@ document.getElementById("sub").innerHTML = name
     ".<br>זה מגיע אלינו ומשפיע על מה שנכתוב בשבוע הבא."
   : "זה מגיע אלינו ומשפיע על מה שנכתוב בשבוע הבא.";
 
-// הכוכבים בדף כן נצבעים - כאן זה דף רגיל, לא אימייל
+// הכוכבים בדף כן נצבעים - כאן זה דף רגיל, לא אימייל.
+// הגיאומטריה זהה לכוכבי ו1 שבמייל: נוצרה ע"י build-star-icons.mjs -> assets/stars/v1-svg.json.
+var STAR = "M50.0 4.5 64.4 31.7 94.7 37.0 73.2 59.1 77.6 89.5 50.0 75.9 22.4 89.5 26.8 59.1 5.3 37.0 35.6 31.7Z";
 var svg = "";
 for (var n = 1; n <= 5; n++) {
   var on = n <= r;
   svg += '<svg viewBox="0 0 100 100" aria-hidden="true">' +
-    '<path d="M50 6 61.8 38.2 96 39.5 68.9 60.4 78.5 93.2 50 74 21.5 93.2 31.1 60.4 4 39.5 38.2 38.2Z" ' +
-    'fill="' + (on ? "#f0b429" : "#eef2f5") + '" stroke="' + (on ? "#c98f10" : "#cdd7de") + '" stroke-width="6" stroke-linejoin="round"/>' +
-    '<text x="50" y="58" text-anchor="middle" font-family="Arial" font-weight="bold" font-size="40" ' +
-    'fill="' + (on ? "#5c3d00" : "#aab6bf") + '">' + n + '</text></svg>';
+    '<path d="' + STAR + '" ' +
+    'fill="' + (on ? "#f0b429" : "#eef2f5") + '" stroke="' + (on ? "#d9a520" : "#cdd7de") + '" stroke-width="3" stroke-linejoin="round"/>' +
+    '<text x="50" y="65.2" text-anchor="middle" font-family="Arial" font-weight="bold" font-size="30" ' +
+    'fill="' + (on ? "#ffffff" : "#aab6bf") + '">' + n + '</text></svg>';
 }
 document.getElementById("stars").innerHTML = svg;
 
