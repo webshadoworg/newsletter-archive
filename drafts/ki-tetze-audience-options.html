@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>למי מיועד כל מדור? - חמש אפשרויות עיצוב</title>
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Frank+Ruehl+Libre:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  body { margin:0; background:#eef2f6; font-family:'Open Sans','Arial Hebrew',Arial,sans-serif;
+         direction:rtl; color:#3d3d3d; }
+  .page { max-width:760px; margin:0 auto; padding:26px 16px 60px; }
+  h1.top { font-size:26px; color:#1c4587; text-align:center; margin:8px 0 4px; }
+  p.top  { text-align:center; font-size:15px; color:#5a6b7d; margin:0 0 26px; }
+  .opt { background:#fff; border-radius:16px; box-shadow:0 2px 10px rgba(28,69,135,.10);
+         margin:0 0 34px; overflow:hidden; }
+  .opt > h2 { margin:0; padding:16px 22px; background:#1c4587; color:#fff;
+              font-size:21px; font-weight:700; }
+  .opt > h2 small { display:block; font-size:14px; font-weight:400; opacity:.85; margin-top:3px; }
+  .body { padding:20px 22px 24px; }
+  .verdict { font-size:14px; line-height:1.6; background:#f4f8f9; border-right:4px solid #b9cfe6;
+             padding:11px 14px; margin:18px 0 0; border-radius:0 6px 6px 0; }
+  .verdict b { color:#1c4587; }
+  .rec { background:#fff8e1; border-right-color:#e9b308; }
+  /* --- מוקאפ של ראש מדור --- */
+  .mock { border:1px solid #dde5ee; border-radius:10px; overflow:hidden; margin:0 0 14px; }
+  .mock img { display:block; width:100%; }
+  .mock .in { padding:14px 20px 18px; }
+  .mock h3 { font-size:20px; color:#1c4587; text-align:center; margin:0 0 10px; font-weight:700; }
+  .mock p { font-size:15px; line-height:1.7; text-align:justify; margin:0; color:#3d3d3d; }
+  .two { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+  @media (max-width:640px){ .two { grid-template-columns:1fr; } }
+
+  /* A - שורה מתחת לבאנר */
+  .a-line { text-align:center; font-size:13px; color:#5a6b7d; letter-spacing:.2px;
+            padding:10px 0 0; margin:0 0 8px; }
+  .a-line b { color:#1c4587; font-weight:700; }
+
+  /* B - תג */
+  .b-wrap { text-align:center; padding:14px 0 0; }
+  .b-pill { display:inline-block; font-size:12.5px; font-weight:700; letter-spacing:.3px;
+            color:#1c4587; background:#e7f0f9; border:1px solid #b9cfe6;
+            border-radius:999px; padding:5px 15px; }
+  .b-pill.dark { color:#fff; background:#1c4587; border-color:#1c4587; }
+
+  /* C - תיבת נמען */
+  .c-box { background:#f4f8f9; border-right:4px solid #1c4587; padding:11px 15px; margin:14px 0 14px; }
+  .c-box p { margin:0; font-size:14px; line-height:1.6; color:#1c4587; font-weight:600; text-align:right; }
+
+  /* D - רקע שונה */
+  .d-tint { background:#f7fafc; }
+  .d-tint2 { background:#fdfaf3; }
+  .d-rule { height:4px; }
+
+  /* E - קו + מילה */
+  .e-rule { display:flex; align-items:center; gap:10px; padding:16px 0 2px; }
+  .e-rule:before, .e-rule:after { content:""; flex:1; height:1px; background:#cfdcea; }
+  .e-rule span { font-size:12.5px; font-weight:700; color:#7b8fa5; letter-spacing:1px; white-space:nowrap; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <h1 class="top">למי מיועד כל מדור?</h1>
+  <p class="top">חמש דרכים לסמן ש<b>מתוק לנפש</b> נכתב למתמודדים ו<b>צעדני ואושעה</b> למכורים.<br>
+  כל אפשרות מוצגת על שני המדורים זה לצד זה. שום דבר מזה עדיין לא בגיליון.</p>
+
+  <!-- ============ A ============ -->
+  <div class="opt">
+    <h2>אפשרות א' - שורה קטנה מתחת לבאנר<small>הכי קל, הכי שקט. לא משנה שום דבר קיים.</small></h2>
+    <div class="body">
+      <div class="two">
+        <div class="mock">
+          <img src="https://gyenewsletters.netlify.app/images/banner-matok-660.png" alt="מתוק לנפש">
+          <div class="in">
+            <div class="a-line">המדור הזה נכתב עבור <b>מי שמתמודד</b></div>
+            <h3>האדם מחפש משמעות</h3>
+            <p>"אוף! שוב הדחף הזה תוקף. כבר חשבתי שזה מאחוריי&#8230;"</p>
+          </div>
+        </div>
+        <div class="mock">
+          <img src="https://gyenewsletters.netlify.app/images/banner-tzaadeni-660.png" alt="צעדני ואושעה">
+          <div class="in">
+            <div class="a-line">המדור הזה נכתב עבור <b>מי שמזהה את עצמו כמכור</b></div>
+            <h3>המילכוד הכפול</h3>
+            <p>[ממלא מקום] המשך המאמר.</p>
+          </div>
+        </div>
+      </div>
+      <div class="verdict"><b>בעד:</b> חצי שורה, אפס רעש, עובד בכל תוכנת מייל.
+      <b>נגד:</b> אפור וקטן - העין מדלגת עליו בדיוק כמו על השורה שכבר קיימת בתוך האיור.</div>
+    </div>
+  </div>
+
+  <!-- ============ B ============ -->
+  <div class="opt">
+    <h2>אפשרות ב' - תג מעל הכותרת<small>ההמלצה שלי. נראה כמו תווית, לא כמו טקסט.</small></h2>
+    <div class="body">
+      <div class="two">
+        <div class="mock">
+          <img src="https://gyenewsletters.netlify.app/images/banner-matok-660.png" alt="מתוק לנפש">
+          <div class="in">
+            <div class="b-wrap"><span class="b-pill">למתמודדים</span></div>
+            <h3 style="margin-top:12px;">האדם מחפש משמעות</h3>
+            <p>"אוף! שוב הדחף הזה תוקף. כבר חשבתי שזה מאחוריי&#8230;"</p>
+          </div>
+        </div>
+        <div class="mock">
+          <img src="https://gyenewsletters.netlify.app/images/banner-tzaadeni-660.png" alt="צעדני ואושעה">
+          <div class="in">
+            <div class="b-wrap"><span class="b-pill dark">למכורים · 12 הצעדים</span></div>
+            <h3 style="margin-top:12px;">המילכוד הכפול</h3>
+            <p>[ממלא מקום] המשך המאמר.</p>
+          </div>
+        </div>
+      </div>
+      <div class="verdict rec"><b>בעד:</b> צורה שונה מכל דבר אחר בעמוד, ולכן נקראת מיד כתווית ולא כמשפט.
+      מלא/ריק מבדיל בין השניים גם למי שלא קורא את המילים.
+      <b>נגד:</b> אאוטלוק לחלונות יציג מלבן במקום פינות עגולות (אפשר להסתדר עם VML, או פשוט לחיות עם זה).</div>
+    </div>
+  </div>
+
+  <!-- ============ C ============ -->
+  <div class="opt">
+    <h2>אפשרות ג' - תיבת נמען<small>אותו עיצוב של תיבת הציטוט במדור 2. מסביר, לא רק מסמן.</small></h2>
+    <div class="body">
+      <div class="two">
+        <div class="mock">
+          <img src="https://gyenewsletters.netlify.app/images/banner-matok-660.png" alt="מתוק לנפש">
+          <div class="in">
+            <div class="c-box"><p>למי המדור הזה? למי שנאבק, נופל וקם - ורוצה כלים להתמודדות היומיומית.</p></div>
+            <h3>האדם מחפש משמעות</h3>
+            <p>"אוף! שוב הדחף הזה תוקף&#8230;"</p>
+          </div>
+        </div>
+        <div class="mock">
+          <img src="https://gyenewsletters.netlify.app/images/banner-tzaadeni-660.png" alt="צעדני ואושעה">
+          <div class="in">
+            <div class="c-box"><p>למי המדור הזה? למי שהגיע למסקנה שהוא מכור, ועובד לפי 12 הצעדים.</p></div>
+            <h3>המילכוד הכפול</h3>
+            <p>[ממלא מקום] המשך המאמר.</p>
+          </div>
+        </div>
+      </div>
+      <div class="verdict"><b>בעד:</b> הכי ברור - הקורא יודע בדיוק אם זה אליו. משתמש ברכיב שכבר קיים בגיליון.
+      <b>נגד:</b> שתי תיבות זו מעל זו במדור 2 (הנמען ואז הציטוט) - וזה עוד גוש טקסט לפני שהמאמר מתחיל.</div>
+    </div>
+  </div>
+
+  <!-- ============ D ============ -->
+  <div class="opt">
+    <h2>אפשרות ד' - גוון רקע לכל מדור<small>ההפרדה החזקה ביותר. בלי אף מילה חדשה.</small></h2>
+    <div class="body">
+      <div class="two">
+        <div class="mock">
+          <img src="https://gyenewsletters.netlify.app/images/banner-matok-660.png" alt="מתוק לנפש">
+          <div class="d-rule" style="background:#b9cfe6;"></div>
+          <div class="in d-tint">
+            <h3>האדם מחפש משמעות</h3>
+            <p>"אוף! שוב הדחף הזה תוקף. כבר חשבתי שזה מאחוריי. נמאס לי!&#8230;"</p>
+          </div>
+        </div>
+        <div class="mock">
+          <img src="https://gyenewsletters.netlify.app/images/banner-tzaadeni-660.png" alt="צעדני ואושעה">
+          <div class="d-rule" style="background:#e9b308;"></div>
+          <div class="in d-tint2">
+            <h3>המילכוד הכפול</h3>
+            <p>[ממלא מקום] המשך המאמר.</p>
+          </div>
+        </div>
+      </div>
+      <div class="verdict"><b>בעד:</b> אפשר לראות מרחוק שהמדורים אינם אותו דבר, גם בגלילה מהירה.
+      <b>נגד:</b> לא אומר <i>למי</i> כל מדור - רק שהם שונים. וזה שינוי גדול במראה הגיליון כולו.
+      עובד טוב <b>יחד עם</b> א' או ב', לא במקומם.</div>
+    </div>
+  </div>
+
+  <!-- ============ E ============ -->
+  <div class="opt">
+    <h2>אפשרות ה' - קו הפרדה עם מילה<small>מינימלי ומעוצב. משהו בין א' לב'.</small></h2>
+    <div class="body">
+      <div class="two">
+        <div class="mock">
+          <img src="https://gyenewsletters.netlify.app/images/banner-matok-660.png" alt="מתוק לנפש">
+          <div class="in">
+            <div class="e-rule"><span>למתמודדים</span></div>
+            <h3 style="margin-top:10px;">האדם מחפש משמעות</h3>
+            <p>"אוף! שוב הדחף הזה תוקף&#8230;"</p>
+          </div>
+        </div>
+        <div class="mock">
+          <img src="https://gyenewsletters.netlify.app/images/banner-tzaadeni-660.png" alt="צעדני ואושעה">
+          <div class="in">
+            <div class="e-rule"><span>למכורים</span></div>
+            <h3 style="margin-top:10px;">המילכוד הכפול</h3>
+            <p>[ממלא מקום] המשך המאמר.</p>
+          </div>
+        </div>
+      </div>
+      <div class="verdict"><b>בעד:</b> יפה, שקט, ולא מתחרה בבאנר.
+      <b>נגד:</b> flex לא נתמך באאוטלוק - צריך לבנות את זה כטבלה בת שלושה תאים. אפשרי, פשוט לא חינם.
+      וכמו א', זה עדיין אפור וקטן.</div>
+    </div>
+  </div>
+
+  <!-- ============ שאלה ============ -->
+  <div class="opt">
+    <h2>ולפני שמחליטים - שאלה אחת<small>זו שאלת תוכן, לא עיצוב. אתה מחליט.</small></h2>
+    <div class="body">
+      <p style="margin:0 0 12px; font-size:15px; line-height:1.75;">
+        המילה <b>"למכורים"</b> דורשת מהקורא להסכים לתווית לפני שהוא קרא שורה. מי שעדיין לא הגיע
+        לשם עלול לדלג על המדור דווקא בגלל השלט. שלוש חלופות רכות יותר, כולן אומרות את אותו דבר:</p>
+      <div style="text-align:center; padding:4px 0 6px;">
+        <span class="b-pill dark" style="margin:0 4px 8px;">למכורים</span>
+        <span class="b-pill dark" style="margin:0 4px 8px;">לצועדים ב-12 הצעדים</span>
+        <span class="b-pill dark" style="margin:0 4px 8px;">למי שכבר יודע שהוא מכור</span>
+        <span class="b-pill dark" style="margin:0 4px 8px;">מדור 12 הצעדים</span>
+      </div>
+      <div class="verdict">בכל מקרה שווה גם <b>שורה אחת בפתיחת הגיליון</b> שמסבירה את המפה:
+      איזה מדור למי. אז התווית בראש כל מדור רק מזכירה משהו שכבר הוסבר, ולא מבקשת מהקורא
+      להחליט על עצמו באמצע.</div>
+    </div>
+  </div>
+
+  <p style="text-align:center; font-size:13px; color:#7b8fa5; margin:30px 0 0;">
+    שום דבר בדף הזה לא נכנס לגיליון. אחרי שתבחר - אבנה בגיליון החי.</p>
+
+</div>
+</body>
+</html>
