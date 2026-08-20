@@ -6,8 +6,10 @@
 <style>
  body{margin:0;background:#eef2f5;font-family:'Open Sans','Assistant',Arial,sans-serif;color:#3d3d3d;}
  .w{max-width:900px;margin:0 auto;padding:20px 14px 60px;}
- h1{font-size:20px;color:#1c4587;margin:0 0 6px;}
- p{font-size:14px;line-height:1.7;margin:0 0 14px;color:#4f6b84;}
+ h1{font-size:20px;color:#1c4587;margin:0 0 8px;}
+ p{font-size:14px;line-height:1.7;margin:0 0 12px;color:#4f6b84;}
+ .warn{background:#fff8e1;border:1px solid #e6cf7a;border-radius:5px;padding:12px 14px;
+       font-size:13.5px;line-height:1.7;color:#6b5312;margin:0 0 14px;}
  .bar{position:sticky;top:0;background:#eef2f5;padding:10px 0 12px;z-index:2;}
  button{background:#1c4587;color:#fff;border:0;border-radius:5px;padding:13px 26px;
         font-size:16px;font-weight:700;font-family:inherit;cursor:pointer;}
@@ -17,29 +19,53 @@
      font-family:ui-monospace,Menlo,Consolas,monospace;}
 </style></head><body><div class="w">
 <h1>קוד Apps Script - איסוף משובים</h1>
-<p>לוחצים על הכפתור, נכנסים לעורך של Apps Script, מוחקים הכל (Ctrl+A ואז Delete) ומדביקים (Ctrl+V). ואז Ctrl+S לשמירה.</p>
+<p>לוחצים על הכפתור, עוברים לעורך של Apps Script, <b>Ctrl+A</b> ואז <b>Delete</b>, <b>Ctrl+V</b>, ואז <b>Ctrl+S</b>.</p>
+<div class="warn"><b>גרסה חסינה.</b> בקוד הזה אין אף תו שאינו אנגלי - כל העברית כתובה כקודים
+(<code style="direction:ltr;display:inline-block">\u05de...</code>) שגוגל שיטס מפענח בעצמו לעברית תקינה בגיליון.
+לכן שום תוכנת מייל, תיקון-מרכאות אוטומטי או תו כיווניות נסתר לא יכולים לשבור אותו.
+בכל זאת - <b>עדיף להעתיק מכאן</b> ולא לגלגל דרך ערוץ נוסף.</div>
 <div class="bar"><button id="b">העתקת כל הקוד</button><span id="ok">הועתק ✓</span></div>
 <pre id="c">/**
- * איסוף משובים מדף הנחיתה של העלון -&gt; Google Sheets
- * ------------------------------------------------------------------
- * נוצר 20.8.2026 עבור רפאל. הקוד הזה נכנס ל-Apps Script של גוגל שיטס
- * (תוספים &gt; Apps Script), נפרס כ-Web app, וה-URL שמתקבל נכנס למשתנה
- * ENDPOINT בקובץ hebrew-newsletter/feedback/index.html.
+ * GYE weekly newsletter - feedback collector (Google Sheets / Apps Script)
+ * ------------------------------------------------------------------------
+ * 20.8.2026 - ASCII-ONLY BUILD. Every Hebrew string is written as \uXXXX
+ * escapes and there is not a single non-ASCII byte in this file, so it cannot
+ * be corrupted by an email client, a smart-quote autocorrect, or an injected
+ * bidi control character. Paste this one through ANY channel.
+ * The readable Hebrew original lives at hebrew-newsletter/feedback/apps-script.gs
+ * - edit that one, then regenerate this.
  *
- * הדף שולח *פעמיים* עם אותו d.id:
- *   1. בטעינה  - {id,g,p,s,r}        הדירוג בכוכבים
- *   2. בשליחה  - {id,g,p,s,c,e}      ההערה החופשית + מייל (אם סומן)
- * לכן הסקריפט עושה upsert לפי id: שורה אחת לכל משוב, לא שתיים.
- * שדה ריק בשליחה השנייה לא מוחק ערך שכבר נשמר.
+ * The landing page POSTs TWICE with the same d.id:
+ *   1. on load   {id,g,p,s,r}     the star rating
+ *   2. on submit {id,g,p,s,c,e}   free-text comment + email if opted in
+ * So we upsert by id: one row per reader per section, never two half-empty rows.
+ * An empty field in the second POST never wipes a value already stored.
  *
- * הדף שולח ב-mode:"no-cors" עם Content-Type: text/plain - בקשה "פשוטה"
- * שלא דורשת preflight, ולכן היא עוברת ל-Apps Script בלי CORS.
- * המשמעות: הדף לא רואה את התשובה. אין טעם להחזיר שגיאות.
+ * The page posts with mode:"no-cors" and Content-Type text/plain - a "simple"
+ * request, no preflight, so it reaches Apps Script without CORS. Consequence:
+ * the page never sees the response. Returning errors is pointless.
  */
 
-var SHEET = 'משובים';
-var NAMES = { '1': 'המאור שבה', '2': 'מתוק לנפש', '3': 'צעדני ואושעה', '4': 'צידה לדרך' };
-var HEAD = ['תאריך', 'מזהה', 'גיליון', 'פרשה', 'מדור', 'שם המדור', 'דירוג', 'הערה', 'מייל'];
+var SHEET = '\u05de\u05e9\u05d5\u05d1\u05d9\u05dd';
+
+var NAMES = {
+  '1': '\u05d4\u05de\u05d0\u05d5\u05e8 \u05e9\u05d1\u05d4',
+  '2': '\u05de\u05ea\u05d5\u05e7 \u05dc\u05e0\u05e4\u05e9',
+  '3': '\u05e6\u05e2\u05d3\u05e0\u05d9 \u05d5\u05d0\u05d5\u05e9\u05e2\u05d4',
+  '4': '\u05e6\u05d9\u05d3\u05d4 \u05dc\u05d3\u05e8\u05da'
+};
+
+var HEAD = [
+  '\u05ea\u05d0\u05e8\u05d9\u05da',
+  '\u05de\u05d6\u05d4\u05d4',
+  '\u05d2\u05d9\u05dc\u05d9\u05d5\u05df',
+  '\u05e4\u05e8\u05e9\u05d4',
+  '\u05de\u05d3\u05d5\u05e8',
+  '\u05e9\u05dd \u05d4\u05de\u05d3\u05d5\u05e8',
+  '\u05d3\u05d9\u05e8\u05d5\u05d2',
+  '\u05d4\u05e2\u05e8\u05d4',
+  '\u05de\u05d9\u05d9\u05dc'
+];
 
 function sheet_() {
   var ss = SpreadsheetApp.getActiveSpreadsheet();
@@ -73,7 +99,7 @@ function doPost(e) {
 
     if (row) {
       var cur = sh.getRange(row, 1, 1, HEAD.length).getValues()[0];
-      vals[0] = cur[0];                                  // לשמור על זמן הפנייה הראשונה
+      vals[0] = cur[0]; // keep the first-contact timestamp
       for (var j = 6; j &lt;= 8; j++) if (!vals[j]) vals[j] = cur[j];
       sh.getRange(row, 1, 1, HEAD.length).setValues([vals]);
     } else {
@@ -88,7 +114,7 @@ function doPost(e) {
 }
 
 function doGet() {
-  return ContentService.createTextOutput('ok');   // בדיקת חיים בדפדפן
+  return ContentService.createTextOutput('ok'); // liveness check in a browser
 }
 </pre>
 <script>
