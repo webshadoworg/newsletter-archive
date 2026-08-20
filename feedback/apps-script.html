@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>קוד Apps Script - איסוף משובים</title>
+<style>
+ body{margin:0;background:#eef2f5;font-family:'Open Sans','Assistant',Arial,sans-serif;color:#3d3d3d;}
+ .w{max-width:900px;margin:0 auto;padding:20px 14px 60px;}
+ h1{font-size:20px;color:#1c4587;margin:0 0 6px;}
+ p{font-size:14px;line-height:1.7;margin:0 0 14px;color:#4f6b84;}
+ .bar{position:sticky;top:0;background:#eef2f5;padding:10px 0 12px;z-index:2;}
+ button{background:#1c4587;color:#fff;border:0;border-radius:5px;padding:13px 26px;
+        font-size:16px;font-weight:700;font-family:inherit;cursor:pointer;}
+ #ok{margin-inline-start:12px;font-size:14px;font-weight:700;color:#1c7a3f;display:none;}
+ pre{direction:ltr;text-align:left;background:#fff;border:1px solid #cfdae4;border-radius:5px;
+     padding:14px;font-size:12.5px;line-height:1.55;overflow-x:auto;
+     font-family:ui-monospace,Menlo,Consolas,monospace;}
+</style></head><body><div class="w">
+<h1>קוד Apps Script - איסוף משובים</h1>
+<p>לוחצים על הכפתור, נכנסים לעורך של Apps Script, מוחקים הכל (Ctrl+A ואז Delete) ומדביקים (Ctrl+V). ואז Ctrl+S לשמירה.</p>
+<div class="bar"><button id="b">העתקת כל הקוד</button><span id="ok">הועתק ✓</span></div>
+<pre id="c">/**
+ * איסוף משובים מדף הנחיתה של העלון -&gt; Google Sheets
+ * ------------------------------------------------------------------
+ * נוצר 20.8.2026 עבור רפאל. הקוד הזה נכנס ל-Apps Script של גוגל שיטס
+ * (תוספים &gt; Apps Script), נפרס כ-Web app, וה-URL שמתקבל נכנס למשתנה
+ * ENDPOINT בקובץ hebrew-newsletter/feedback/index.html.
+ *
+ * הדף שולח *פעמיים* עם אותו d.id:
+ *   1. בטעינה  - {id,g,p,s,r}        הדירוג בכוכבים
+ *   2. בשליחה  - {id,g,p,s,c,e}      ההערה החופשית + מייל (אם סומן)
+ * לכן הסקריפט עושה upsert לפי id: שורה אחת לכל משוב, לא שתיים.
+ * שדה ריק בשליחה השנייה לא מוחק ערך שכבר נשמר.
+ *
+ * הדף שולח ב-mode:"no-cors" עם Content-Type: text/plain - בקשה "פשוטה"
+ * שלא דורשת preflight, ולכן היא עוברת ל-Apps Script בלי CORS.
+ * המשמעות: הדף לא רואה את התשובה. אין טעם להחזיר שגיאות.
+ */
+
+var SHEET = 'משובים';
+var NAMES = { '1': 'המאור שבה', '2': 'מתוק לנפש', '3': 'צעדני ואושעה', '4': 'צידה לדרך' };
+var HEAD = ['תאריך', 'מזהה', 'גיליון', 'פרשה', 'מדור', 'שם המדור', 'דירוג', 'הערה', 'מייל'];
+
+function sheet_() {
+  var ss = SpreadsheetApp.getActiveSpreadsheet();
+  var sh = ss.getSheetByName(SHEET) || ss.insertSheet(SHEET);
+  if (sh.getLastRow() === 0) {
+    sh.appendRow(HEAD);
+    sh.setFrozenRows(1);
+    sh.getRange(1, 1, 1, HEAD.length).setFontWeight('bold');
+    sh.setRightToLeft(true);
+  }
+  return sh;
+}
+
+function doPost(e) {
+  var lock = LockService.getScriptLock();
+  lock.waitLock(20000);
+  try {
+    var d = JSON.parse(e.postData.contents);
+    var sh = sheet_();
+    var vals = [new Date(), d.id || '', d.g || '', d.p || '', d.s || '',
+                NAMES[d.s] || '', d.r || '', d.c || '', d.e || ''];
+
+    var last = sh.getLastRow();
+    var row = 0;
+    if (last &gt; 1 &amp;&amp; d.id) {
+      var ids = sh.getRange(2, 2, last - 1, 1).getValues();
+      for (var i = 0; i &lt; ids.length; i++) {
+        if (String(ids[i][0]) === String(d.id)) { row = i + 2; break; }
+      }
+    }
+
+    if (row) {
+      var cur = sh.getRange(row, 1, 1, HEAD.length).getValues()[0];
+      vals[0] = cur[0];                                  // לשמור על זמן הפנייה הראשונה
+      for (var j = 6; j &lt;= 8; j++) if (!vals[j]) vals[j] = cur[j];
+      sh.getRange(row, 1, 1, HEAD.length).setValues([vals]);
+    } else {
+      sh.appendRow(vals);
+    }
+  } catch (err) {
+    Logger.log(err);
+  } finally {
+    lock.releaseLock();
+  }
+  return ContentService.createTextOutput('ok');
+}
+
+function doGet() {
+  return ContentService.createTextOutput('ok');   // בדיקת חיים בדפדפן
+}
+</pre>
+<script>
+document.getElementById('b').onclick=function(){
+  var t=document.getElementById('c').innerText;
+  navigator.clipboard.writeText(t).then(function(){
+    var o=document.getElementById('ok');o.style.display='inline';
+    setTimeout(function(){o.style.display='none';},2500);
+  },function(){
+    var r=document.createRange();r.selectNodeContents(document.getElementById('c'));
+    var s=getSelection();s.removeAllRanges();s.addRange(r);
+    alert('הדפדפן חסם העתקה אוטומטית. הקוד מסומן - Ctrl+C.');
+  });
+};
+</script>
+</div></body></html>
