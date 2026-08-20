@@ -17,6 +17,9 @@
   .top  { background:var(--ink); color:#fff; padding:20px 30px 18px; text-align:center; }
   .top h1 { margin:0; font-size:24px; font-weight:700; line-height:1.3; }
   .top p  { margin:6px 0 0; font-size:15px; opacity:.85; }
+  /* 20.8.2026 23:13 - "ספר הכניעה" בכותרת לחיץ ל-PDF המלא של הספר (בקשת רפאל). */
+  .top h1 a { color:#fff; text-decoration:underline; text-decoration-thickness:1px;
+              text-underline-offset:4px; }
   .pad  { padding:24px 30px 8px; }
   .dl { display:block; background:var(--bar); color:var(--ink); text-decoration:none;
         border:1px solid var(--rule); border-radius:4px; padding:13px 18px; margin:0 0 10px;
@@ -46,8 +49,9 @@
   <div class="card">
 
     <div class="top">
-      <h1>שני מאמרים מתוך "ספר הכניעה"</h1>
-      <p>מתוך גיליון כי תצא תשפ"ו</p>
+      <h1>שני מאמרים מתוך "<a href="https://gyenewsletters.netlify.app/pdf/sefer-hakniya.pdf" target="_blank">ספר הכניעה</a>"</h1>
+      <!-- 20.8.2026 23:12 - הנוסח שלו במקום "מתוך גיליון כי תצא תשפ"ו". -->
+      <p>בנושא תאווה כאלרגיה</p>
     </div>
 
     <div class="pad">
@@ -56,7 +60,7 @@
         הדפסת המאמרים (PDF) <span>A4</span></a>
 
       <!-- 20.8.2026 23:02 - הנוסח של רפאל, מילה במילה. -->
-      <p class="lead">"ספר הכניעה" הוא אסופת מאמרים ורשמים אישיים שנכתבו על ידי חברי GYE שנעזרו בשיטת 12 הצעדים. שני המאמרים שלפניכם הם הראשונים בספר, ושניהם מרחיבים את אותו רעיון: התאווה כאלרגיה.</p>
+      <p class="lead">"ספר הכניעה" הוא אסופת מאמרים שנכתבו על ידי חברי GYE שנעזרו בשיטת 12 הצעדים. שני המאמרים שלפניכם הם הראשונים בספר, ושניהם מרחיבים את אותו רעיון: התאווה כאלרגיה.</p>
 
       <!-- ================= מאמר 1 ================= -->
       <div class="art">
