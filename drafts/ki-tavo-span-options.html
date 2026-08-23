@@ -50,11 +50,14 @@
       <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" dir="rtl" style="width:100%; max-width:700px; margin:0 auto 30px auto;">
         <tr><td style="font:700 26px/1.3 'Open Sans',Arial,sans-serif; color:#0e2b4c; padding:0 0 8px 0;">שהאיור ייפרס על שתי הפסקאות</td></tr>
         <tr><td style="font:400 16px/1.7 'Open Sans',Arial,sans-serif; color:#5b6b7a;">
-        הטקסט של פסקאות 2-3 גבוה מכל תמונה שנכנסת בעמודה, בכל רוחב - וכשמגדילים את האיור, עמודת הטקסט
-        מצטמצמת והטקסט מוסיף שורות מהר יותר מכפי שהאיור מתגבה. לכן "עוד קצת רוחב" לא יכול לפתור את זה.<br><br>
-        <strong style="color:#1c4587;">ההמלצה שלי: ג&#39;</strong> - זה נותן את מה שביקשת (אפס טקסט מתחת לאיור) בלי לגעת באיור שלך.
-        אם חשוב לך שהאיור ייגמר בדיוק עם סוף הפסקה, <strong>ד&#39;</strong> - אבל אז בית המקדש נחתך.<br>
-        <span style="font-size:14px;">אפשרות חמישית, הנקייה מכולן: <strong>לייצר את האיור מחדש בפורמט גבוה (3:5)</strong> - ואז ד&#39; בלי שום חיתוך. אם יש לך את הפרומפט, זה חמש דקות.</span></td></tr>
+        הטקסט של פסקאות 2-3 גבוה מהאיור בכל רוחב שקיים, ולכן <strong>ציפה (float) לא יכולה לפתור את זה</strong> -
+        כשמגדילים את האיור, עמודת הטקסט מצטמצמת והטקסט מוסיף שורות מהר יותר מכפי שהאיור מתגבה.
+        מדדתי כל רוחב מ-220 עד 360; כמה טקסט נשאר מתחת לאיור:<br>
+        <span style="font-family:monospace; font-size:14px; color:#0e2b4c;">220:75 &nbsp; 240:106 &nbsp; 260:81 &nbsp; <strong>270:69</strong> &nbsp; 280:84 &nbsp; 290:72 (עכשיו) &nbsp; 300:87 &nbsp; 320:90 &nbsp; 340:93</span><br>
+        הטוב ביותר הוא 69 פיקסלים לעומת 72 עכשיו - כלומר אין שם מה למצוא. שתי האפשרויות שכן עובדות הן טבלה בשתי עמודות:<br><br>
+        <strong style="color:#1c4587;">ההמלצה שלי: ג&#39;</strong> - זה מה שביקשת בדיוק, והחיתוך משאיר את הנער והטלפון שלמים.
+        אם לא בא לך לגעת באיור - <strong>ב&#39;</strong>, שגם בו אין שום טקסט מתחת לאיור.<br>
+        <span style="font-size:14px;">ואם יש לך את הפרומפט של האיור: <strong>לייצר אותו מחדש בפורמט גבוה (3:5)</strong> נותן את ג&#39; בלי שום חיתוך. זו האפשרות הנקייה מכולן.</span></td></tr>
       </table>
 
   <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" dir="rtl" style="width:100%; max-width:700px; margin:0 auto 46px auto;">
@@ -83,28 +86,6 @@
     <tr><td style="padding:0 0 10px 0;">
       <table role="presentation" cellpadding="0" cellspacing="0" border="0" dir="rtl"><tr>
         <td valign="middle" style="width:44px;"><div style="width:38px; height:38px; border-radius:19px; background-color:#1c4587; color:#ffffff; font:700 21px/38px 'Open Sans',Arial,sans-serif; text-align:center;">ב</div></td>
-        <td valign="middle" style="font:700 21px/1.3 'Open Sans',Arial,sans-serif; color:#1c4587;">צפה, רוחב 280 - המינימום שנמדד</td>
-      </tr></table>
-    </td></tr>
-    <tr><td style="padding:0 0 14px 0; font:400 15px/1.65 'Open Sans',Arial,sans-serif; color:#5b6b7a;">אותו מבנה, רוחב אחר. מכל הרוחבים שבדקתי (200-400) זה זה שמשאיר <strong>הכי מעט טקסט מתחת לאיור</strong>. שינוי של פיקסל אחד בקוד, אבל עדיין נשארת שורה-שתיים מתחת.</td></tr>
-    <tr><td style="padding:0;">
-      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" dir="rtl" style="width:100%; max-width:660px; background-color:#ffffff; border:1px solid #d7e2ea; border-radius:6px;">
-        <tr><td class="pad txt" style="padding:26px 34px 26px 34px;">
-<h1 class="h1" style="Margin:0 0 12px; font-family:'Open Sans','Arial Hebrew',Arial,sans-serif; font-size:22px; line-height:1.22; color:#1c4587; font-weight:700; text-align:center;">וְשָׂמַחְתָּ בְכָל הַטּוֹב!</h1>
-<p style="Margin:0 0 18px; font-size:16px; line-height:1.75; text-align:justify;">פרשת &#39;כי תבוא&#39; פותחת במצות הביכורים, הכוללת בעצם שתי מצוות: הבאת פירות הביכורים ו&#39;מקרא ביכורים&#39; - דברי הודאה שאומר המביא אותם, על הטובות שעשה לנו ה&#39;, שהוציאנו ממצרים ונתן לנו &#39;אֶרֶץ זָבַת חָלָב וּדְבָשׁ&#39; שממנה הפירות.</p>
-<p style="Margin:0 0 18px; font-size:16px; line-height:1.75; text-align:justify;"><img class="wrapimg" src="https://gyenewsletters.netlify.app/images/bikurim-kitavo-560.jpg" width="280" align="left" hspace="9" vspace="4" alt="נער נושא סלסלת ביכורים ומביט אל בית המקדש" style="float:left; width:280px; max-width:280px; height:auto; margin:4px 18px 12px 0; border-radius:4px;">אחד הכלים החזקים במאבק מול התאווה, הוא הכרת תודה - לכתוב בכל יום רשימה של דברים שאנחנו מודים עליהם. אפשר לפתוח כל משפט ב&quot;אני אסיר תודה על&#8230;&quot; &quot;תודה על&#8230;&quot; או &quot;מודה אני לפניך ש&#8230;&quot;. לא כל כך משנה איך עושים את זה, העיקר שעושים את זה. גם אם בהתחלה זה מרגיש קצת מעושה.</p>
-<p style="Margin:0 0 18px; font-size:16px; line-height:1.75; text-align:justify;">למה זה עובד? פעמים רבות רגשות שליליים שולחים אותנו לחפש נחמה בתאווה. זו אחת הסיבות לכך שהקליפה שמחטיאה את האדם בעניינים אלה <span style="font-size:13px;">(זוהר ח&quot;א קמח.)</span> נקראת &#39;לילית&#39;, מפני &quot;שהיא מיללת תמיד&quot; <span style="font-size:13px;">(ליקוטי מוהר&quot;ן רכו)</span>. <span style="color:#1c4587; font-weight:700;">כשאנחנו נמצאים בתדר של הכרת תודה, אנחנו מתרחקים מהרגשות השליליים ומהתאווה, ומתקשרים אל ה&#39; יתברך ש&#39;עוֹז וְחֶדְוָה בִּמְקוֹמוֹ&#39;</span> <span style="font-size:13px;">(דברי הימים א טז כז)</span>.</p><div style="clear:both; font-size:0; line-height:0;">&nbsp;</div>
-<p style="Margin:0 0 18px; font-size:16px; line-height:1.75; text-align:justify;">הביכורים, כמו מצוות רבות אחרות, מובאים דווקא מן ה&#39;רֵאשִׁית&#39; וההתחלה. גם לאופן שבו אנחנו מתחילים את היום שלנו יש משמעות רבה, וההמלצה היא לכתוב את הרשימה כבר בבוקר, כדי לפתוח במבט חיובי (אפשר לעשות רשימה נוספת בלילה, לפני שהולכים לישון, כדי להודות על כל הטוב שהיה לנו ביום הזה).</p>
-<p style="Margin:0; font-size:16px; line-height:1.75; text-align:justify;">חבר בתכנית 12 הצעדים סיפר, שבמשך תקופה ארוכה הוא התמיד במסירות לכתוב מדי יום רשימה כזו, גם אם נזכר בכך רק בשתיים בלילה ונרדם תוך כדי כתיבה. &quot;אחרי שבעה חודשים כאלה הרגשתי שינוי עצום. בעבר, לא משנה כמה טוב היה מסביבי, הייתה בי נקודה פנימית שתמיד מרגישה רע, תמיד לא מרוצה. עכשיו התחושה היא הפוכה - גם אם מאוד מאתגר וקשה מסביבי, הנקודה הפנימית מרגישה טוב, ונותנת לי כוח לעבור את הכל!&quot; <span style="color:#1c4587; font-weight:700;">וְשָׂמַחְתָּ בְכָל הַטּוֹב!</span></p>
-        </td></tr>
-      </table>
-    </td></tr>
-  </table>
-
-  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" dir="rtl" style="width:100%; max-width:700px; margin:0 auto 46px auto;">
-    <tr><td style="padding:0 0 10px 0;">
-      <table role="presentation" cellpadding="0" cellspacing="0" border="0" dir="rtl"><tr>
-        <td valign="middle" style="width:44px;"><div style="width:38px; height:38px; border-radius:19px; background-color:#1c4587; color:#ffffff; font:700 21px/38px 'Open Sans',Arial,sans-serif; text-align:center;">ג</div></td>
         <td valign="middle" style="font:700 21px/1.3 'Open Sans',Arial,sans-serif; color:#1c4587;">שתי עמודות - האיור ממורכז אנכית מול שתי הפסקאות</td>
       </tr></table>
     </td></tr>
@@ -132,11 +113,11 @@
   <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" dir="rtl" style="width:100%; max-width:700px; margin:0 auto 46px auto;">
     <tr><td style="padding:0 0 10px 0;">
       <table role="presentation" cellpadding="0" cellspacing="0" border="0" dir="rtl"><tr>
-        <td valign="middle" style="width:44px;"><div style="width:38px; height:38px; border-radius:19px; background-color:#1c4587; color:#ffffff; font:700 21px/38px 'Open Sans',Arial,sans-serif; text-align:center;">ד</div></td>
+        <td valign="middle" style="width:44px;"><div style="width:38px; height:38px; border-radius:19px; background-color:#1c4587; color:#ffffff; font:700 21px/38px 'Open Sans',Arial,sans-serif; text-align:center;">ג</div></td>
         <td valign="middle" style="font:700 21px/1.3 'Open Sans',Arial,sans-serif; color:#1c4587;">האיור נחתך לפורמט גבוה - נפרס בדיוק על שתי הפסקאות</td>
       </tr></table>
     </td></tr>
-    <tr><td style="padding:0 0 14px 0; font:400 15px/1.65 'Open Sans',Arial,sans-serif; color:#5b6b7a;">בדיוק מה שביקשת, מילה במילה: גובה האיור זהה לגובה שתי הפסקאות, בלי טקסט מתחת ובלי אוויר מיותר. <strong>המחיר: חתכתי 25% מרוחב האיור מצד ימין</strong>, ובית המקדש נחתך בקצה. הנער והטלפון נשארו שלמים.</td></tr>
+    <tr><td style="padding:0 0 14px 0; font:400 15px/1.65 'Open Sans',Arial,sans-serif; color:#5b6b7a;">בדיוק מה שביקשת, מילה במילה: גובה האיור זהה לגובה שתי הפסקאות (הפרש 2 פיקסלים), בלי טקסט מתחת ובלי אוויר מיותר. <strong>המחיר: חתכתי 25% מרוחב האיור מצד ימין</strong>, ובית המקדש נחתך בקצה. הנער והטלפון נשארו שלמים. בנייד האיור יוצא גבוה (בערך 600 פיקסלים על מסך של 360) - תופס כמעט מסך שלם.</td></tr>
     <tr><td style="padding:0;">
       <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" dir="rtl" style="width:100%; max-width:660px; background-color:#ffffff; border:1px solid #d7e2ea; border-radius:6px;">
         <tr><td class="pad txt" style="padding:26px 34px 26px 34px;">
