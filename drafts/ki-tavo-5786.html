@@ -163,21 +163,29 @@
                        מיושרת עם המילה ארוש"). שורה 1 של הכיתוב ("לרכישת ... ארוש") נמדדה בדפדפן
                        ב-16px bold ויוצאת 269px, ולכן הטבלה הזאת רחבה בדיוק 269px וממורכזת: קצה
                        הכריכה הימנית נוגע בסוף "לרכישת", והשמאלית בתחילת "ארוש".
-                       136+133=269, גובה 228px לשתיהן (רפאל, 27.8.2026 18:40: "שהמחברות
-                       יהיו שוות בגודל"). היחסים 0.5967 / 0.5840 - האופניים השתנה מ-0.5878
-                       כי הצל האפור מתחת לכריכה נוקה ב-build-notebook-assets.mjs; לפני כן הוא
-                       נספר כחלק מהתמונה, ולכן הכריכה עצמה נדחפה כ-5px מעל השנייה למרות
-                       valign=bottom. הסכום 269 והגובה השווה נשמרים משתי הרוחבים האלה בדיוק.
                        ⚠ הרוחב תלוי בגופן העברי של הקליינט: Arial/Noto=269, Heebo=259,
-                       Assistant=234. אין דרך ב-HTML של אימייל לקשור רוחב תמונה לרוחב טקסט. -->
+                       Assistant=234. אין דרך ב-HTML של אימייל לקשור רוחב תמונה לרוחב טקסט.
+
+                       רפאל, 27.8.2026 21:35: "הן דבוקות אחת לשנייה וזה גדול ומכוער, צריך
+                       להקטין אותן ולהצמיד אותן למילים שאמרתי." שתי הדרישות מושכות לכיוונים
+                       הפוכים: "מוצמדות למילים" קובע את *הפריסה* על 269px, ו"להקטין" מוריד
+                       את *התמונות*. בגירסה הקודמת 136+133=269 בדיוק, ולכן לא נשאר אוויר
+                       באמצע - הן נגעו זו בזו. הפתרון: הפריסה נשארת 269, התמונות יורדות
+                       ל-107+105 (גובה 228 -> 179, כ-78%), והשארית - 57px - היא תא מרווח
+                       מפורש באמצע. הקצה הימני עדיין נוגע בסוף "לרכישת" והשמאלי בתחילת "ארוש".
+                       גובה זהה 179 לשתיהן; היחסים 0.5967 / 0.5840 (האופניים השתנה מ-0.5878
+                       כי הצל האפור מתחת לכריכה נוקה ב-build-notebook-assets.mjs).
+                       ⚠ המרווח הוא תא ולא padding: Outlook מתעלם מ-padding על td במקרים
+                       מסוימים, ואז השתיים חוזרות להידבק. -->
                   <td align="center" style="padding:0;">
                     <table role="presentation" width="269" cellpadding="0" cellspacing="0" border="0" dir="rtl" align="center" style="width:269px; max-width:100%; margin:0 auto;">
                       <tr>
-                        <td class="nb" align="right" valign="bottom" style="padding:0;">
-                          <a href="https://breslev.co.il/product/%D7%9E%D7%97%D7%91%D7%A8%D7%AA-%D7%94%D7%AA%D7%95%D7%93%D7%95%D7%AA-%D7%95%D7%94%D7%A0%D7%A4%D7%9C%D7%90%D7%95%D7%AA-%D7%A9%D7%9C%D7%99/" target="_blank" style="display:inline-block; text-decoration:none; border:0;"><img src="https://gyenewsletters.netlify.app/images/notebook-arush-bike-flush.png" width="136" height="228" alt="מחברת התודות והנפלאות שלי - עיצוב האופניים" style="display:block; width:136px; height:228px; border:0; outline:none;"></a>
+                        <td class="nb" align="right" valign="bottom" width="107" style="padding:0; width:107px;">
+                          <a href="https://breslev.co.il/product/%D7%9E%D7%97%D7%91%D7%A8%D7%AA-%D7%94%D7%AA%D7%95%D7%93%D7%95%D7%AA-%D7%95%D7%94%D7%A0%D7%A4%D7%9C%D7%90%D7%95%D7%AA-%D7%A9%D7%9C%D7%99/" target="_blank" style="display:inline-block; text-decoration:none; border:0;"><img src="https://gyenewsletters.netlify.app/images/notebook-arush-bike-flush.png" width="107" height="179" alt="מחברת התודות והנפלאות שלי - עיצוב האופניים" style="display:block; width:107px; height:179px; border:0; outline:none;"></a>
                         </td>
-                        <td class="nb" align="left" valign="bottom" style="padding:0;">
-                          <a href="https://breslev.co.il/product/%d7%9e%d7%97%d7%91%d7%a8%d7%aa-%d7%94%d7%aa%d7%95%d7%93%d7%95%d7%aa-%d7%95%d7%94%d7%a0%d7%a4%d7%9c%d7%90%d7%95%d7%aa-%d7%a9%d7%9c%d7%99-%d7%a6%d7%99%d7%a4%d7%95%d7%a8%d7%99%d7%9d/" target="_blank" style="display:inline-block; text-decoration:none; border:0;"><img src="https://gyenewsletters.netlify.app/images/notebook-arush-birds-flush.png" width="133" height="228" alt="מחברת התודות והנפלאות שלי - עיצוב הציפורים" style="display:block; width:133px; height:228px; border:0; outline:none;"></a>
+                        <td width="57" style="padding:0; width:57px; font-size:1px; line-height:1px;">&nbsp;</td>
+                        <td class="nb" align="left" valign="bottom" width="105" style="padding:0; width:105px;">
+                          <a href="https://breslev.co.il/product/%d7%9e%d7%97%d7%91%d7%a8%d7%aa-%d7%94%d7%aa%d7%95%d7%93%d7%95%d7%aa-%d7%95%d7%94%d7%a0%d7%a4%d7%9c%d7%90%d7%95%d7%aa-%d7%a9%d7%9c%d7%99-%d7%a6%d7%99%d7%a4%d7%95%d7%a8%d7%99%d7%9d/" target="_blank" style="display:inline-block; text-decoration:none; border:0;"><img src="https://gyenewsletters.netlify.app/images/notebook-arush-birds-flush.png" width="105" height="179" alt="מחברת התודות והנפלאות שלי - עיצוב הציפורים" style="display:block; width:105px; height:179px; border:0; outline:none;"></a>
                         </td>
                       </tr>
                     </table>
