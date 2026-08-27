@@ -44,9 +44,10 @@
       .foot p    { font-size:13px !important; }
       .foot .addr { font-size:11px !important; }
       .tak p     { font-size:15px !important; }
-      /* שני עיצובי המחברת: נשארים זה ליד זה, אבל בגובה קטן יותר - כדי שיכנסו גם ב-320px */
-      .nb        { padding-right:7px !important; padding-left:7px !important; }
-      .nb img    { height:170px !important; width:auto !important; }
+      /* שני עיצובי המחברת: נשארים זה ליד זה, אבל בגובה קטן יותר - כדי שיכנסו גם ב-320px.
+         בלי padding: הקצה החיצוני של כל כריכה צריך לגעת בקצה הטקסט גם בטלפון (רפאל, 17:54). */
+      .nb        { padding:0 !important; }
+      .nb img    { height:200px !important; width:auto !important; }
     }
   </style>
 </head>
@@ -159,15 +160,17 @@
                 </tr>
                 <tr>
                   <!-- אפשרות C (רפאל, 27.8.2026 17:50: "תנסה את c ואולי נחזור ל-A"): כל מחברת נצמדת
-                       לצד שלה בטבלה ברוחב מלא, גובה 284px - תקרת ה-2x של הצילומים שיש לנו. -->
+                       לצד שלה בטבלה ברוחב מלא, גובה 279px - תקרת ה-2x של הצילומים שיש לנו.
+                       הקבצים הם ה-flush, חתוכים בדיוק לקצה הכריכה (רפאל, 17:54: "תעשה שהקצה
+                       החיצוני שלהן מיושר עם הקצה של הטקסט"), ולכן קצה הכריכה נוגע בקצה הטקסט. -->
                   <td style="padding:0;">
                     <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" dir="rtl" style="width:100%;">
                       <tr>
                         <td class="nb" align="right" valign="bottom" style="padding:0;">
-                          <a href="https://breslev.co.il/product/%D7%9E%D7%97%D7%91%D7%A8%D7%AA-%D7%94%D7%AA%D7%95%D7%93%D7%95%D7%AA-%D7%95%D7%94%D7%A0%D7%A4%D7%9C%D7%90%D7%95%D7%AA-%D7%A9%D7%9C%D7%99/" target="_blank" style="display:inline-block; text-decoration:none; border:0;"><img src="https://gyenewsletters.netlify.app/images/notebook-arush-bike-hi.png" width="220" height="284" alt="מחברת התודות והנפלאות שלי - עיצוב האופניים" style="display:block; width:220px; height:284px; border:0; outline:none;"></a>
+                          <a href="https://breslev.co.il/product/%D7%9E%D7%97%D7%91%D7%A8%D7%AA-%D7%94%D7%AA%D7%95%D7%93%D7%95%D7%AA-%D7%95%D7%94%D7%A0%D7%A4%D7%9C%D7%90%D7%95%D7%AA-%D7%A9%D7%9C%D7%99/" target="_blank" style="display:inline-block; text-decoration:none; border:0;"><img src="https://gyenewsletters.netlify.app/images/notebook-arush-bike-flush.png" width="164" height="279" alt="מחברת התודות והנפלאות שלי - עיצוב האופניים" style="display:block; width:164px; height:279px; border:0; outline:none;"></a>
                         </td>
                         <td class="nb" align="left" valign="bottom" style="padding:0;">
-                          <a href="https://breslev.co.il/product/%d7%9e%d7%97%d7%91%d7%a8%d7%aa-%d7%94%d7%aa%d7%95%d7%93%d7%95%d7%aa-%d7%95%d7%94%d7%a0%d7%a4%d7%9c%d7%90%d7%95%d7%aa-%d7%a9%d7%9c%d7%99-%d7%a6%d7%99%d7%a4%d7%95%d7%a8%d7%99%d7%9d/" target="_blank" style="display:inline-block; text-decoration:none; border:0;"><img src="https://gyenewsletters.netlify.app/images/notebook-arush-birds-hi.png" width="166" height="284" alt="מחברת התודות והנפלאות שלי - עיצוב הציפורים" style="display:block; width:166px; height:284px; border:0; outline:none;"></a>
+                          <a href="https://breslev.co.il/product/%d7%9e%d7%97%d7%91%d7%a8%d7%aa-%d7%94%d7%aa%d7%95%d7%93%d7%95%d7%aa-%d7%95%d7%94%d7%a0%d7%a4%d7%9c%d7%90%d7%95%d7%aa-%d7%a9%d7%9c%d7%99-%d7%a6%d7%99%d7%a4%d7%95%d7%a8%d7%99%d7%9d/" target="_blank" style="display:inline-block; text-decoration:none; border:0;"><img src="https://gyenewsletters.netlify.app/images/notebook-arush-birds-flush.png" width="163" height="279" alt="מחברת התודות והנפלאות שלי - עיצוב הציפורים" style="display:block; width:163px; height:279px; border:0; outline:none;"></a>
                         </td>
                       </tr>
                     </table>
