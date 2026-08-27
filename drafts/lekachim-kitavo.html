@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="he" dir="rtl"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>הפקת לקחים — ליל כי תבוא</title>
+<style>
+ body{margin:0;background:#f4f6f9;font-family:'Noto Sans Hebrew','Open Sans','Arial Hebrew',Arial,sans-serif;color:#26303d}
+ .w{max-width:760px;margin:0 auto;background:#fff;padding:38px 40px 52px;box-shadow:0 1px 4px rgba(0,0,0,.08)}
+ h1{font-size:27px;color:#1c4587;margin:0 0 6px;line-height:1.3}
+ h2{font-size:20px;color:#1c4587;margin:34px 0 12px;padding-bottom:7px;border-bottom:2px solid #e3eaf5}
+ p{font-size:16.5px;line-height:1.85;margin:0 0 13px;text-align:justify}
+ p.li{margin:0 0 9px}
+ p.ok{color:#1a7a4c;font-weight:700;margin:-6px 0 20px}
+ code{background:#eef2f7;padding:1px 5px;border-radius:3px;font-size:14px;direction:ltr;display:inline-block}
+ strong{color:#12345f}
+ @media (max-width:640px){.w{padding:24px 18px 36px}}
+</style></head><body><div class="w">
+<h1>הפקת לקחים — ליל כי תבוא (27-28.8.2026)</h1>
+<p>הצעה לנהלים. שום סעיף כאן לא נכנס למפרט בלי אישור שלך — תגיד אילו אותיות לאשר.</p>
+<h2>מה באמת קרה</h2>
+<p>שמונה תקלות, ורק שתיים מהן היו באגים אמיתיים. השאר היו <strong>נהלים חסרים</strong>.</p>
+<p class="li">1. <strong>לחצנים שנשארו ב-PDF.</strong> הזיהוי היה לפי רשימת ביטויים. השבוע נוסף כפתור חדש ("לתרומה למשפחה") והוא פשוט לא היה ברשימה. רשימה סגורה תמיד תפגר אחרי הגיליון.</p>
+<p class="li">2. <strong>תמונות המחברות והמודעה על הרב פישר.</strong> אותו שורש: מה שיורד בהדפסה הוגדר כרשימה של פריטים ולא ככלל.</p>
+<p class="li">3. <strong>איור הביכורים נחתך בין העמודים.</strong> איור צף בתוך פסקה אינו שורה ואינו בלוק, ולכן העימוד "לא ראה" אותו.</p>
+<p class="li">4. <strong>אותה שורה חזרה בתחתית עמוד 1 ובראש עמוד 2.</strong> מלבני שורות של פסקה שעוטפת איור חופפים אנכית — ראש העמוד הבא חזר 66px אחורה.</p>
+<p class="li">5. <strong>עמוד זנב ב-37% מילוי.</strong> העימוד היה מכוון לגופן הגדול ביותר, לא למספר העמודים הקטן ביותר.</p>
+<p class="li">6. <strong>ה-preheader הופיע כטקסט גלוי במייל הטסטינג.</strong> מערכת הדיוור מוחקת <code>display:none</code> בייבוא.</p>
+<p class="li">7. <strong>בניתי מחדש את דף העבודה</strong> בזמן שכבר היה לך קובץ מוכן.</p>
+<p class="li">8. <strong>שתקתי יותר מדי זמן</strong> בזמן שחיכית ער.</p>
+<h2>ההצעה</h2>
+<p><strong>א. בגירסת ההדפסה — אין קליק.</strong></p>
+<p>כלל אחד במקום רשימה: כל מה שקיים במייל רק כדי שילחצו עליו, יורד בהדפסה. לחצן, תמונת מוצר שהיא לינק, ומודעה שכל תוכנה פסקה + כפתור. הזיהוי כבר מבני (רקע כהה + לינק), כך שכפתור חדש ייעלם לבד בלי שאזכור אותו. <strong>מה שנשאר בכוונה: טלפונים, מיילים ורצועות הקהל.</strong></p>
+<p class="ok">✅ מומלץ. כבר מיושם — צריך רק את אישורך שזה ייכנס למפרט.</p>
+<p><strong>ב. בדיקת PDF לפני שאני שולח לך.</strong></p>
+<p>לא לשלוח קובץ בלי שהסתכלתי על *כל* עמוד ועל *כל* תפר בין עמודים. שלוש התקלות של הלילה היו גלויות לעין בקבצי הבדיקה — פשוט לא פתחתי אותם.</p>
+<p class="ok">✅ מומלץ.</p>
+<p><strong>ג. preheader לא נכתב ב-HTML.</strong></p>
+<p>תמיד בשדה "טקסט תצוגה מקדימה" של מערכת הדיוור. ב-HTML הוא נשבר בייבוא, וזה מה שקרה הלילה.</p>
+<p class="ok">✅ מומלץ.</p>
+<p><strong>ד. קובץ מוכן שלך גובר על שחזור שלי.</strong></p>
+<p>אם יש לך קובץ, אני משתמש בו כמו שהוא. אני לא בונה מחדש עיצוב שכבר קיים אצלך בלי לשאול קודם.</p>
+<p class="ok">✅ מומלץ.</p>
+<p><strong>ה. כשאתה ממתין — עדכון כל 2-3 דקות.</strong></p>
+<p>גם אם אין מה לדווח. "עוד שתי דקות" עדיף על שקט.</p>
+<p class="ok">✅ מומלץ.</p>
+<p><strong>ו. תיקון בקוד, לא בגיליון.</strong></p>
+<p>כל אחד מארבעת הבאגים תוקן במנוע העימוד עצמו, לא בקובץ הזה. הם לא יחזרו בגיליון 4.</p>
+<p>לידיעה בלבד — לא צריך אישור.</p>
+<h2>מה עוד פתוח</h2>
+<p class="li">• ה-preheader של הגיליון (א/ב/ג) — עדיין לא בחרת.</p>
+<p class="li">• דף העבודה כשני עמודים נפרדים, פרח וטבלה, כמו שאמרת.</p>
+</div></body></html>
