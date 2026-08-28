@@ -92,8 +92,30 @@ var ISSUES = {
 var g = q.get("g") || "", p = q.get("p") || "", s = q.get("s") || "";
 var r = Math.max(0, Math.min(5, parseInt(q.get("r") || "0", 10)));
 var name = SECTIONS[s] || "";
-var id = (crypto && crypto.randomUUID) ? crypto.randomUUID()
+function uuid() {
+  return (crypto && crypto.randomUUID) ? crypto.randomUUID()
        : String(Date.now()) + "-" + Math.round(Math.random() * 1e6);
+}
+
+// שני מזהים, ושני תפקידים שונים לגמרי:
+//
+// id  - מזהה *הפנייה*. נולד בכל טעינת דף, ותפקידו היחיד לחבר את ההערה החופשית
+//       (שנשלחת אחרי לחיצת "שליחה") לאותה שורה שבה נרשם הדירוג בכוכבים.
+//       שני מזהי פנייה שונים לא אומרים שני אנשים - אותו קורא שמדרג ארבעה מדורים
+//       מייצר ארבעה.
+//
+// rid - מזהה *הקורא*. 28.8.2026, רפאל: "המזהה הקבוע יהיה גם משבוע לשבוע, נכון?
+//       אז כן, תעשה את זה". נשמר ב-localStorage של הדפדפן, ולכן חוזר שבוע אחרי
+//       שבוע ומאפשר לספור קוראים שונים ולראות מי חוזר.
+//       אנונימי לחלוטין: מספר אקראי, בלי IP (Apps Script בכלל לא מקבל אותו),
+//       בלי מייל ובלי שם. מוגבל לדפדפן הזה - אותו אדם בטלפון ובמחשב = שני מזהים,
+//       וניקוי נתוני גלישה מייצר מזהה חדש. כלומר זה *מינימום* של קוראים שונים.
+var id = uuid();
+var rid = "";
+try {
+  rid = localStorage.getItem("gye_rid") || "";
+  if (!rid) { rid = uuid(); localStorage.setItem("gye_rid", rid); }
+} catch (e) { rid = ""; }   // גלישה פרטית או חסימת אחסון - פשוט בלי מזהה קורא
 
 document.getElementById("sub").innerHTML = name
   ? "דירגת את המדור <b>" + name + "</b>" + (p ? " (פרשת " + p + ")" : "") +
@@ -126,7 +148,7 @@ function post(payload) {
   }).catch(function () {});
 }
 
-if (r > 0) post({ id: id, g: g, p: p, s: s, r: r });
+if (r > 0) post({ id: id, rid: rid, g: g, p: p, s: s, r: r });
 else document.getElementById("sub").textContent = "אפשר לכתוב לנו כאן מה חשבת על הגיליון.";
 
 // כתובת המייל מגיעה מהלינק עצמו (טוקן מערכת השליחה). אם היא לא הגיעה - שדה הקלדה נפתח בסימון.
@@ -143,7 +165,7 @@ document.getElementById("send").onclick = function () {
   if (okmail.checked && !e) { mail.style.display = "block"; mail.focus(); return; }
   if (!c && !e) return;
   this.disabled = true;
-  post({ id: id, g: g, p: p, s: s, c: c || "-", e: e });
+  post({ id: id, rid: rid, g: g, p: p, s: s, c: c || "-", e: e });
   document.getElementById("ask").style.display = "none";
   document.getElementById("thanks").textContent =
     e ? "תודה. קראנו, ונחזור אליך." : "תודה. קראנו.";
