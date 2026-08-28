@@ -41,7 +41,7 @@
  */
 var SHEET = '\u05de\u05e9\u05d5\u05d1\u05d9\u05dd';
 var NAMES = { '1': '\u05d4\u05de\u05d0\u05d5\u05e8 \u05e9\u05d1\u05d4', '2': '\u05de\u05ea\u05d5\u05e7 \u05dc\u05e0\u05e4\u05e9', '3': '\u05e6\u05e2\u05d3\u05e0\u05d9 \u05d5\u05d0\u05d5\u05e9\u05e2\u05d4', '4': '\u05e6\u05d9\u05d3\u05d4 \u05dc\u05d3\u05e8\u05da' };
-var HEAD = ['\u05ea\u05d0\u05e8\u05d9\u05da', '\u05de\u05d6\u05d4\u05d4', '\u05d2\u05d9\u05dc\u05d9\u05d5\u05df', '\u05e4\u05e8\u05e9\u05d4', '\u05de\u05d3\u05d5\u05e8', '\u05e9\u05dd \u05d4\u05de\u05d3\u05d5\u05e8', '\u05d3\u05d9\u05e8\u05d5\u05d2', '\u05d4\u05e2\u05e8\u05d4', '\u05de\u05d9\u05d9\u05dc'];
+var HEAD = ['\u05ea\u05d0\u05e8\u05d9\u05da', '\u05de\u05d6\u05d4\u05d4', '\u05d2\u05d9\u05dc\u05d9\u05d5\u05df', '\u05e4\u05e8\u05e9\u05d4', '\u05de\u05d3\u05d5\u05e8', '\u05e9\u05dd \u05d4\u05de\u05d3\u05d5\u05e8', '\u05d3\u05d9\u05e8\u05d5\u05d2', '\u05d4\u05e2\u05e8\u05d4', '\u05de\u05d9\u05d9\u05dc', '\u05de\u05d6\u05d4\u05d4 \u05e7\u05d5\u05e8\u05d0'];
 
 function sheet_() {
   var ss = SpreadsheetApp.getActiveSpreadsheet();
@@ -51,6 +51,10 @@ function sheet_() {
     sh.setFrozenRows(1);
     sh.getRange(1, 1, 1, HEAD.length).setFontWeight('bold');
     sh.setRightToLeft(true);
+  } else if (sh.getLastColumn() &lt; HEAD.length) {
+    for (var i = sh.getLastColumn(); i &lt; HEAD.length; i++) {
+      sh.getRange(1, i + 1).setValue(HEAD[i]).setFontWeight('bold');
+    }
   }
   return sh;
 }
@@ -62,7 +66,7 @@ function doPost(e) {
     var d = JSON.parse(e.postData.contents);
     var sh = sheet_();
     var vals = [new Date(), d.id || '', d.g || '', d.p || '', d.s || '',
-                NAMES[d.s] || '', d.r || '', d.c || '', d.e || ''];
+                NAMES[d.s] || '', d.r || '', d.c || '', d.e || '', d.rid || ''];
 
     var last = sh.getLastRow();
     var row = 0;
@@ -76,7 +80,7 @@ function doPost(e) {
     if (row) {
       var cur = sh.getRange(row, 1, 1, HEAD.length).getValues()[0];
       vals[0] = cur[0];
-      for (var j = 6; j &lt;= 8; j++) if (!vals[j]) vals[j] = cur[j];
+      for (var j = 6; j &lt;= 9; j++) if (!vals[j]) vals[j] = cur[j];
       sh.getRange(row, 1, 1, HEAD.length).setValues([vals]);
     } else {
       sh.appendRow(vals);
@@ -114,7 +118,13 @@ var L = {
   all:   '\u05e1\u05da \u05d4\u05de\u05e9\u05d5\u05d1\u05d9\u05dd',
   wrote: '\u05db\u05ea\u05d1\u05d5 \u05d2\u05dd \u05d4\u05e2\u05e8\u05d4',
   mail:  '\u05d4\u05e9\u05d0\u05d9\u05e8\u05d5 \u05de\u05d9\u05d9\u05dc',
-  gavg:  '\u05de\u05de\u05d5\u05e6\u05e2 \u05db\u05dc\u05dc\u05d9'
+  gavg:  '\u05de\u05de\u05d5\u05e6\u05e2 \u05db\u05dc\u05dc\u05d9',
+  t5:    '\u05e7\u05d5\u05e8\u05d0\u05d9\u05dd - \u05db\u05de\u05d4 \u05d2\u05d9\u05dc\u05d9\u05d5\u05e0\u05d5\u05ea \u05d3\u05d9\u05e8\u05d2 \u05db\u05dc \u05d0\u05d7\u05d3',
+  rid:   '\u05de\u05d6\u05d4\u05d4 \u05e7\u05d5\u05e8\u05d0',
+  issues:'\u05d2\u05d9\u05dc\u05d9\u05d5\u05e0\u05d5\u05ea',
+  fb:    '\u05de\u05e9\u05d5\u05d1\u05d9\u05dd',
+  ppl:   '\u05e7\u05d5\u05e8\u05d0\u05d9\u05dd \u05e9\u05d5\u05e0\u05d9\u05dd (\u05de\u05d9\u05e0\u05d9\u05de\u05d5\u05dd)',
+  perp:  '\u05de\u05e9\u05d5\u05d1\u05d9\u05dd \u05dc\u05e7\u05d5\u05e8\u05d0'
 };
 
 function setupSummary() {
@@ -151,16 +161,27 @@ function setupSummary() {
     [L.all,   '=COUNTA(' + "'" + SHEET + "'!B2:B)"],
     [L.wrote, '=COUNTIF(' + "'" + SHEET + "'!H2:H,\"&lt;&gt;\")"],
     [L.mail,  '=COUNTIF(' + "'" + SHEET + "'!I2:I,\"&lt;&gt;\")"],
-    [L.gavg,  '=IFERROR(AVERAGE(' + "'" + SHEET + "'!G2:G),\"\")"]
+    [L.gavg,  '=IFERROR(AVERAGE(' + "'" + SHEET + "'!G2:G),\"\")"],
+    [L.ppl,   '=IFERROR(COUNTA(UNIQUE(FILTER(' + "'" + SHEET + "'!J2:J," + "'" + SHEET + "'!J2:J&lt;&gt;\"\"))),0)"],
+    [L.perp,  '=IFERROR(COUNTIF(' + "'" + SHEET + "'!J2:J,\"&lt;&gt;\")/B39,\"\")"]
   ];
   for (var k = 0; k &lt; stats.length; k++) {
     sh.getRange(35 + k, 1).setValue(stats[k][0]);
     sh.getRange(35 + k, 2).setFormula(stats[k][1]);
   }
 
+  var Q2 = "'" + SHEET + "'!A:J";
+  var inner = 'select J, C where J is not null and C is not null group by J, C';
+  var f5 = '=IFERROR(QUERY(QUERY(' + Q2 + ',"' + inner + '",1),' +
+           '"select Col1, count(Col2) group by Col1 order by count(Col2) desc label ' +
+           lbl('Col1', L.rid) + ', ' + lbl('count(Col2)', L.issues) + '",1),"")';
+  sh.getRange(43, 1).setValue(L.t5).setFontWeight('bold').setFontSize(12);
+  sh.getRange(44, 1).setFormula(f5);
+
   sh.getRange('B:E').setNumberFormat('0.##');
   sh.setColumnWidth(1, 190);
   sh.getRange(38, 2).setNumberFormat('0.00');
+  sh.getRange(40, 2).setNumberFormat('0.0');
   SpreadsheetApp.flush();
 }
 </pre>
