@@ -88,7 +88,10 @@
             </td>
           </tr>
 
-          <!-- ================= SECTION 1: המאור שבה ================= -->
+          <!-- ================= מאמר 1: "שָׁנָה טוֹבָה וּמְתוּקָה!" =================
+               גיליון חג - אין מדורים קבועים (#1842). הכותרת בבאנר ולא ב-h1 בגוף.
+               הבאנר: node hebrew-newsletter/build-section-banner.mjs --key shana --width 1980
+               הגוף: node hebrew-newsletter/issue-5-rosh-hashana/build-article1.mjs -->
           <tr>
             <td class="pad" id="maamar1" style="padding:42px 34px 0 34px;">
               <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" dir="rtl" style="width:100%;">
@@ -106,19 +109,47 @@
           </tr>
           <tr>
             <td align="center" class="sec-top" style="padding:26px 0 0 0; font-size:0; line-height:0;">
-              <a href="https://gye.org.il" target="_blank" style="display:block; text-decoration:none;"><img src="https://gyenewsletters.netlify.app/images/banner-hamaor-660.png"
-                   width="660" alt="המאור שבה"
+              <a href="https://gye.org.il" target="_blank" style="display:block; text-decoration:none;"><img src="https://gyenewsletters.netlify.app/images/banner-shana-660.png"
+                   width="660" alt="שנה טובה ומתוקה"
                    style="display:block; width:100%; max-width:660px; height:auto;"></a>
             </td>
           </tr>
           <tr>
             <td class="pad txt" style="padding:0 34px 10px 34px;">
 
-              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" dir="rtl" style="width:100%;">
+              <!-- ==== מאמר 1: "שָׁנָה טוֹבָה וּמְתוּקָה!" - הקופי של רפאל. המקור היחיד הוא
+                   article1-copy.md (= הטיוטה הקפואה + התיקונים שלו, מתועדים שם לפי מספר
+                   הודעה). נבנה ע"י build-article1.mjs - אל תערוך את ה-HTML ביד.
+                   **אין h1 כאן** - הכותרת היא הבאנר שמעל (#1842). מראי המקום בגופן
+                   13px, סוגריים וטקסט. ==== -->
+              <p style="Margin:0 0 18px; font-size:16px; line-height:1.75; text-align:justify;">אחד הסימנים הבולטים בליל ראש השנה הוא התפוח בדבש, שבעת אכילתו רגילים לבקש: &quot;שְׁתַּחֲדֵשׁ עָלֵינוּ שָׁנָה טוֹבָה וּמְתוּקָה&quot;. מה ההבדל בין &#39;שנה טובה&#39; ל&#39;שנה מתוקה&#39;?</p>
+              <p style="Margin:0 0 18px; font-size:16px; line-height:1.75; text-align:justify;">שנה טובה היא שנה שבה אנחנו יודעים שאנחנו בוחרים נכון, שאנחנו עושים את הדבר הטוב. יש בכך אמנם מתיקות מסוימת, כמו המתיקות הבסיסית של התפוח, אבל עדיין - המתיקות הזו לא דומה לעוצמה של הדבש. שנה מתוקה היא שנה שבה אנחנו מרגישים בפנים חיבור חזק לדרך שעברנו, ההרגשה הטובה הזו דומה למתיקות המרוכזת של הדבש.</p>
+              <p style="Margin:0 0 18px; font-size:16px; line-height:1.75; text-align:justify;">כמובן, כדי ששנה תהיה שנה מתוקה, היא צריכה קודם כל להיות שנה טובה. רק אחרי המנה העיקרית מגישים את הקינוח. רק אחרי שבחרנו בטוב והתמדנו בתהליך - נזכה גם למתיקות.</p>
+              <p style="Margin:0 0 18px; font-size:16px; line-height:1.75; text-align:justify;">ר&#39; צדוק הכהן מלובלין <span style="font-size:13px;">(פרי צדיק ראש השנה אות א)</span> דרש על כך את הפסוק &quot;אוֹר זָרוּעַ לַצַּדִּיק וּלְיִשְׁרֵי לֵב שִׂמְחָה&quot; <span style="font-size:13px;">(תהלים צז יא)</span>. &#39;צדיק&#39; הוא האדם שמחויב לדרך הטובה, &quot;גם אם אינו מרגיש בעצמו עוד טעם ומתיקות&quot; (מלבד המתיקות הבסיסית של הידיעה שבחר בטוב). אצלו האור הוא רק &#39;אור זרוע&#39; וגנוז, אור פוטנציאלי. אבל בהמשך הדרך מתיישר הלב ומגיעה &#39;שמחה&#39; גלויה ופורצת.</p>
+              <p style="Margin:0 0 18px; font-size:16px; line-height:1.75; text-align:justify;">בדומה לכך, חז&quot;ל דרשו <span style="font-size:13px;">(שבת פח.)</span> שעם ישראל נמשל לתפוח, מכיון שאמר &quot;נַעֲשֶׂה וְנִשְׁמָע&quot; <span style="font-size:13px;">(שמות כד ז)</span> ובכך הקדים את ה&#39;נעשה&#39; ל&#39;נשמע&#39;, כמו עץ התפוח שצמיחת פירותיו קודמת לצמיחת העלים שלו. ה&#39;נעשה&#39; הוא התפוח, הוא המחויבות שלנו לדרך הטובה. ה&#39;נשמע&#39; הוא הדבש, הוא ההבנה שבאה וצומחת עם הזמן עד כמה הדרך הזו באמת מתוקה. אם נתאמץ לתת את הפירות, יבואו אחר כך גם העלים, הזמנים שבהם נוכל לשבת וליהנות ממשב רוח רענן.</p>
+              <p style="Margin:0 0 18px; font-size:16px; line-height:1.75; text-align:justify;">כעת לא נשאר לנו אלא לאחל לכם שנה טובה ומתוקה. במלוא מובן המילה!</p>
+
+              <!-- ==== הטבלה של #1844 (רפאל, 31.8.2026 16:49) - 7 עמודות, מימין לשמאל,
+                   התוכן והעיצוב מועתקים מהצילום ששלח. הרוחב הפנימי כאן ~592px, כלומר ~85px
+                   לעמודה - צר, וזו הסיבה שהוצעה לו גם גירסה מסובבת של 2 עמודות. ==== -->
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" dir="rtl" style="width:100%; table-layout:fixed; Margin:4px 0 0;">
                 <tr>
-                  <td style="padding:16px 18px; background-color:#f7f4ea; border:2px dashed #cbb96a;">
-                    <p style="Margin:0; font-size:15px; line-height:1.7; text-align:right; color:#8a7524;"><strong>[ממלא מקום]</strong> מדור 1 (המאור שבה) - כותרת, טקסט, ומשפט מפתח אחד להדגשה.</p>
-                  </td>
+                  <td style="width:14.28%; border:1px solid #b9c9d6; padding:9px 3px; text-align:center; font-size:13px; line-height:1.35; color:#333333;">תפוח</td>
+                  <td style="width:14.28%; border:1px solid #b9c9d6; padding:9px 3px; text-align:center; font-size:13px; line-height:1.35; color:#333333;">מתיקות בסיסית</td>
+                  <td style="width:14.28%; border:1px solid #b9c9d6; padding:9px 3px; text-align:center; font-size:13px; line-height:1.35; color:#333333;">מחויבות לדרך</td>
+                  <td style="width:14.28%; border:1px solid #b9c9d6; padding:9px 3px; text-align:center; font-size:13px; line-height:1.35; color:#333333;">צדיק</td>
+                  <td style="width:14.28%; border:1px solid #b9c9d6; padding:9px 3px; text-align:center; font-size:13px; line-height:1.35; color:#333333;">אור זרוע</td>
+                  <td style="width:14.28%; border:1px solid #b9c9d6; padding:9px 3px; text-align:center; font-size:13px; line-height:1.35; color:#333333;">נעשה</td>
+                  <td style="width:14.28%; border:1px solid #b9c9d6; padding:9px 3px; text-align:center; font-size:13px; line-height:1.35; color:#333333;">פירות</td>
+                </tr>
+                <tr>
+                  <td style="width:14.28%; border:1px solid #b9c9d6; padding:9px 3px; text-align:center; font-size:13px; line-height:1.35; color:#333333;">דבש</td>
+                  <td style="width:14.28%; border:1px solid #b9c9d6; padding:9px 3px; text-align:center; font-size:13px; line-height:1.35; color:#333333;">מתיקות גבוהה</td>
+                  <td style="width:14.28%; border:1px solid #b9c9d6; padding:9px 3px; text-align:center; font-size:13px; line-height:1.35; color:#333333;">חיבור לדרך</td>
+                  <td style="width:14.28%; border:1px solid #b9c9d6; padding:9px 3px; text-align:center; font-size:13px; line-height:1.35; color:#333333;">ישר לב</td>
+                  <td style="width:14.28%; border:1px solid #b9c9d6; padding:9px 3px; text-align:center; font-size:13px; line-height:1.35; color:#333333;">שמחה</td>
+                  <td style="width:14.28%; border:1px solid #b9c9d6; padding:9px 3px; text-align:center; font-size:13px; line-height:1.35; color:#333333;">נשמע</td>
+                  <td style="width:14.28%; border:1px solid #b9c9d6; padding:9px 3px; text-align:center; font-size:13px; line-height:1.35; color:#333333;">עלים</td>
                 </tr>
               </table>
             </td>
@@ -162,169 +193,19 @@
                להחזרה: הבלוק המלא בגיליון 4, hebrew-newsletter/issue-4-nitzavim/nitzavim.html,
                בין הערות SECTION 4 ל-SECTION 2. ==== -->
 
-          <!-- ================= SECTION 2: מתוק לנפש ================= -->
-          <tr>
-            <td class="pad" id="maamar2" style="padding:42px 34px 0 34px;">
-              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" dir="rtl" style="width:100%;">
-                <tr>
-                  <td width="50%" valign="middle" style="width:50%; padding:0;">
-                    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td height="1" style="height:1px; background-color:#cfdcea; font-size:1px; line-height:1px;">&nbsp;</td></tr></table>
-                  </td>
-                  <td align="center" valign="middle" class="aud" style="padding:0 13px; white-space:nowrap; font-family:'Open Sans','Arial Hebrew',Arial,sans-serif; font-size:14px; line-height:1.2; font-weight:700; letter-spacing:1px; color:#7b8fa5;">למתמודדים</td>
-                  <td width="50%" valign="middle" style="width:50%; padding:0;">
-                    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td height="1" style="height:1px; background-color:#cfdcea; font-size:1px; line-height:1px;">&nbsp;</td></tr></table>
-                  </td>
-                </tr>
-              </table>
-            </td>
-          </tr>
-          <tr>
-            <td align="center" class="sec-top" style="padding:26px 0 0 0; font-size:0; line-height:0;">
-              <a href="https://gye.org.il" target="_blank" style="display:block; text-decoration:none;"><img src="https://gyenewsletters.netlify.app/images/banner-matok-660.png"
-                   width="660" alt="מתוק לנפש"
-                   style="display:block; width:100%; max-width:660px; height:auto;"></a>
-            </td>
-          </tr>
-          <tr>
-            <td class="pad txt" style="padding:0 34px 10px 34px;">
+          <!-- ==== 31.8.2026, #1842: המדור הזה **לא קיים בגיליון הזה**. רפאל: "בגיליון ראש
+               השנה ובשאר גיליונות החגים שחלים בשבת לא יהיו המדורים הקבועים". גיליון חג =
+               מאמרים בלבד, כל אחד עם באנר משלו. ירדו כאן כיחידה אחת: רצועת הקהל, הבאנר,
+               גוף המדור, בלוק ה-CTA, ורצועת המשוב. (שמות הנכסים והמזהים לא נכתבים כאן
+               בכוונה - הערה שמצטטת את מה שהוסר גורמת ל-grep לדווח שהוא עוד שם.)
+               להחזרה בגיליון רגיל: הבלוק המלא ב-hebrew-newsletter/issue-4-nitzavim/nitzavim.html. ==== -->
 
-              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" dir="rtl" style="width:100%;">
-                <tr>
-                  <td style="padding:16px 18px; background-color:#f7f4ea; border:2px dashed #cbb96a;">
-                    <p style="Margin:0; font-size:15px; line-height:1.7; text-align:right; color:#8a7524;"><strong>[ממלא מקום]</strong> מדור 2 (מתוק לנפש) - כותרת, טקסט, ומשפט מפתח אחד להדגשה.</p>
-                  </td>
-                </tr>
-              </table>
-
-              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" dir="rtl" style="width:100%; margin-top:26px;">
-                <tr>
-                  <td class="cta" style="padding:20px 0 20px 0; border-top:4px solid #d3e2e5; border-bottom:4px solid #d3e2e5;">
-                  <p style="Margin:0 0 1px; font-family:'Frank Ruehl Libre','Frank Ruehl CLM','David Libre',David,'Times New Roman',Georgia,serif; font-size:16px; line-height:1.4; font-weight:700; color:#1c4587; text-align:center;">מרגיש שאתה לבד בהתמודדות הזו ורוצה עזרה?</p>
-                  <p style="Margin:0 0 7px; font-family:'Frank Ruehl Libre','Frank Ruehl CLM','David Libre',David,'Times New Roman',Georgia,serif; font-size:16px; line-height:1.4; font-weight:700; color:#1c4587; text-align:center;">מחפש לבנות ביחד תכנית אישית להתקדמות?</p>
-                  <p style="Margin:0 0 1px; font-family:'Frank Ruehl Libre','Frank Ruehl CLM','David Libre',David,'Times New Roman',Georgia,serif; font-size:16px; line-height:1.4; font-weight:700; color:#1c4587; text-align:center;">אתה מוזמן לשיחת ייעוץ והכוונה ללא תשלום</p>
-                  <p style="Margin:0 0 8px; font-family:'Frank Ruehl Libre','Frank Ruehl CLM','David Libre',David,'Times New Roman',Georgia,serif; font-size:16px; line-height:1.4; font-weight:700; color:#1c4587; text-align:center;">נשמור על הפרטיות שלך והכל יישאר בינינו</p>
-                    <table role="presentation" cellpadding="0" cellspacing="0" border="0" dir="rtl" align="center" class="ctac" style="margin:0 auto;">
-                      <tr>
-                        <td style="font-family:'Frank Ruehl Libre','Frank Ruehl CLM','David Libre',David,'Times New Roman',Georgia,serif; font-size:16px; line-height:1.4; font-weight:700; color:#1c4587; padding:0 0 0 3px; white-space:nowrap;">רפאל&nbsp;&#8201;<a href="tel:+9720587004152" style="color:#1c4587; text-decoration:none;"><span dir="ltr" style="unicode-bidi:embed;">058-7004152</span></a></td>
-                        <td class="sep" valign="middle" align="center" style="padding:0 5px; font-size:0; line-height:0;"><div style="width:5px; height:5px; background-color:#1c4587; border-radius:50%; font-size:0; line-height:0; mso-line-height-rule:exactly;">&#8203;</div></td>
-                        <td style="font-family:'Frank Ruehl Libre','Frank Ruehl CLM','David Libre',David,'Times New Roman',Georgia,serif; font-size:16px; line-height:1.4; font-weight:700; color:#1c4587; padding:0 3px 0 0; white-space:nowrap;"><a href="mailto:shmor.help@gmail.com" style="color:#1c4587; text-decoration:none;"><span dir="ltr" style="unicode-bidi:embed;">shmor.help@gmail.com</span></a></td>
-                      </tr>
-                    </table>
-                  </td>
-                </tr>
-              </table>
-            </td>
-          </tr>
-          <tr>
-            <td class="pad" style="padding:8px 34px 0 34px;">
-            <!-- ==== רצועת משוב (ו1, רפאל 18.8.2026; הוחזרה לגיליון 4 - 31.8.2026, "תוסיף את האפשרות לשלוח משוב בסוף כל אחד מן המדורים") - מדור 2 ==== -->
-            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" dir="rtl" style="border-collapse:collapse; background:#f4f8f9; border-top:1px solid #dfe8ec; border-bottom:1px solid #dfe8ec;">
-              <!-- הרווח מתחת לכותרת עבר הלוך ושוב: 8px -> 15px (18.8.2026, "הכיתוב קרוב מדי לכוכבים. תגביה
-                   אותו קצת") -> 9px (18.8.2026 19:41, "משוב אנונימי וכו&#39; - תקרב יותר לכוכבים"). אחרי ש-
-                   "(אנונימי)" הוקטן הכותרת קלה יותר, ו-15 נראה מנותק. -->
-              <tr><td align="center" style="padding:13px 14px 9px; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:15px; font-weight:700; color:#1c4587;">המדור הזה עזר לך? <span style="font-size:13px;">(משוב אנונימי)</span></td></tr>
-              <tr><td style="padding:0 26px 4px;">
-                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" dir="rtl" style="border-collapse:collapse;">
-                  <tr>
-                      <td align="center" width="20%" style="padding:0 2px;"><a href="https://gyenewsletters.netlify.app/feedback/?g=5&amp;p=%D7%A8%D7%90%D7%A9%20%D7%94%D7%A9%D7%A0%D7%94&amp;s=2&amp;r=1" target="_blank" style="text-decoration:none;"><img src="https://gyenewsletters.netlify.app/images/star-v1-1.png" width="44" height="44" alt="1" style="border:0; display:inline-block;"></a></td>
-                      <td align="center" width="20%" style="padding:0 2px;"><a href="https://gyenewsletters.netlify.app/feedback/?g=5&amp;p=%D7%A8%D7%90%D7%A9%20%D7%94%D7%A9%D7%A0%D7%94&amp;s=2&amp;r=2" target="_blank" style="text-decoration:none;"><img src="https://gyenewsletters.netlify.app/images/star-v1-2.png" width="44" height="44" alt="2" style="border:0; display:inline-block;"></a></td>
-                      <td align="center" width="20%" style="padding:0 2px;"><a href="https://gyenewsletters.netlify.app/feedback/?g=5&amp;p=%D7%A8%D7%90%D7%A9%20%D7%94%D7%A9%D7%A0%D7%94&amp;s=2&amp;r=3" target="_blank" style="text-decoration:none;"><img src="https://gyenewsletters.netlify.app/images/star-v1-3.png" width="44" height="44" alt="3" style="border:0; display:inline-block;"></a></td>
-                      <td align="center" width="20%" style="padding:0 2px;"><a href="https://gyenewsletters.netlify.app/feedback/?g=5&amp;p=%D7%A8%D7%90%D7%A9%20%D7%94%D7%A9%D7%A0%D7%94&amp;s=2&amp;r=4" target="_blank" style="text-decoration:none;"><img src="https://gyenewsletters.netlify.app/images/star-v1-4.png" width="44" height="44" alt="4" style="border:0; display:inline-block;"></a></td>
-                      <td align="center" width="20%" style="padding:0 2px;"><a href="https://gyenewsletters.netlify.app/feedback/?g=5&amp;p=%D7%A8%D7%90%D7%A9%20%D7%94%D7%A9%D7%A0%D7%94&amp;s=2&amp;r=5" target="_blank" style="text-decoration:none;"><img src="https://gyenewsletters.netlify.app/images/star-v1-5.png" width="44" height="44" alt="5" style="border:0; display:inline-block;"></a></td>
-                  </tr>
-                </table>
-              </td></tr>
-              <tr><td style="padding:2px 26px 12px;">
-                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" dir="rtl" style="border-collapse:collapse; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:12px; color:#8d9aa4;">
-                  <tr><td align="right">בכלל לא</td><td align="left">מאוד</td></tr>
-                </table>
-              </td></tr>
-            </table>
-            <!-- ==== סוף רצועת משוב - מדור 2 ==== -->
-            </td>
-          </tr>
-
-          <!-- ================= SECTION 3: צעדני ואושעה ================= -->
-          <tr>
-            <td class="pad" id="maamar3" style="padding:42px 34px 0 34px;">
-              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" dir="rtl" style="width:100%;">
-                <tr>
-                  <td width="50%" valign="middle" style="width:50%; padding:0;">
-                    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td height="1" style="height:1px; background-color:#cfdcea; font-size:1px; line-height:1px;">&nbsp;</td></tr></table>
-                  </td>
-                  <td align="center" valign="middle" class="aud" style="padding:0 13px; white-space:nowrap; font-family:'Open Sans','Arial Hebrew',Arial,sans-serif; font-size:14px; line-height:1.2; font-weight:700; letter-spacing:1px; color:#7b8fa5;">למכורים</td>
-                  <td width="50%" valign="middle" style="width:50%; padding:0;">
-                    <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td height="1" style="height:1px; background-color:#cfdcea; font-size:1px; line-height:1px;">&nbsp;</td></tr></table>
-                  </td>
-                </tr>
-              </table>
-            </td>
-          </tr>
-          <tr>
-            <td align="center" class="sec-top" style="padding:26px 0 0 0; font-size:0; line-height:0;">
-              <a href="https://gye.org.il" target="_blank" style="display:block; text-decoration:none;"><img src="https://gyenewsletters.netlify.app/images/banner-tzaadeni-660.png"
-                   width="660" alt="צעדני ואושעה"
-                   style="display:block; width:100%; max-width:660px; height:auto;"></a>
-            </td>
-          </tr>
-          <tr>
-            <td class="pad txt" style="padding:0 34px 4px 34px;">
-
-              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" dir="rtl" style="width:100%;">
-                <tr>
-                  <td style="padding:16px 18px; background-color:#f7f4ea; border:2px dashed #cbb96a;">
-                    <p style="Margin:0; font-size:15px; line-height:1.7; text-align:right; color:#8a7524;"><strong>[ממלא מקום]</strong> מדור 3 (צעדני ואושעה) - כותרת, טקסט, ומשפט מפתח אחד להדגשה.</p>
-                  </td>
-                </tr>
-              </table>
-
-              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" dir="rtl" style="width:100%; margin-top:26px;">
-                <tr>
-                  <td class="cta" style="padding:20px 0 20px 0; border-top:4px solid #d3e2e5; border-bottom:4px solid #d3e2e5;">
-                  <p style="Margin:0 0 1px; font-family:'Frank Ruehl Libre','Frank Ruehl CLM','David Libre',David,'Times New Roman',Georgia,serif; font-size:16px; line-height:1.4; font-weight:700; color:#1c4587; text-align:center;">מתלבט אם אתה מתמודד עם התמכרות?</p>
-                  <p style="Margin:0 0 7px; font-family:'Frank Ruehl Libre','Frank Ruehl CLM','David Libre',David,'Times New Roman',Georgia,serif; font-size:16px; line-height:1.4; font-weight:700; color:#1c4587; text-align:center;">חושב שאתה מכור ורוצה עזרה?</p>
-                  <p style="Margin:0 0 1px; font-family:'Frank Ruehl Libre','Frank Ruehl CLM','David Libre',David,'Times New Roman',Georgia,serif; font-size:16px; line-height:1.4; font-weight:700; color:#1c4587; text-align:center;">אתה מוזמן לשיחת ייעוץ והכוונה ללא תשלום</p>
-                  <p style="Margin:0 0 8px; font-family:'Frank Ruehl Libre','Frank Ruehl CLM','David Libre',David,'Times New Roman',Georgia,serif; font-size:16px; line-height:1.4; font-weight:700; color:#1c4587; text-align:center;">נשמור על הפרטיות שלך והכל יישאר בינינו</p>
-                    <table role="presentation" cellpadding="0" cellspacing="0" border="0" dir="rtl" align="center" class="ctac" style="margin:0 auto;">
-                      <tr>
-                        <td style="font-family:'Frank Ruehl Libre','Frank Ruehl CLM','David Libre',David,'Times New Roman',Georgia,serif; font-size:16px; line-height:1.4; font-weight:700; color:#1c4587; padding:0 0 0 3px; white-space:nowrap;">רפאל&nbsp;&#8201;<a href="tel:+9720587004152" style="color:#1c4587; text-decoration:none;"><span dir="ltr" style="unicode-bidi:embed;">058-7004152</span></a></td>
-                        <td class="sep" valign="middle" align="center" style="padding:0 5px; font-size:0; line-height:0;"><div style="width:5px; height:5px; background-color:#1c4587; border-radius:50%; font-size:0; line-height:0; mso-line-height-rule:exactly;">&#8203;</div></td>
-                        <td style="font-family:'Frank Ruehl Libre','Frank Ruehl CLM','David Libre',David,'Times New Roman',Georgia,serif; font-size:16px; line-height:1.4; font-weight:700; color:#1c4587; padding:0 3px 0 0; white-space:nowrap;"><a href="mailto:shmor.help@gmail.com" style="color:#1c4587; text-decoration:none;"><span dir="ltr" style="unicode-bidi:embed;">shmor.help@gmail.com</span></a></td>
-                      </tr>
-                    </table>
-                  </td>
-                </tr>
-              </table>
-            </td>
-          </tr>
-          <tr>
-            <td class="pad" style="padding:8px 34px 0 34px;">
-            <!-- ==== רצועת משוב (ו1, רפאל 18.8.2026; הוחזרה לגיליון 4 - 31.8.2026, "תוסיף את האפשרות לשלוח משוב בסוף כל אחד מן המדורים") - מדור 3 ==== -->
-            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" dir="rtl" style="border-collapse:collapse; background:#f4f8f9; border-top:1px solid #dfe8ec; border-bottom:1px solid #dfe8ec;">
-              <!-- הרווח מתחת לכותרת עבר הלוך ושוב: 8px -> 15px (18.8.2026, "הכיתוב קרוב מדי לכוכבים. תגביה
-                   אותו קצת") -> 9px (18.8.2026 19:41, "משוב אנונימי וכו&#39; - תקרב יותר לכוכבים"). אחרי ש-
-                   "(אנונימי)" הוקטן הכותרת קלה יותר, ו-15 נראה מנותק. -->
-              <tr><td align="center" style="padding:13px 14px 9px; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:15px; font-weight:700; color:#1c4587;">המדור הזה עזר לך? <span style="font-size:13px;">(משוב אנונימי)</span></td></tr>
-              <tr><td style="padding:0 26px 4px;">
-                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" dir="rtl" style="border-collapse:collapse;">
-                  <tr>
-                      <td align="center" width="20%" style="padding:0 2px;"><a href="https://gyenewsletters.netlify.app/feedback/?g=5&amp;p=%D7%A8%D7%90%D7%A9%20%D7%94%D7%A9%D7%A0%D7%94&amp;s=3&amp;r=1" target="_blank" style="text-decoration:none;"><img src="https://gyenewsletters.netlify.app/images/star-v1-1.png" width="44" height="44" alt="1" style="border:0; display:inline-block;"></a></td>
-                      <td align="center" width="20%" style="padding:0 2px;"><a href="https://gyenewsletters.netlify.app/feedback/?g=5&amp;p=%D7%A8%D7%90%D7%A9%20%D7%94%D7%A9%D7%A0%D7%94&amp;s=3&amp;r=2" target="_blank" style="text-decoration:none;"><img src="https://gyenewsletters.netlify.app/images/star-v1-2.png" width="44" height="44" alt="2" style="border:0; display:inline-block;"></a></td>
-                      <td align="center" width="20%" style="padding:0 2px;"><a href="https://gyenewsletters.netlify.app/feedback/?g=5&amp;p=%D7%A8%D7%90%D7%A9%20%D7%94%D7%A9%D7%A0%D7%94&amp;s=3&amp;r=3" target="_blank" style="text-decoration:none;"><img src="https://gyenewsletters.netlify.app/images/star-v1-3.png" width="44" height="44" alt="3" style="border:0; display:inline-block;"></a></td>
-                      <td align="center" width="20%" style="padding:0 2px;"><a href="https://gyenewsletters.netlify.app/feedback/?g=5&amp;p=%D7%A8%D7%90%D7%A9%20%D7%94%D7%A9%D7%A0%D7%94&amp;s=3&amp;r=4" target="_blank" style="text-decoration:none;"><img src="https://gyenewsletters.netlify.app/images/star-v1-4.png" width="44" height="44" alt="4" style="border:0; display:inline-block;"></a></td>
-                      <td align="center" width="20%" style="padding:0 2px;"><a href="https://gyenewsletters.netlify.app/feedback/?g=5&amp;p=%D7%A8%D7%90%D7%A9%20%D7%94%D7%A9%D7%A0%D7%94&amp;s=3&amp;r=5" target="_blank" style="text-decoration:none;"><img src="https://gyenewsletters.netlify.app/images/star-v1-5.png" width="44" height="44" alt="5" style="border:0; display:inline-block;"></a></td>
-                  </tr>
-                </table>
-              </td></tr>
-              <tr><td style="padding:2px 26px 12px;">
-                <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" dir="rtl" style="border-collapse:collapse; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:12px; color:#8d9aa4;">
-                  <tr><td align="right">בכלל לא</td><td align="left">מאוד</td></tr>
-                </table>
-              </td></tr>
-            </table>
-            <!-- ==== סוף רצועת משוב - מדור 3 ==== -->
-            </td>
-          </tr>
+          <!-- ==== 31.8.2026, #1842: המדור הזה **לא קיים בגיליון הזה**. רפאל: "בגיליון ראש
+               השנה ובשאר גיליונות החגים שחלים בשבת לא יהיו המדורים הקבועים". גיליון חג =
+               מאמרים בלבד, כל אחד עם באנר משלו. ירדו כאן כיחידה אחת: רצועת הקהל, הבאנר,
+               גוף המדור, בלוק ה-CTA, ורצועת המשוב. (שמות הנכסים והמזהים לא נכתבים כאן
+               בכוונה - הערה שמצטטת את מה שהוסר גורמת ל-grep לדווח שהוא עוד שם.)
+               להחזרה בגיליון רגיל: הבלוק המלא ב-hebrew-newsletter/issue-4-nitzavim/nitzavim.html. ==== -->
 
           <!-- ===== PRINT / PDF ===== -->
           <tr>
