@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>הבדלי הצבע בבאנרים - הפסים</title>
+<meta name="robots" content="noindex">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root { --ink:#1c4587; --bg:#e4eef0; --rule:#b9cfe6; }
+  * { box-sizing:border-box; }
+  html,body { margin:0; padding:0; }
+  body { background:var(--bg); direction:rtl; font-family:'Open Sans','Arial Hebrew',Arial,sans-serif; color:#3d3d3d; }
+  .wrap { max-width:1000px; margin:0 auto; padding:0 12px 40px; }
+  .card { background:#fff; border-radius:0 0 6px 6px; padding:0 0 30px; }
+  .top { background:var(--ink); color:#fff; padding:22px 30px; text-align:center; }
+  .top h1 { margin:0; font-size:25px; font-weight:700; }
+  .top p { margin:7px 0 0; font-size:15px; opacity:.85; }
+  .pad { padding:0 30px; }
+  h2 { font-size:19px; color:var(--ink); margin:34px 0 6px; border-bottom:2px solid #e6edf3; padding-bottom:8px; }
+  h3 { font-size:16px; color:var(--ink); margin:22px 0 10px; }
+  .lead { font-size:15px; line-height:1.8; margin:12px 0 18px; }
+  .oh { font-size:15px; font-weight:700; color:var(--ink); margin:0 0 7px; }
+  .badge { display:inline-block; background:var(--ink); color:#fff; border-radius:4px; padding:3px 11px; font-size:16px; margin-left:6px; }
+  .ref { background:#6a6a6a; }
+  img.z { display:block; border:1px solid var(--rule); border-radius:3px; image-rendering:pixelated; max-width:100%; margin:0 0 16px; }
+  .zoom { font-size:13px; color:#6a6a6a; line-height:1.7; margin:0 0 14px; }
+  code { background:#f2f7fb; border:1px solid #dbe6f0; border-radius:3px; padding:1px 6px; font-size:13px; direction:ltr; display:inline-block; }
+  table.m { border-collapse:collapse; font-size:14px; margin:10px 0 18px; width:100%; }
+  table.m td, table.m th { border:1px solid #dbe6f0; padding:8px 12px; text-align:center; }
+  table.m th { background:#f2f7fb; color:var(--ink); }
+  .sw { display:inline-block; width:15px; height:15px; border:1px solid #99a; vertical-align:-2px; margin-left:6px; border-radius:2px; }
+  .ok { background:#eef6ec; border-right:4px solid #4a8f43; padding:14px 18px; margin:14px 0; font-size:15px; line-height:1.75; }
+  .rec { background:#eef6ec; border-right:4px solid #4a8f43; padding:15px 18px; margin:22px 0 0; font-size:15px; line-height:1.8; }
+  .stack { background:#0e2b4c; max-width:660px; }
+  .stack img { display:block; width:100%; border:0; }
+  .two { display:flex; gap:18px; flex-wrap:wrap; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="card">
+    <div class="top">
+      <h1>הבדלי הצבע בבאנרים - מה בדיוק נשאר</h1>
+      <p>31.8.2026 · המשך לדף של 28.8</p>
+    </div>
+    <div class="pad">
+
+      <div class="ok">
+        <strong>קודם כל, לגבי "לא בנית מחדש":</strong> הם כן בנויים מחדש והם כן על השרת. בדקתי את
+        זה בדרך שלא משאירה ספק - הורדתי את ארבעת הקבצים מהאתר והשוויתי את חתימת ה-sha256 שלהם
+        לקבצים שבניתי כאן. ארבעה מתוך ארבעה זהים לחלוטין. אפשרות ג' באוויר.<br>
+        אז מה שאתה רואה זה לא בנייה שלא עלתה - זה הבדל צבע אמיתי שנשאר, ומצאתי אותו.
+      </div>
+
+      <p class="lead">
+        ב-28.8 תיקנתי את <strong>הכחול הכהה</strong> של הסרט, והוא באמת תואם עכשיו
+        (<span class="sw" style="background:#122d54"></span><code>#122d54</code> מול <span class="sw" style="background:#152e53"></span><code>#152e53</code> - הפרש של רמה־שתיים, מתחת למה שהעין מבחינה בו).
+        מה שלא נגעתי בו זה <strong>הפסים הבהירים ברקע של הלוח</strong>, ושם ההבדל:<br>
+        בבאנר הראשי הפס הבהיר הוא <span class="sw" style="background:#deedee"></span><code>#deedee</code> - תכלת עדינה, הירוק והכחול שווים.<br>
+        בבאנרי המדורים הוא <span class="sw" style="background:#d5e2e8"></span><code>#d5e2e8</code> - אפור־כחלחל, כהה יותר ופחות ירוק.<br>
+        הפסים תופסים כמעט חצי משטח הלוח, ולכן דווקא הם מה שהעין תופסת בגודל של המייל, כשהאותיות
+        והמסגרת כבר זהות. הבאנר הראשי בא מהמצגת שלך והבאנרים של המדורים מקנבה - שני קבצים שונים,
+        אז שני התכלתים האלה מעולם לא היו אותו צבע.
+      </p>
+
+      <h2>1. הפסים - חיתוכים ביחס 1:1</h2>
+      <p class="zoom">גודל אמיתי, פיקסל מול פיקסל. בכל שלישייה: למעלה הבאנר הראשי (זו המטרה),
+        באמצע המדור כמו שהוא היום, למטה עם הפסים מותאמים. אל תסתכל על זה בגודל של המייל -
+        בגודל הזה הבדל של תשע רמות בהירות נעלם.</p>
+
+      <div class="oh"><span class="badge ref">הבאנר הראשי</span> המטרה - כך נראים הפסים למעלה</div>
+      <img class="z" src="https://gyenewsletters.netlify.app/drafts/banner-stripe/z-header.png" style="width:780px">
+
+
+      <h3>המאור שבה</h3>
+      <div class="oh"><span class="badge">ג</span> כמו היום</div>
+      <img class="z" src="https://gyenewsletters.netlify.app/drafts/banner-stripe/z-hamaor-c.png" style="width:780px">
+      <div class="oh"><span class="badge">ד</span> הפסים מותאמים לבאנר הראשי</div>
+      <img class="z" src="https://gyenewsletters.netlify.app/drafts/banner-stripe/z-hamaor-d.png" style="width:780px">
+
+      <h3>מתוק לנפש</h3>
+      <div class="oh"><span class="badge">ג</span> כמו היום</div>
+      <img class="z" src="https://gyenewsletters.netlify.app/drafts/banner-stripe/z-matok-c.png" style="width:780px">
+      <div class="oh"><span class="badge">ד</span> הפסים מותאמים לבאנר הראשי</div>
+      <img class="z" src="https://gyenewsletters.netlify.app/drafts/banner-stripe/z-matok-d.png" style="width:780px">
+
+      <h3>צידה לדרך</h3>
+      <div class="oh"><span class="badge">ג</span> כמו היום</div>
+      <img class="z" src="https://gyenewsletters.netlify.app/drafts/banner-stripe/z-tzeida-c.png" style="width:780px">
+      <div class="oh"><span class="badge">ד</span> הפסים מותאמים לבאנר הראשי</div>
+      <img class="z" src="https://gyenewsletters.netlify.app/drafts/banner-stripe/z-tzeida-d.png" style="width:780px">
+
+      <h3>צעדני ואושעה</h3>
+      <div class="oh"><span class="badge">ג</span> כמו היום</div>
+      <img class="z" src="https://gyenewsletters.netlify.app/drafts/banner-stripe/z-tzaadeni-c.png" style="width:780px">
+      <div class="oh"><span class="badge">ד</span> הפסים מותאמים לבאנר הראשי</div>
+      <img class="z" src="https://gyenewsletters.netlify.app/drafts/banner-stripe/z-tzaadeni-d.png" style="width:780px">
+
+      <h2>2. האותיות והמסגרת לא זזו</h2>
+      <p class="zoom">אותו חיתוך על הכותרת, כדי לוודא ש-ד' משנה רק את הפסים.</p>
+      <div class="oh"><span class="badge">ג</span> כמו היום</div>
+      <img class="z" src="https://gyenewsletters.netlify.app/drafts/banner-stripe/t-hamaor-c.png" style="width:570px">
+      <div class="oh"><span class="badge">ד</span> הפסים מותאמים</div>
+      <img class="z" src="https://gyenewsletters.netlify.app/drafts/banner-stripe/t-hamaor-d.png" style="width:570px">
+
+      <h2>3. המספרים</h2>
+      <table class="m">
+        <tr><th>איפה</th><th>הפס הבהיר</th><th>הרקע הלבן</th><th>הכחול הכהה</th><th>מרווח הפסים</th></tr>
+        <tr><td><strong>הבאנר הראשי</strong></td><td><span class="sw" style="background:#deedee"></span><code>#deedee</code></td><td><span class="sw" style="background:#fefefe"></span><code>#fefefe</code></td><td><span class="sw" style="background:#122d54"></span><code>#122d54</code></td><td>50.8 פיקסל</td></tr>
+        <tr><td>ג - כמו היום</td><td><span class="sw" style="background:#d5e2e8"></span><code>#d5e2e8</code></td><td><span class="sw" style="background:#fdfefe"></span><code>#fdfefe</code></td><td><span class="sw" style="background:#152e53"></span><code>#152e53</code></td><td>46.1 פיקסל</td></tr>
+        <tr><td>ד - מותאם</td><td><span class="sw" style="background:#deeeee"></span><code>#deeeee</code></td><td><span class="sw" style="background:#fdfefe"></span><code>#fdfefe</code></td><td><span class="sw" style="background:#152e53"></span><code>#152e53</code></td><td>46.1 פיקסל</td></tr>
+      </table>
+      <p class="zoom">הלבן והכחול הכהה כבר תואמים. הפס הבהיר הוא ההבדל, והוא 9 עד 12 רמות בהירות -
+        בדיוק בטווח שהעין קולטת כ"משהו לא מסתדר" בלי לדעת להצביע על מה.<br>
+        <strong>דבר אחד נוסף שמדדתי ולא נגעתי בו:</strong> המרווח בין הפסים שונה -
+        50.8 פיקסל בבאנר הראשי מול 46.1 בבאנרי המדורים, כלומר הפסים שם צפופים
+        ב-10%. בבאנר הראשי הפס והרווח שווים בדיוק (25,25,26,25...) ובבאנרי המדורים הפס צר מהרווח
+        (24,22,24,22...). זו גיאומטריה של האיור, לא צבע, ולכן לא נכנסה ל-ד'. אם תרצה
+        שאתאים גם את זה - תגיד ואבנה אפשרות ה'.</p>
+
+      <h2>4. איך זה נראה בגיליון</h2>
+      <p class="zoom">הבאנר הראשי מעל, באנר המדור מתחתיו - בדיוק הסדר שבעלון.</p>
+      <div class="two">
+        <div>
+          <div class="oh"><span class="badge">ג</span> כמו היום</div>
+          <div class="stack"><img src="https://gyenewsletters.netlify.app/images/hebrew-header-nitzavim-5786.png"><img src="https://gyenewsletters.netlify.app/drafts/banner-stripe/hamaor-c.png"></div>
+        </div>
+        <div>
+          <div class="oh"><span class="badge">ד</span> מותאם</div>
+          <div class="stack"><img src="https://gyenewsletters.netlify.app/images/hebrew-header-nitzavim-5786.png"><img src="https://gyenewsletters.netlify.app/drafts/banner-stripe/hamaor-d.png"></div>
+        </div>
+      </div>
+
+      <div class="rec">
+        <strong>ההמלצה שלי: ד'.</strong> זה משנה רק את הפסים, האיור והטיפוגרפיה לא זזו,
+        וזה סוגר את ההבדל האחרון שנשאר.<br>
+        שים לב שגם זו החלטה עיצובית ולא תיקון באג: הפסים האפרפרים הם הצבע המקורי שלך מקנבה,
+        ואני מזיז אותם כדי שיתאימו למצגת. אם אתה מעדיף שהאיור יישאר נאמן למקור - נשארים עם ג'.<br>
+        תגיד מילה ואני מפרסם את ד' בארבעת הבאנרים בגיליונות 3 ו-4.
+      </div>
+
+    </div>
+  </div>
+</div>
+</body>
+</html>
