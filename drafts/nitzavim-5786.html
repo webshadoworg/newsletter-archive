@@ -40,6 +40,9 @@
       .foot p    { font-size:13px !important; }
       .foot .addr { font-size:11px !important; }
       .tak p     { font-size:15px !important; }
+      /* #182 - כפתור ההורדה של מדור 1: "של דברי רבי נחמן על 'היום'" בשורה נפרדת
+         **בנייד בלבד**. במחשב ה-span נשאר inline ואין שבירה. */
+      .btnl      { display:block !important; }
     }
   </style>
 </head>
@@ -126,7 +129,7 @@
                     <table role="presentation" cellpadding="0" cellspacing="0" border="0" dir="rtl" align="center" style="margin:0 auto;">
                       <tr>
                         <td align="center" bgcolor="#1c4587" style="background-color:#1c4587; border-radius:6px;">
-                          <a href="https://gyenewsletters.netlify.app/pdf/hayom-zricha-a4.pdf" target="_blank" style="display:inline-block; padding:11px 24px; font-family:'Open Sans','Arial Hebrew',Arial,sans-serif; font-size:16px; line-height:1.4; font-weight:700; color:#ffffff; text-decoration:none; mso-line-height-rule:exactly;">לחצו כאן להורדת דף מעוצב של דברי רבי נחמן על &#39;היום&#39;</a>
+                          <a href="https://gyenewsletters.netlify.app/pdf/hayom-zricha-a4.pdf" target="_blank" style="display:inline-block; padding:11px 24px; font-family:'Open Sans','Arial Hebrew',Arial,sans-serif; font-size:16px; line-height:1.4; font-weight:700; color:#ffffff; text-decoration:none; mso-line-height-rule:exactly;">לחצו כאן להורדת דף מעוצב <span class="btnl">של דברי רבי נחמן על &#39;היום&#39;</span></a>
                         </td>
                       </tr>
                     </table>
