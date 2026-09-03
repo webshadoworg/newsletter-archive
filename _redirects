@@ -1,5 +1,10 @@
 # מדיה כבדה שהועברה מהאתר כדי לא לשרוף את מכסת התעבורה של Netlify (4.9.2026).
-# הקבצים עצמם שמורים בענף media-archive של אותו repo, ולכן הכתובות הישנות -
-# אלה שכבר יצאו במיילים לקוראים - ממשיכות לעבוד.
-/media/no-shtus-avraham-fried.mp3       https://raw.githubusercontent.com/webshadoworg/newsletter-archive/media-archive/media/no-shtus-avraham-fried.mp3       302
-/media/no-shtus-avraham-fried-720p.mp4  https://raw.githubusercontent.com/webshadoworg/newsletter-archive/media-archive/media/no-shtus-avraham-fried-720p.mp4  302
+# הקבצים עצמם שמורים ב-repo הזה - הסרטון כנכס של ה-release "media-v1", והשירים בענף
+# media-archive - ולכן הכתובות הישנות, אלה שכבר יצאו במיילים לקוראים, ממשיכות לעבוד.
+#
+# הסרטון מוגש דרך ה-release ולא דרך raw: raw.githubusercontent מוסיף
+# X-Content-Type-Options: nosniff, ומכיוון שהוא גם מחזיר application/octet-stream
+# הדפדפן אינו רשאי לנחש שזה וידאו והנגן נשבר. לנכס של release אין nosniff, ויש בו
+# accept-ranges, ולכן הנגן וגם הדילוג בתוך הסרטון ממשיכים לעבוד.
+/media/no-shtus-avraham-fried-720p.mp4  https://github.com/webshadoworg/newsletter-archive/releases/download/media-v1/no-shtus-avraham-fried-720p.mp4  302
+/media/no-shtus-avraham-fried.mp3       https://raw.githubusercontent.com/webshadoworg/newsletter-archive/media-archive/media/no-shtus-avraham-fried.mp3  302
