@@ -81,7 +81,20 @@ var ENDPOINT = "https://script.google.com/macros/s/AKfycbzvxZLP7x3EtVl3CzrJSm_BJ
 
 var q = new URLSearchParams(location.search);
 var SECTIONS = { "1":"המאור שבה", "2":"מתוק לנפש", "3":"צעדני ואושעה", "4":"צידה לדרך" };
+// 4.9.2026 - בגיליון של חג שחל בשבת **אין המדורים הקבועים** (#1842): יש מאמרים, וכותרת המאמר
+// יושבת בבאנר. עד כה SECTIONS השטוח היה כותב "המאור שבה" גם שם, כלומר בגיליון 5 (ראש השנה)
+// כל דירוג נכתב לשיטס תחת שם מדור שלא היה בגיליון. זו טבלת חריגים לפי גיליון, והיא גם
+// למפרע - גיליון 5 מתוקן כאן. גיליון 8 חריג בתוך החריג: מדור 1 שלו נשאר "המאור שבה"
+// לפי הוראתו המפורשת של רפאל (#42, "המאור שבה - תשאיר").
+var TITLES = {
+  "5": { "1":"שנה טובה ומתוקה!", "2":"בחצוצרות וקול שופר", "3":"ממעמקים" },
+  "7": { "1":"מה הסוכה שלך?", "2":"דירת ארעי" },
+  "8": { "2":"להכניס את כולם למעגל", "3":"התורה מחכה לך!" },
+};
 var ISSUES = {
+  // 4.9.2026 - גיליון 1 היה חסר כאן מאז ומתמיד. שם הקובץ הוא שריד משלד בדיקת הבאנר,
+  // אבל זה הגיליון שנשלח.
+  "1":"https://gyenewsletters.netlify.app/drafts/hebrew-header-test.html",
   // 20.8.2026 - היה כאן ki-tetze-2026.html, הכתובת הכפולה שנמחקה. גיליון עברי = שנה עברית.
   "2":"https://gyenewsletters.netlify.app/drafts/ki-tetze-5786.html",
   // 26.8.2026 - גיליון 3 היה חסר כאן לגמרי, כלומר הכפתור "חזרה לגיליון" לא היה מקבל כתובת.
@@ -91,12 +104,16 @@ var ISSUES = {
   // והכפתור "חזרה לגיליון" נשאר בלי כתובת.
   "5":"https://gyenewsletters.netlify.app/drafts/rosh-hashana-5787.html",
   // 1.9.2026 - גיליון 6 (האזינו). נוסף ברגע פתיחת השלד, מאותה סיבה.
-  "6":"https://gyenewsletters.netlify.app/drafts/haazinu-5787.html"
+  "6":"https://gyenewsletters.netlify.app/drafts/haazinu-5787.html",
+  // 4.9.2026 - גיליונות 7, 8 ו-9 נוספו ברגע פתיחת השלדים (#40 / #42 / #44), מאותה סיבה.
+  "7":"https://gyenewsletters.netlify.app/drafts/sukkot-5787.html",
+  "8":"https://gyenewsletters.netlify.app/drafts/simchat-torah-5787.html",
+  "9":"https://gyenewsletters.netlify.app/drafts/bereishit-5787.html"
 };
 
 var g = q.get("g") || "", p = q.get("p") || "", s = q.get("s") || "";
 var r = Math.max(0, Math.min(5, parseInt(q.get("r") || "0", 10)));
-var name = SECTIONS[s] || "";
+var name = (TITLES[g] && TITLES[g][s]) || SECTIONS[s] || "";
 function uuid() {
   return (crypto && crypto.randomUUID) ? crypto.randomUUID()
        : String(Date.now()) + "-" + Math.round(Math.random() * 1e6);
