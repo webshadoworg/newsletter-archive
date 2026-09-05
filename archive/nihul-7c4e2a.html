@@ -13,6 +13,13 @@
   header{background:#624b78;color:#fff;text-align:center;padding:30px 18px 26px;margin-bottom:26px;}
   header h1{margin:0 0 6px;font-size:30px;line-height:1.25;font-weight:700;}
   header p{margin:0;font-size:16px;line-height:1.5;color:#e6dcf0;}
+  /* #64, רפאל 5.9.2026: הכותרת היא הבאנר הראשי של הגיליון השבועי, וכותרת המשנה שבתוכו
+     היא הנוסח שביקש ב-#60 - מוגדלת פי 1.25 מול הגיליון ("אולי קצת יותר בגדול").
+     זו תמונה אחת, ולכן אין כאן h1 טקסטואלי - <title> ו-alt נושאים את הטקסט לגוגל ולקוראי מסך. */
+  .banner{max-width:760px;margin:0 auto 22px;padding:0 18px;}
+  .banner img{display:block;width:100%;height:auto;}
+  .sub{background:#624b78;color:#e6dcf0;text-align:center;font-size:15px;
+       padding:9px 18px;margin-bottom:22px;letter-spacing:.5px;}
   .card{background:#fff;border:1px solid #e2dac6;border-right:5px solid #e9b308;
         border-radius:7px;padding:16px 18px;margin-bottom:14px;}
   .num{display:inline-block;background:#624b78;color:#fff;border-radius:5px;
@@ -39,10 +46,11 @@
 </style>
 </head>
 <body>
-<header>
-  <h1>ניהול הגיליונות</h1>
-  <p>דף פנימי · כולל גיליונות שעדיין בעבודה</p>
-</header>
+<div class="banner">
+  <img src="https://gyenewsletters.netlify.app/images/hebrew-header-archive.png" width="1980"
+       alt="רק חזק ואמץ! — העלון השבועי של GYE - ארכיון גליונות">
+</div>
+<div class="sub">דף פנימי · כולל גיליונות שעדיין בעבודה</div>
 <div class="wrap">
   <div class="note">
     <strong>הדף הזה פנימי.</strong> הוא לא מקושר מהדף הציבורי ולא מופיע בגוגל, אבל הוא מוגן
@@ -52,7 +60,7 @@
     <a href="https://gyenewsletters.netlify.app/archive/" target="_blank">https://gyenewsletters.netlify.app/archive/</a>
   </div>
     <div class="card">
-      <span class="num">גיליון 9</span><span class="ttl">פרשת בראשית תשפ&quot;ז</span><span class="tag draft">בעבודה</span>
+      <span class="num">גיליון 9</span><span class="ttl">בראשית תשפ&quot;ז</span><span class="tag draft">בעבודה</span>
       <p class="date">שבת, 10 באוקטובר 2026</p>
       <p class="links"><a href="https://gyenewsletters.netlify.app/drafts/bereishit-5787.html" target="_blank">קריאת הגיליון</a><span>|</span><a href="https://gyenewsletters.netlify.app/feedback/?g=9&amp;p=%D7%91%D7%A8%D7%90%D7%A9%D7%99%D7%AA" target="_blank">דף המשוב</a></p>
       <ul class="secs"><li>המאור שבה — עם נחש לא מדברים?</li><li>מתוק לנפש — המאמר שהועבר מגיליון 6</li><li>צעדני ואושעה</li></ul>
@@ -69,11 +77,11 @@
       <span class="num">גיליון 7</span><span class="ttl">סוכות תשפ&quot;ז</span><span class="tag draft">בעבודה</span>
       <p class="date">שבת, 26 בספטמבר 2026</p>
       <p class="links"><a href="https://gyenewsletters.netlify.app/drafts/sukkot-5787.html" target="_blank">קריאת הגיליון</a><span>|</span><a href="https://gyenewsletters.netlify.app/feedback/?g=7&amp;p=%D7%A1%D7%95%D7%9B%D7%95%D7%AA" target="_blank">דף המשוב</a></p>
-      <ul class="secs"><li>מה הסוכה שלך?</li><li>דירת ארעי (שם זמני - בלי באנר)</li></ul>
-      <p class="todo">ממתין לקופי; שם מאמר 2 עוד לא נסגר</p>
+      <ul class="secs"><li>מה הסוכה שלך?</li><li>דירת ארעי (שם זמני - בלי באנר)</li><li>צא מדירת קבע!</li><li>אתה אתרוג!</li></ul>
+      <p class="todo">ממתין לקופי; שם מאמר 2 עוד לא נסגר - ייתכן שהוא 'צא מדירת קבע!' (#58)</p>
     </div>
     <div class="card">
-      <span class="num">גיליון 6</span><span class="ttl">פרשת האזינו (שבת תשובה) תשפ&quot;ז</span><span class="tag draft">בעבודה</span>
+      <span class="num">גיליון 6</span><span class="ttl">האזינו (שבת תשובה) תשפ&quot;ז</span><span class="tag draft">בעבודה</span>
       <p class="date">שבת, 19 בספטמבר 2026</p>
       <p class="links"><a href="https://gyenewsletters.netlify.app/drafts/haazinu-5787.html" target="_blank">קריאת הגיליון</a><span>|</span><a href="https://gyenewsletters.netlify.app/feedback/?g=6&amp;p=%D7%94%D7%90%D7%96%D7%99%D7%A0%D7%95" target="_blank">דף המשוב</a></p>
       <ul class="secs"><li>המאור שבה</li><li>מתוק לנפש</li><li>צעדני ואושעה</li></ul>
@@ -87,22 +95,22 @@
       <p class="todo">ממתין לקופי</p>
     </div>
     <div class="card">
-      <span class="num">גיליון 4</span><span class="ttl">פרשת ניצבים-וילך תשפ&quot;ו</span><span class="tag sent">נשלח</span>
+      <span class="num">גיליון 4</span><span class="ttl">ניצבים-וילך תשפ&quot;ו</span><span class="tag sent">נשלח</span>
       <p class="date">שבת, 5 בספטמבר 2026</p>
       <p class="links"><a href="https://gyenewsletters.netlify.app/drafts/nitzavim-5786.html" target="_blank">קריאת הגיליון</a><span>|</span><a href="https://gyenewsletters.netlify.app/pdf/gye-nitzavim-5786.pdf" target="_blank">הורדה להדפסה (PDF)</a><span>|</span><a href="https://gyenewsletters.netlify.app/feedback/?g=4&amp;p=%D7%A0%D7%99%D7%A6%D7%91%D7%99%D7%9D-%D7%95%D7%99%D7%9C%D7%9A" target="_blank">דף המשוב</a></p>
     </div>
     <div class="card">
-      <span class="num">גיליון 3</span><span class="ttl">פרשת כי תבוא תשפ&quot;ו</span><span class="tag sent">נשלח</span>
+      <span class="num">גיליון 3</span><span class="ttl">כי תבוא תשפ&quot;ו</span><span class="tag sent">נשלח</span>
       <p class="date">שבת, 29 באוגוסט 2026</p>
       <p class="links"><a href="https://gyenewsletters.netlify.app/drafts/ki-tavo-5786.html" target="_blank">קריאת הגיליון</a><span>|</span><a href="https://gyenewsletters.netlify.app/pdf/gye-kitavo-5786.pdf" target="_blank">הורדה להדפסה (PDF)</a><span>|</span><a href="https://gyenewsletters.netlify.app/feedback/?g=3&amp;p=%D7%9B%D7%99%20%D7%AA%D7%91%D7%95%D7%90" target="_blank">דף המשוב</a></p>
     </div>
     <div class="card">
-      <span class="num">גיליון 2</span><span class="ttl">פרשת כי תצא תשפ&quot;ו</span><span class="tag sent">נשלח</span>
+      <span class="num">גיליון 2</span><span class="ttl">כי תצא תשפ&quot;ו</span><span class="tag sent">נשלח</span>
       <p class="date">שבת, 22 באוגוסט 2026</p>
       <p class="links"><a href="https://gyenewsletters.netlify.app/drafts/ki-tetze-5786.html" target="_blank">קריאת הגיליון</a><span>|</span><a href="https://gyenewsletters.netlify.app/pdf/gye-kitetze-5786.pdf" target="_blank">הורדה להדפסה (PDF)</a><span>|</span><a href="https://gyenewsletters.netlify.app/feedback/?g=2&amp;p=%D7%9B%D7%99%20%D7%AA%D7%A6%D7%90" target="_blank">דף המשוב</a></p>
     </div>
     <div class="card">
-      <span class="num">גיליון 1</span><span class="ttl">פרשת שופטים תשפ&quot;ו</span><span class="tag sent">נשלח</span>
+      <span class="num">גיליון 1</span><span class="ttl">שופטים תשפ&quot;ו</span><span class="tag sent">נשלח</span>
       <p class="date">שבת, 15 באוגוסט 2026</p>
       <p class="links"><a href="https://gyenewsletters.netlify.app/drafts/hebrew-header-test.html" target="_blank">קריאת הגיליון</a><span>|</span><a href="https://gyenewsletters.netlify.app/pdf/gye-shoftim-5786.pdf" target="_blank">הורדה להדפסה (PDF)</a><span>|</span><a href="https://gyenewsletters.netlify.app/feedback/?g=1&amp;p=%D7%A9%D7%95%D7%A4%D7%98%D7%99%D7%9D" target="_blank">דף המשוב</a></p>
     </div>
