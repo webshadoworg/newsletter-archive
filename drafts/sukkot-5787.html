@@ -28,6 +28,8 @@
       .card      { width:100% !important; max-width:100% !important; border-radius:0 !important; }
       .pad       { padding-right:18px !important; padding-left:18px !important; }
       .sec-top   { padding-top:6px !important; }
+      .btns td   { display:block !important; width:100% !important; border-left:0 !important; border-bottom:2px solid #1c4587 !important; }
+      .btns tr td:last-child { border-bottom:0 !important; }
       .h1, h1    { font-size:20px !important; line-height:1.28 !important; margin-bottom:11px !important; }
       .txt, .txt p { font-size:16px !important; line-height:1.7 !important; }
       .txt p.sub { font-size:17px !important; line-height:1.3 !important; }
@@ -68,10 +70,15 @@
             </td>
           </tr>
 
-          <!-- ===== PRINT BAR (under the banner) ===== -->
+          <!-- ===== PRINT BAR (under the banner) - שני לחצנים, #84/#108 ===== -->
           <tr>
             <td align="center" bgcolor="#dbe8f5" style="padding:0; background-color:#dbe8f5; border-top:1px solid #b9cfe6; border-bottom:1px solid #b9cfe6;">
-              <a href="https://gyenewsletters.netlify.app/pdf/gye-sukkot-5787.pdf" target="_blank" style="display:block; padding:14px 10px; font-family:'Frank Ruehl Libre','Frank Ruehl CLM','David Libre',David,'Times New Roman',Georgia,serif; font-size:17px; font-weight:700; line-height:1.2; color:#1c4587; text-decoration:none; text-align:center;">הורדת הגיליון להדפסה</a>
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" dir="rtl" class="btns" style="width:100%; table-layout:fixed;">
+                <tr>
+                  <td width="62%" align="center" style="width:62%; padding:0; border-left:2px solid #1c4587;"><a href="https://gyenewsletters.netlify.app/pdf/gye-sukkot-5787.pdf" target="_blank" style="display:block; padding:14px 10px; font-family:'Frank Ruehl Libre','Frank Ruehl CLM','David Libre',David,'Times New Roman',Georgia,serif; font-size:17px; font-weight:700; line-height:1.2; color:#1c4587; text-decoration:none; text-align:center;">הורדת הגיליון להדפסה</a></td>
+                  <td width="38%" align="center" style="width:38%; padding:0;"><a href="https://gyenewsletters.netlify.app/archive/" target="_blank" style="display:block; padding:14px 10px; font-family:'Frank Ruehl Libre','Frank Ruehl CLM','David Libre',David,'Times New Roman',Georgia,serif; font-size:17px; font-weight:700; line-height:1.2; color:#1c4587; text-decoration:none; text-align:center;">לכל הגיליונות</a></td>
+                </tr>
+              </table>
             </td>
           </tr>
 
