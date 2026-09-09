@@ -26,6 +26,9 @@
  <li>בעורך של Apps Script: <b>Ctrl+A</b>, <b>Delete</b>, <b>Ctrl+V</b>, <b>Ctrl+S</b>.</li>
  <li>כדי לבנות את לשונית <b>סיכום</b>: בתפריט העליון בוחרים את הפונקציה
      <code>setupSummary</code> ולוחצים <b>Run</b>. פעם אחת בלבד - משם היא מתעדכנת לבד.</li>
+ <li><b>9.9.2026 - פעם אחת:</b> בוחרים את הפונקציה <code>fixHistory</code> ולוחצים
+     <b>Run</b>. זה מתקן שורות שכבר נרשמו עם שם מדור קבוע במקום כותרת המאמר בגיליון חג.
+     נוגע רק בעמודות <b>מדור</b> ו<b>שם המדור</b>, ובטוח להרצה חוזרת.</li>
 </ol>
 <div class="warn"><b>גרסה חסינה.</b> בקוד הזה אין אף תו שאינו אנגלי - כל העברית כתובה כקודים
 (<code>\u05de...</code>) שגוגל שיטס מפענח בעצמו לעברית תקינה בגיליון.
@@ -41,6 +44,17 @@
  */
 var SHEET = '\u05de\u05e9\u05d5\u05d1\u05d9\u05dd';
 var NAMES = { '1': '\u05d4\u05de\u05d0\u05d5\u05e8 \u05e9\u05d1\u05d4', '2': '\u05de\u05ea\u05d5\u05e7 \u05dc\u05e0\u05e4\u05e9', '3': '\u05e6\u05e2\u05d3\u05e0\u05d9 \u05d5\u05d0\u05d5\u05e9\u05e2\u05d4', '4': '\u05e6\u05d9\u05d3\u05d4 \u05dc\u05d3\u05e8\u05da' };
+
+var TITLES = {
+  '5': { '1': '\u05e9\u05e0\u05d4 \u05d8\u05d5\u05d1\u05d4 \u05d5\u05de\u05ea\u05d5\u05e7\u05d4!', '2': '\u05d1\u05d7\u05e6\u05d5\u05e6\u05e8\u05d5\u05ea \u05d5\u05e7\u05d5\u05dc \u05e9\u05d5\u05e4\u05e8', '3': '\u05de\u05de\u05e2\u05de\u05e7\u05d9\u05dd' },
+  '7': { '1': '\u05de\u05d4 \u05d4\u05e1\u05d5\u05db\u05d4 \u05e9\u05dc\u05da?', '2': '\u05e6\u05d0 \u05de\u05d3\u05d9\u05e8\u05ea \u05e7\u05d1\u05e2!', '3': '\u05d0\u05ea\u05d4 \u05d0\u05ea\u05e8\u05d5\u05d2!' },
+  '8': { '2': '\u05dc\u05d4\u05db\u05e0\u05d9\u05e1 \u05d0\u05ea \u05db\u05d5\u05dc\u05dd \u05dc\u05de\u05e2\u05d2\u05dc', '3': '\u05d4\u05ea\u05d5\u05e8\u05d4 \u05de\u05d7\u05db\u05d4 \u05dc\u05da!' }
+};
+var HOLIDAY = '0';
+
+function title_(g, s) {
+  return (TITLES[String(g)] || {})[String(s)] || '';
+}
 var HEAD = ['\u05ea\u05d0\u05e8\u05d9\u05da', '\u05de\u05d6\u05d4\u05d4', '\u05d2\u05d9\u05dc\u05d9\u05d5\u05df', '\u05e4\u05e8\u05e9\u05d4', '\u05de\u05d3\u05d5\u05e8', '\u05e9\u05dd \u05d4\u05de\u05d3\u05d5\u05e8', '\u05d3\u05d9\u05e8\u05d5\u05d2', '\u05d4\u05e2\u05e8\u05d4', '\u05de\u05d9\u05d9\u05dc', '\u05de\u05d6\u05d4\u05d4 \u05e7\u05d5\u05e8\u05d0'];
 
 function sheet_() {
@@ -65,8 +79,10 @@ function doPost(e) {
   try {
     var d = JSON.parse(e.postData.contents);
     var sh = sheet_();
-    var vals = [new Date(), d.id || '', d.g || '', d.p || '', d.s || '',
-                NAMES[d.s] || '', d.r || '', d.c || '', d.e || '', d.rid || ''];
+    var t = title_(d.g, d.s);
+    var vals = [new Date(), d.id || '', d.g || '', d.p || '',
+                t ? HOLIDAY : (d.s || ''),
+                t || NAMES[d.s] || '', d.r || '', d.c || '', d.e || '', d.rid || ''];
 
     var last = sh.getLastRow();
     var row = 0;
@@ -95,6 +111,28 @@ function doPost(e) {
 
 function doGet() {
   return ContentService.createTextOutput('ok');
+}
+
+/* ------------------------------------------------------------------
+
+------------------------------------------------------------------ */
+function fixHistory() {
+  var sh = sheet_();
+  var last = sh.getLastRow();
+  if (last &lt; 2) { Logger.log('0'); return; }
+  var rng = sh.getRange(2, 3, last - 1, 4);
+  var v = rng.getValues();
+  var n = 0;
+  for (var i = 0; i &lt; v.length; i++) {
+    var t = title_(v[i][0], v[i][2]);
+    if (!t) continue;
+    v[i][2] = HOLIDAY;
+    v[i][3] = t;
+    n++;
+  }
+  if (n) rng.setValues(v);
+  SpreadsheetApp.flush();
+  Logger.log('fixed rows: ' + n);
 }
 
 /* ==================================================================
