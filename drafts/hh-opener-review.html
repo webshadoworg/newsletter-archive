@@ -135,8 +135,22 @@
   <div class="sec">Need from you</div>
   <div class="box warn">
     <ul>
-      <li><b>Platform.</b> The example you sent went out of <b>SendGrid</b> from chizuk.guardyoureyes.com, but your copy uses <code>*|FNAME|*</code>, which is Mailchimp. The footer tokens follow whichever it is - tell me which.</li>
+      <li><b>The preheader.</b> Paste it into Mailchimp&rsquo;s own <b>Preview text</b> field, right under the subject line.
+      Your test send proves it can&rsquo;t live in the HTML: Mailchimp&rsquo;s importer <b>deleted both hidden divs</b> -
+      the preheader and the invisible-character spacer behind it - so Gmail fell back to the first words of the letter,
+      &ldquo;Dear Friend of GYE, Every year, we introduce you to someone GYE helped&hellip;&rdquo;
+      Nothing else in the email was touched. I&rsquo;m leaving the divs in the file; they cost nothing and they work
+      anywhere else.</li>
     </ul>
+  </div>
+
+  <div class="sec">Settled</div>
+  <div class="box">
+    <p><b>Platform: Mailchimp.</b> Sep 14 test send, confirmed from the headers (<code>rsgsv.net</code>,
+    <code>inbound.mailchimp.com</code>). Mailchimp appends its own unsubscribe + GYE Corp address footer, so the
+    email doesn&rsquo;t carry one and there are no footer tokens to decide. <code>*|FNAME|*</code> resolved correctly.</p>
+    <p>Imported by URL - Mailchimp injected <code>&lt;base href&gt;</code> pointing at the -c draft. Harmless here,
+    every link in the email is absolute.</p>
   </div>
 
   <div class="sec">The email</div>
