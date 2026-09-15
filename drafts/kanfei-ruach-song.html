@@ -25,7 +25,8 @@
   .dl { display:block; background:var(--bar); color:var(--ink); text-decoration:none;
         border:1px solid var(--rule); border-radius:4px; padding:13px 18px; margin:0 0 10px;
         font-size:15px; font-weight:600; }
-  .dl span { float:left; font-weight:400; opacity:.72; font-size:13px; }
+  .dl .meta { float:left; font-weight:400; opacity:.72; font-size:13px; }
+  .dl span:not(.lbl):not(.meta) { float:left; font-weight:400; opacity:.72; font-size:13px; }
   .dl:hover { background:#cfe0f1; }
   .lyr { margin:0; }
   .lyr p { margin:0 0 22px; font-size:17px; line-height:1.9; text-align:center; }
@@ -60,26 +61,34 @@
       <audio controls preload="metadata"
              src="https://cdn.jsdelivr.net/gh/webshadoworg/newsletter-archive@media-archive/media/kanfei-ruach-bini-landau.mp3"></audio>
       <div style="height:26px"></div>
-      <a class="dl" href="https://cdn.jsdelivr.net/gh/webshadoworg/newsletter-archive@media-archive/media/kanfei-ruach-bini-landau.mp3" download>
-        הורדת השיר (MP3) <span>4.4 MB &middot; 4:35</span></a>
+      <!-- ⚠ 15.9.2026, #556: "בלחיצה השיר פשוט יירד למחשב, ולא ייפתח חלון".
+           תכונת download של HTML **מתעלמים ממנה כשהקובץ בדומיין אחר** - וה-mp3 יושב על
+           ה-CDN, ולכן הדפדפן פתח נגן במקום להוריד. לכן מושכים את הקובץ ב-fetch (ל-jsDelivr
+           יש access-control-allow-origin: *), הופכים אותו ל-blob מקומי, ועל blob התכונה
+           כן מכובדת. אם ה-fetch נכשל - נופלים חזרה להתנהגות הישנה, שעדיין נותנת את השיר. -->
+      <a class="dl" id="mp3" href="https://cdn.jsdelivr.net/gh/webshadoworg/newsletter-archive@media-archive/media/kanfei-ruach-bini-landau.mp3" download="כנפי רוח - ביני לנדאו.mp3">
+        <span class="lbl">הורדת השיר (MP3)</span> <span class="meta">4.4 MB &middot; 4:35</span></a>
 
       <a class="dl" href="https://gyenewsletters.netlify.app/pdf/kanfei-ruach-lyrics.pdf" target="_blank">
         הדפסת המילים (PDF) <span>עמוד אחד, A4</span></a>
 
       <h2>מילות השיר</h2>
-      <!-- המילים כלשונן מרפאל (#498, 15.9.2026). הבית הראשון הוא הפזמון ולכן הוא בתיבה
-           הכחולה, כמו בעמוד השיר של גיליון 4. מילה אחת ממנו והוא יורד לפסקה רגילה. -->
+      <!-- המילים כלשונן מרפאל (#498, 15.9.2026).
+           ⚠ 15.9.2026, #558: *"תעשה את הכל באותו עיצוב אבל בחלוקה לשתי פיסקאות"*. עד כאן
+           הבית הראשון ישב בתיבה הכחולה כפזמון והשני בפסקה רגילה - שני עיצובים. עכשיו שני
+           הבתים בתוך אותה תיבה, כשתי פסקאות נפרדות. להיפוך (הכל רגיל, בלי התיבה): להסיר
+           את ה-div.band ואת class="chorus" משתי הפסקאות. -->
       <div class="lyr">
         <div class="band">
           <p class="chorus">בֶּן אָדָם, עֲלֵה לְמַעְלָה עֲלֵה.<br>
              עֲלֵה לְמַעְלָה, עֲלֵה בֶּן אָדָם.<br>
              עֲלֵה לְמַעְלָה עֲלֵה.</p>
-        </div>
 
-        <p>כִּי כֹּחַ עַז לְךָ, יֵשׁ לְךָ כַּנְפֵי רוּחַ.<br>
-           יֵשׁ לְךָ כַּנְפֵי רוּחַ, כַּנְפֵי נְשָׁרִים אַבִּירִים.<br>
-           אַל תְּכַחֵשׁ בָּם, פֶּן יְכַחֲשׁוּ לְךָ.<br>
-           דְּרוֹשׁ אוֹתָם, דְּרוֹשׁ בֶּן אָדָם &ndash; וְיִמָּצְאוּ לְךָ מִיָּד.</p>
+          <p class="chorus">כִּי כֹּחַ עַז לְךָ, יֵשׁ לְךָ כַּנְפֵי רוּחַ.<br>
+             יֵשׁ לְךָ כַּנְפֵי רוּחַ, כַּנְפֵי נְשָׁרִים אַבִּירִים.<br>
+             אַל תְּכַחֵשׁ בָּם, פֶּן יְכַחֲשׁוּ לְךָ.<br>
+             דְּרוֹשׁ אוֹתָם, דְּרוֹשׁ בֶּן אָדָם &ndash; וְיִמָּצְאוּ לְךָ מִיָּד.</p>
+        </div>
       </div>
 
       <!-- 15.9.2026, #506: רפאל אישר שהרשות התקבלה, ונתן את הנוסח מילה במילה:
@@ -97,5 +106,51 @@
 
   </div>
 </div>
+<script>
+// הורדה ישירה של ה-mp3 (#556). בלי זה הדפדפן פותח נגן, כי הקובץ בדומיין אחר.
+(function () {
+  var a = document.getElementById('mp3');
+  if (!a || !window.fetch || !window.URL || !URL.createObjectURL) return;  // דפדפן ישן - הקישור הרגיל
+  var lbl = a.querySelector('.lbl'), meta = a.querySelector('.meta');
+  var orig = lbl.textContent, origMeta = meta.textContent, busy = false;
+
+  a.addEventListener('click', function (ev) {
+    if (busy) { ev.preventDefault(); return; }
+    ev.preventDefault();
+    busy = true;
+    lbl.textContent = 'מוריד...';
+    meta.textContent = '0%';
+
+    fetch(a.href).then(function (res) {
+      if (!res.ok) throw new Error(res.status);
+      var total = +res.headers.get('content-length') || 0;
+      if (!res.body || !total) return res.blob();
+      // קריאה בנתחים רק כדי להראות אחוזים - קורא לא טכנולוגי צריך לראות שמשהו קורה.
+      var reader = res.body.getReader(), parts = [], got = 0;
+      return (function pump() {
+        return reader.read().then(function (r) {
+          if (r.done) return new Blob(parts, { type: 'audio/mpeg' });
+          parts.push(r.value); got += r.value.length;
+          meta.textContent = Math.round(got / total * 100) + '%';
+          return pump();
+        });
+      })();
+    }).then(function (blob) {
+      var url = URL.createObjectURL(blob);
+      var t = document.createElement('a');
+      t.href = url; t.download = a.getAttribute('download');
+      document.body.appendChild(t); t.click(); t.remove();
+      setTimeout(function () { URL.revokeObjectURL(url); }, 4000);
+      lbl.textContent = 'השיר ירד למחשב';
+      meta.textContent = origMeta;
+      setTimeout(function () { lbl.textContent = orig; busy = false; }, 5000);
+    })['catch'](function () {
+      // נפילה חזרה: פתיחה רגילה. עדיף חלון מאשר כלום.
+      lbl.textContent = orig; meta.textContent = origMeta; busy = false;
+      window.location.href = a.href;
+    });
+  });
+})();
+</script>
 </body>
 </html>
