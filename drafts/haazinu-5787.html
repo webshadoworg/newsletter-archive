@@ -40,6 +40,17 @@
       .foot p    { font-size:13px !important; }
       .foot .addr { font-size:11px !important; }
       .tak p     { font-size:15px !important; }
+      /* ==== טבלת מדור 3 (#582) - עריכה לכרטיסים בנייד. ארבע עמודות של משפטים לא ניתנות
+         להצגה ב-390px: ~75px לתא. כרטיס לשורה, "גורם סמכות" ככותרת. התוויות פתוחות רק כאן;
+         ב-inline style הן display:none, כדי שלקוח שמפשיט <style> יקבל טבלה תקינה. ==== */
+      .tbl, .tbl tr, .tbl td { display:block !important; width:100% !important; }
+      .tbl .hrow { display:none !important; }
+      .tbl tr    { margin:0 0 12px !important; border:1px solid #cfdcea !important; }
+      .tbl td    { border:0 !important; border-top:1px solid #e6edf3 !important;
+                   font-size:15px !important; line-height:1.65 !important; padding:11px 14px !important; }
+      .tbl .c1   { border-top:0 !important; font-size:16px !important; }
+      .tbl .lbl  { display:block !important; margin:0 0 2px !important; }
+      .tbl .cap, .cap { font-size:15px !important; }
     }
   </style>
 </head>
@@ -200,7 +211,7 @@
               <!-- 15.9.2026, #542: ההקדמה לצידה לדרך - נוסח רפאל מילה במילה, כמו בגיליון 4.
                    #546: &quot;ומקהלת ישיבת ירושלים לצעירים&quot; הושמט לבקשתו. שם הישיבה נשאר
                    רק בשורת התודה לבעלי הזכויות בדף הנחיתה. -->
-              <p style="Margin:0 0 18px; font-size:16px; line-height:1.75; text-align:justify;">בהמשך למאמר הפתיחה, אנחנו רוצים לשתף אתכם את השיר &quot;כנפי רוח&quot; בביצוע ביני לנדאו. השיר מזכיר לנו את הכוחות הגדולים שטמונים בנו, ומעודד אותנו לעלות מעלה מעלה.</p>
+              <p style="Margin:0 0 18px; font-size:16px; line-height:1.75; text-align:justify;">בהמשך למאמר הפתיחה, אנחנו רוצים לשתף אתכם את השיר &quot;כנפי רוח&quot; בביצוע ביני לנדאו. השיר מזכיר לנו לא לשקוע בעצבות ובאשמה רעילה, אלא לעלות מעלה מעלה בכוחות הגדולים שטמונים בנו.</p>
 
               <!-- ==== 31.8.2026, #1834 + #1836: הכפתור **מתחת** לכותרת עם שם השיר והמבצע, שניהם
                    ממורכזים. זה מבטל את #1798 (כפתור לימין הכותרת באותה שורה) ומייתר את #1832
@@ -388,13 +399,61 @@
                    מקור אחד: ../section3-disclaimer.mjs - אל תערוך ידנית. ==== -->
               <p class="note" style="Margin:0 0 18px; font-size:13px; line-height:1.6; text-align:justify; color:#1c4587; font-weight:700;">מדור זה עוסק בתוכנית 12 הצעדים שמתאימה להתמודדות יומיומית קשה ומאתגרת שנחשבת &#39;התמכרות&#39;. אם אתם בספק לגבי המצב האישי שלכם, אתם מוזמנים לפנות לרפאל בטלפון <a href="tel:+9720587004152" style="color:#1c4587; text-decoration:underline;"><span dir="ltr" style="unicode-bidi:embed;">058-7004152</span></a> או במייל <a href="mailto:shmor.help@gmail.com" style="color:#1c4587; text-decoration:underline;"><span dir="ltr" style="unicode-bidi:embed;">shmor.help@gmail.com</span></a></p>
 
-              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" dir="rtl" style="width:100%;">
+              <!-- תג הצעד - **#588 (15.9.2026 12:59): "התג של המאמר הזה הוא צעד 2"**.
+                   לאשר מול רפאל בכל גיליון; הוא נעלם מהשלד של גיליון 4 פעם אחת. -->
+              <table role="presentation" align="center" cellpadding="0" cellspacing="0" border="0" style="margin:0 auto 15px; border-collapse:separate !important; border-spacing:0;">
+                <tr><td class="pill" align="center" style="padding:9px 24px; background-color:#e7f0f9; border:1px solid #b9cfe6; border-radius:999px; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:16px; line-height:1.2; font-weight:700; letter-spacing:.4px; color:#1c4587; white-space:nowrap;">צעד 2</td></tr>
+              </table>
+
+              <!-- ==== הקופי של רפאל, גרסה ד (#576+#578+#580). מקור יחיד: section3-copy.md.
+                   נבנה ע"י build-section3.mjs - אל תערוך HTML ביד.
+                   ⚠ הכותרת **בלי ניקוד** - זו ברירת מחדל עד שיחליט (כלל #54/#70), לא החלטה. ==== -->
+              <h1 class="h1" style="Margin:0 0 12px; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:22px; line-height:1.22; color:#1c4587; font-weight:700; text-align:center;">עד ה&#39; אלקיך</h1>
+
+              <p style="Margin:0 0 18px; font-size:16px; line-height:1.75; text-align:justify;">במאמר <a href="https://gyenewsletters.netlify.app/drafts/nitzavim-5786.html#maamar3" target="_blank" style="color:#1376c8; text-decoration:underline;">הקודם</a> התחלנו לעסוק בפתרון הרוחני להתמכרות. אמנם, אנחנו בעצמנו לא יכולים להשתחרר ממעגל ההתמכרות, וגם שום בן אנוש לא יוכל לעשות זאת, אבל ישנו כוח עליון שיכול ורוצה לעשות זאת, כאשר נפנה ונתחבר אליו בדרך נכונה וכנה - מלך מלכי המלכים הקדוש ברוך הוא. הפעם נעסוק בנקודה חשובה, שאולי עדיין קצת מוקדם לגעת בה בשלב זה, אבל לקראת שבת &#39;שובה&#39; ויום הכיפורים, החלטנו להקדים את המאוחר.</p>
+              <p style="Margin:0 0 18px; font-size:16px; line-height:1.75; text-align:justify;">כאשר ההתמכרות שלנו פעילה, נקודת המבט שלנו על דברים רבים במציאות מתעוותת. אחד החשובים שבהם הוא המבט שלנו על ההנהגה האלוקית. ייתכן שאחד הגורמים לכך, הוא האופן השלילי שבו חווינו את דמויות הסמכות שפגשנו כאשר היינו ילדים. דמויות הסמכות האלה היו בשבילנו מעין &#39;כוח עליון&#39; מוחשי, והמשקעים מהמפגש איתם השפיעו על האופן שבו אנחנו תופסים את הקב&quot;ה.</p>
+              <!-- פסקה 3 - הכוכביות שלו (#340). הפסקה **כולה** מודגשת, 47 מילים: ההדגשה
+                   הארוכה ביותר שהיה בגיליון (הקודמת: 48 במדור 2, ואז 32 בגיליון 4). -->
+              <p style="Margin:0 0 18px; font-size:16px; line-height:1.75; text-align:justify; color:#1c4587; font-weight:700;">כך יכול להיווצר מצב שבו אנחנו רואים את הקב&quot;ה בעיקר כ&#39;קֵ-ל קַנּוֹא וְנוֹקֵם&#39;, ופחות כ&#39;מֶלֶךְ עוֹזֵר וּמוֹשִׁיעַ וּמָגֵן&#39;. המצב הזה הוא מכשול גדול להחלמה. כדי לפנות בלב שלם אל הקב&quot;ה, שהוא היחיד שיכול להושיע אותנו, אנחנו צריכים להיות משוכנעים לחלוטין שכל כוונתו היא לטובתנו, ולא חלילה להיפך.</p>
+              <p style="Margin:0 0 18px; font-size:16px; line-height:1.75; text-align:justify;">יש חברים שכדי לשנות את נקודת המבט שלהם, ממלאים את הטבלה שנביא בהמשך. תוכלו גם למלא טבלה משלכם <a href="https://gyenewsletters.netlify.app/pdf/worksheet-mabat-5787.pdf" target="_blank" style="color:#1376c8; text-decoration:underline;">בדף המצורף</a>. בסוף התהליך הם כותבים בנפרד את כל הנקודות שהתבררו להם כמבט אמיתי ונכון, כדי לחזור על הדברים, ולהתרחק ממבט שימנע מהם לפנות לקב&quot;ה בלב שלם.</p>
+              <p style="Margin:0 0 18px; font-size:16px; line-height:1.75; text-align:justify;">ואם נתבונן, זה מה שאולי גם ההפטרה רומזת לנו: &quot;שׁוּבָה יִשְׂרָאֵל עַד ה&#39; אֱלֹקֶיךָ&quot;. התרחקנו מהמבט הנכון על הקב&quot;ה. עלינו לשוב ולראות ששם הוי&quot;ה ומידת הרחמים, הם עיקר ההנהגה. הם למעשה הפנימיות של שם אלוקים ומידת הדין. ולכן שם הוי&quot;ה מכונה &#39;שם העצם&#39;, כי הוא המהות הפנימית שממנה נובע הכל. הדין הוא רק לבוש חיצוני שלפעמים יש בו צורך, כמו תוכחה שבאה מלב אוהב. אבל עיקר מה שמתגלה בעולם הוא החסד - &#39;חֶסֶד ה&#39; מָלְאָה הָאָרֶץ&#39;. ואל מי שרחמיו וחסדיו כה מרובים - אליו נוכל לפנות בלב שלם, בבקשה שיושיע אותנו.</p>
+
+              <!-- ==== טבלה לדוגמא - #582 (15.9.2026 12:57), תא-תא כפי שנתן. המיקום לפי
+                   המלצתי ב-#584: בסוף המאמר, אחרי פסקת ההפטרה ולפני ההערות.
+                   השורה "טבלה לדוגמא" מעל הטבלה היא **שלי** - שלוש מילים, ניתנות למחיקה.
+                   המבנה בנייד: ראה הערת ה-⚠ בראש build-section3.mjs. ==== -->
+              <p class="cap" style="Margin:0 0 9px; font-size:15px; line-height:1.4; color:#1c4587; font-weight:700; text-align:center;">טבלה לדוגמא</p>
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" dir="rtl" class="tbl" style="width:100%; border-collapse:collapse; margin:0 0 20px;">
+                <tr class="hrow">
+                  <td width="15%" class="hd" style="width:15%; padding:9px 11px; border:1px solid #cfdcea; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:14px; line-height:1.6; text-align:right; vertical-align:top; color:#3d3d3d; background-color:#eef4fa; color:#1c4587; font-weight:700;">גורם סמכות</td>
+                  <td width="28%" class="hd" style="width:28%; padding:9px 11px; border:1px solid #cfdcea; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:14px; line-height:1.6; text-align:right; vertical-align:top; color:#3d3d3d; background-color:#eef4fa; color:#1c4587; font-weight:700;">מה קרה?</td>
+                  <td width="27%" class="hd" style="width:27%; padding:9px 11px; border:1px solid #cfdcea; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:14px; line-height:1.6; text-align:right; vertical-align:top; color:#3d3d3d; background-color:#eef4fa; color:#1c4587; font-weight:700;">המבט המעוות שלמדתי</td>
+                  <td width="30%" class="hd" style="width:30%; padding:9px 11px; border:1px solid #cfdcea; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:14px; line-height:1.6; text-align:right; vertical-align:top; color:#3d3d3d; background-color:#eef4fa; color:#1c4587; font-weight:700;">המבט האמיתי והנכון</td>
+                </tr>
                 <tr>
-                  <td style="padding:16px 18px; background-color:#f7f4ea; border:2px dashed #cbb96a;">
-                    <p style="Margin:0; font-size:15px; line-height:1.7; text-align:right; color:#8a7524;"><strong>[ממלא מקום]</strong> מדור 3 (צעדני ואושעה) - הקופי עוד לא הגיע.</p>
-                  </td>
+                  <td class="c1" style="padding:9px 11px; border:1px solid #cfdcea; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:14px; line-height:1.6; text-align:right; vertical-align:top; color:#3d3d3d; background-color:#eef4fa; color:#1c4587; font-weight:700;">אבא שלי</td>
+                  <td class="c2" style="padding:9px 11px; border:1px solid #cfdcea; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:14px; line-height:1.6; text-align:right; vertical-align:top; color:#3d3d3d;"><span class="lbl" style="display:none; font-size:12px; font-weight:700; color:#7b8fa5; letter-spacing:.5px;">מה קרה?<br></span>הגיע הביתה מהעבודה עייף וחסר סבלנות. לא היה לו כוח לשמוע את הדיבורים שלי.</td>
+                  <td class="c3" style="padding:9px 11px; border:1px solid #cfdcea; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:14px; line-height:1.6; text-align:right; vertical-align:top; color:#3d3d3d;"><span class="lbl" style="display:none; font-size:12px; font-weight:700; color:#7b8fa5; letter-spacing:.5px;">המבט המעוות שלמדתי<br></span>הקב&quot;ה לא באמת מתעניין בי ואין לו סבלנות לשמוע אותי.</td>
+                  <td class="c4" style="padding:9px 11px; border:1px solid #cfdcea; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:14px; line-height:1.6; text-align:right; vertical-align:top; color:#3d3d3d;"><span class="lbl" style="display:none; font-size:12px; font-weight:700; color:#7b8fa5; letter-spacing:.5px;">המבט האמיתי והנכון<br></span>הקב&quot;ה מאוד מתעניין בי וממש מחכה שאפנה אליו ואשתף אותו במה שעובר עלי.</td>
+                </tr>
+                <tr>
+                  <td class="c1" style="padding:9px 11px; border:1px solid #cfdcea; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:14px; line-height:1.6; text-align:right; vertical-align:top; color:#3d3d3d; background-color:#eef4fa; color:#1c4587; font-weight:700;">אמא שלי</td>
+                  <td class="c2" style="padding:9px 11px; border:1px solid #cfdcea; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:14px; line-height:1.6; text-align:right; vertical-align:top; color:#3d3d3d;"><span class="lbl" style="display:none; font-size:12px; font-weight:700; color:#7b8fa5; letter-spacing:.5px;">מה קרה?<br></span>היו לה התפרצויות כעס אפילו על שטויות רגילות של ילדים שעשיתי.</td>
+                  <td class="c3" style="padding:9px 11px; border:1px solid #cfdcea; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:14px; line-height:1.6; text-align:right; vertical-align:top; color:#3d3d3d;"><span class="lbl" style="display:none; font-size:12px; font-weight:700; color:#7b8fa5; letter-spacing:.5px;">המבט המעוות שלמדתי<br></span>הקב&quot;ה מלא חרון אף וכעס על כל טעות הכי קטנה שלי.</td>
+                  <td class="c4" style="padding:9px 11px; border:1px solid #cfdcea; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:14px; line-height:1.6; text-align:right; vertical-align:top; color:#3d3d3d;"><span class="lbl" style="display:none; font-size:12px; font-weight:700; color:#7b8fa5; letter-spacing:.5px;">המבט האמיתי והנכון<br></span>הקב&quot;ה רחום וחנון. הוא זה שברא אותי והוא מבין לגמרי את המקומות שאני פועל מהם. &quot;אמת כי אתה הוא יוצרם, ואתה יודע יצרם&quot;.</td>
+                </tr>
+                <tr>
+                  <td class="c1" style="padding:9px 11px; border:1px solid #cfdcea; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:14px; line-height:1.6; text-align:right; vertical-align:top; color:#3d3d3d; background-color:#eef4fa; color:#1c4587; font-weight:700;">המשגיח בישיבה</td>
+                  <td class="c2" style="padding:9px 11px; border:1px solid #cfdcea; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:14px; line-height:1.6; text-align:right; vertical-align:top; color:#3d3d3d;"><span class="lbl" style="display:none; font-size:12px; font-weight:700; color:#7b8fa5; letter-spacing:.5px;">מה קרה?<br></span>עקב אחריי כל הזמן וחיפש &quot;לתפוס אותי על חם&quot; ולהעניש אותי.</td>
+                  <td class="c3" style="padding:9px 11px; border:1px solid #cfdcea; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:14px; line-height:1.6; text-align:right; vertical-align:top; color:#3d3d3d;"><span class="lbl" style="display:none; font-size:12px; font-weight:700; color:#7b8fa5; letter-spacing:.5px;">המבט המעוות שלמדתי<br></span>הקב&quot;ה כל הזמן &quot;מחכה לי בפינה&quot;. הוא מחכה לראות אותי נכשל ולהעניש אותי.</td>
+                  <td class="c4" style="padding:9px 11px; border:1px solid #cfdcea; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:14px; line-height:1.6; text-align:right; vertical-align:top; color:#3d3d3d;"><span class="lbl" style="display:none; font-size:12px; font-weight:700; color:#7b8fa5; letter-spacing:.5px;">המבט האמיתי והנכון<br></span>הקב&quot;ה רואה את ההשתדלות והמאמצים שלי והם יקרים בעיניו. הוא רוצה שאתקדם ואצליח.</td>
                 </tr>
               </table>
+
+              <!-- ההערות של רפאל, מסוף גרסה ד. class="note" הכרחי: במובייל .txt p כופה
+                   16px !important ורק .note יורד ל-13px (אותו מנגנון כמו ההערה בגיליון 4). -->
+              <p class="note" style="Margin:0 0 4px; font-size:13px; line-height:1.6; text-align:justify; color:#6a6a6a;"><span style="color:#1c4587; font-weight:700;">הערות:</span> 1) אין בדברים אלה כדי לבטל את מידת הדין ח&quot;ו. הכוונה הייתה להדגיש את הצורך של מכורים בהחלמה להכיר במידת החסד ולהתמקד בה, כדי להתקדם בעבודתם הרוחנית. 2) בדרך כלל גורמי הסמכות לא אשמים. הם עשו את מה שהכירו וידעו, ואולי גם את מה שעשו להם בעבר. ובכל אופן, לעיתים זה יוצר משקעים.</p>
+
               <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" dir="rtl" style="width:100%; margin-top:26px;">
                 <tr>
                   <td class="cta" style="padding:20px 0 20px 0; border-top:4px solid #d3e2e5; border-bottom:4px solid #d3e2e5;">
