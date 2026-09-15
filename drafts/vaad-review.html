@@ -17,6 +17,8 @@
   .box p{font-size:13.5px;line-height:21px;color:#33475a;margin:0}
   .box b{color:#1c3d52}
   .warn{background:#fffaf0;border-color:#efe0c2;border-left:3px solid #e9b308}
+  .done{border-left:3px solid #3fa66a}
+  .done h2::before{content:'✓ ';color:#3fa66a}
   a{color:#2f6f97}
   .pvcap{font-size:11px;font-weight:700;letter-spacing:1.2px;text-transform:uppercase;color:#93a2ad;margin:0 0 6px 2px}
   .gd{background:#fff;border:1px solid #e0e6eb;border-radius:8px;padding:13px 14px;display:flex;align-items:baseline;font-size:14px;color:#202124;margin-bottom:16px}
@@ -47,14 +49,23 @@
   <h1>Vaad Support Groups &ndash; the email</h1>
   <p class="lede">Your copy, unchanged. Gentle design, nothing markety: no call-out panel behind the three
   areas (you wrote them as a sentence, so they read as a sentence), no card shadow, no display headline, and
-  one call to action rather than a sentence plus a button plus a repeated link.<br>
+  one call to action rather than a sentence plus a button plus a repeated link. All seven of your 10:35-10:37 PM changes are in.<br>
   Email on its own: <a href="https://gyenewsletters.netlify.app/drafts/vaad-email.html">https://gyenewsletters.netlify.app/drafts/vaad-email.html</a></p>
+
+  <div class="sec">Your changes, 10:35&ndash;10:37 PM &middot; all in</div>
+  <div class="box done"><h2>Button</h2><p>Pill, maximum roundness, centred. Outlook ignores <code>border-radius</code> and would square it off, so it also ships a <code>v:roundrect</code> at <code>arcsize="50%"</code> - same button, one of the two ever renders.</p></div>
+  <div class="box done"><h2>Button label</h2><p>“Sign up for a Vaad” &rarr; <b>“Apply to join a Vaad”</b>.</p></div>
+  <div class="box done"><h2>“You can sign up here:”</h2><p>Removed. The button is the sentence.</p></div>
+  <div class="box done"><h2>Contact line</h2><p>“Any questions, email Vaad@gye.org or just reply to this message.” &rarr; <b>“If you have questions, please email Vaad@gye.org.”</b> Worth knowing, not arguing: that also removed the only reply-here path in the email.</p></div>
+  <div class="box done"><h2>Voice</h2><p>Paragraph 1 moved to “we”. I checked before applying it: that was the <i>only</i> first-person-singular sentence in the whole email, so this settles the voice everywhere. It also closes the old mismatch of a letter written by a person and signed by an organisation, and it means <code>[Your name]</code> is no longer needed - the email signs “Guard Your Eyes”.</p></div>
+  <div class="box done"><h2>Font</h2><p>Georgia out, Helvetica / Arial throughout.</p></div>
+  <div class="box done"><h2>Closing bracha</h2><p>K’siva va’chasima tova line deleted. The email closes on <span dir="rtl">גמר חתימה טובה</span> alone.</p></div>
 
   <div class="sec">Inbox</div>
   <div class="pvcap">Gmail &middot; the grey text is what Gmail scrapes, since there is no preheader</div>
   <div class="gd">
     <div class="gdfrom">Guard Your Eyes</div>
-    <div class="gdmid"><span class="gdsubj">New Vaad groups opening after Sukkos</span> <span class="gdpre">- Hi Yossi, I wanted to let you know that we’re opening new Vaad groups right after Sukkos, and I’d like to invite you…</span></div>
+    <div class="gdmid"><span class="gdsubj">New Vaad groups opening after Sukkos</span> <span class="gdpre">- Hi Yossi, We wanted to let you know that we’re opening new Vaad groups right after Sukkos, and we’d like to invite you…</span></div>
     <div class="gdtime">9:04 AM</div>
   </div>
 
@@ -64,7 +75,7 @@
       <div class="iosr1"><span class="iosapp">Mail</span><span class="iost">now</span></div>
       <div class="iosfrom">Guard Your Eyes</div>
       <div class="iossubj">New Vaad groups opening after Sukkos</div>
-      <div class="iospre">Hi Yossi, I wanted to let you know that we’re opening new Vaad groups right …</div>
+      <div class="iospre">Hi Yossi, We wanted to let you know that we’re opening new Vaad groups right…</div>
     </div>
   </div>
 
@@ -83,8 +94,6 @@
   </ol>
 
   <div class="sec">Decisions and open ends</div>
-  <div class="box warn"><h2>Two brachos, back to back</h2><p>Your copy closes “K’siva va’chasima tova to you and your family.” and you then said to sign it <span dir="rtl">גמר חתימה טובה</span>. I did both rather than delete a line of yours, so the email now carries both. <b>My recommendation: drop the K’siva line and let <span dir="rtl">גמר חתימה טובה</span> be the close</b> - we are past Rosh Hashanah, so K’siva va’chasima tova is last week’s bracha. Say the word and it goes.</p></div>
-  <div class="box"><h2>It is signed by an organisation, but written by a person</h2><p>The copy is first person singular throughout - “<i>I</i> wanted to let you know”, “<i>I’d</i> like to invite you” - and then signs off “Guard Your Eyes”. A name under it would make the whole letter land differently. Your <code>[Your name]</code> blank is still open unless the bracha was meant to fill it.</p></div>
   <div class="box"><h2>The sign-up button is login-walled</h2><p>Unchanged from your v1 file and worth deciding before this sends. <code>app.guardyoureyes.com/toolbox/tools/vaad</code> returns 200 but is a single-page app - opened with no session it bounces to <code>guardyoureyes.com/component/gyeuser/login</code>. A reader who is not already signed in hits a sign-in screen before he sees one word about the Vaad. The <code>return=</code> does round-trip, so he gets there eventually if he perseveres.</p></div>
   <div class="box"><h2>Merge tag and platform</h2><p>I rendered your <code>[Name]</code> as Mailchimp’s <code>*|FNAME|*</code>, because Mailchimp is what your test send proved for the High Holiday email. If this one goes out another way, tell me and I will swap the tag.</p></div>
   <div class="box"><h2>Preheader</h2><p>There is none in the HTML, deliberately - Mailchimp deletes hidden preheader divs on import, which is what broke the opener. The preview line above is what Gmail will actually scrape from the first sentence. If you want to control it, it goes in the ESP’s Preview text field and I will write you a line.</p></div>
