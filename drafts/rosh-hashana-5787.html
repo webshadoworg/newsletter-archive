@@ -45,13 +45,7 @@
   </style>
 </head>
 <body style="margin:0; padding:0; width:100%; background-color:#e4eef0; font-family:'Open Sans','Arial Hebrew',Arial,sans-serif; color:#3d3d3d; direction:rtl;">
-
-  <!-- ==== 31.8.2026, #1808: "תעשה שאף פעם לא יהיה טקסט תצוגה מוקדמת" - כלל קבוע, לא חד-פעמי.
-       ה-preheader הוסר לגמרי. הנוסח שהיה כאן נגרר מגיליון 2, ואת המילים עצמן אני לא מצטט
-       כאן בכוונה - הן היו נמצאות בבדיקה של הדף החי ומדווחות שהוא עוד שם.
-       ה-div שמתחת **נשאר בכוונה**: הוא רצף תווים בלתי נראים שממלא את שורת התצוגה של Gmail,
-       וזה מה שמונע ממנה לשאוב את המילים הראשונות של הגיליון. בלעדיו התצוגה המוקדמת לא נשארת
-       ריקה - היא פשוט מתמלאת בטקסט אחר. לא להוסיף כאן טקסט בשום גיליון. ==== -->
+  
   <div style="display:none; max-height:0; max-width:0; opacity:0; overflow:hidden; mso-hide:all; font-size:1px; line-height:1px; color:#e4eef0;">&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;</div>
 
   <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" dir="rtl" style="width:100%; background-color:#e4eef0;">
@@ -60,8 +54,7 @@
 
         <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" dir="rtl" class="card"
                style="width:100%; max-width:660px; background-color:#ffffff; border-radius:0 0 6px 6px; overflow:hidden;">
-
-          <!-- ===== HEADER ===== -->
+          
           <tr>
             <td align="center" bgcolor="#0e2b4c" style="padding:0; font-size:0; line-height:0; background-color:#0e2b4c;">
               <a href="https://gye.org.il" target="_blank" style="display:block; text-decoration:none;"><img src="https://gyenewsletters.netlify.app/images/hebrew-header-roshhashana-5787.jpg"
@@ -69,8 +62,7 @@
                    style="display:block; width:100%; max-width:660px; height:auto;"></a>
             </td>
           </tr>
-
-          <!-- ===== PRINT BAR (under the banner) - שני לחצנים, #84/#108 ===== -->
+          
           <tr>
             <td align="center" bgcolor="#dbe8f5" style="padding:0; background-color:#dbe8f5; border-top:1px solid #b9cfe6; border-bottom:1px solid #b9cfe6;">
               <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" dir="rtl" class="btns" style="width:100%; table-layout:fixed;">
@@ -81,22 +73,14 @@
               </table>
             </td>
           </tr>
-
-          <!-- ===== OPENING TEXT - נוסח רפאל, #1880, 1.9.2026 10:12 =====
-               הקופי: hebrew-newsletter/issue-5-rosh-hashana/opening-copy.md
-               הבנייה: node hebrew-newsletter/issue-5-rosh-hashana/build-opening.mjs
-               הנוסח שהוא שלח קפוא ב-opening-rafael.md. אל תערוך את הטקסט כאן ביד. -->
+          
           <tr>
             <td class="pad txt" style="padding:26px 34px 0 34px;">
               <p class="lead greet" style="Margin:0 0 14px; font-size:20px; line-height:1.45; text-align:center; color:#1c4587;"><strong>שנה טובה ומבורכת לכל בית ישראל די בכל אתר ואתר!</strong></p>
               <p class="lead" style="Margin:0 0 14px; font-size:15px; line-height:1.7; text-align:justify; color:#3d3d3d;">לכבוד ראש השנה אנו מצרפים מאמרים בעניין החג. כך נעשה אי"ה גם לקראת סוכות ושמחת תורה <span style="font-size:13px;">(שגם הם חלים השנה בשבת)</span>. המדורים הקבועים יתחדשו בעזרת ה' כסדרם בשבת 'האזינו' ואחרי החגים.</p>
             </td>
           </tr>
-
-          <!-- ================= מאמר 1: "שָׁנָה טוֹבָה וּמְתוּקָה!" =================
-               גיליון חג - אין מדורים קבועים (#1842). הכותרת בבאנר ולא ב-h1 בגוף.
-               הבאנר: node hebrew-newsletter/build-section-banner.mjs --key shana --width 1980
-               הגוף: node hebrew-newsletter/issue-5-rosh-hashana/build-article1.mjs -->
+          
           <tr>
             <td class="pad" id="maamar1" style="padding:42px 34px 0 34px;">
               <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" dir="rtl" style="width:100%;">
@@ -121,12 +105,7 @@
           </tr>
           <tr>
             <td class="pad txt" style="padding:0 34px 10px 34px;">
-
-              <!-- ==== מאמר 1: "שָׁנָה טוֹבָה וּמְתוּקָה!" - הקופי של רפאל. המקור היחיד הוא
-                   article1-copy.md (= הטיוטה הקפואה + התיקונים שלו, מתועדים שם לפי מספר
-                   הודעה). נבנה ע"י build-article1.mjs - אל תערוך את ה-HTML ביד.
-                   **אין h1 כאן** - הכותרת היא הבאנר שמעל (#1842). מראי המקום בגופן
-                   13px, סוגריים וטקסט. ==== -->
+              
               <p style="Margin:0 0 18px; font-size:16px; line-height:1.75; text-align:justify;">אחד הסימנים הבולטים בליל ראש השנה הוא התפוח בדבש. בעת אכילתו אנו רגילים לבקש: &quot;שֶׁתְּחַדֵּשׁ עָלֵינוּ שָׁנָה טוֹבָה וּמְתוּקָה&quot;. מה ההבדל בין &#39;שנה טובה&#39; ל&#39;שנה מתוקה&#39;?</p>
               <p style="Margin:0 0 18px; font-size:16px; line-height:1.75; text-align:justify;">שנה טובה היא שנה שבה אנחנו יודעים שאנחנו בוחרים נכון, שאנחנו עושים את הדבר הטוב. יש בכך אמנם מתיקות מסוימת, כמו המתיקות הבסיסית של התפוח, אבל עדיין - המתיקות הזו לא דומה לעוצמה של הדבש. שנה מתוקה היא שנה שבה אנחנו מרגישים חיבור פנימי עמוק לדרך שעברנו. ההרגשה הטובה הזו דומה למתיקות המרוכזת של הדבש.</p>
               <p style="Margin:0 0 18px; font-size:16px; line-height:1.75; text-align:justify;">כמובן, כדי ששנה תהיה שנה <span style="color:#1c4587; font-weight:700;">מתוקה</span>, היא צריכה קודם כל להיות שנה <span style="color:#1c4587; font-weight:700;">טובה</span>. רק אחרי המנה העיקרית מגישים את הקינוח. אחרי שבחרנו בטוב והתמדנו בתהליך - נזכה גם למתיקות הגבוהה.</p>
@@ -134,16 +113,7 @@
               <p style="Margin:0 0 18px; font-size:16px; line-height:1.75; text-align:justify;">בהמשך לכך הוא מסביר את דברי חז&quot;ל שדרשו <span style="font-size:13px;">(שבת פח.)</span>, שעם ישראל נמשל לתפוח, מכיון שאמר &quot;נַעֲשֶׂה וְנִשְׁמָע&quot; והקדים את ה&#39;נעשה&#39; ל&#39;נשמע&#39;, כמו עץ התפוח שצמיחת פירותיו קודמת לצמיחת העלים שלו. ה&#39;נעשה&#39; הוא התפוח, הוא המחויבות שלנו לדרך הטובה. ה&#39;נשמע&#39; הוא הדבש, הוא ההבנה שבאה וצומחת עם הזמן עד כמה הדרך הזו באמת מתוקה. אם נתאמץ לתת את הפירות, יבואו אחר כך גם העלים - הזמנים שבהם נוכל לשבת וליהנות ממשב רוח רענן.</p>
               <p style="Margin:0 0 18px; font-size:16px; line-height:1.75; text-align:justify;">כעת לא נשאר לנו אלא לאחל לכם <span style="color:#1c4587; font-weight:700;">שנה טובה ומתוקה</span> במלוא מובן המילה!</p>
               <div style="clear:both; font-size:0; line-height:0;">&nbsp;</div>
-
-
-
-              <!-- ==== הטבלה של #1844, בעיצוב של #1854 (עמודות ברוחב המילים) ו-#1856
-                   (הדגשה בכחול + מסגרת תכלת). ה-class שעל הטבלה מחובר לכלל מדיה בראש
-                   הקובץ שמקטין אותה בטלפון, כי nowrap על שבע עמודות רחב ממסך צר.
-                   (שם ה-class לא נכתב כאן בכוונה: הערה שמצטטת אותו מכפילה את הספירה.)
-                   #1870: ה-class יושב על ה-div העוטף ולא על הטבלה. המרווח השלילי שבטלפון
-                   מרחיב את ה-div, והטבלה נשארת ממורכזת בתוכו ב-Margin:auto - כשהמרווח
-                   השלילי היה על הטבלה עצמה הוא **דרס** את auto והצמיד אותה לימין. ==== -->
+              
               <table role="presentation" cellpadding="0" cellspacing="0" border="0" dir="rtl" width="100%" style="Margin:6px 0 0; width:100%;">
                 <tr>
                   <td style="border:2px solid #b9cfe6; background-color:#ffffff; padding:4px;">
@@ -184,11 +154,9 @@
           </tr>
           <tr>
             <td class="pad" style="padding:8px 34px 0 34px;">
-            <!-- ==== רצועת משוב (ו1, רפאל 18.8.2026; הוחזרה לגיליון 4 - 31.8.2026, "תוסיף את האפשרות לשלוח משוב בסוף כל אחד מן המדורים") - מדור 1 ==== -->
+            
             <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" dir="rtl" style="border-collapse:collapse; background:#f4f8f9; border-top:1px solid #dfe8ec; border-bottom:1px solid #dfe8ec;">
-              <!-- הרווח מתחת לכותרת עבר הלוך ושוב: 8px -> 15px (18.8.2026, "הכיתוב קרוב מדי לכוכבים. תגביה
-                   אותו קצת") -> 9px (18.8.2026 19:41, "משוב אנונימי וכו&#39; - תקרב יותר לכוכבים"). אחרי ש-
-                   "(אנונימי)" הוקטן הכותרת קלה יותר, ו-15 נראה מנותק. -->
+              
               <tr><td align="center" style="padding:13px 14px 9px; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:15px; font-weight:700; color:#1c4587;">המדור הזה עזר לך? <span style="font-size:13px;">(משוב אנונימי)</span></td></tr>
               <tr><td style="padding:0 26px 4px;">
                 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" dir="rtl" style="border-collapse:collapse;">
@@ -207,41 +175,10 @@
                 </table>
               </td></tr>
             </table>
-            <!-- ==== סוף רצועת משוב - מדור 1 ==== -->
+            
             </td>
           </tr>
-
-          <!-- ==== 31.8.2026, #1840: מדור "צידה לדרך" **לא קיים בגיליון הזה**. רפאל: "שכחת
-               שצידה לדרך הוא לא מדור קבוע" - וזה גם מה שכתוב ב-style-spec.md מ-18.8.2026. הוא
-               נכנס רק כשיש חומר בשבילו; כשאין, אין באנר ריק ואין תיבת ממלא־מקום. ירדו כאן
-               כיחידה אחת: רצועת הקהל ("לכולם"), באנר המדור, גוף המדור, ורצועת המשוב שלו.
-               (שם קובץ הבאנר ומזהה המדור בקישורי המשוב לא נכתבים כאן בכוונה - הערה שמצטטת
-               את מה שהוסר גורמת ל-grep על הקובץ לדווח שהוא עוד שם.)
-               **לשאול את רפאל בכל גיליון** אם יש חומר - לא להחליט לבד לשום כיוון.
-               להחזרה: הבלוק המלא בגיליון 4, hebrew-newsletter/issue-4-nitzavim/nitzavim.html,
-               בין הערות SECTION 4 ל-SECTION 2. ==== -->
-
-          <!-- ==== 31.8.2026, #1842: המדור הזה **לא קיים בגיליון הזה**. רפאל: "בגיליון ראש
-               השנה ובשאר גיליונות החגים שחלים בשבת לא יהיו המדורים הקבועים". גיליון חג =
-               מאמרים בלבד, כל אחד עם באנר משלו. ירדו כאן כיחידה אחת: רצועת הקהל, הבאנר,
-               גוף המדור, בלוק ה-CTA, ורצועת המשוב. (שמות הנכסים והמזהים לא נכתבים כאן
-               בכוונה - הערה שמצטטת את מה שהוסר גורמת ל-grep לדווח שהוא עוד שם.)
-               להחזרה בגיליון רגיל: הבלוק המלא ב-hebrew-newsletter/issue-4-nitzavim/nitzavim.html. ==== -->
-
-          <!-- ==== 31.8.2026, #1842: המדור הזה **לא קיים בגיליון הזה**. רפאל: "בגיליון ראש
-               השנה ובשאר גיליונות החגים שחלים בשבת לא יהיו המדורים הקבועים". גיליון חג =
-               מאמרים בלבד, כל אחד עם באנר משלו. ירדו כאן כיחידה אחת: רצועת הקהל, הבאנר,
-               גוף המדור, בלוק ה-CTA, ורצועת המשוב. (שמות הנכסים והמזהים לא נכתבים כאן
-               בכוונה - הערה שמצטטת את מה שהוסר גורמת ל-grep לדווח שהוא עוד שם.)
-               להחזרה בגיליון רגיל: הבלוק המלא ב-hebrew-newsletter/issue-4-nitzavim/nitzavim.html. ==== -->
-
-          <!-- ================= מאמרים 2-3 =================
-               מאמר 2 - השם עדיין נשקל (#1878), ולכן אין באנר ואין כותרת: ממלא־מקום בלבד.
-               מאמר 3 - הבאנר מאושר, "בַּחֲצוֹצְרוֹת וְקוֹל שׁוֹפָר":
-                        node hebrew-newsletter/build-section-banner.mjs --key chatzotzrot
-               שניהם: node hebrew-newsletter/issue-5-rosh-hashana/build-sections-23.mjs
-               רצועת הקהל היא "לכולם" בשניהם, כמו במאמר 1 - גיליון חג ואין מדורים קבועים.
-               כששני הקופי יגיעו, כל אחד יקבל build-article<N>.mjs משלו כמו מאמר 1. -->
+          
           <tr>
             <td class="pad" id="maamar2" style="padding:42px 34px 0 34px;">
               <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" dir="rtl" style="width:100%;">
@@ -258,13 +195,7 @@
             </td>
           </tr>
           <tr>
-            <!-- ==== באנר מאמר 2: בַּחֲצוֹצְרוֹת וְקוֹל שׁוֹפָר. המאמר נכנס למדור 2 לפי רפאל
-                 #32 (3.9.2026 02:10) - "תכניס את המאמר הזה למדור 2 של ראש השנה (את
-                 ממעמקים תהפוך למדור 3)". ההחלפה נעשתה ע"י swap-sections-23.mjs, שמחליף
-                 src+alt בלבד: רצועות המשוב (s=2/s=3) והעוגנים id="maamar2/3" מיקומיים
-                 ובכוונה לא זזים. נבנה ב:
-                 node hebrew-newsletter/build-section-banner.mjs --key chatzotzrot
-                 הגופן 122.3px ב-1980 - זהה לשאר באנרי הגיליון. ==== -->
+            
             <td align="center" class="sec-top" style="padding:6px 0 0 0; font-size:0; line-height:0;">
               <a href="https://gye.org.il" target="_blank" style="display:block; text-decoration:none;"><img src="https://gyenewsletters.netlify.app/images/banner-chatzotzrot-660.png"
                    width="660" height="165" alt=""
@@ -273,25 +204,14 @@
           </tr>
           <tr>
             <td class="pad" style="padding:18px 34px 0 34px;">
-              <!-- ==== מאמר 2: "בַּחֲצוֹצְרוֹת וְקוֹל שׁוֹפָר" - הקופי של רפאל (#34, 3.9.2026
-                   02:13). המקור היחיד הוא article2-copy.md (= הטיוטה הקפואה + התיקונים
-                   שלו, מתועדים שם לפי מספר הודעה). נבנה ע"י build-article2.mjs - אל
-                   תערוך את ה-HTML ביד.
-                   **אין h1 כאן** - הכותרת היא הבאנר שמעל (#34). ההדגשות כולן שלו, שבע
-                   במספר. מראי המקום והסוגריים האחרונים בגופן 13px. ==== -->
+              
               <p style="Margin:0 0 18px; font-size:16px; line-height:1.75; text-align:justify;">כְּלֵי נשיפה נקראים כך מפני שהאדם נושף לתוכם. בפעולה זו למעשה הוא נותן בהם את פנימיותו ואת רוח החיים שבו. מבין כלי הנשיפה המוזכרים במקרא, ישנם שניים בולטים ביותר: השופר והחצוצרה. התקיעה בכל אחד מהם מסמלת תנועה נפשית אחרת, וסגנון שונה של עבודת ה&#39;. השופר מסמל את עבודת הכניעה וההתבטלות לפני ה&#39;, עבודה עם אופי יותר פסיבי. והחצוצרה מסמלת את עבודת המנהיגות והגבורה, עבודה עם אופי יותר אקטיבי.</p>
               <p style="Margin:0 0 18px; font-size:16px; line-height:1.75; text-align:justify;">אפשר לראות זאת <span style="color:#1c4587; font-weight:700;">כבר בפעם הראשונה</span> שבה כל אחד מהם מוזכר בתורה. השופר מוזכר לראשונה בזמן קבלת התורה, שהייתה מלווה ב&quot;קוֹל שׁוֹפָר חָזָק מְאֹד&quot;, יחד עם כניעה למלכות ה&#39; וקבלת מצוותיו. לעומת זאת, החצוצרה מוזכרת לראשונה, כשה&#39; מצווה את משה לעשות שתי חצוצרות כסף לצורך הנהגת בני ישראל במדבר ולשעת מלחמה.</p>
               <p style="Margin:0 0 18px; font-size:16px; line-height:1.75; text-align:justify;"><span style="color:#1c4587; font-weight:700;">החומר</span> שמהם עשוי כל אחד גם רומז לכך: השופר עשוי מאיל, שהוא בעל חיים המשמש כקרבן, והוא גם זכר ליצחק שמסר עצמו לעקידה. דברים אלה מזוהים עם מידת הדין - מידה של התכנסות והתבטלות. החצוצרה עשויה מכסף, שהיא מתכת הַמְּכוּוֶנֶת כנגד מידת החסד - מידה של התפשטות והשפעה על המתרחש. כמו כן, בעוד השופר נשאר כפי שנעשה בידי שמיים - קרן איל טבעית שלא עוברת שינוי משמעותי, החצוצרה נעשית בעיקר בידי אדם, בתהליך של התכת גושי כסף לתוך תבנית.</p>
               <p style="Margin:0 0 18px; font-size:16px; line-height:1.75; text-align:justify;">גם <span style="color:#1c4587; font-weight:700;">הצורה</span> של השופר והחצוצרה תואמת: השופר שבו תוקעים בראש השנה צריך להיות כפוף, מפני שבראש השנה האדם צריך כמה שיותר לכופף ולהכניע את דעתו בפני ה&#39; <span style="font-size:13px;">(ר&quot;ה כו:)</span>. והחצוצרה צריכה להיות ישרה, מפני שהיא מסמלת את הנכונות לפרוץ קדימה ולצאת למלחמה. <span style="color:#1c4587; font-weight:700;">המספר</span> גם הוא מבטא זאת. השופר הוא אחד, בבחינת מיקוד והתכנסות, והחצוצרות הן שתיים, בבחינת התפשטות וריבוי. ולבסוף, אפילו <span style="color:#1c4587; font-weight:700;">הגדרת המצוה</span> משתנה בין הכלים: &#39;לשמוע קול שופר&#39; - פסיבי אל מול &#39;לתקוע בחצוצרות&#39; - אקטיבי <span style="font-size:13px;">(ספר המצוות, עשה קע ועשה נט)</span>.</p>
               <p style="Margin:0 0 18px; font-size:16px; line-height:1.75; text-align:justify;">אז מה נכון יותר עבורנו? להיכן עלינו &quot;לנשוף&quot; ולמקד את רוח החיים שבנו? &quot;בַּחֲצוֹצְרוֹת וְקוֹל שׁוֹפָר הָרִיעוּ לִפְנֵי הַמֶּלֶךְ ה&#39;&quot;. שני היסודות האלה נכונים בעבודת ה&#39; של כל אחד, אלא שכל אחד צריך לתת מקום נרחב יותר ליסוד שתואם לתכונת נפשו. <span style="color:#1c4587; font-weight:700;">מניסיוננו ב-GYE, עבור מתמודדים רגילים - מתאים יותר הדגש של &#39;חצוצרה&#39;, של גבורה ומאבק, ועבור מכורים - מתאים יותר הדגש של &#39;שופר&#39;, של כניעה</span> <span style="font-size:13px;">(כפי שהדבר נעשה בתכנית 12 הצעדים)</span>.</p>
               <p style="Margin:0 0 18px; font-size:16px; line-height:1.75; text-align:justify;">מכל מקום, עבור כולנו, ראש השנה הוא זמן לעבודת השופר, לחזק בנפשנו את אותה הכרה ש&quot;אלמלא הקב&quot;ה עוזרו אין יכול לו&quot;, &quot;כִּי עַל רַחֲמֶיךָ הָרַבִּים אָנוּ בְּטוּחִים&quot;. שנה טובה ובטוחה!</p>
-
-              <!-- ==== טבלת הסיכום של מאמר 2 (#224, 3.9.2026 23:12) - "טבלת סיכום באותו
-                   סגנון בדיוק של מאמר 1 עם הערכים הבאים". שמונה עמודות, שתי שורות.
-                   ⚠ מחרוזות הסגנון **נשלפות מהטבלה של מאמר 1 שבקובץ הזה** ולא נכתבות כאן,
-                   כדי ש"אותו סגנון בדיוק" יישאר נכון גם אחרי שינוי עיצוב שם.
-                   ה-class של המדיה יושב על ה-div העוטף ולא על הטבלה (#1870): המרווח השלילי
-                   בטלפון מרחיב את ה-div, והטבלה נשארת ממורכזת ב-Margin:auto. ==== -->
+              
               <table role="presentation" cellpadding="0" cellspacing="0" border="0" dir="rtl" width="100%" style="Margin:6px 0 0; width:100%;">
                 <tr>
                   <td style="border:2px solid #b9cfe6; background-color:#ffffff; padding:4px;">
@@ -340,7 +260,7 @@
           </tr>
           <tr>
             <td class="pad" style="padding:8px 34px 0 34px;">
-            <!-- ==== רצועת משוב - מדור 2 ==== -->
+            
             <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" dir="rtl" style="border-collapse:collapse; background:#f4f8f9; border-top:1px solid #dfe8ec; border-bottom:1px solid #dfe8ec;">
               <tr><td align="center" style="padding:13px 14px 9px; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:15px; font-weight:700; color:#1c4587;">המדור הזה עזר לך? <span style="font-size:13px;">(משוב אנונימי)</span></td></tr>
               <tr><td style="padding:0 26px 4px;">
@@ -360,7 +280,7 @@
                 </table>
               </td></tr>
             </table>
-            <!-- ==== סוף רצועת משוב - מדור 2 ==== -->
+            
             </td>
           </tr>
           <tr>
@@ -379,10 +299,7 @@
             </td>
           </tr>
           <tr>
-            <!-- ==== באנר מאמר 3: מִמַּעֲמַקִּים (רפאל #186, 2.9.2026 13:24 - "בניקוד כמו
-                 בתהילים פרק קל"; הניקוד מתהלים קל,א בלי הטעמים). היה מדור 2 עד #32.
-                 נבנה ב: node hebrew-newsletter/build-section-banner.mjs --key mimaamakim
-                 הגופן 122.3px ב-1980 - זהה לשאר באנרי הגיליון. ==== -->
+            
             <td align="center" class="sec-top" style="padding:6px 0 0 0; font-size:0; line-height:0;">
               <a href="https://gye.org.il" target="_blank" style="display:block; text-decoration:none;"><img src="https://gyenewsletters.netlify.app/images/banner-mimaamakim-660.png"
                    width="660" height="165" alt=""
@@ -391,10 +308,7 @@
           </tr>
           <tr>
             <td class="pad" style="padding:18px 34px 0 34px;">
-              <!-- ==== מאמר 3: "מִמַּעֲמַקִּים" - הקופי של רפאל. המקור היחיד הוא
-                   section3-copy.md. נבנה ע"י build-section3.mjs - אל תערוך את ה-HTML ביד.
-                   אין כותרת בגוף: הכותרת היא הבאנר שמעל (#1842).
-                   בלי מראי מקום, לפי הוראתו המפורשת. ==== -->
+              
               <p style="Margin:0 0 18px; font-size:16px; line-height:1.75; text-align:justify;">אם הגעתם עד אלינו לאתר GYE, ועד כאן למאמר האחרון בעלון, אתם כנראה רוצים לחולל שינוי. כל שינוי מתחיל בהחלטה. אבל החלטה יכולה להתקבל בעוצמות שונות, ברבדים שונים. כולנו מכירים את הביטוי &quot;עומק הלב&quot;, והוא מבוסס על כך שבנפש שלנו קיימות שכבות רבות. אפשר להרגיש דבר מסוים רק בחיצוניות הלב, או אפילו בפנימיות הלב, אבל לא ממש עד הסוף.</p>
               <p style="Margin:0 0 18px; font-size:16px; line-height:1.75; text-align:justify;">על הפסוק &#39;קוֹל דּוֹדִי דוֹפֵק&#39; דרשו חז&quot;ל שהקב&quot;ה אומר לבני ישראל: &quot;פתחו לי פתח כחודו של מחט, ואני אפתח לכם פתח כפתחו של אולם&quot;. בעלי המוסר והחסידות הסבירו, שהפתח של המחט הוא אמנם זעיר וקטן ביותר, אבל הוא פתח שנעשה בשלמות, שהרי המחט עוברת בבגד כולו.</p>
               <p style="Margin:0 0 18px; font-size:16px; line-height:1.75; text-align:justify;">בפירושו לפסוק &#39;וְהָיָה כְּעֵץ שָׁתוּל עַל פַּלְגֵי מָיִם&#39;, מסביר המלבי&quot;ם, שהאדם הוא כמו עץ הפוך, ששורשיו נטועים למעלה: &quot;כי המוח באדם הוא תחת השורש בעץ השדה, ממנו יוצאות כל ההרגשות&quot;. המטרה שלנו היא לפתוח פתח &quot;עד הסוף&quot;, להגיע למקום העמוק והשורשי הזה, ולקבל שם את ההחלטה, לחולל שם את השינוי.</p>
@@ -404,7 +318,7 @@
           </tr>
           <tr>
             <td class="pad" style="padding:8px 34px 0 34px;">
-            <!-- ==== רצועת משוב - מדור 3 ==== -->
+            
             <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" dir="rtl" style="border-collapse:collapse; background:#f4f8f9; border-top:1px solid #dfe8ec; border-bottom:1px solid #dfe8ec;">
               <tr><td align="center" style="padding:13px 14px 9px; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:15px; font-weight:700; color:#1c4587;">המדור הזה עזר לך? <span style="font-size:13px;">(משוב אנונימי)</span></td></tr>
               <tr><td style="padding:0 26px 4px;">
@@ -424,12 +338,10 @@
                 </table>
               </td></tr>
             </table>
-            <!-- ==== סוף רצועת משוב - מדור 3 ==== -->
+            
             </td>
           </tr>
-          <!-- ================= סוף מאמרים 2-3 ================= -->
-
-          <!-- ===== בלוק פנייה - גיליון חג (#90, 5.9.2026). פעם אחת, בסוף הגיליון. ===== -->
+          
           <tr>
             <td class="pad" style="padding:6px 34px 0 34px;">
               <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" dir="rtl" style="width:100%;">
@@ -450,8 +362,7 @@
               </table>
             </td>
           </tr>
-
-          <!-- ===== PRINT / PDF ===== -->
+          
           <tr>
             <td class="pad" style="padding:0 34px 6px 34px;">
               <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" dir="rtl" style="width:100%;">
@@ -471,8 +382,7 @@
               </table>
             </td>
           </tr>
-
-          <!-- ===== FOOTER ===== -->
+          
           <tr>
             <td class="pad foot" style="padding:10px 34px 30px 34px;">
               <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" dir="rtl" style="width:100%;">
