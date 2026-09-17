@@ -33,7 +33,7 @@
       .txt, .txt p { font-size:16px !important; line-height:1.7 !important; }
       .txt p.sub { font-size:17px !important; line-height:1.3 !important; }
       .txt p.note { font-size:13px !important; line-height:1.6 !important; }
-      .txt p.disc { font-size:14px !important; line-height:1.6 !important; }
+      .txt p.disc { font-size:13px !important; line-height:1.6 !important; }
       .ph        { font-size:13px !important; }
       .cta p     { font-size:15px !important; }
       .ctac td   { display:block !important; padding:1px 0 !important; text-align:center !important; white-space:normal !important; font-size:15px !important; }
@@ -48,13 +48,7 @@
   </style>
 </head>
 <body style="margin:0; padding:0; width:100%; background-color:#e4eef0; font-family:'Open Sans','Arial Hebrew',Arial,sans-serif; color:#3d3d3d; direction:rtl;">
-
-  <!-- ==== 31.8.2026, #1808: "תעשה שאף פעם לא יהיה טקסט תצוגה מוקדמת" - כלל קבוע, לא חד-פעמי.
-       ה-preheader הוסר לגמרי. הנוסח שהיה כאן נגרר מגיליון 2, ואת המילים עצמן אני לא מצטט
-       כאן בכוונה - הן היו נמצאות בבדיקה של הדף החי ומדווחות שהוא עוד שם.
-       ה-div שמתחת **נשאר בכוונה**: הוא רצף תווים בלתי נראים שממלא את שורת התצוגה של Gmail,
-       וזה מה שמונע ממנה לשאוב את המילים הראשונות של הגיליון. בלעדיו התצוגה המוקדמת לא נשארת
-       ריקה - היא פשוט מתמלאת בטקסט אחר. לא להוסיף כאן טקסט בשום גיליון. ==== -->
+  
   <div style="display:none; max-height:0; max-width:0; opacity:0; overflow:hidden; mso-hide:all; font-size:1px; line-height:1px; color:#e4eef0;">&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;&#847;&zwnj;&nbsp;</div>
 
   <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" dir="rtl" style="width:100%; background-color:#e4eef0;">
@@ -63,8 +57,7 @@
 
         <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" dir="rtl" class="card"
                style="width:100%; max-width:660px; background-color:#ffffff; border-radius:0 0 6px 6px; overflow:hidden;">
-
-          <!-- ===== HEADER ===== -->
+          
           <tr>
             <td align="center" bgcolor="#0e2b4c" style="padding:0; font-size:0; line-height:0; background-color:#0e2b4c;">
               <a href="https://gye.org.il" target="_blank" style="display:block; text-decoration:none;"><img src="https://gyenewsletters.netlify.app/images/hebrew-header-nitzavim-5786.png"
@@ -72,8 +65,7 @@
                    style="display:block; width:100%; max-width:660px; height:auto;"></a>
             </td>
           </tr>
-
-          <!-- ===== PRINT BAR (under the banner) - שני לחצנים, #84/#108 ===== -->
+          
           <tr>
             <td align="center" bgcolor="#dbe8f5" style="padding:0; background-color:#dbe8f5; border-top:1px solid #b9cfe6; border-bottom:1px solid #b9cfe6;">
               <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" dir="rtl" class="btns" style="width:100%; table-layout:fixed;">
@@ -84,14 +76,7 @@
               </table>
             </td>
           </tr>
-
-          <!-- אין פתיחה בגיליון הזה - החלטת רפאל, #1990 (2.9.2026 00:37).
-               הבלוק שהיה כאן הוסר במלואו (13 שורות: tr אחד עם td class="pad txt"
-               והטבלה שבתוכו). המבנה עכשיו זהה לגיליון 3, שגם בו אין פתיחה: הרצועה
-               "הורדת הגיליון להדפסה" ואחריה ישר הבאנר של מדור 1, וריווח מדור 1
-               נשאר 42px - נמדד מהעמוד החי של גיליון 3. -->
-
-          <!-- ================= SECTION 1: המאור שבה ================= -->
+          
           <tr>
             <td class="pad" id="maamar1" style="padding:42px 34px 0 34px;">
               <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" dir="rtl" style="width:100%;">
@@ -116,12 +101,7 @@
           </tr>
           <tr>
             <td class="pad txt" style="padding:0 34px 10px 34px;">
-
-              <!-- ==== מדור 1: "אַתֶּם נִצָּבִים - הַיּוֹם!" - הקופי של רפאל. המקור היחיד הוא
-                   section1-copy.md (= גירסה 4 הקפואה + התיקונים שלו, מתועדים שם לפי מספר
-                   הודעה). נבנה ע"י build-section1.mjs - אל תערוך את ה-HTML ביד. הכותרת לפי
-                   #1804; משפט הסיום זהה לה בכוונה (#1806) ולא מתקנים את זה. מראי המקום
-                   בגופן 13px, סוגריים וטקסט (#1814 + #1816). ==== -->
+              
               <h1 class="h1" style="Margin:0 0 14px; font-family:'Open Sans','Arial Hebrew',Arial,sans-serif; font-size:23px; line-height:1.22; color:#1c4587; font-weight:700; text-align:center;">אַתֶּם נִצָּבִים - הַיּוֹם!</h1>
               <p style="Margin:0 0 18px; font-size:16px; line-height:1.75; text-align:justify;">חבר שנקי שנים רבות שיתף, שבתחילת הדרך שלו, כאשר הימים הנקיים התחילו להצטבר למספר משמעותי, הוא הרגיש כאילו הוא סוחב פיזית את כל הימים האלה. כאילו כל יום נקי הוא עוד לְבֵנָה שהוא מניח על הגב שלו, ומיום ליום הבניין נהיה יותר ויותר גבוה. וכבד. והאמת, שלא רק הימים שעברו הפכו להיות משא כבד, אלא גם הימים שיהיו בעתיד - &quot;מה, ככה זה יהיה כל החיים? כל כך הרבה ימים (ושנים) אצטרך להתאמץ כדי להישאר נקי?&quot;</p>
               <p style="Margin:0 0 18px; font-size:16px; line-height:1.75; text-align:justify;">פעמים רבות, מה שמעכב את ההתקדמות שלנו הם כישלונות העבר או פחדים מהעתיד. כשאנחנו מביטים לאחור, אנחנו רואים את הפעמים שבהן נכשלנו, וחוששים שגם הפעם לא נצליח. וכשאנחנו מביטים קדימה, ורואים את כל המאבקים הצפויים לנו בהמשך הדרך - אנחנו מרימים ידיים ומתייאשים. אולי לכן אנחנו מבקשים <span style="font-size:13px;">(בברכת &#39;השכיבנו&#39;)</span>: &quot;וְהָסֵר שָׂטָן מִלְּפָנֵינוּ וּמֵאַחֲרֵינוּ&quot;. שהקב&quot;ה יסיר מאיתנו את העיכובים שנובעים ממה שעדיין &#39;לְפָנֵינוּ&#39;, וממה שכבר &#39;מֵאַחֲרֵינוּ&#39;.</p>
@@ -146,11 +126,9 @@
           </tr>
           <tr>
             <td class="pad" style="padding:8px 34px 0 34px;">
-            <!-- ==== רצועת משוב (ו1, רפאל 18.8.2026; הוחזרה לגיליון 4 - 31.8.2026, "תוסיף את האפשרות לשלוח משוב בסוף כל אחד מן המדורים") - מדור 1 ==== -->
+            
             <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" dir="rtl" style="border-collapse:collapse; background:#f4f8f9; border-top:1px solid #dfe8ec; border-bottom:1px solid #dfe8ec;">
-              <!-- הרווח מתחת לכותרת עבר הלוך ושוב: 8px -> 15px (18.8.2026, "הכיתוב קרוב מדי לכוכבים. תגביה
-                   אותו קצת") -> 9px (18.8.2026 19:41, "משוב אנונימי וכו&#39; - תקרב יותר לכוכבים"). אחרי ש-
-                   "(אנונימי)" הוקטן הכותרת קלה יותר, ו-15 נראה מנותק. -->
+              
               <tr><td align="center" style="padding:13px 14px 9px; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:15px; font-weight:700; color:#1c4587;">המדור הזה עזר לך? <span style="font-size:13px;">(משוב אנונימי)</span></td></tr>
               <tr><td style="padding:0 26px 4px;">
                 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" dir="rtl" style="border-collapse:collapse;">
@@ -169,11 +147,10 @@
                 </table>
               </td></tr>
             </table>
-            <!-- ==== סוף רצועת משוב - מדור 1 ==== -->
+            
             </td>
           </tr>
-
-          <!-- ================= SECTION 4: צידה לדרך ================= -->
+          
           <tr>
             <td class="pad" id="maamar4" style="padding:42px 34px 0 34px;">
               <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" dir="rtl" style="width:100%;">
@@ -198,30 +175,9 @@
           </tr>
           <tr>
             <td class="pad txt" style="padding:0 34px 4px 34px;">
-
-              <!-- ההקדמה לצידה לדרך: רפאל כותב אותה בעצמו (18.8.2026). -->
-              <!-- ההקדמה לצידה לדרך - נוסח רפאל מילה במילה (31.8.2026 15:32). -->
-              <!-- 3.9.2026 01:46 - "אנו מודים לגולן - להתחיל שורה חדשה אבל לא פסקה חדשה":
-                   <br> לפני המשפט האחרון, בתוך אותה פסקה. הוא הבחין בין השניים גם ב-#1920
-                   וב-#1924, ולכן זה <br> ולא <p> נוסף. -->
+              
               <p style="Margin:0 0 18px; font-size:16px; line-height:1.75; text-align:center;">כצידה לדרך שלכם, ובהמשך למאמר הפתיחה, אנחנו רוצים לשתף אתכם שיר של גולן אזולאי, שממחיש את הצורך להתמקד ביום הזה ולהתחיל בו מחדש.<br>אנו מודים לגולן שנתן את רשותו לכך.</p>
-
-              <!-- ==== השיר של עקיבא תורג'מן הורד 30.8.2026 (רפאל, #1758: "השיר של עקיבא יורד
-                   בינתיים. עד להודעה חדשה."). הבלוק שהוסר - הכותרת, ציטוט הפזמון והתא בטבלת
-                   המדיה - שמור מילה במילה ב-akiva-block-removed.html, כדי שההחזרה תהיה הדבקה
-                   אחת. בזמן שהוא ירד, טבלת המדיה נושאת כפתור אחד ממורכז במקום שניים 50/50. ==== -->
-
-              <!-- ==== 31.8.2026, #1834 + #1836: הכפתור **מתחת** לכותרת עם שם השיר והמבצע, שניהם
-                   ממורכזים. זה מבטל את #1798 (כפתור לימין הכותרת באותה שורה) ומייתר את #1832
-                   שביקש למרכז את הכותרת לאמצע הכפתור - בסידור הזה אין מה למרכז. זה גם מה
-                   שמחזיק בנייד: שורה של כפתור+כותרת נשברת שם לשתי עמודות צרות.
-                   הכיתוב מתחת לכפתור הוא נוסח רפאל מילה במילה (#1800) - "לשמיעה והורדת השיר
-                   והמילים", שתי מילים בשורה.
-                   כשעקיבא יחזור: לשכפל את הזוג הזה (כותרת + כפתור) לשיר שלו, לפי
-                   akiva-block-removed.html.
-                   3.9.2026 01:37 - "להגדיל גופן": הכיתוב עבר מ-14px ל-17px. הוא span עם
-                   font-size מוטבע, וכללי המובייל חלים על .txt p - ולכן 17px בשני המסכים.
-                   גדול מגוף הטקסט (16px) וקטן מהכותרת שמעליו (23px). ==== -->
+              
               <h1 class="h1" style="Margin:0 0 14px; font-family:'Open Sans','Arial Hebrew',Arial,sans-serif; font-size:23px; line-height:1.25; color:#1c4587; font-weight:700; text-align:center;">כל יום יהיו בעיניך כחדשים - גולן אזולאי</h1>
               <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" dir="rtl" style="width:100%; margin:0 0 5px;">
                 <tr>
@@ -234,27 +190,15 @@
                 </tr>
               </table>
 
-              <!-- ==== 31.8.2026, #1830: "תמחק את פזמון השיר במדור צידה לדרך" - תיבת הציטוט
-                   ("כל יום כל יום כל יום / יהיו בעיניך כחדשים") הוסרה. אם תחזור: טבלה עם td
-                   רקע #f4f8f9 ו-border-right:4px solid #1c4587, p ממורכז 16px/1.95 מודגש. ==== -->
-
-              <!-- ==== 31.8.2026: השורה "אנו מודים לבעלי הזכויות שנתנו את רשותם" הוסרה - ההקדמה
-                   החדשה של רפאל מודה לגולן בשמו, וזאת היתה כפילות. תגיד ומחזיר. ==== -->
-
-              <!-- ==== 31.8.2026: בלוק המדיה הממורכז שהיה כאן הוסר - הכפתור עלה למעלה, לימין
-                   כותרת השיר (#1798). ==== -->
-
               <p style="Margin:20px 0 0; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:15px; line-height:1.5; font-weight:700; color:#1c4587; text-align:center;">הקישור לא נפתח לכם?<br>יש לכם המלצה על שיר?<br>כתבו לנו ונשמח לעזור!<br><a href="mailto:shmor.help@gmail.com" style="color:#1c4587; font-weight:700; text-decoration:underline;"><span dir="ltr" style="unicode-bidi:embed;">shmor.help@gmail.com</span></a></p>
 
             </td>
           </tr>
           <tr>
             <td class="pad" style="padding:8px 34px 0 34px;">
-            <!-- ==== רצועת משוב (ו1, רפאל 18.8.2026; הוחזרה לגיליון 4 - 31.8.2026, "תוסיף את האפשרות לשלוח משוב בסוף כל אחד מן המדורים") - מדור 4 ==== -->
+            
             <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" dir="rtl" style="border-collapse:collapse; background:#f4f8f9; border-top:1px solid #dfe8ec; border-bottom:1px solid #dfe8ec;">
-              <!-- הרווח מתחת לכותרת עבר הלוך ושוב: 8px -> 15px (18.8.2026, "הכיתוב קרוב מדי לכוכבים. תגביה
-                   אותו קצת") -> 9px (18.8.2026 19:41, "משוב אנונימי וכו&#39; - תקרב יותר לכוכבים"). אחרי ש-
-                   "(אנונימי)" הוקטן הכותרת קלה יותר, ו-15 נראה מנותק. -->
+              
               <tr><td align="center" style="padding:13px 14px 9px; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:15px; font-weight:700; color:#1c4587;">המדור הזה עזר לך? <span style="font-size:13px;">(משוב אנונימי)</span></td></tr>
               <tr><td style="padding:0 26px 4px;">
                 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" dir="rtl" style="border-collapse:collapse;">
@@ -273,11 +217,10 @@
                 </table>
               </td></tr>
             </table>
-            <!-- ==== סוף רצועת משוב - מדור 4 ==== -->
+            
             </td>
           </tr>
-
-          <!-- ================= SECTION 2: מתוק לנפש ================= -->
+          
           <tr>
             <td class="pad" id="maamar2" style="padding:42px 34px 0 34px;">
               <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" dir="rtl" style="width:100%;">
@@ -302,20 +245,11 @@
           </tr>
           <tr>
             <td class="pad txt" style="padding:0 34px 10px 34px;">
-
-              <!-- תג העמוד שבו עוסק המדור השבוע - הוראת רפאל, 23.8.2026 16:08. **להחליף בכל גיליון.** -->
+              
               <table role="presentation" align="center" cellpadding="0" cellspacing="0" border="0" style="margin:0 auto 15px; border-collapse:separate !important; border-spacing:0;">
                 <tr><td class="pill" align="center" style="padding:9px 24px; background-color:#e7f0f9; border:1px solid #b9cfe6; border-radius:999px; font-family:'Open Sans','Arial Hebrew',Arial,sans-serif; font-size:16px; line-height:1.2; font-weight:700; letter-spacing:.4px; color:#1c4587; white-space:nowrap;">תכנון</td></tr>
               </table>
-
-              <!-- ==== מדור 2: "להפוך את ה'למה' ל'איך'" - הקופי של רפאל (#1892, 1.9.2026 11:21).
-                   המקור היחיד הוא section2-copy.md (= הטיוטה הקפואה matok-rafael.md + התיקונים שלו,
-                   מתועדים שם לפי מספר הודעה). נבנה ע"י build-section2.mjs - אל תערוך HTML ביד.
-                   #1894 ההפניה לכוזרי נמחקה · #1896 "נתחיל לעסוק" · #1898 + #1900 "הראשון" ו-"כתבנו"
-                   מקשרים למדור 2 של גיליון 1 (עוגן #maamar2) · #1902 התג = "תכנון".
-                   #1914 עד #1930 - תיקוני ניסוח שלו, כולם רשומים ב-section2-copy.md.
-                   משפט המפתח המודגש = בחירתו ב-#1926 ("אפילו מוטיבציה גבוהה...").
-                   #150 עד #158 (3.9.2026 22:13-22:16) - סבב תיקוני ניסוח שלו. ==== -->
+              
               <h1 class="h1" style="Margin:0 0 12px; font-family:'Open Sans','Arial Hebrew',Arial,sans-serif; font-size:22px; line-height:1.22; color:#1c4587; font-weight:700; text-align:center;">להפוך את ה'למה' ל'איך'</h1>
 
               <p style="Margin:0 0 18px; font-size:16px; line-height:1.75; text-align:justify;">במאמר <a href="https://gyenewsletters.netlify.app/drafts/hebrew-header-test.html#maamar2" target="_blank" style="color:#1376c8; text-decoration:underline;">הראשון</a> במדור זה, הרחבנו על כך שישנם שלושה יסודות חשובים להתמודדות מוצלחת: <span style="color:#1c4587; font-weight:700;">מ</span>וטיבציה, <span style="color:#1c4587; font-weight:700;">ת</span>כנון <span style="color:#1c4587; font-weight:700;">וק</span>שר (ומכאן שמו של המדור: <span style="color:#1c4587; font-weight:700;">&quot;מָתוֹ&quot;ק לַנֶּפֶשׁ&quot;</span> <span style="font-size:13px;">(משלי טז, כד)</span>). בשבועיים האחרונים עסקנו ב<span style="color:#1c4587; font-weight:700;">מוטיבציה</span>. הסברנו עד כמה חשוב להבין ולדייק את ה&#39;למה&#39; שלנו. אם רצוננו בשינוי משמעותי וארוך טווח, אנחנו צריכים שיהיה ברור ובהיר לנו למה אנחנו בעצם רוצים ועושים את השינוי הזה, ומה הוא יכול להביא לחיים שלנו.</p>
@@ -345,11 +279,9 @@
           </tr>
           <tr>
             <td class="pad" style="padding:8px 34px 0 34px;">
-            <!-- ==== רצועת משוב (ו1, רפאל 18.8.2026; הוחזרה לגיליון 4 - 31.8.2026, "תוסיף את האפשרות לשלוח משוב בסוף כל אחד מן המדורים") - מדור 2 ==== -->
+            
             <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" dir="rtl" style="border-collapse:collapse; background:#f4f8f9; border-top:1px solid #dfe8ec; border-bottom:1px solid #dfe8ec;">
-              <!-- הרווח מתחת לכותרת עבר הלוך ושוב: 8px -> 15px (18.8.2026, "הכיתוב קרוב מדי לכוכבים. תגביה
-                   אותו קצת") -> 9px (18.8.2026 19:41, "משוב אנונימי וכו&#39; - תקרב יותר לכוכבים"). אחרי ש-
-                   "(אנונימי)" הוקטן הכותרת קלה יותר, ו-15 נראה מנותק. -->
+              
               <tr><td align="center" style="padding:13px 14px 9px; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:15px; font-weight:700; color:#1c4587;">המדור הזה עזר לך? <span style="font-size:13px;">(משוב אנונימי)</span></td></tr>
               <tr><td style="padding:0 26px 4px;">
                 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" dir="rtl" style="border-collapse:collapse;">
@@ -368,11 +300,10 @@
                 </table>
               </td></tr>
             </table>
-            <!-- ==== סוף רצועת משוב - מדור 2 ==== -->
+            
             </td>
           </tr>
-
-          <!-- ================= SECTION 3: צעדני ואושעה ================= -->
+          
           <tr>
             <td class="pad" id="maamar3" style="padding:42px 34px 0 34px;">
               <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" dir="rtl" style="width:100%;">
@@ -397,35 +328,13 @@
           </tr>
           <tr>
             <td class="pad txt" style="padding:0 34px 4px 34px;">
-
-              <!-- ==== ההסתייגות הקבועה של מדור 3, נוסח א' (רפאל #172, 2.9.2026 13:10):
-                   "באופן קבוע. אחרי הבאנר של המדור ולפני התג של מספר הצעד. הגופן צריך
-                   להיות קטן ומודגש בכחול".
-                   **#58 (3.9.2026 02:34): פסקה אחת רצופה, מיושרת לשני הצדדים, בלי
-                   מרכוז ובלי שבירת שורה.** זה מבטל את גרסאות המרכוז מ-01:45 עד 02:32.
-                   **#68 (3.9.2026 02:46): תיקון ניסוח - שני המשפטים הראשונים אוחדו
-                   ל-"...12 הצעדים שמתאימה להתמודדות...", ו"מיועדת לאנשים עם" ו"במיוחד"
-                   ירדו.**
-                   **#160 (3.9.2026 22:18): תיקון ניסוח נוסף + "להגדיל גם את הטקסט אבל
-                   ממש טיפה" -> 14px. ה-class הוא note disc: .note נשאר 13px כי הוא משמש
-                   גם את ההערה האפורה בסוף המדור, ו-.disc דורך עליו לפסקה הזאת בלבד.**
-                   מקור אחד: ../section3-disclaimer.mjs - אל תערוך ידנית. ==== -->
-              <p class="note disc" style="Margin:0 0 18px; font-size:14px; line-height:1.6; text-align:justify; color:#1c4587; font-weight:700;">מדור זה עוסק בתוכנית 12 הצעדים, שמתאימה למצבים של התמודדות יומיומית קשה ומאתגרת שנחשבת התמכרות. אם אתם בספק לגבי המצב האישי שלכם, אתם מוזמנים לפנות לרפאל בטלפון <a href="tel:+9720587004152" style="color:#1c4587; text-decoration:underline;"><span dir="ltr" style="unicode-bidi:embed;">058-7004152</span></a> או במייל <a href="mailto:shmor.help@gmail.com" style="color:#1c4587; text-decoration:underline;"><span dir="ltr" style="unicode-bidi:embed;">shmor.help@gmail.com</span></a></p>
-
-              <!-- תג הצעד שבו עוסק המדור. "צעד 1" גם בגיליון 2 וגם בגיליון 3; בשלד של
-                   גיליון 4 הוא נעלם והוחזר כאן. **לאשר מול רפאל בכל גיליון.** -->
+              
+              <p class="note disc" style="Margin:0 0 18px; font-size:13px; line-height:1.6; text-align:justify; color:#6a6a6a;"><span style="color:#1c4587; font-weight:700;">הערה:</span> מדור זה עוסק בתוכנית 12 הצעדים, שמתאימה למצבים של התמודדות יומיומית קשה שנחשבת &#39;התמכרות&#39;. אם אתם בספק, אתם מוזמנים לפנות לרפאל בטלפון <a href="tel:+9720587004152" style="color:#1c4587; text-decoration:underline;"><span dir="ltr" style="unicode-bidi:embed;">058-7004152</span></a> או במייל <a href="mailto:shmor.help@gmail.com" style="color:#1c4587; text-decoration:underline;"><span dir="ltr" style="unicode-bidi:embed;">shmor.help@gmail.com</span></a></p>
+              
               <table role="presentation" align="center" cellpadding="0" cellspacing="0" border="0" style="margin:0 auto 15px; border-collapse:separate !important; border-spacing:0;">
                 <tr><td class="pill" align="center" style="padding:9px 24px; background-color:#e7f0f9; border:1px solid #b9cfe6; border-radius:999px; font-family:'Open Sans','Arial Hebrew',Arial,sans-serif; font-size:16px; line-height:1.2; font-weight:700; letter-spacing:.4px; color:#1c4587; white-space:nowrap;">צעד 2</td></tr>
               </table>
-
-              <!-- ==== מדור 3: "יש פתרון!" - הקופי של רפאל, נוסח #1982 (2.9.2026 00:17,
-                   "זה הנוסח העדכני. תפרסם אותו עכשיו"). המקור היחיד הוא section3-copy.md;
-                   הטיוטות כמו שנשלחו קפואות ב-section3-rafael.md. נבנה ע"י build-section3.mjs
-                   - אל תערוך HTML ביד.
-                   #1942 הקישור על "הקודמים" למדור 3 של גיליון 3 · #1948 "מילכוד" ·
-                   #1956 "הבעייה" בשתי יו"דים (שלו) · #1936 "תוכנית" ·
-                   #1980 המשפט המוסגר ב-13px, "כמו מראה המקומות וההערה בסוף" ·
-                   #1968 ההערה בסוף המדור נשארת. ==== -->
+              
               <h1 class="h1" style="Margin:0 0 12px; font-family:'Open Sans','Arial Hebrew',Arial,sans-serif; font-size:22px; line-height:1.22; color:#1c4587; font-weight:700; text-align:center;">יש פתרון!</h1>
 
               <p style="Margin:0 0 18px; font-size:16px; line-height:1.75; text-align:justify;">במאמרים <a href="https://gyenewsletters.netlify.app/drafts/ki-tavo-5786.html#maamar3" target="_blank" style="color:#1376c8; text-decoration:underline;">הקודמים</a> הסברנו את המילכוד הכפול שאנחנו נתונים בו בתור מכורים: <span style="color:#1c4587; font-weight:700;">לגוף שלנו יש &quot;אלרגיה&quot; לתאווה -</span> בזמנים מסוימים, ברגע שאנחנו צורכים תאווה אנחנו מאבדים שליטה ולא מצליחים לעצור איפה שתיכננו. את זה כשלעצמו היה אפשר לפתור בהימנעות מוחלטת מתאווה, כמו שעושה כל מי שיש לו אלרגיה לדבר מסוים.</p>
@@ -435,11 +344,7 @@
               <p style="Margin:0 0 18px; font-size:16px; line-height:1.75; text-align:justify;">רבים משומרי התורה והמצוות ששומעים לראשונה על תוכנית הצעדים, חשים בשלב הזה אכזבה עמוקה. &quot;תגיד לי אתה רציני? באתי עד לכאן כדי שתלמד אותי מי זה הקב&quot;ה? אתה יודע כמה כבר פניתי והתחננתי אליו מעומק הלב? ניסיתי בלי סוף והגעתי כבר מזמן למסקנה הכואבת שהתפילות שלי פשוט לא מצליחות לשנות את המצב!&quot;.</p>
               <p style="Margin:0 0 18px; font-size:16px; line-height:1.75; text-align:justify;">אנחנו מכירים אישית אנשים שהשקיעו שעות אינספור של תפילות, בהן דיברו עם הקב&quot;ה על כל הקשיים שהם עוברים בתחום הזה. זה לא עבד. זה לא הצליח להשאיר אותם נקיים. אבל כאשר הגיעו לתוכנית הצעדים, והתחילו לתרגל את מה שהציעו להם, פתאום הצליחו לראשונה בחייהם להישאר נקיים במשך שנים. אז מה קורה כאן בעצם?</p>
               <p style="Margin:0 0 18px; font-size:16px; line-height:1.75; text-align:justify;">קשה ומאוד לא נוח להודות בזה: משום מה בתחום הזה של ההתמכרות, העבודה הרוחנית שלנו לא הצליחה להביא לתוצאה המבוקשת <span style="font-size:13px;">(מבלי להמעיט ח&quot;ו כהוא זה בערך התורה המצוות והתפילות שלנו)</span>. מספרים שהרבי מקוצק שאל את תלמידיו: &quot;איפה נמצא הקב&quot;ה?&quot; &quot;בכל מקום&quot;, השיבו התלמידים, &quot;הרי &#39;מְלֹא כׇל הָאָרֶץ כְּבוֹדוֹ!&#39;&quot;. אולם הרבי לא היה מרוצה מתשובתם ואמר: &quot;הקב&quot;ה נמצא היכן שנותנים לו להיכנס&quot;. בתוכנית 12 הצעדים אנחנו לומדים בדיוק את זה. לומדים איך לתת לקב&quot;ה להיכנס, באופן כזה שמסיר מאתנו את כבלי ההתמכרות ומשנה את כל תחומי חיינו מן הקצה אל הקצה.</p>
-
-              <!-- #1968 (1.9.2026 23:57) - "את ההערה שהזכרת בסעיף ב בכל מקרה תשאיר בסוף
-                   המדור. אולי אפילו קבוע". הנוסח, ה-class וה-style זהים מילה במילה
-                   לגיליונות 2 ו-3. class="note" הכרחי: במובייל .txt p כופה 16px !important,
-                   ורק .note יורד ל-13px. -->
+              
               <p class="note" style="Margin:0 0 4px; font-size:13px; line-height:1.6; text-align:justify; color:#6a6a6a;"><span style="color:#1c4587; font-weight:700;">הערה:</span> הדברים שנכתבו כאן אינם בהכרח מדויקים מבחינה מדעית.<span class="pdfbr" style="display:none;"><br></span> הם באו בעיקר כדי לסייע בתיאור מצבי הנפש של המכור.</p>
 
               <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" dir="rtl" style="width:100%; margin-top:26px;">
@@ -463,11 +368,9 @@
           </tr>
           <tr>
             <td class="pad" style="padding:8px 34px 0 34px;">
-            <!-- ==== רצועת משוב (ו1, רפאל 18.8.2026; הוחזרה לגיליון 4 - 31.8.2026, "תוסיף את האפשרות לשלוח משוב בסוף כל אחד מן המדורים") - מדור 3 ==== -->
+            
             <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" dir="rtl" style="border-collapse:collapse; background:#f4f8f9; border-top:1px solid #dfe8ec; border-bottom:1px solid #dfe8ec;">
-              <!-- הרווח מתחת לכותרת עבר הלוך ושוב: 8px -> 15px (18.8.2026, "הכיתוב קרוב מדי לכוכבים. תגביה
-                   אותו קצת") -> 9px (18.8.2026 19:41, "משוב אנונימי וכו&#39; - תקרב יותר לכוכבים"). אחרי ש-
-                   "(אנונימי)" הוקטן הכותרת קלה יותר, ו-15 נראה מנותק. -->
+              
               <tr><td align="center" style="padding:13px 14px 9px; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:15px; font-weight:700; color:#1c4587;">המדור הזה עזר לך? <span style="font-size:13px;">(משוב אנונימי)</span></td></tr>
               <tr><td style="padding:0 26px 4px;">
                 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" dir="rtl" style="border-collapse:collapse;">
@@ -486,11 +389,10 @@
                 </table>
               </td></tr>
             </table>
-            <!-- ==== סוף רצועת משוב - מדור 3 ==== -->
+            
             </td>
           </tr>
-
-          <!-- ===== PRINT / PDF ===== -->
+          
           <tr>
             <td class="pad" style="padding:0 34px 6px 34px;">
               <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" dir="rtl" style="width:100%;">
@@ -510,8 +412,7 @@
               </table>
             </td>
           </tr>
-
-          <!-- ===== FOOTER ===== -->
+          
           <tr>
             <td class="pad foot" style="padding:10px 34px 30px 34px;">
               <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" dir="rtl" style="width:100%;">
