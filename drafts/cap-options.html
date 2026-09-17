@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>כותרת "טבלה לדוגמא" - אפשרויות</title>
+<style>
+  body { margin:0; padding:0 10px 60px; background:#e4eef0; direction:rtl;
+         font-family:'Open Sans','Arial Hebrew',Arial,sans-serif; color:#3d3d3d; }
+  .w    { max-width:700px; margin:0 auto; }
+  h1    { font-size:21px; color:#1c4587; margin:22px 0 4px; }
+  .lead { font-size:15px; line-height:1.6; margin:0 0 6px; }
+  .rec  { background:#fff8e1; border-right:4px solid #e9b308; padding:10px 12px;
+          font-size:15px; line-height:1.6; margin:14px 0 22px; }
+  h2    { font-size:17px; color:#1c4587; margin:30px 0 8px; border-bottom:1px solid #c7d8dc; padding-bottom:5px; }
+  .opt  { margin:0 0 26px; }
+  .oh   { font-size:15px; margin:0 0 6px; color:#1c4587; }
+  .oh b { font-size:18px; }
+  .od   { font-size:14px; line-height:1.55; margin:0 0 8px; color:#4b5b6b; }
+  .ob   { background:#fff; border-radius:6px; overflow:hidden; }
+  .tx   { font-size:15px; line-height:1.7; }
+  .tx li{ margin:0 0 5px; }
+  @media screen and (max-width:680px) {
+      /* ==== טבלת מדור 3 (#582) - עריכה לכרטיסים בנייד. ארבע עמודות של משפטים לא ניתנות
+         להצגה ב-390px: ~75px לתא. כרטיס לשורה, "גורם סמכות" ככותרת. התוויות פתוחות רק כאן;
+         ב-inline style הן display:none, כדי שלקוח שמפשיט <style> יקבל טבלה תקינה. ==== */
+      /* ⚠ #692 - box-sizing הוא התיקון, לא קישוט. ברירת המחדל היא content-box, ולכן
+         width:100% + padding אופקי 28px = תא רחב ב-28px מהכרטיס, וה-tr רחב ב-2px מהבורדר
+         שלו. זה בדיוק מה שנראה בצילום: פס הכותרת הכחול נמתח מעבר לגוש התאים, והנקודה
+         בסוף "לשמוע אותי." נחתכת בקצה המסך. border-box מיישר את שלושתם לאותו רוחב. */
+      .tbl, .tbl tr, .tbl td { display:block !important; width:100% !important;
+                               box-sizing:border-box !important; max-width:100% !important; }
+      .tbl .hrow { display:none !important; }
+      .tbl tr    { margin:0 0 12px !important; border:1px solid #cfdcea !important; }
+      .tbl td    { border:0 !important; border-top:1px solid #e6edf3 !important;
+                   font-size:15px !important; line-height:1.65 !important; padding:11px 14px !important; }
+      .tbl .c1   { border-top:0 !important; font-size:16px !important; }
+      .tbl .lbl  { display:block !important; margin:0 0 2px !important; }
+      .tbl .cap, .cap { font-size:15px !important; }
+    .pad { padding-right:18px !important; padding-left:18px !important; }
+  }
+</style></head>
+<body><div class="w">
+  <h1>הכותרת שמעל הטבלה - אפשרויות</h1>
+  <p class="lead">שתי הכרעות נפרדות, ולכן שתי רשימות: <b>עיצוב</b> (א-ו) ו<b>נוסח</b> (1-4).
+  אפשר לקחת עיצוב מכאן ונוסח משם. כל אפשרות מוצגת עם הכפתור מעליה וראש הטבלה מתחתיה,
+  כמו בגיליון עצמו (הטבלה נחתכה לשורה אחת כדי שהדף לא יהיה גלילה אינסופית בטלפון).</p>
+  <div class="rec"><b>ההמלצה שלי:</b> עיצוב <b>א'</b> - ההצעה שלך בדיוק, קווים 2px במקום 4px -
+  יחד עם נוסח <b>2</b>. הסיבה: "לא אסתטית" מתוקן בעיצוב, אבל <b>"לא ברורה" הוא נוסח</b>,
+  ושלוש המילים "טבלה לדוגמא" הן שלי מלכתחילה, לא שלך - אז אין מה לשמר בהן.</div>
+
+  <h2>עיצוב</h2>
+  <div class="od" style="margin-top:22px">בדיוק מה שביקש: 17px במקום 15px, בין שתי שורות תכלת כמו בבלוק הפנייה - אבל 2px במקום 4px.</div>
+  <div class="opt">
+    <div class="oh"><b>אפשרות א'</b> &#8212; ההצעה שלו, קווים 2px</div>
+    <div class="ob"><table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" dir="rtl" style="width:100%; max-width:660px; background:#fff;"><tr><td class="pad" style="padding:22px 30px 26px;">
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="width:100%; border-collapse:separate !important; border-spacing:0; margin:0 0 14px;">
+                <tr><td align="center" style="background-color:#1c4587; border-radius:7px;">
+                  <a href="https://gyenewsletters.netlify.app/pdf/worksheet-mabat-5787.pdf" target="_blank" style="display:block; padding:12px 18px; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:17px; line-height:1.25; font-weight:700; color:#ffffff; text-decoration:none;">להורדת טבלה למילוי</a>
+                </td></tr>
+              </table>
+      <p class="cap" style="Margin:0 0 9px; padding:9px 0; font-family:'Open Sans','Arial Hebrew',Arial,sans-serif; color:#1c4587; font-weight:700; text-align:center; font-size:17px; line-height:1.4; border-top:2px solid #d3e2e5; border-bottom:2px solid #d3e2e5;">טבלה לדוגמא</p>
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" dir="rtl" class="tbl" style="width:100%; border-collapse:collapse; margin:0 0 20px;">
+                <tr class="hrow">
+                  <td width="15%" class="hd" style="width:15%; padding:9px 11px; border:1px solid #cfdcea; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:14px; line-height:1.6; text-align:right; vertical-align:top; color:#3d3d3d; background-color:#eef4fa; color:#1c4587; font-weight:700;">גורם סמכות</td>
+                  <td width="28%" class="hd" style="width:28%; padding:9px 11px; border:1px solid #cfdcea; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:14px; line-height:1.6; text-align:right; vertical-align:top; color:#3d3d3d; background-color:#eef4fa; color:#1c4587; font-weight:700;">מה קרה?</td>
+                  <td width="27%" class="hd" style="width:27%; padding:9px 11px; border:1px solid #cfdcea; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:14px; line-height:1.6; text-align:right; vertical-align:top; color:#3d3d3d; background-color:#eef4fa; color:#1c4587; font-weight:700;">המבט המעוות שלמדתי</td>
+                  <td width="30%" class="hd" style="width:30%; padding:9px 11px; border:1px solid #cfdcea; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:14px; line-height:1.6; text-align:right; vertical-align:top; color:#3d3d3d; background-color:#eef4fa; color:#1c4587; font-weight:700;">המבט האמיתי והנכון</td>
+                </tr>
+                <tr>
+                  <td class="c1" style="padding:9px 11px; border:1px solid #cfdcea; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:14px; line-height:1.6; text-align:right; vertical-align:top; color:#3d3d3d; background-color:#eef4fa; color:#1c4587; font-weight:700;">אבא שלי</td>
+                  <td class="c2" style="padding:9px 11px; border:1px solid #cfdcea; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:14px; line-height:1.6; text-align:right; vertical-align:top; color:#3d3d3d;"><span class="lbl" style="display:none; font-size:12px; font-weight:700; color:#7b8fa5; letter-spacing:.5px;">מה קרה?<br></span>הגיע הביתה מהעבודה עייף וחסר סבלנות.</td>
+                  <td class="c3" style="padding:9px 11px; border:1px solid #cfdcea; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:14px; line-height:1.6; text-align:right; vertical-align:top; color:#3d3d3d;"><span class="lbl" style="display:none; font-size:12px; font-weight:700; color:#7b8fa5; letter-spacing:.5px;">המבט המעוות שלמדתי<br></span>הקב&quot;ה לא באמת מתעניין בי ואין לו כוח לשמוע אותי.</td>
+                  <td class="c4" style="padding:9px 11px; border:1px solid #cfdcea; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:14px; line-height:1.6; text-align:right; vertical-align:top; color:#3d3d3d;"><span class="lbl" style="display:none; font-size:12px; font-weight:700; color:#7b8fa5; letter-spacing:.5px;">המבט האמיתי והנכון<br></span>הקב&quot;ה מאוד מתעניין בי וממש מחכה שאפנה אליו ואשתף אותו במה שעובר עלי.</td>
+                </tr>
+                </table>
+    </td></tr></table></div>
+  </div>
+  <div class="od" style="margin-top:22px">זהה לא', בקו הדק ביותר שנראה בכל לקוחות הדואר. "קצת יותר דקות" בקיצוניות.</div>
+  <div class="opt">
+    <div class="oh"><b>אפשרות ב'</b> &#8212; אותו דבר, קווים 1px</div>
+    <div class="ob"><table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" dir="rtl" style="width:100%; max-width:660px; background:#fff;"><tr><td class="pad" style="padding:22px 30px 26px;">
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="width:100%; border-collapse:separate !important; border-spacing:0; margin:0 0 14px;">
+                <tr><td align="center" style="background-color:#1c4587; border-radius:7px;">
+                  <a href="https://gyenewsletters.netlify.app/pdf/worksheet-mabat-5787.pdf" target="_blank" style="display:block; padding:12px 18px; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:17px; line-height:1.25; font-weight:700; color:#ffffff; text-decoration:none;">להורדת טבלה למילוי</a>
+                </td></tr>
+              </table>
+      <p class="cap" style="Margin:0 0 9px; padding:9px 0; font-family:'Open Sans','Arial Hebrew',Arial,sans-serif; color:#1c4587; font-weight:700; text-align:center; font-size:17px; line-height:1.4; border-top:1px solid #d3e2e5; border-bottom:1px solid #d3e2e5;">טבלה לדוגמא</p>
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" dir="rtl" class="tbl" style="width:100%; border-collapse:collapse; margin:0 0 20px;">
+                <tr class="hrow">
+                  <td width="15%" class="hd" style="width:15%; padding:9px 11px; border:1px solid #cfdcea; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:14px; line-height:1.6; text-align:right; vertical-align:top; color:#3d3d3d; background-color:#eef4fa; color:#1c4587; font-weight:700;">גורם סמכות</td>
+                  <td width="28%" class="hd" style="width:28%; padding:9px 11px; border:1px solid #cfdcea; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:14px; line-height:1.6; text-align:right; vertical-align:top; color:#3d3d3d; background-color:#eef4fa; color:#1c4587; font-weight:700;">מה קרה?</td>
+                  <td width="27%" class="hd" style="width:27%; padding:9px 11px; border:1px solid #cfdcea; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:14px; line-height:1.6; text-align:right; vertical-align:top; color:#3d3d3d; background-color:#eef4fa; color:#1c4587; font-weight:700;">המבט המעוות שלמדתי</td>
+                  <td width="30%" class="hd" style="width:30%; padding:9px 11px; border:1px solid #cfdcea; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:14px; line-height:1.6; text-align:right; vertical-align:top; color:#3d3d3d; background-color:#eef4fa; color:#1c4587; font-weight:700;">המבט האמיתי והנכון</td>
+                </tr>
+                <tr>
+                  <td class="c1" style="padding:9px 11px; border:1px solid #cfdcea; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:14px; line-height:1.6; text-align:right; vertical-align:top; color:#3d3d3d; background-color:#eef4fa; color:#1c4587; font-weight:700;">אבא שלי</td>
+                  <td class="c2" style="padding:9px 11px; border:1px solid #cfdcea; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:14px; line-height:1.6; text-align:right; vertical-align:top; color:#3d3d3d;"><span class="lbl" style="display:none; font-size:12px; font-weight:700; color:#7b8fa5; letter-spacing:.5px;">מה קרה?<br></span>הגיע הביתה מהעבודה עייף וחסר סבלנות.</td>
+                  <td class="c3" style="padding:9px 11px; border:1px solid #cfdcea; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:14px; line-height:1.6; text-align:right; vertical-align:top; color:#3d3d3d;"><span class="lbl" style="display:none; font-size:12px; font-weight:700; color:#7b8fa5; letter-spacing:.5px;">המבט המעוות שלמדתי<br></span>הקב&quot;ה לא באמת מתעניין בי ואין לו כוח לשמוע אותי.</td>
+                  <td class="c4" style="padding:9px 11px; border:1px solid #cfdcea; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:14px; line-height:1.6; text-align:right; vertical-align:top; color:#3d3d3d;"><span class="lbl" style="display:none; font-size:12px; font-weight:700; color:#7b8fa5; letter-spacing:.5px;">המבט האמיתי והנכון<br></span>הקב&quot;ה מאוד מתעניין בי וממש מחכה שאפנה אליו ואשתף אותו במה שעובר עלי.</td>
+                </tr>
+                </table>
+    </td></tr></table></div>
+  </div>
+  <div class="od" style="margin-top:22px">א' עם רקע בגוון שורת הכותרות של הטבלה - קושר את הכותרת לטבלה ולא לכפתור.</div>
+  <div class="opt">
+    <div class="oh"><b>אפשרות ג'</b> &#8212; קווים 2px + מילוי תכלת</div>
+    <div class="ob"><table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" dir="rtl" style="width:100%; max-width:660px; background:#fff;"><tr><td class="pad" style="padding:22px 30px 26px;">
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="width:100%; border-collapse:separate !important; border-spacing:0; margin:0 0 14px;">
+                <tr><td align="center" style="background-color:#1c4587; border-radius:7px;">
+                  <a href="https://gyenewsletters.netlify.app/pdf/worksheet-mabat-5787.pdf" target="_blank" style="display:block; padding:12px 18px; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:17px; line-height:1.25; font-weight:700; color:#ffffff; text-decoration:none;">להורדת טבלה למילוי</a>
+                </td></tr>
+              </table>
+      <p class="cap" style="Margin:0 0 9px; padding:10px 0; font-family:'Open Sans','Arial Hebrew',Arial,sans-serif; color:#1c4587; font-weight:700; text-align:center; font-size:17px; line-height:1.4; background-color:#eef4fa; border-top:2px solid #d3e2e5; border-bottom:2px solid #d3e2e5;">טבלה לדוגמא</p>
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" dir="rtl" class="tbl" style="width:100%; border-collapse:collapse; margin:0 0 20px;">
+                <tr class="hrow">
+                  <td width="15%" class="hd" style="width:15%; padding:9px 11px; border:1px solid #cfdcea; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:14px; line-height:1.6; text-align:right; vertical-align:top; color:#3d3d3d; background-color:#eef4fa; color:#1c4587; font-weight:700;">גורם סמכות</td>
+                  <td width="28%" class="hd" style="width:28%; padding:9px 11px; border:1px solid #cfdcea; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:14px; line-height:1.6; text-align:right; vertical-align:top; color:#3d3d3d; background-color:#eef4fa; color:#1c4587; font-weight:700;">מה קרה?</td>
+                  <td width="27%" class="hd" style="width:27%; padding:9px 11px; border:1px solid #cfdcea; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:14px; line-height:1.6; text-align:right; vertical-align:top; color:#3d3d3d; background-color:#eef4fa; color:#1c4587; font-weight:700;">המבט המעוות שלמדתי</td>
+                  <td width="30%" class="hd" style="width:30%; padding:9px 11px; border:1px solid #cfdcea; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:14px; line-height:1.6; text-align:right; vertical-align:top; color:#3d3d3d; background-color:#eef4fa; color:#1c4587; font-weight:700;">המבט האמיתי והנכון</td>
+                </tr>
+                <tr>
+                  <td class="c1" style="padding:9px 11px; border:1px solid #cfdcea; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:14px; line-height:1.6; text-align:right; vertical-align:top; color:#3d3d3d; background-color:#eef4fa; color:#1c4587; font-weight:700;">אבא שלי</td>
+                  <td class="c2" style="padding:9px 11px; border:1px solid #cfdcea; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:14px; line-height:1.6; text-align:right; vertical-align:top; color:#3d3d3d;"><span class="lbl" style="display:none; font-size:12px; font-weight:700; color:#7b8fa5; letter-spacing:.5px;">מה קרה?<br></span>הגיע הביתה מהעבודה עייף וחסר סבלנות.</td>
+                  <td class="c3" style="padding:9px 11px; border:1px solid #cfdcea; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:14px; line-height:1.6; text-align:right; vertical-align:top; color:#3d3d3d;"><span class="lbl" style="display:none; font-size:12px; font-weight:700; color:#7b8fa5; letter-spacing:.5px;">המבט המעוות שלמדתי<br></span>הקב&quot;ה לא באמת מתעניין בי ואין לו כוח לשמוע אותי.</td>
+                  <td class="c4" style="padding:9px 11px; border:1px solid #cfdcea; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:14px; line-height:1.6; text-align:right; vertical-align:top; color:#3d3d3d;"><span class="lbl" style="display:none; font-size:12px; font-weight:700; color:#7b8fa5; letter-spacing:.5px;">המבט האמיתי והנכון<br></span>הקב&quot;ה מאוד מתעניין בי וממש מחכה שאפנה אליו ואשתף אותו במה שעובר עלי.</td>
+                </tr>
+                </table>
+    </td></tr></table></div>
+  </div>
+  <div class="od" style="margin-top:22px">א' עם ריווח אותיות. מרגיע את הכיתוב ומרחיק אותו מהטקסט של הכפתור, שגם הוא מודגש.</div>
+  <div class="opt">
+    <div class="oh"><b>אפשרות ד'</b> &#8212; מרווח אותיות</div>
+    <div class="ob"><table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" dir="rtl" style="width:100%; max-width:660px; background:#fff;"><tr><td class="pad" style="padding:22px 30px 26px;">
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="width:100%; border-collapse:separate !important; border-spacing:0; margin:0 0 14px;">
+                <tr><td align="center" style="background-color:#1c4587; border-radius:7px;">
+                  <a href="https://gyenewsletters.netlify.app/pdf/worksheet-mabat-5787.pdf" target="_blank" style="display:block; padding:12px 18px; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:17px; line-height:1.25; font-weight:700; color:#ffffff; text-decoration:none;">להורדת טבלה למילוי</a>
+                </td></tr>
+              </table>
+      <p class="cap" style="Margin:0 0 9px; padding:9px 0; font-family:'Open Sans','Arial Hebrew',Arial,sans-serif; color:#1c4587; font-weight:700; text-align:center; font-size:17px; line-height:1.4; letter-spacing:1.2px; border-top:2px solid #d3e2e5; border-bottom:2px solid #d3e2e5;">טבלה לדוגמא</p>
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" dir="rtl" class="tbl" style="width:100%; border-collapse:collapse; margin:0 0 20px;">
+                <tr class="hrow">
+                  <td width="15%" class="hd" style="width:15%; padding:9px 11px; border:1px solid #cfdcea; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:14px; line-height:1.6; text-align:right; vertical-align:top; color:#3d3d3d; background-color:#eef4fa; color:#1c4587; font-weight:700;">גורם סמכות</td>
+                  <td width="28%" class="hd" style="width:28%; padding:9px 11px; border:1px solid #cfdcea; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:14px; line-height:1.6; text-align:right; vertical-align:top; color:#3d3d3d; background-color:#eef4fa; color:#1c4587; font-weight:700;">מה קרה?</td>
+                  <td width="27%" class="hd" style="width:27%; padding:9px 11px; border:1px solid #cfdcea; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:14px; line-height:1.6; text-align:right; vertical-align:top; color:#3d3d3d; background-color:#eef4fa; color:#1c4587; font-weight:700;">המבט המעוות שלמדתי</td>
+                  <td width="30%" class="hd" style="width:30%; padding:9px 11px; border:1px solid #cfdcea; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:14px; line-height:1.6; text-align:right; vertical-align:top; color:#3d3d3d; background-color:#eef4fa; color:#1c4587; font-weight:700;">המבט האמיתי והנכון</td>
+                </tr>
+                <tr>
+                  <td class="c1" style="padding:9px 11px; border:1px solid #cfdcea; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:14px; line-height:1.6; text-align:right; vertical-align:top; color:#3d3d3d; background-color:#eef4fa; color:#1c4587; font-weight:700;">אבא שלי</td>
+                  <td class="c2" style="padding:9px 11px; border:1px solid #cfdcea; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:14px; line-height:1.6; text-align:right; vertical-align:top; color:#3d3d3d;"><span class="lbl" style="display:none; font-size:12px; font-weight:700; color:#7b8fa5; letter-spacing:.5px;">מה קרה?<br></span>הגיע הביתה מהעבודה עייף וחסר סבלנות.</td>
+                  <td class="c3" style="padding:9px 11px; border:1px solid #cfdcea; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:14px; line-height:1.6; text-align:right; vertical-align:top; color:#3d3d3d;"><span class="lbl" style="display:none; font-size:12px; font-weight:700; color:#7b8fa5; letter-spacing:.5px;">המבט המעוות שלמדתי<br></span>הקב&quot;ה לא באמת מתעניין בי ואין לו כוח לשמוע אותי.</td>
+                  <td class="c4" style="padding:9px 11px; border:1px solid #cfdcea; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:14px; line-height:1.6; text-align:right; vertical-align:top; color:#3d3d3d;"><span class="lbl" style="display:none; font-size:12px; font-weight:700; color:#7b8fa5; letter-spacing:.5px;">המבט האמיתי והנכון<br></span>הקב&quot;ה מאוד מתעניין בי וממש מחכה שאפנה אליו ואשתף אותו במה שעובר עלי.</td>
+                </tr>
+                </table>
+    </td></tr></table></div>
+  </div>
+  <div class="od" style="margin-top:22px">לא שתי שורות אלא רצועה אחת, דבוקה לטבלה בלי מרווח, בגוון ובמסגרת של שורת הכותרות. הכותרת הופכת לחלק מהטבלה.</div>
+  <div class="opt">
+    <div class="oh"><b>אפשרות ה'</b> &#8212; כותרת מחוברת לטבלה</div>
+    <div class="ob"><table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" dir="rtl" style="width:100%; max-width:660px; background:#fff;"><tr><td class="pad" style="padding:22px 30px 26px;">
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="width:100%; border-collapse:separate !important; border-spacing:0; margin:0 0 14px;">
+                <tr><td align="center" style="background-color:#1c4587; border-radius:7px;">
+                  <a href="https://gyenewsletters.netlify.app/pdf/worksheet-mabat-5787.pdf" target="_blank" style="display:block; padding:12px 18px; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:17px; line-height:1.25; font-weight:700; color:#ffffff; text-decoration:none;">להורדת טבלה למילוי</a>
+                </td></tr>
+              </table>
+      <p class="cap" style="Margin:0; padding:10px 0; font-family:'Open Sans','Arial Hebrew',Arial,sans-serif; color:#1c4587; font-weight:700; text-align:center; font-size:17px; line-height:1.4; background-color:#eef4fa; border:1px solid #cfdcea; border-bottom:0;">טבלה לדוגמא</p>
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" dir="rtl" class="tbl" style="width:100%; border-collapse:collapse; margin:0 0 20px;">
+                <tr class="hrow">
+                  <td width="15%" class="hd" style="width:15%; padding:9px 11px; border:1px solid #cfdcea; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:14px; line-height:1.6; text-align:right; vertical-align:top; color:#3d3d3d; background-color:#eef4fa; color:#1c4587; font-weight:700;">גורם סמכות</td>
+                  <td width="28%" class="hd" style="width:28%; padding:9px 11px; border:1px solid #cfdcea; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:14px; line-height:1.6; text-align:right; vertical-align:top; color:#3d3d3d; background-color:#eef4fa; color:#1c4587; font-weight:700;">מה קרה?</td>
+                  <td width="27%" class="hd" style="width:27%; padding:9px 11px; border:1px solid #cfdcea; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:14px; line-height:1.6; text-align:right; vertical-align:top; color:#3d3d3d; background-color:#eef4fa; color:#1c4587; font-weight:700;">המבט המעוות שלמדתי</td>
+                  <td width="30%" class="hd" style="width:30%; padding:9px 11px; border:1px solid #cfdcea; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:14px; line-height:1.6; text-align:right; vertical-align:top; color:#3d3d3d; background-color:#eef4fa; color:#1c4587; font-weight:700;">המבט האמיתי והנכון</td>
+                </tr>
+                <tr>
+                  <td class="c1" style="padding:9px 11px; border:1px solid #cfdcea; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:14px; line-height:1.6; text-align:right; vertical-align:top; color:#3d3d3d; background-color:#eef4fa; color:#1c4587; font-weight:700;">אבא שלי</td>
+                  <td class="c2" style="padding:9px 11px; border:1px solid #cfdcea; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:14px; line-height:1.6; text-align:right; vertical-align:top; color:#3d3d3d;"><span class="lbl" style="display:none; font-size:12px; font-weight:700; color:#7b8fa5; letter-spacing:.5px;">מה קרה?<br></span>הגיע הביתה מהעבודה עייף וחסר סבלנות.</td>
+                  <td class="c3" style="padding:9px 11px; border:1px solid #cfdcea; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:14px; line-height:1.6; text-align:right; vertical-align:top; color:#3d3d3d;"><span class="lbl" style="display:none; font-size:12px; font-weight:700; color:#7b8fa5; letter-spacing:.5px;">המבט המעוות שלמדתי<br></span>הקב&quot;ה לא באמת מתעניין בי ואין לו כוח לשמוע אותי.</td>
+                  <td class="c4" style="padding:9px 11px; border:1px solid #cfdcea; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:14px; line-height:1.6; text-align:right; vertical-align:top; color:#3d3d3d;"><span class="lbl" style="display:none; font-size:12px; font-weight:700; color:#7b8fa5; letter-spacing:.5px;">המבט האמיתי והנכון<br></span>הקב&quot;ה מאוד מתעניין בי וממש מחכה שאפנה אליו ואשתף אותו במה שעובר עלי.</td>
+                </tr>
+                </table>
+    </td></tr></table></div>
+  </div>
+  <div class="od" style="margin-top:22px">הקו לא חוצה את כל הרוחב אלא רק נוגע בכותרת משני צדדיה. הקל ביותר, אבל דורש טבלה ולא <hr>.</div>
+  <div class="opt">
+    <div class="oh"><b>אפשרות ו'</b> &#8212; קווים קצרים משני הצדדים</div>
+    <div class="ob"><table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" dir="rtl" style="width:100%; max-width:660px; background:#fff;"><tr><td class="pad" style="padding:22px 30px 26px;">
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="width:100%; border-collapse:separate !important; border-spacing:0; margin:0 0 14px;">
+                <tr><td align="center" style="background-color:#1c4587; border-radius:7px;">
+                  <a href="https://gyenewsletters.netlify.app/pdf/worksheet-mabat-5787.pdf" target="_blank" style="display:block; padding:12px 18px; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:17px; line-height:1.25; font-weight:700; color:#ffffff; text-decoration:none;">להורדת טבלה למילוי</a>
+                </td></tr>
+              </table>
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" dir="rtl" style="width:100%; margin:0 0 9px;"><tr>
+                  <td style="border-bottom:2px solid #d3e2e5; font-size:0; line-height:0;">&#8203;</td>
+                  <td class="cap" style="font-family:'Open Sans','Arial Hebrew',Arial,sans-serif; color:#1c4587; font-weight:700; text-align:center; font-size:17px; line-height:1.4; padding:0 12px; white-space:nowrap;">טבלה לדוגמא</td>
+                  <td style="border-bottom:2px solid #d3e2e5; font-size:0; line-height:0;">&#8203;</td>
+                </tr></table>
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" dir="rtl" class="tbl" style="width:100%; border-collapse:collapse; margin:0 0 20px;">
+                <tr class="hrow">
+                  <td width="15%" class="hd" style="width:15%; padding:9px 11px; border:1px solid #cfdcea; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:14px; line-height:1.6; text-align:right; vertical-align:top; color:#3d3d3d; background-color:#eef4fa; color:#1c4587; font-weight:700;">גורם סמכות</td>
+                  <td width="28%" class="hd" style="width:28%; padding:9px 11px; border:1px solid #cfdcea; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:14px; line-height:1.6; text-align:right; vertical-align:top; color:#3d3d3d; background-color:#eef4fa; color:#1c4587; font-weight:700;">מה קרה?</td>
+                  <td width="27%" class="hd" style="width:27%; padding:9px 11px; border:1px solid #cfdcea; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:14px; line-height:1.6; text-align:right; vertical-align:top; color:#3d3d3d; background-color:#eef4fa; color:#1c4587; font-weight:700;">המבט המעוות שלמדתי</td>
+                  <td width="30%" class="hd" style="width:30%; padding:9px 11px; border:1px solid #cfdcea; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:14px; line-height:1.6; text-align:right; vertical-align:top; color:#3d3d3d; background-color:#eef4fa; color:#1c4587; font-weight:700;">המבט האמיתי והנכון</td>
+                </tr>
+                <tr>
+                  <td class="c1" style="padding:9px 11px; border:1px solid #cfdcea; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:14px; line-height:1.6; text-align:right; vertical-align:top; color:#3d3d3d; background-color:#eef4fa; color:#1c4587; font-weight:700;">אבא שלי</td>
+                  <td class="c2" style="padding:9px 11px; border:1px solid #cfdcea; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:14px; line-height:1.6; text-align:right; vertical-align:top; color:#3d3d3d;"><span class="lbl" style="display:none; font-size:12px; font-weight:700; color:#7b8fa5; letter-spacing:.5px;">מה קרה?<br></span>הגיע הביתה מהעבודה עייף וחסר סבלנות.</td>
+                  <td class="c3" style="padding:9px 11px; border:1px solid #cfdcea; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:14px; line-height:1.6; text-align:right; vertical-align:top; color:#3d3d3d;"><span class="lbl" style="display:none; font-size:12px; font-weight:700; color:#7b8fa5; letter-spacing:.5px;">המבט המעוות שלמדתי<br></span>הקב&quot;ה לא באמת מתעניין בי ואין לו כוח לשמוע אותי.</td>
+                  <td class="c4" style="padding:9px 11px; border:1px solid #cfdcea; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:14px; line-height:1.6; text-align:right; vertical-align:top; color:#3d3d3d;"><span class="lbl" style="display:none; font-size:12px; font-weight:700; color:#7b8fa5; letter-spacing:.5px;">המבט האמיתי והנכון<br></span>הקב&quot;ה מאוד מתעניין בי וממש מחכה שאפנה אליו ואשתף אותו במה שעובר עלי.</td>
+                </tr>
+                </table>
+    </td></tr></table></div>
+  </div>
+
+  <h2>נוסח (מוצג בעיצוב א')</h2>
+
+  <div class="opt">
+    <div class="oh"><b>נוסח 1</b> &#8212; הקיים</div>
+    <div class="ob"><table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" dir="rtl" style="width:100%; max-width:660px; background:#fff;"><tr><td class="pad" style="padding:22px 30px 26px;">
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="width:100%; border-collapse:separate !important; border-spacing:0; margin:0 0 14px;">
+                <tr><td align="center" style="background-color:#1c4587; border-radius:7px;">
+                  <a href="https://gyenewsletters.netlify.app/pdf/worksheet-mabat-5787.pdf" target="_blank" style="display:block; padding:12px 18px; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:17px; line-height:1.25; font-weight:700; color:#ffffff; text-decoration:none;">להורדת טבלה למילוי</a>
+                </td></tr>
+              </table>
+      <p class="cap" style="Margin:0 0 9px; padding:9px 0; font-family:'Open Sans','Arial Hebrew',Arial,sans-serif; color:#1c4587; font-weight:700; text-align:center; font-size:17px; line-height:1.4; border-top:2px solid #d3e2e5; border-bottom:2px solid #d3e2e5;">טבלה לדוגמא</p>
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" dir="rtl" class="tbl" style="width:100%; border-collapse:collapse; margin:0 0 20px;">
+                <tr class="hrow">
+                  <td width="15%" class="hd" style="width:15%; padding:9px 11px; border:1px solid #cfdcea; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:14px; line-height:1.6; text-align:right; vertical-align:top; color:#3d3d3d; background-color:#eef4fa; color:#1c4587; font-weight:700;">גורם סמכות</td>
+                  <td width="28%" class="hd" style="width:28%; padding:9px 11px; border:1px solid #cfdcea; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:14px; line-height:1.6; text-align:right; vertical-align:top; color:#3d3d3d; background-color:#eef4fa; color:#1c4587; font-weight:700;">מה קרה?</td>
+                  <td width="27%" class="hd" style="width:27%; padding:9px 11px; border:1px solid #cfdcea; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:14px; line-height:1.6; text-align:right; vertical-align:top; color:#3d3d3d; background-color:#eef4fa; color:#1c4587; font-weight:700;">המבט המעוות שלמדתי</td>
+                  <td width="30%" class="hd" style="width:30%; padding:9px 11px; border:1px solid #cfdcea; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:14px; line-height:1.6; text-align:right; vertical-align:top; color:#3d3d3d; background-color:#eef4fa; color:#1c4587; font-weight:700;">המבט האמיתי והנכון</td>
+                </tr>
+                <tr>
+                  <td class="c1" style="padding:9px 11px; border:1px solid #cfdcea; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:14px; line-height:1.6; text-align:right; vertical-align:top; color:#3d3d3d; background-color:#eef4fa; color:#1c4587; font-weight:700;">אבא שלי</td>
+                  <td class="c2" style="padding:9px 11px; border:1px solid #cfdcea; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:14px; line-height:1.6; text-align:right; vertical-align:top; color:#3d3d3d;"><span class="lbl" style="display:none; font-size:12px; font-weight:700; color:#7b8fa5; letter-spacing:.5px;">מה קרה?<br></span>הגיע הביתה מהעבודה עייף וחסר סבלנות.</td>
+                  <td class="c3" style="padding:9px 11px; border:1px solid #cfdcea; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:14px; line-height:1.6; text-align:right; vertical-align:top; color:#3d3d3d;"><span class="lbl" style="display:none; font-size:12px; font-weight:700; color:#7b8fa5; letter-spacing:.5px;">המבט המעוות שלמדתי<br></span>הקב&quot;ה לא באמת מתעניין בי ואין לו כוח לשמוע אותי.</td>
+                  <td class="c4" style="padding:9px 11px; border:1px solid #cfdcea; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:14px; line-height:1.6; text-align:right; vertical-align:top; color:#3d3d3d;"><span class="lbl" style="display:none; font-size:12px; font-weight:700; color:#7b8fa5; letter-spacing:.5px;">המבט האמיתי והנכון<br></span>הקב&quot;ה מאוד מתעניין בי וממש מחכה שאפנה אליו ואשתף אותו במה שעובר עלי.</td>
+                </tr>
+                </table>
+    </td></tr></table></div>
+  </div>
+
+  <div class="opt">
+    <div class="oh"><b>נוסח 2</b> &#8212; אומר מה רואים</div>
+    <div class="ob"><table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" dir="rtl" style="width:100%; max-width:660px; background:#fff;"><tr><td class="pad" style="padding:22px 30px 26px;">
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="width:100%; border-collapse:separate !important; border-spacing:0; margin:0 0 14px;">
+                <tr><td align="center" style="background-color:#1c4587; border-radius:7px;">
+                  <a href="https://gyenewsletters.netlify.app/pdf/worksheet-mabat-5787.pdf" target="_blank" style="display:block; padding:12px 18px; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:17px; line-height:1.25; font-weight:700; color:#ffffff; text-decoration:none;">להורדת טבלה למילוי</a>
+                </td></tr>
+              </table>
+      <p class="cap" style="Margin:0 0 9px; padding:9px 0; font-family:'Open Sans','Arial Hebrew',Arial,sans-serif; color:#1c4587; font-weight:700; text-align:center; font-size:17px; line-height:1.4; border-top:2px solid #d3e2e5; border-bottom:2px solid #d3e2e5;">כך נראית הטבלה אחרי מילוי</p>
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" dir="rtl" class="tbl" style="width:100%; border-collapse:collapse; margin:0 0 20px;">
+                <tr class="hrow">
+                  <td width="15%" class="hd" style="width:15%; padding:9px 11px; border:1px solid #cfdcea; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:14px; line-height:1.6; text-align:right; vertical-align:top; color:#3d3d3d; background-color:#eef4fa; color:#1c4587; font-weight:700;">גורם סמכות</td>
+                  <td width="28%" class="hd" style="width:28%; padding:9px 11px; border:1px solid #cfdcea; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:14px; line-height:1.6; text-align:right; vertical-align:top; color:#3d3d3d; background-color:#eef4fa; color:#1c4587; font-weight:700;">מה קרה?</td>
+                  <td width="27%" class="hd" style="width:27%; padding:9px 11px; border:1px solid #cfdcea; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:14px; line-height:1.6; text-align:right; vertical-align:top; color:#3d3d3d; background-color:#eef4fa; color:#1c4587; font-weight:700;">המבט המעוות שלמדתי</td>
+                  <td width="30%" class="hd" style="width:30%; padding:9px 11px; border:1px solid #cfdcea; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:14px; line-height:1.6; text-align:right; vertical-align:top; color:#3d3d3d; background-color:#eef4fa; color:#1c4587; font-weight:700;">המבט האמיתי והנכון</td>
+                </tr>
+                <tr>
+                  <td class="c1" style="padding:9px 11px; border:1px solid #cfdcea; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:14px; line-height:1.6; text-align:right; vertical-align:top; color:#3d3d3d; background-color:#eef4fa; color:#1c4587; font-weight:700;">אבא שלי</td>
+                  <td class="c2" style="padding:9px 11px; border:1px solid #cfdcea; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:14px; line-height:1.6; text-align:right; vertical-align:top; color:#3d3d3d;"><span class="lbl" style="display:none; font-size:12px; font-weight:700; color:#7b8fa5; letter-spacing:.5px;">מה קרה?<br></span>הגיע הביתה מהעבודה עייף וחסר סבלנות.</td>
+                  <td class="c3" style="padding:9px 11px; border:1px solid #cfdcea; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:14px; line-height:1.6; text-align:right; vertical-align:top; color:#3d3d3d;"><span class="lbl" style="display:none; font-size:12px; font-weight:700; color:#7b8fa5; letter-spacing:.5px;">המבט המעוות שלמדתי<br></span>הקב&quot;ה לא באמת מתעניין בי ואין לו כוח לשמוע אותי.</td>
+                  <td class="c4" style="padding:9px 11px; border:1px solid #cfdcea; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:14px; line-height:1.6; text-align:right; vertical-align:top; color:#3d3d3d;"><span class="lbl" style="display:none; font-size:12px; font-weight:700; color:#7b8fa5; letter-spacing:.5px;">המבט האמיתי והנכון<br></span>הקב&quot;ה מאוד מתעניין בי וממש מחכה שאפנה אליו ואשתף אותו במה שעובר עלי.</td>
+                </tr>
+                </table>
+    </td></tr></table></div>
+  </div>
+
+  <div class="opt">
+    <div class="oh"><b>נוסח 3</b> &#8212; תיקון מינימלי לקיים</div>
+    <div class="ob"><table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" dir="rtl" style="width:100%; max-width:660px; background:#fff;"><tr><td class="pad" style="padding:22px 30px 26px;">
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="width:100%; border-collapse:separate !important; border-spacing:0; margin:0 0 14px;">
+                <tr><td align="center" style="background-color:#1c4587; border-radius:7px;">
+                  <a href="https://gyenewsletters.netlify.app/pdf/worksheet-mabat-5787.pdf" target="_blank" style="display:block; padding:12px 18px; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:17px; line-height:1.25; font-weight:700; color:#ffffff; text-decoration:none;">להורדת טבלה למילוי</a>
+                </td></tr>
+              </table>
+      <p class="cap" style="Margin:0 0 9px; padding:9px 0; font-family:'Open Sans','Arial Hebrew',Arial,sans-serif; color:#1c4587; font-weight:700; text-align:center; font-size:17px; line-height:1.4; border-top:2px solid #d3e2e5; border-bottom:2px solid #d3e2e5;">דוגמא למילוי הטבלה</p>
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" dir="rtl" class="tbl" style="width:100%; border-collapse:collapse; margin:0 0 20px;">
+                <tr class="hrow">
+                  <td width="15%" class="hd" style="width:15%; padding:9px 11px; border:1px solid #cfdcea; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:14px; line-height:1.6; text-align:right; vertical-align:top; color:#3d3d3d; background-color:#eef4fa; color:#1c4587; font-weight:700;">גורם סמכות</td>
+                  <td width="28%" class="hd" style="width:28%; padding:9px 11px; border:1px solid #cfdcea; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:14px; line-height:1.6; text-align:right; vertical-align:top; color:#3d3d3d; background-color:#eef4fa; color:#1c4587; font-weight:700;">מה קרה?</td>
+                  <td width="27%" class="hd" style="width:27%; padding:9px 11px; border:1px solid #cfdcea; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:14px; line-height:1.6; text-align:right; vertical-align:top; color:#3d3d3d; background-color:#eef4fa; color:#1c4587; font-weight:700;">המבט המעוות שלמדתי</td>
+                  <td width="30%" class="hd" style="width:30%; padding:9px 11px; border:1px solid #cfdcea; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:14px; line-height:1.6; text-align:right; vertical-align:top; color:#3d3d3d; background-color:#eef4fa; color:#1c4587; font-weight:700;">המבט האמיתי והנכון</td>
+                </tr>
+                <tr>
+                  <td class="c1" style="padding:9px 11px; border:1px solid #cfdcea; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:14px; line-height:1.6; text-align:right; vertical-align:top; color:#3d3d3d; background-color:#eef4fa; color:#1c4587; font-weight:700;">אבא שלי</td>
+                  <td class="c2" style="padding:9px 11px; border:1px solid #cfdcea; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:14px; line-height:1.6; text-align:right; vertical-align:top; color:#3d3d3d;"><span class="lbl" style="display:none; font-size:12px; font-weight:700; color:#7b8fa5; letter-spacing:.5px;">מה קרה?<br></span>הגיע הביתה מהעבודה עייף וחסר סבלנות.</td>
+                  <td class="c3" style="padding:9px 11px; border:1px solid #cfdcea; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:14px; line-height:1.6; text-align:right; vertical-align:top; color:#3d3d3d;"><span class="lbl" style="display:none; font-size:12px; font-weight:700; color:#7b8fa5; letter-spacing:.5px;">המבט המעוות שלמדתי<br></span>הקב&quot;ה לא באמת מתעניין בי ואין לו כוח לשמוע אותי.</td>
+                  <td class="c4" style="padding:9px 11px; border:1px solid #cfdcea; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:14px; line-height:1.6; text-align:right; vertical-align:top; color:#3d3d3d;"><span class="lbl" style="display:none; font-size:12px; font-weight:700; color:#7b8fa5; letter-spacing:.5px;">המבט האמיתי והנכון<br></span>הקב&quot;ה מאוד מתעניין בי וממש מחכה שאפנה אליו ואשתף אותו במה שעובר עלי.</td>
+                </tr>
+                </table>
+    </td></tr></table></div>
+  </div>
+
+  <div class="opt">
+    <div class="oh"><b>נוסח 4</b> &#8212; הארוך ביותר - קושר לתוכן</div>
+    <div class="ob"><table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" dir="rtl" style="width:100%; max-width:660px; background:#fff;"><tr><td class="pad" style="padding:22px 30px 26px;">
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="width:100%; border-collapse:separate !important; border-spacing:0; margin:0 0 14px;">
+                <tr><td align="center" style="background-color:#1c4587; border-radius:7px;">
+                  <a href="https://gyenewsletters.netlify.app/pdf/worksheet-mabat-5787.pdf" target="_blank" style="display:block; padding:12px 18px; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:17px; line-height:1.25; font-weight:700; color:#ffffff; text-decoration:none;">להורדת טבלה למילוי</a>
+                </td></tr>
+              </table>
+      <p class="cap" style="Margin:0 0 9px; padding:9px 0; font-family:'Open Sans','Arial Hebrew',Arial,sans-serif; color:#1c4587; font-weight:700; text-align:center; font-size:17px; line-height:1.4; border-top:2px solid #d3e2e5; border-bottom:2px solid #d3e2e5;">לדוגמא: שלוש שורות שמילא מתמודד</p>
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" dir="rtl" class="tbl" style="width:100%; border-collapse:collapse; margin:0 0 20px;">
+                <tr class="hrow">
+                  <td width="15%" class="hd" style="width:15%; padding:9px 11px; border:1px solid #cfdcea; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:14px; line-height:1.6; text-align:right; vertical-align:top; color:#3d3d3d; background-color:#eef4fa; color:#1c4587; font-weight:700;">גורם סמכות</td>
+                  <td width="28%" class="hd" style="width:28%; padding:9px 11px; border:1px solid #cfdcea; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:14px; line-height:1.6; text-align:right; vertical-align:top; color:#3d3d3d; background-color:#eef4fa; color:#1c4587; font-weight:700;">מה קרה?</td>
+                  <td width="27%" class="hd" style="width:27%; padding:9px 11px; border:1px solid #cfdcea; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:14px; line-height:1.6; text-align:right; vertical-align:top; color:#3d3d3d; background-color:#eef4fa; color:#1c4587; font-weight:700;">המבט המעוות שלמדתי</td>
+                  <td width="30%" class="hd" style="width:30%; padding:9px 11px; border:1px solid #cfdcea; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:14px; line-height:1.6; text-align:right; vertical-align:top; color:#3d3d3d; background-color:#eef4fa; color:#1c4587; font-weight:700;">המבט האמיתי והנכון</td>
+                </tr>
+                <tr>
+                  <td class="c1" style="padding:9px 11px; border:1px solid #cfdcea; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:14px; line-height:1.6; text-align:right; vertical-align:top; color:#3d3d3d; background-color:#eef4fa; color:#1c4587; font-weight:700;">אבא שלי</td>
+                  <td class="c2" style="padding:9px 11px; border:1px solid #cfdcea; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:14px; line-height:1.6; text-align:right; vertical-align:top; color:#3d3d3d;"><span class="lbl" style="display:none; font-size:12px; font-weight:700; color:#7b8fa5; letter-spacing:.5px;">מה קרה?<br></span>הגיע הביתה מהעבודה עייף וחסר סבלנות.</td>
+                  <td class="c3" style="padding:9px 11px; border:1px solid #cfdcea; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:14px; line-height:1.6; text-align:right; vertical-align:top; color:#3d3d3d;"><span class="lbl" style="display:none; font-size:12px; font-weight:700; color:#7b8fa5; letter-spacing:.5px;">המבט המעוות שלמדתי<br></span>הקב&quot;ה לא באמת מתעניין בי ואין לו כוח לשמוע אותי.</td>
+                  <td class="c4" style="padding:9px 11px; border:1px solid #cfdcea; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:14px; line-height:1.6; text-align:right; vertical-align:top; color:#3d3d3d;"><span class="lbl" style="display:none; font-size:12px; font-weight:700; color:#7b8fa5; letter-spacing:.5px;">המבט האמיתי והנכון<br></span>הקב&quot;ה מאוד מתעניין בי וממש מחכה שאפנה אליו ואשתף אותו במה שעובר עלי.</td>
+                </tr>
+                </table>
+    </td></tr></table></div>
+  </div>
+</div></body></html>
