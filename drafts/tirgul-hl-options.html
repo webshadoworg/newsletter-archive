@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>דף התרגול - הדגשת "מצב מפתיע"</title><style>
+  body { margin:0; padding:18px 14px 60px; background:#f2f4f7; direction:rtl;
+         font-family:'Open Sans','Noto Sans Hebrew',Arial,sans-serif; color:#3d3d3d; }
+  .wrap { max-width:720px; margin:0 auto; }
+  h1 { font-size:24px; color:#1c4587; margin:0 0 6px; }
+  .lede { font-size:15px; line-height:1.6; color:#5a5a5a; margin:0 0 22px; }
+  .opt { background:#fff; border:1px solid #dde3ea; border-radius:10px; padding:16px 16px 6px; margin:0 0 18px; }
+  .opt.rec { border:2px solid #1c4587; }
+  h2 { font-size:19px; color:#1c4587; margin:0 0 4px; }
+  .tag { font-size:13px; background:#1c4587; color:#fff; border-radius:999px; padding:3px 12px; vertical-align:middle; }
+  .d { font-size:14px; line-height:1.6; color:#6a6a6a; margin:0 0 12px; }
+
+  /* --- מכאן ומטה: ה-CSS של דף התרגול עצמו, מוקטן ב-zoom --- */
+  .sheet { zoom:0.54; width:1212px; }
+  .cat { margin:0 0 14px; }
+  .ct { font-size:31px; font-weight:700; color:#1c4587; margin:0 0 10px; }
+  .t { width:100%; border-collapse:collapse; }
+  .t th { font-size:26px; font-weight:700; color:#1c4587; background:#eef4fa; padding:9px 16px;
+          text-align:right; border:2px solid #b9cfe6; }
+  .t td { height:82px; border:2px solid #cfdcea; }
+</style></head><body><div class="wrap">
+  <h1>דף התרגול — איך להדגיש את "מצב מפתיע"</h1>
+  <p class="lede">כל אפשרות מראה את הקטגוריה "הצלחות" כרגיל, ומתחתיה "מצב מפתיע" מודגשת — כדי לראות את ההבדל.
+     בכל האפשרויות גובה השורות לכתיבה זהה. תגיד אות אחת ואני בונה את הדף.</p>
+  
+  <section class="opt">
+    <h2>A. בלי הדגשה</h2>
+    <p class="d">הקטגוריה החמישית נראית בדיוק כמו ארבע הקודמות.</p>
+    <div class="sheet"><style></style>
+    <div class="cat">
+      <div class="ct">הצלחות</div>
+      <table class="t"><colgroup><col style="width:50%"><col style="width:50%"></colgroup>
+        <tr><th>אִם</th><th>אָז</th></tr>
+        <tr><td></td><td></td></tr>
+        <tr><td></td><td></td></tr>
+      </table>
+    </div>
+    <div class="cat hl">
+      <div class="ct">מצב מפתיע</div>
+      <table class="t"><colgroup><col style="width:50%"><col style="width:50%"></colgroup>
+        <tr><th>אִם</th><th>אָז</th></tr>
+        <tr><td></td><td></td></tr>
+        <tr><td></td><td></td></tr>
+      </table>
+    </div></div>
+  </section>
+
+  <section class="opt">
+    <h2>B. שורת כותרת כחולה מלאה</h2>
+    <p class="d">שורת "אִם / אָז" של הקטגוריה הזו על רקע כחול מלא עם טקסט לבן. ההדגשה יושבת בתוך הטבלה עצמה.</p>
+    <div class="sheet"><style>.cat.hl .t th { background:#1c4587; color:#ffffff; border-color:#1c4587; }</style>
+    <div class="cat">
+      <div class="ct">הצלחות</div>
+      <table class="t"><colgroup><col style="width:50%"><col style="width:50%"></colgroup>
+        <tr><th>אִם</th><th>אָז</th></tr>
+        <tr><td></td><td></td></tr>
+        <tr><td></td><td></td></tr>
+      </table>
+    </div>
+    <div class="cat hl">
+      <div class="ct">מצב מפתיע</div>
+      <table class="t"><colgroup><col style="width:50%"><col style="width:50%"></colgroup>
+        <tr><th>אִם</th><th>אָז</th></tr>
+        <tr><td></td><td></td></tr>
+        <tr><td></td><td></td></tr>
+      </table>
+    </div></div>
+  </section>
+
+  <section class="opt rec">
+    <h2>C. כרטיס בגוון הציטוט <span class="tag">ההמלצה שלי</span></h2>
+    <p class="d">כל הבלוק יושב על רקע תכלת עם קו כחול בימין - בדיוק העיצוב של קופסת הציטוט בראש הדף.</p>
+    <div class="sheet"><style>.cat.hl { background:#f4f8f9; border-right:5px solid #1c4587; padding:16px 22px 4px; }</style>
+    <div class="cat">
+      <div class="ct">הצלחות</div>
+      <table class="t"><colgroup><col style="width:50%"><col style="width:50%"></colgroup>
+        <tr><th>אִם</th><th>אָז</th></tr>
+        <tr><td></td><td></td></tr>
+        <tr><td></td><td></td></tr>
+      </table>
+    </div>
+    <div class="cat hl">
+      <div class="ct">מצב מפתיע</div>
+      <table class="t"><colgroup><col style="width:50%"><col style="width:50%"></colgroup>
+        <tr><th>אִם</th><th>אָז</th></tr>
+        <tr><td></td><td></td></tr>
+        <tr><td></td><td></td></tr>
+      </table>
+    </div></div>
+  </section>
+
+  <section class="opt">
+    <h2>D. שם הקטגוריה כתגית</h2>
+    <p class="d">רק השם משתנה: תגית כחולה מלאה בקצוות מעוגלים. הטבלה נשארת זהה לכל השאר.</p>
+    <div class="sheet"><style>.cat.hl .ct { display:inline-block; background:#1c4587; color:#ffffff;
+                           border-radius:999px; padding:7px 26px; }</style>
+    <div class="cat">
+      <div class="ct">הצלחות</div>
+      <table class="t"><colgroup><col style="width:50%"><col style="width:50%"></colgroup>
+        <tr><th>אִם</th><th>אָז</th></tr>
+        <tr><td></td><td></td></tr>
+        <tr><td></td><td></td></tr>
+      </table>
+    </div>
+    <div class="cat hl">
+      <div class="ct">מצב מפתיע</div>
+      <table class="t"><colgroup><col style="width:50%"><col style="width:50%"></colgroup>
+        <tr><th>אִם</th><th>אָז</th></tr>
+        <tr><td></td><td></td></tr>
+        <tr><td></td><td></td></tr>
+      </table>
+    </div></div>
+  </section>
+
+  <section class="opt">
+    <h2>E. מסגרת כחולה סביב הבלוק</h2>
+    <p class="d">קו כחול עבה מקיף את הקטגוריה כולה - השם והטבלה יחד.</p>
+    <div class="sheet"><style>.cat.hl { border:3px solid #1c4587; border-radius:10px; padding:16px 20px 4px; }</style>
+    <div class="cat">
+      <div class="ct">הצלחות</div>
+      <table class="t"><colgroup><col style="width:50%"><col style="width:50%"></colgroup>
+        <tr><th>אִם</th><th>אָז</th></tr>
+        <tr><td></td><td></td></tr>
+        <tr><td></td><td></td></tr>
+      </table>
+    </div>
+    <div class="cat hl">
+      <div class="ct">מצב מפתיע</div>
+      <table class="t"><colgroup><col style="width:50%"><col style="width:50%"></colgroup>
+        <tr><th>אִם</th><th>אָז</th></tr>
+        <tr><td></td><td></td></tr>
+        <tr><td></td><td></td></tr>
+      </table>
+    </div></div>
+  </section>
+</div></body></html>
