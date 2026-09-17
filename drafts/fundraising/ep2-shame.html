@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ep2-shame &middot; review</title>
+<style>
+  :root { --red:#ab0001; }
+  body { margin:0; background:#f0eeec; font-family:'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif; color:#222; }
+  .wrap { max-width:1040px; margin:0 auto; padding:40px 20px 80px; }
+  h1 { font-size:26px; line-height:34px; margin:0 0 6px; }
+  .sub { font-size:15px; line-height:24px; color:#555; margin:0 0 30px; max-width:760px; }
+  .card { background:#fff; border-radius:10px; padding:26px 28px; margin:0 0 26px; box-shadow:0 1px 3px rgba(0,0,0,.08); }
+  .card h2 { font-size:19px; line-height:27px; margin:0 0 4px; }
+  .card h3 { font-size:15px; line-height:23px; margin:22px 0 8px; color:#111; }
+  .card p, .card li { font-size:15px; line-height:24px; color:#333; }
+  .card p { margin:0 0 12px; }
+  .card ul { margin:0 0 12px; padding-left:22px; }
+  .card li { margin:0 0 7px; }
+  .rec { display:inline-block; background:#eef6ee; color:#1c5c2e; font-size:12px; font-weight:700; padding:3px 9px; border-radius:20px; }
+  .flag { background:#fdf3f3; border-left:4px solid var(--red); padding:14px 16px; margin:0 0 12px; }
+  .flag p { margin:0; }
+  .flag b { display:block; margin-bottom:4px; }
+  .inbox { background:#fff; border:1px solid #ddd9d6; border-radius:8px; padding:14px 16px; margin:0 0 14px; }
+  .inbox .from { font-size:13px; color:#666; margin-bottom:3px; }
+  .inbox .subj { font-size:16px; font-weight:700; color:#111; margin-bottom:3px; }
+  .inbox .pre { font-size:14px; color:#888; }
+  .grid { display:flex; gap:26px; flex-wrap:wrap; }
+  .col { flex:1 1 440px; min-width:330px; }
+  iframe { width:100%; height:1500px; border:1px solid #ddd9d6; border-radius:8px; background:#fff; }
+  table.map { border-collapse:collapse; width:100%; margin:0 0 12px; }
+  table.map td, table.map th { border-bottom:1px solid #eae6e3; padding:8px 10px; font-size:14px; line-height:21px; text-align:left; vertical-align:top; }
+  table.map th { color:#666; font-weight:700; }
+  code { background:#f4f2f0; padding:1px 5px; border-radius:4px; font-size:13px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <h1>ep2-shame &middot; two options</h1>
+  <p class="sub">Episode 2 for the donor list, built on your testimonials. Nothing sent. Every member
+  quote is verbatim from what you sent me tonight; where I cut, the cut is marked with an ellipsis
+  inside the quote. Full texts are on file at <code>campaigns/ep2-shame/sources/testimonials.md</code>.</p>
+
+  <div class="card">
+    <h2>The structure, and where it came from</h2>
+    <p>Chapter Two gives the enemy three tools in three sentences. Your testimonials answer them one
+    each, and the men who wrote them have never read the script.</p>
+    <table class="map">
+      <tr><th>Chapter Two, verbatim</th><th>Answered by</th></tr>
+      <tr><td>Shame worked.</td><td>&ldquo;take away the shame and normalize the struggle&rdquo;</td></tr>
+      <tr><td>Isolation worked.</td><td>&ldquo;there are normal people and then the losers like me&rdquo;</td></tr>
+      <tr><td>Hopelessness worked.</td><td>&ldquo;wondering when Hashem was gonna kill me. Today I reached Day 48.&rdquo;</td></tr>
+    </table>
+    <p>The film then says GYE &ldquo;connected people&rdquo; and &ldquo;removed the shame.&rdquo; One of
+    your members uses both of those words on his own. That is option A.</p>
+    <p><b>Your &ldquo;Gedalia&rdquo; is Tzom Gedalia.</b> There is no man called Gedalia; the voice
+    transcript heard a name. It is the fast, and it is when that member found GYE, from the fundraising
+    video on Yeshiva World. A donor being asked to fund this year&rsquo;s film is reading a man who was
+    saved by last year&rsquo;s. That is the P.S. of option A.</p>
+  </div>
+
+  <div class="card">
+    <h2>Needs your answer</h2>
+    <div class="flag">
+      <b>Which two of the four blocks are the same man?</b>
+      <p>You said three people. Blocks 1 and 4 both say <em>normal people like me</em>, and if those
+      are two different men it is the strongest thing in the file and belongs in the copy as a stated
+      fact. I have not claimed it anywhere. Option A&rsquo;s P.S. is cut before that phrase so it does
+      not read as one man twice either way.</p>
+    </div>
+    <div class="flag">
+      <b>One em dash, and it is a member&rsquo;s.</b>
+      <p>House rule is none anywhere. It sits inside his own sentence, <em>eyes) &mdash; YOU HAVE SAVED
+      MY LIFE</em>, so editing it means editing a man&rsquo;s testimony to match a style rule. It ships
+      as he wrote it and the build check now fails on any other em dash in the campaign.
+      <span class="rec">Recommendation: leave it. One word from you and it becomes a period.</span></p>
+    </div>
+    <div class="flag">
+      <b>&ldquo;close to 25,000 members&rdquo; is back.</b>
+      <p>You cut that figure from the YWN article, and the check there fails if it reappears. Here it
+      is a member describing what he found rather than GYE claiming a number, which I read as a
+      different thing. <span class="rec">Recommendation: keep it, it is his sentence.</span></p>
+    </div>
+    <div class="flag">
+      <b>Does the listen page say it is a role play?</b>
+      <p>I have not opened <code>gye-first-call.netlify.app</code>. Both options carry one grey line
+      under the button: <em>A role play, not a real member&rsquo;s call.</em> If the page already says
+      so, the line comes out. <span class="rec">Recommendation: keep it either way. A donor who thinks
+      he heard a real member and finds out later costs more than the line costs.</span></p>
+    </div>
+    <div class="flag">
+      <b>No per-conversation number exists.</b>
+      <p>Both options use the $180 a year per member that is on file. The brief wanted the cost of
+      one call and nobody has given me one. If a real figure exists it is a stronger ask than $180.</p>
+    </div>
+    <div class="flag">
+      <b>&ldquo;almost twenty years&rdquo; appears in A, inside a quote from the film.</b>
+      <p>The script says it, so quoting it is accurate whatever you settle. Your YWN final says
+      nineteen. Still your pick, and it is the third time it has come up today.</p>
+    </div>
+    <p>Also open, as on every campaign here: the from name, the subject, the signer, the send date.
+    The signer currently matches <code>ep2-fun-catchy</code>.</p>
+  </div>
+
+  <div class="grid">
+    <div class="col">
+      <div class="card">
+        <h2>Option A <span class="rec">recommended</span></h2>
+        <p>The three lines, answered by three men, in the film&rsquo;s own order. The enemy speaks in
+        the black panels, members in the red-ruled ones, so the two voices never blur. Ends on the
+        film&rsquo;s &ldquo;Please don&rsquo;t&rdquo; and answers it with &ldquo;Please do.&rdquo;</p>
+        <p>Why this one: it is the only version that uses what is actually remarkable about your
+        material, which is that a member independently used the enemy&rsquo;s two words, shame and
+        normalize, backwards. It also keeps the donor as the subject at the end rather than GYE.</p>
+      </div>
+      
+  <div class="inbox">
+    <div class="from">Guard Your Eyes</div>
+    <div class="subj">Shame worked. Isolation worked. Hopelessness worked.</div>
+    <div class="pre">Three of our members answer him, in their own words.</div>
+  </div>
+      <iframe src="ep2-shame-email-a.html" title="Option A"></iframe>
+    </div>
+    <div class="col">
+      <div class="card">
+        <h2>Option B</h2>
+        <p>One voice. The Day 48 letter, forwarded, with the middle cut and the cut declared in the
+        email itself. GYE says almost nothing. The shame quote comes in at the end as the second
+        witness, then the film, then the ask.</p>
+        <p>Why not this one: it is heavier and simpler, and if you want the email to be one man&rsquo;s
+        letter rather than an argument, it is the better choice. It spends the strongest testimonial
+        on its own though, and it leaves the Tzom Gedalia line unused.</p>
+      </div>
+      
+  <div class="inbox">
+    <div class="from">Guard Your Eyes</div>
+    <div class="subj">Today I reached Day 48.</div>
+    <div class="pre">A letter we were sent. We are forwarding the part of it that is ours to forward.</div>
+  </div>
+      <iframe src="ep2-shame-email-b.html" title="Option B"></iframe>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
