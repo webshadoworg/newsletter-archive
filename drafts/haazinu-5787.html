@@ -55,7 +55,7 @@
                    font-size:15px !important; line-height:1.65 !important; padding:11px 14px !important; }
       .tbl .c1   { border-top:0 !important; font-size:16px !important; }
       .tbl .lbl  { display:block !important; margin:0 0 2px !important; }
-      .tbl .cap, .cap { font-size:15px !important; }
+      .tbl .cap, .cap { font-size:17px !important; }
     }
   </style>
 </head>
@@ -434,7 +434,11 @@
                   <a href="https://gyenewsletters.netlify.app/pdf/worksheet-mabat-5787.pdf" target="_blank" style="display:block; padding:12px 18px; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:17px; line-height:1.25; font-weight:700; color:#ffffff; text-decoration:none;">להורדת טבלה למילוי</a>
                 </td></tr>
               </table>
-              <p class="cap" style="Margin:0 0 9px; font-size:15px; line-height:1.4; color:#1c4587; font-weight:700; text-align:center;">טבלה לדוגמא</p>
+              <!-- אפשרות א' מדף cap-options.html, שנבחרה 17.9 05:48: 17px במקום 15px, בין שתי
+                   שורות תכלת כמו בבלוק הפנייה - אבל 2px במקום 4px ("אולי קצת יותר דקות").
+                   ⚠ 17px גם בנייד: ה-media query כפה על .cap 15px !important, וזה הפך את
+                   ההגדלה לבלתי נראית בדיוק במכשיר שבו הוא בודק. -->
+              <p class="cap" style="Margin:0 0 9px; padding:9px 0; font-size:17px; line-height:1.4; color:#1c4587; font-weight:700; text-align:center; border-top:2px solid #d3e2e5; border-bottom:2px solid #d3e2e5;">טבלה לדוגמא</p>
               <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" dir="rtl" class="tbl" style="width:100%; border-collapse:collapse; margin:0 0 20px;">
                 <tr class="hrow">
                   <td width="15%" class="hd" style="width:15%; padding:9px 11px; border:1px solid #cfdcea; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:14px; line-height:1.6; text-align:right; vertical-align:top; color:#3d3d3d; background-color:#eef4fa; color:#1c4587; font-weight:700;">גורם סמכות</td>
@@ -458,13 +462,15 @@
                   <td class="c1" style="padding:9px 11px; border:1px solid #cfdcea; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:14px; line-height:1.6; text-align:right; vertical-align:top; color:#3d3d3d; background-color:#eef4fa; color:#1c4587; font-weight:700;">המשגיח בישיבה</td>
                   <td class="c2" style="padding:9px 11px; border:1px solid #cfdcea; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:14px; line-height:1.6; text-align:right; vertical-align:top; color:#3d3d3d;"><span class="lbl" style="display:none; font-size:12px; font-weight:700; color:#7b8fa5; letter-spacing:.5px;">מה קרה?<br></span>כל הזמן חיפש &quot;לתפוס אותי על חם&quot; ולהעניש אותי.</td>
                   <td class="c3" style="padding:9px 11px; border:1px solid #cfdcea; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:14px; line-height:1.6; text-align:right; vertical-align:top; color:#3d3d3d;"><span class="lbl" style="display:none; font-size:12px; font-weight:700; color:#7b8fa5; letter-spacing:.5px;">המבט המעוות שלמדתי<br></span>הקב&quot;ה כל הזמן &quot;מחכה לי בפינה&quot;.<br>מחכה לראות אותי נכשל ולהעניש אותי.</td>
-                  <td class="c4" style="padding:9px 11px; border:1px solid #cfdcea; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:14px; line-height:1.6; text-align:right; vertical-align:top; color:#3d3d3d;"><span class="lbl" style="display:none; font-size:12px; font-weight:700; color:#7b8fa5; letter-spacing:.5px;">המבט האמיתי והנכון<br></span>הקב&quot;ה רואה את ההשתדלות והמאמצים שלי.<br>הם יקרים בעיניו והוא רוצה בהצלחתי.</td>
+                  <td class="c4" style="padding:9px 11px; border:1px solid #cfdcea; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:14px; line-height:1.6; text-align:right; vertical-align:top; color:#3d3d3d;"><span class="lbl" style="display:none; font-size:12px; font-weight:700; color:#7b8fa5; letter-spacing:.5px;">המבט האמיתי והנכון<br></span>הקב&quot;ה רואה את ההשתדלות והמאמצים שלי.<br>הם יקרים בעיניו, והוא רוצה בהצלחתי.</td>
                 </tr>
               </table>
 
               <!-- ההערות של רפאל, מסוף גרסה ד. class="note" הכרחי: במובייל .txt p כופה
                    16px !important ורק .note יורד ל-13px (אותו מנגנון כמו ההערה בגיליון 4). -->
               <p class="note" style="Margin:0 0 4px; font-size:13px; line-height:1.6; text-align:justify; color:#6a6a6a;"><span style="color:#1c4587; font-weight:700;">הערה:</span> אין בדברים אלה כדי לבטל את מידת הדין ח&quot;ו. הכוונה הייתה להדגיש את הצורך של מכורים בהחלמה להכיר במידת החסד ולהתמקד בה, כדי להתקדם בעבודתם הרוחנית.</p>
+
+
 
 
 
