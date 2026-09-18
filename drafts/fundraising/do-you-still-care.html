@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>do-you-still-care &middot; lapsed donors</title>
+<style>
+  body { margin:0; background:#f4f2f0; font-family:'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif; color:#222; }
+  .wrap { max-width:760px; margin:0 auto; padding:26px 18px 60px; }
+  h1 { font-size:22px; margin:0 0 6px; }
+  .sub { font-size:15px; line-height:24px; color:#555; margin:0 0 22px; }
+  .card { background:#fff; border-radius:10px; padding:20px 22px; margin:0 0 22px; box-shadow:0 1px 3px rgba(0,0,0,.08); }
+  h2 { font-size:16px; margin:0 0 12px; text-transform:uppercase; letter-spacing:1.5px; color:#666; }
+  .flag { font-size:14px; line-height:22px; background:#fff8e6; border-left:3px solid #d99b00; padding:9px 12px; margin:0 0 8px; }
+  .inbox { background:#fff; border:1px solid #ddd; border-radius:8px 8px 0 0; padding:13px 15px; }
+  iframe { width:100%; height:1750px; border:1px solid #ddd; border-top:0; border-radius:0 0 8px 8px; background:#fff; display:block; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>do-you-still-care &middot; lapsed donors</h1>
+  <p class="sub">Your copy from 5:37 PM, set as written, with your unsubscribe button from 5:38 PM. Mailchimp send, so <em>*|FNAME|*</em>, <em>*|MC_PREVIEW_TEXT|*</em> and <em>*|UNSUB|*</em> are live tags and will be empty here. <strong>Blocking: the segment, and a fallback for *|FNAME|*.</strong></p>
+
+  <div class="card">
+    <h2>Needs your answer</h2>
+    <p class="flag"><strong>Set as written.</strong> Four things touched, all mechanical: straight quotes to curly, your Slack <em>&amp;amp;</em> resolved to one ampersand in <em>ruchniyus &amp; gashmiyus</em> and <em>Gut Shabbos</em>, the <em>http://charidy.com/gye</em> in your secure-donations line made https, and <em>Donate Now via Charidy (link)</em> rendered as a button instead of a parenthesised URL. No wording changed.</p>
+    <p class="flag"><strong>Your unsubscribe button is in, with your merge tag encoded.</strong> <em>gye-unsubscribe.netlify.app/?email=*|URL:EMAIL|*</em>, with the pipes as %7C so Mailchimp fills it in rather than breaking the URL. It is a quiet outlined button, not a purple one, so it does not compete with Donate Now. <strong>Under it I kept Mailchimp&rsquo;s own <em>*|UNSUB|*</em> line.</strong> Your page cannot remove anybody from the audience unless it is wired into the Mailchimp API, and a campaign with no <em>*|UNSUB|*</em> gets the footer force-added or refused at send. <strong>Recommendation: leave both.</strong> One word and the Mailchimp line goes.</p>
+    <p class="flag"><strong>*|FNAME|* has no fallback, in the subject and twice in the body.</strong> A donor with no first name on file gets <em>, we&rsquo;re looking for you!</em> in the inbox, and <em>Dear ,</em> at the top. That is the third time this has come up on this concept. <strong>Needs one word from you</strong>, something like <em>*|FNAME:Reb Yid|*</em> or <em>*|FNAME:Dear Friend|*</em>. It is the only thing here that can visibly break.</p>
+    <p class="flag"><strong>Two different check addresses are now live in two emails on the same day.</strong> This one says <em>GYE Corp. P.O. Box 32380 Pikesville, MD 21282</em>. The member email you sent at 4:54 PM says <em>Guard Your Eyes, 4403 15th Ave, #305, Brooklyn, NY 11219</em>. Both are yours, so both ship as written. Flagged once, because a donor who has given before may have the other one on file.</p>
+    <p class="flag"><strong>60% away squares with the member email.</strong> That one says you have passed the 40% mark at $324,000, so 60% to go is the same number said the other way. No contradiction, and it dates this email to today the same way.</p>
+    <p class="flag"><strong>The 23-year-old&rsquo;s letter is on file as yours.</strong> Quoted verbatim, including <em>bh</em>, the ellipses and the double exclamation marks, because a real letter reads real. It is now in <em>gye-facts.md</em> as your own source, attributed to this week. <strong>One question: is he a member who would recognise himself?</strong> If the 90 Day Challenge and the age together identify him to people who know him, the age is the part to lose.</p>
+    <p class="flag"><strong>You sign this one <em>Yaakov Nadel, Guard Your Eyes</em>.</strong> No <em>Rabbi</em>, no <em>Co-Founder</em>, which is how the member email at 4:54 PM signs off. Yours either way, kept as sent; say if the two should match.</p>
+    <p class="flag"><strong>No preheader written, so the tag is doing it.</strong> <em>*|MC_PREVIEW_TEXT|*</em> is in the hidden div, which means whatever you type into Mailchimp&rsquo;s preview field is what shows. If you leave that field empty the inbox pulls <em>Dear *|FNAME|*, There are no words...</em> instead. <strong>Recommendation: write one line in Mailchimp</strong>, something like <em>A 23-year-old wrote to us this week. And we noticed it has been a while.</em></p>
+    <p class="flag"><strong>This is the <em>do-you-still-care</em> concept, finished.</strong> Your 3:23 PM subject was <em>*|FNAME|*, do you still care about our cause?</em> and this copy replaces it with <em>we&rsquo;re looking for you!</em>, which is the warmer of the two and does not dare the reader to say no. <strong>The segment is still the blocking question:</strong> this only works on past donors who have <em>not</em> given in this campaign. Sent to the whole donor list it tells 1200 people who gave this month that you did not notice.</p>
+  </div>
+
+  <div class="card">
+    <h2>The email</h2>
+    <div class="inbox">
+      <div style="font-size:13px;color:#888">Yaakov Nadel, Guard Your Eyes</div>
+      <div style="font-weight:700;font-size:16px;margin:3px 0 2px">*|FNAME|*, we&rsquo;re looking for you!</div>
+      <div style="font-size:13px;color:#888">*|MC_PREVIEW_TEXT|*</div>
+    </div>
+    <iframe src="do-you-still-care-email-a.html" title="option A"></iframe>
+  </div>
+</div>
+</body>
+</html>
