@@ -53,7 +53,8 @@ top. It runs on this machine only.
   new draft is addressed to the whole audience, with the From line of the last campaign sent, so
   choose the segment in Mailchimp before sending. Images load from their web address
   (`gyenewsletters.netlify.app/images/...`), so a new image has to be committed, pushed and deployed
-  first: the tab lists every image, says which are not on the web yet and why, and will not push
+  first. The tab also refuses to push while the wording still has a blank such as `[X]` hours or
+  `[65%]`. The tab lists every image, says which are not on the web yet and why, and will not push
   until they all are. The API key is read at run time from
   `../gye-crm/.env` (`MAILCHIMP_API_KEY`, `MAILCHIMP_AUDIENCE_ID`). It is never stored in this
   repo, which is published.

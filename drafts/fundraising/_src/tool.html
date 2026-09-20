@@ -326,7 +326,7 @@ function renderPane() {
     else if (mc.error) pane.innerHTML = `<div class="summary bad">${esc(mc.error)}</div><button class="btn" id="mcretry">Try again</button>`;
     else {
       const live = mc.draft && mc.draft.status === "save";
-      const missing = mc.images.filter(i => !i.live);
+      const missing = mc.images.filter(i => !i.live), blanks = mc.placeholders || [];
       pane.innerHTML = `${mcDone ? `<div class="summary ok">Draft ${esc(mcDone.note)}. <a href="${esc(mcDone.url)}" target="_blank" rel="noopener">Open it in Mailchimp</a></div>` : ""}
         <div class="scroll"><table>
           <tr><td><b>Audience</b></td><td>${esc(mc.audience)} · ${Number(mc.members).toLocaleString()} subscribed</td></tr>
@@ -335,11 +335,12 @@ function renderPane() {
           <tr><td><b>Subject</b></td><td>${esc(email.subject)}</td></tr>
           <tr><td><b>Preview text</b></td><td>${esc(email.preheader)}</td></tr>
           <tr><td><b>HTML</b></td><td>${esc(email.versions.find(x => x.platform === "mailchimp").out)}</td></tr>
+          ${blanks.length ? `<tr><td><b>Blanks</b></td><td><span class="flag">Still to fill in: ${blanks.map(esc).join(", ")}</span></td></tr>` : ""}
           <tr><td><b>Images</b></td><td>${!mc.images.length ? "None in this email" : !missing.length ? `${mc.images.length} in this email, all on the web` :
             missing.map(i => `<span class="flag"><a href="${esc(i.url)}" target="_blank" rel="noopener">${esc(i.url.split("/").pop())}</a> is not on the web yet. ${esc(i.why)}</span>`).join("")}</td></tr>
           <tr><td><b>Draft</b></td><td>${mc.draft ? `${live ? "Exists" : "Earlier campaign is " + esc(mc.draft.status)} · <a href="${esc(mc.draft.url)}" target="_blank" rel="noopener">open in Mailchimp</a>` : "None yet"}</td></tr>
         </table></div>
-        <div class="row" style="margin-top:14px"><button class="btn primary" id="mcpush" ${missing.length ? "disabled" : ""}>${live ? "Update the Mailchimp draft" : "Create a Mailchimp draft"}</button></div>
+        <div class="row" style="margin-top:14px"><button class="btn primary" id="mcpush" ${missing.length || blanks.length ? "disabled" : ""}>${live ? "Update the Mailchimp draft" : "Create a Mailchimp draft"}</button></div>
         ${missing.length ? `<p class="hint"><b>The draft would show broken images.</b> Images load from their web address, so push them to GitHub, wait for Netlify to deploy, then <a href="#" id="mcagain">check again</a>.</p>` : ""}
         <p class="hint">This only ever makes or updates a draft. It never sends or schedules. ${live
           ? "Updating replaces the draft's HTML, subject and preview text, and leaves the From line and recipients as they are set in Mailchimp."

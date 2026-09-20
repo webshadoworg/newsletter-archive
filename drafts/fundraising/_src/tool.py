@@ -258,6 +258,18 @@ def share_status(name):
     return rows
 
 
+PLACEHOLDER = re.compile(r"\[[^\]\n]{1,24}\]|\bX hours?\b|\bX ?%")
+
+
+def placeholders(name):
+    """Unfilled blanks such as [X] hours or [65%] in the subject, the preheader or the wording."""
+    email = describe(name)
+    version = email["versions"][0]["html"]
+    visible = html.unescape(re.sub(r"<[^>]+>", " ", re.sub(r"<!--.*?-->", " ", version[version.find("<body"):], flags=re.S)))
+    found = PLACEHOLDER.findall(" ".join([email["subject"], email["preheader"], visible]))
+    return list(dict.fromkeys(found))
+
+
 def mailchimp_version(name):
     version = next((v for v in describe(name)["versions"] if v["platform"] == "mailchimp"), None)
     if not version:
@@ -289,7 +301,7 @@ def mailchimp_status(name):
             draft = {"status": found["status"], "title": found["settings"].get("title", ""),
                      "url": mailchimp_edit_url(found)}
     return {"audience": audience["name"], "members": audience["stats"]["member_count"],
-            "images": image_report(mailchimp_version(name)["html"]),
+            "images": image_report(mailchimp_version(name)["html"]), "placeholders": placeholders(name),
             "from_name": from_name, "from_email": from_email, "from_why": from_why, "draft": draft}
 
 
@@ -301,6 +313,9 @@ def mailchimp_push(name, rev):
         raise ValueError("The source file changed since this page loaded. Reload and try again.")
     email = describe(name)
     version = mailchimp_version(name)
+    blanks = placeholders(name)
+    if blanks:
+        raise ValueError("Not pushed to Mailchimp: the email still has blanks to fill in: " + ", ".join(blanks))
     missing = [i for i in image_report(version["html"]) if not i["live"]]
     if missing:
         raise ValueError("Not pushed to Mailchimp: " + " ".join(f"{i['url']} is not on the web yet. {i['why']}" for i in missing))
