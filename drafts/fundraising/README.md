@@ -97,8 +97,24 @@ The HTML uses these slots where the versions differ:
 
 ## Starting a new email
 
-Copy `_src/erev-yk-teshuva.src.html` to `_src/<new-name>.src.html`, change the settings block and
-the text, and build.
+Every email has its own layout, and the build does not care what it is. A source file is ordinary
+email HTML with the settings block on top and the markers from the table above placed wherever
+that layout needs them. The tool reads the wording out of whatever structure it finds.
+
+1. Write the email as `_src/<new-name>.src.html`: settings block, then the HTML with the markers
+   in place. Do not carry over a `mailchimp.campaign_id` line from another email; it points at
+   that email's Mailchimp draft, and a push would overwrite it.
+2. Run the build. Both versions are written and the email shows up in the tool.
+3. Push any new image and wait for the deploy, then create the Mailchimp draft from the tool and
+   copy the GYE mailer HTML from the Copy tab.
+4. Commit again afterwards: the draft push adds a `mailchimp.campaign_id` line to the source.
+
+To bring in an email that already exists as finished HTML: swap its preheader, greeting and link
+tags for the markers, cut its footer and put `{{FOOTER}}` there, add the settings block, and check
+that the rebuilt Mailchimp file matches the original apart from the footer.
+
+Copy another email's source only when the new one really is its sibling (a resend, a variant).
+Then change `utm` and both `out` lines first, or the build overwrites the older email's files.
 
 ## Shared pieces
 
