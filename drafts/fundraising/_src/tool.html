@@ -234,6 +234,7 @@ function serialize(node) {
     else if (tag === "B" || tag === "STRONG" || weight === "bold" || +weight >= 600) out += inner ? `<b>${inner}</b>` : "";
     else if (tag === "I" || tag === "EM") out += inner ? `<i>${inner}</i>` : "";
     else if (tag === "U") out += inner ? `<u>${inner}</u>` : "";
+    else if (tag === "SPAN" && n.getAttribute("dir") === "rtl") out += inner ? `<span dir="rtl">${inner}</span>` : "";
     else if (tag === "A") out += inner ? `<a ${n.dataset.i !== undefined ? `data-i="${esc(n.dataset.i)}" ` : ""}href="${esc(n.getAttribute("href"))}">${inner}</a>` : "";
     else out += inner;
   }

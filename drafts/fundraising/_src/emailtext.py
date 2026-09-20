@@ -12,6 +12,8 @@ BLOCKS = {"p", "h1", "h2", "h3", "h4", "h5", "h6", "li"}
 BREAKERS = {"table", "tr", "td", "div", "body", "center"}
 INLINE = {"b": "b", "strong": "b", "i": "i", "em": "i", "u": "u"}
 VOID = {"img", "br", "meta", "link", "hr", "input"}
+# Hebrew inside an English paragraph is wrapped in exactly this tag; the tool keeps it through an edit
+HEBREW_SPAN = """<span dir="rtl" style="font-family:Arial,Helvetica,sans-serif;">"""
 KEEP_NAMED = {"rsquo", "lsquo", "rdquo", "ldquo", "nbsp", "amp", "lt", "gt", "quot", "mdash", "ndash", "hellip"}
 
 
@@ -106,8 +108,10 @@ class Extractor(HTMLParser):
                 self.cur["parts"].append("<br>")
             elif tag in INLINE:
                 self.cur["parts"].append(f"<{INLINE[tag]}>")
+            elif tag == "span" and self.get_starttag_text() == HEBREW_SPAN:
+                self.cur["parts"].append('<span dir="rtl">')
             else:
-                self.cur["locked"] = True   # span, font, sup...: not safe to rewrite from the page
+                self.cur["locked"] = True   # other spans, font, sup...: not safe to rewrite from the page
 
     def handle_endtag(self, tag):
         if not self.in_body:
@@ -129,6 +133,8 @@ class Extractor(HTMLParser):
                 self.cur["parts"].append("</a>")
         elif tag in INLINE and self.cur:
             self.cur["parts"].append(f"</{INLINE[tag]}>")
+        elif tag == "span" and self.cur:
+            self.cur["parts"].append("</span>")
 
     def handle_data(self, data):
         if not self.in_body or self.hidden:
@@ -181,6 +187,9 @@ class Rebuilder(HTMLParser):
         elif tag in ("b", "i", "u"):
             self.out.append(f"<{tag}>")
             self.stack.append(tag)
+        elif tag == "span" and attrs.get("dir") == "rtl":
+            self.out.append(HEBREW_SPAN)
+            self.stack.append("span")
         elif tag == "a":
             index = attrs.get("data-i")
             if index is not None and index.isdigit() and int(index) < len(self.anchors):
