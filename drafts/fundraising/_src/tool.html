@@ -227,7 +227,7 @@ function startEdit(el, b, adding) {
 function serialize(node) {
   let out = "";
   for (const n of node.childNodes) {
-    if (n.nodeType === 3) { out += esc(n.nodeValue); continue; }
+    if (n.nodeType === 3) { out += esc(n.nodeValue.replace(/\u00a0/g, " ")); continue; }   // the editor turns edge spaces into nbsp
     if (n.nodeType !== 1) continue;
     const tag = n.tagName, inner = serialize(n), weight = n.style && n.style.fontWeight;
     if (tag === "BR") out += "<br>";
