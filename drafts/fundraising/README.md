@@ -58,6 +58,12 @@ top. It runs on this machine only.
   `../gye-crm/.env` (`MAILCHIMP_API_KEY`, `MAILCHIMP_AUDIENCE_ID`). It is never stored in this
   repo, which is published.
 
+- **Share.** The public link to each version on the Netlify site
+  (`https://gyenewsletters.netlify.app/drafts/fundraising/<file>`), with a Copy link button. It
+  compares the live page with what is built here and says whether the link is up to date, shows an
+  older version, or is not on the site yet, and why (not committed, not pushed, still deploying).
+  A link shows what was last pushed, so push before sharing. Anyone with the link can open it.
+
 ## The source file
 
 `_src/<name>.src.html` starts with a settings block, followed by the email's HTML:

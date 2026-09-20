@@ -109,6 +109,7 @@
       <button class="tab" data-tab="links">Links</button>
       <button class="tab" data-tab="settings">Settings</button>
       <button class="tab" data-tab="mailchimp">Mailchimp</button>
+      <button class="tab" data-tab="share">Share</button>
     </div>
     <div class="pane" id="pane"></div>
   </div>
@@ -118,7 +119,7 @@
 const $ = (s, el = document) => el.querySelector(s);
 const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 const NAMES = { mailchimp: "Mailchimp", gyemailer: "GYE mailer" };
-let email = null, tab = "preview", version = 0, width = "desktop", checks = {}, mc = null, mcDone = null;
+let email = null, tab = "preview", version = 0, width = "desktop", checks = {}, mc = null, mcDone = null, share = null;
 
 function status(msg, err) { const s = $("#status"); s.textContent = msg; s.className = "status" + (err ? " err" : ""); }
 
@@ -133,7 +134,7 @@ async function load(name) {
   try {
     email = await api("/api/email/" + encodeURIComponent(name));
     try { localStorage.setItem("fundraising-tool-email", name); } catch (e) {}
-    checks = {}; mc = null; mcDone = null;
+    checks = {}; mc = null; mcDone = null; share = null;
     render();
     const stale = email.versions.filter(v => v.stale).map(v => v.out);
     status(stale.length ? "Not built yet: " + stale.join(", ") + ". Save any change, or run build.py." : "Built files are up to date", stale.length);
@@ -144,7 +145,7 @@ async function change(body, done) {
   try {
     status("Saving…");
     email = await api("/api/email/" + encodeURIComponent(email.name), { rev: email.rev, ...body });
-    checks = {}; mcDone = null;
+    checks = {}; mcDone = null; share = null;
     render();
     status(done || "Saved and rebuilt");
   } catch (e) { status(e.message, true); }
@@ -249,6 +250,11 @@ function plainText() {
   return lines.join("\n\n");
 }
 
+async function loadShare(name) {
+  try { share = await api("/api/share/" + encodeURIComponent(name)); } catch (e) { share = { error: e.message }; }
+  if (email && email.name === name && tab === "share") renderPane();
+}
+
 async function loadMailchimp(name) {
   try { mc = await api("/api/mailchimp/" + encodeURIComponent(name)); } catch (e) { mc = { error: e.message }; }
   if (email && email.name === name && tab === "mailchimp") renderPane();
@@ -347,6 +353,25 @@ function renderPane() {
     }
     const again = $("#mcagain", pane); if (again) again.onclick = ev => { ev.preventDefault(); mc = null; renderPane(); };
     const retry = $("#mcretry", pane); if (retry) retry.onclick = () => { mc = null; renderPane(); };
+  }
+
+  if (tab === "share") {
+    const STATE = { current: ["ok", "Live and up to date"], old: ["bad", "Live, but an older version"], missing: ["bad", "Not on the site yet"], error: ["na", "Could not check"] };
+    if (!share) { pane.innerHTML = `<p class="hint">Checking the live site…</p>`; loadShare(email.name); }
+    else if (share.error) pane.innerHTML = `<div class="summary bad">${esc(share.error)}</div><button class="btn" id="shagain">Try again</button>`;
+    else {
+      pane.innerHTML = share.map((r, i) => `<div class="copyrow"><div><b>${esc(NAMES[r.platform] || r.platform)}</b> <span class="pill ${STATE[r.state][0]}">${STATE[r.state][1]}</span>
+          <small><a href="${esc(r.url)}" target="_blank" rel="noopener">${esc(r.url)}</a></small>${r.why ? `<span class="flag">${esc(r.why)}</span>` : ""}</div>
+          <button class="btn" data-share="${i}">Copy link</button></div>`).join("")
+        + `<div class="row" style="margin-top:14px"><button class="btn" id="shagain">Check again</button></div>
+        <p class="hint">Anyone with the link can open it, with no sign-in. A link shows what was last pushed to GitHub, not what is saved here, so push before you share. The Mailchimp version shows its merge tags as written (the greeting, the address line), so the GYE mailer link reads better for a person.</p>`;
+      pane.onclick = async ev => {
+        const btn = ev.target.closest("[data-share]"); if (!btn) return;
+        try { await navigator.clipboard.writeText(share[+btn.dataset.share].url); btn.textContent = "Copied"; btn.classList.add("done"); setTimeout(() => { btn.textContent = "Copy link"; btn.classList.remove("done"); }, 1600); }
+        catch (e) { status("The browser blocked copying. Click the page and try again.", true); }
+      };
+    }
+    const again = $("#shagain", pane); if (again) again.onclick = () => { share = null; renderPane(); };
   }
 
   const seg = $('[data-seg="version"]', pane); if (seg) seg.onclick = ev => { if (ev.target.dataset.v) { version = +ev.target.dataset.v; renderPane(); } };

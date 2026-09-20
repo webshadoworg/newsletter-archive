@@ -227,6 +227,37 @@ def image_report(built):
     return report
 
 
+def share_status(name):
+    """The public address of each built version on the Netlify site, and whether that page is current."""
+    rows = []
+    for v in describe(name)["versions"]:
+        rel = (build.OUT / v["out"]).relative_to(REPO).as_posix()
+        url = f"https://{SITE_HOST}/{rel}"
+        try:
+            request = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 (share check)", "Cache-Control": "no-cache"})
+            with urllib.request.urlopen(request, timeout=15) as response:
+                live = response.read().decode("utf-8", "replace")
+            state = "current" if live == v["html"] else "old"
+        except urllib.error.HTTPError as e:
+            state = "missing" if e.code == 404 else "error"
+        except Exception:
+            state = "error"
+        why = ""
+        if state in ("old", "missing"):
+            if v["stale"]:
+                why = "The built file is out of date. Save a change in the tool or run build.py, then commit and push."
+            elif git("status", "--porcelain", "--", rel):
+                why = "Your latest changes are not committed. Commit and push them."
+            elif git("log", "--oneline", "origin/main..HEAD", "--", rel):
+                why = "Your latest changes are committed but not pushed. Push them."
+            else:
+                why = "Everything is pushed. Netlify may still be deploying; check again in a minute."
+        elif state == "error":
+            why = "The site could not be reached."
+        rows.append({"platform": v["platform"], "out": v["out"], "url": url, "state": state, "why": why})
+    return rows
+
+
 def mailchimp_version(name):
     version = next((v for v in describe(name)["versions"] if v["platform"] == "mailchimp"), None)
     if not version:
@@ -343,6 +374,8 @@ class Handler(SimpleHTTPRequestHandler):
                 self.wfile.write(body)
             elif path == "/api/emails":
                 self.send_json(sorted(p.name[:-len(".src.html")] for p in build.SRC.glob("*.src.html")))
+            elif path.startswith("/api/share/"):
+                self.send_json(share_status(path.rsplit("/", 1)[1]))
             elif path.startswith("/api/mailchimp/"):
                 self.send_json(mailchimp_status(path.rsplit("/", 1)[1]))
             elif path.startswith("/api/email/"):
