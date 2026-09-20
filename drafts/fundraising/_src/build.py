@@ -23,6 +23,7 @@ Only platforms that have an "out" line are built. The body uses these slots:
                     Mailchimp gets the Unsubscribe pill (it sits above the footer Mailchimp
                     appends), GYE mailer gets the members footer. "<platform>.footer: none"
                     drops it for one email; "<platform>.footer: other.html" swaps the partial
+    <!--@only gyemailer-->   lines up to the next <!--@end--> go into that version alone
     {{FOOTER_GAP}}  bottom padding of the cell above the footer: 0 with a footer, 40px without
 
 To read and change the wording in the browser, run tool.py (see ../README.md).
@@ -48,6 +49,7 @@ PLATFORMS = {
 
 HEADER = re.compile(r"\A<!--@email\n(.*?)\n-->\n", re.S)
 SLOT = re.compile(r"\{\{([A-Z_]+)\}\}")
+ONLY = re.compile(r"<!--@(?:only ([a-z]+)|end)-->")
 TITLE = re.compile(r"<title>(.*?)</title>", re.S)
 
 
@@ -105,8 +107,16 @@ def render(src_path, body, v):
             sys.exit(f"{src_path.name} [{v['platform']}]: no value for {{{{{name}}}}}")
         return slots[name]
 
-    lines = []
+    lines, only = [], None
     for line in body.split("\n"):
+        marker = ONLY.fullmatch(line.strip())
+        if marker:   # <!--@only gyemailer--> ... <!--@end-->: lines kept in that version alone
+            only = marker.group(1)
+            if only and only not in PLATFORMS:
+                sys.exit(f"{src_path.name}: unknown platform in {line.strip()}")
+            continue
+        if only and only != v["platform"]:
+            continue
         if line.strip() == "{{FOOTER}}" and not footer:
             continue
         lines.append(SLOT.sub(fill, line))

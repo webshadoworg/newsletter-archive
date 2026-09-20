@@ -5,6 +5,7 @@ mailchimp.out: erev-yk-teshuva.html
 mailchimp.greeting: *|IF:GREET|*Dear *|GREET|*,*|ELSE:|*Dear Friend of GYE,*|END:IF|*
 gyemailer.out: erev-yk-teshuva-members.html
 gyemailer.greeting: Dear Member,
+mailchimp.campaign_id: f2309b5c4c
 -->
 <!DOCTYPE html>
 <html lang="en" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
@@ -191,7 +192,9 @@ gyemailer.greeting: Dear Member,
     <td style="border-top:2px solid #e6d9d9;font-size:0;line-height:0;padding:0">&nbsp;</td>
   </tr>
 </table>
+<!--@only gyemailer-->
       <p style="Margin:24px 0 0;padding:0;font-family:'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;font-size:14px;line-height:22px;color:#333333;mso-line-height-rule:exactly;">Prefer to mail a check? Guard Your Eyes, 4403 15th Ave #305, Brooklyn, NY 11219</p>
+<!--@end-->
 {{FOOTER}}
     </td>
   </tr>

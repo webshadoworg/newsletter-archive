@@ -42,6 +42,7 @@
   .btn:hover { border-color:#999; }
   .btn.primary { background:var(--red); border-color:var(--red); color:#fff; font-weight:700; }
   .btn.danger { color:var(--red); }
+  .btn:disabled { opacity:.45; cursor:not-allowed; }
   .btn.done { border-color:var(--ok); color:var(--ok); }
   .foot { border-top:1px solid var(--line); padding-top:12px; margin-top:12px; font-size:14px; line-height:22px; color:#555; }
   .foot p { margin:0 0 6px; }
@@ -107,6 +108,7 @@
       <button class="tab" data-tab="copy">Copy</button>
       <button class="tab" data-tab="links">Links</button>
       <button class="tab" data-tab="settings">Settings</button>
+      <button class="tab" data-tab="mailchimp">Mailchimp</button>
     </div>
     <div class="pane" id="pane"></div>
   </div>
@@ -116,7 +118,7 @@
 const $ = (s, el = document) => el.querySelector(s);
 const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 const NAMES = { mailchimp: "Mailchimp", gyemailer: "GYE mailer" };
-let email = null, tab = "preview", version = 0, width = "desktop", checks = {};
+let email = null, tab = "preview", version = 0, width = "desktop", checks = {}, mc = null, mcDone = null;
 
 function status(msg, err) { const s = $("#status"); s.textContent = msg; s.className = "status" + (err ? " err" : ""); }
 
@@ -131,7 +133,7 @@ async function load(name) {
   try {
     email = await api("/api/email/" + encodeURIComponent(name));
     try { localStorage.setItem("fundraising-tool-email", name); } catch (e) {}
-    checks = {};
+    checks = {}; mc = null; mcDone = null;
     render();
     const stale = email.versions.filter(v => v.stale).map(v => v.out);
     status(stale.length ? "Not built yet: " + stale.join(", ") + ". Save any change, or run build.py." : "Built files are up to date", stale.length);
@@ -142,7 +144,7 @@ async function change(body, done) {
   try {
     status("Saving…");
     email = await api("/api/email/" + encodeURIComponent(email.name), { rev: email.rev, ...body });
-    checks = {};
+    checks = {}; mcDone = null;
     render();
     status(done || "Saved and rebuilt");
   } catch (e) { status(e.message, true); }
@@ -174,7 +176,7 @@ function blockEl(b) {
     return el;
   }
   el.className = "block " + b.kind + (b.locked ? " locked" : " can");
-  el.innerHTML = `<div class="body">${b.html}</div>` + (b.locked ? `<span class="note">Has special formatting, so it can only be changed in the source file.</span>` : "");
+  el.innerHTML = (b.only ? `<span class="tag">${esc(NAMES[b.only] || b.only)} only</span>` : "") + `<div class="body">${b.html}</div>` + (b.locked ? `<span class="note">Has special formatting, so it can only be changed in the source file.</span>` : "");
   if (!b.locked) el.addEventListener("click", ev => { if (!el.classList.contains("editing")) { ev.preventDefault(); startEdit(el, b); } });
   return el;
 }
@@ -247,6 +249,11 @@ function plainText() {
   return lines.join("\n\n");
 }
 
+async function loadMailchimp(name) {
+  try { mc = await api("/api/mailchimp/" + encodeURIComponent(name)); } catch (e) { mc = { error: e.message }; }
+  if (email && email.name === name && tab === "mailchimp") renderPane();
+}
+
 function renderPane() {
   for (const t of document.querySelectorAll(".tab")) t.classList.toggle("on", t.dataset.tab === tab);
   const pane = $("#pane"), v = email.versions[version] || email.versions[0];
@@ -303,6 +310,43 @@ function renderPane() {
       for (const f of pane.querySelectorAll("[data-key]")) values[f.dataset.key] = f.value;
       change({ action: "settings", values }, "Settings saved and rebuilt");
     };
+  }
+
+  if (tab === "mailchimp") {
+    const has = email.versions.some(x => x.platform === "mailchimp");
+    if (!has) pane.innerHTML = `<p class="hint">This email has no Mailchimp version.</p>`;
+    else if (!mc) { pane.innerHTML = `<p class="hint">Asking Mailchimp…</p>`; loadMailchimp(email.name); }
+    else if (mc.error) pane.innerHTML = `<div class="summary bad">${esc(mc.error)}</div><button class="btn" id="mcretry">Try again</button>`;
+    else {
+      const live = mc.draft && mc.draft.status === "save";
+      const missing = mc.images.filter(i => !i.live);
+      pane.innerHTML = `${mcDone ? `<div class="summary ok">Draft ${esc(mcDone.note)}. <a href="${esc(mcDone.url)}" target="_blank" rel="noopener">Open it in Mailchimp</a></div>` : ""}
+        <div class="scroll"><table>
+          <tr><td><b>Audience</b></td><td>${esc(mc.audience)} · ${Number(mc.members).toLocaleString()} subscribed</td></tr>
+          <tr><td><b>From</b></td><td>${esc(mc.from_name)} &lt;${esc(mc.from_email)}&gt;<span class="note">${mc.draft && mc.draft.status === "save" ? "for a new draft; an existing draft keeps its own" : esc(mc.from_why)}</span></td></tr>
+          <tr><td><b>Campaign name</b></td><td>${esc(email.name)}</td></tr>
+          <tr><td><b>Subject</b></td><td>${esc(email.subject)}</td></tr>
+          <tr><td><b>Preview text</b></td><td>${esc(email.preheader)}</td></tr>
+          <tr><td><b>HTML</b></td><td>${esc(email.versions.find(x => x.platform === "mailchimp").out)}</td></tr>
+          <tr><td><b>Images</b></td><td>${!mc.images.length ? "None in this email" : !missing.length ? `${mc.images.length} in this email, all on the web` :
+            missing.map(i => `<span class="flag"><a href="${esc(i.url)}" target="_blank" rel="noopener">${esc(i.url.split("/").pop())}</a> is not on the web yet. ${esc(i.why)}</span>`).join("")}</td></tr>
+          <tr><td><b>Draft</b></td><td>${mc.draft ? `${live ? "Exists" : "Earlier campaign is " + esc(mc.draft.status)} · <a href="${esc(mc.draft.url)}" target="_blank" rel="noopener">open in Mailchimp</a>` : "None yet"}</td></tr>
+        </table></div>
+        <div class="row" style="margin-top:14px"><button class="btn primary" id="mcpush" ${missing.length ? "disabled" : ""}>${live ? "Update the Mailchimp draft" : "Create a Mailchimp draft"}</button></div>
+        ${missing.length ? `<p class="hint"><b>The draft would show broken images.</b> Images load from their web address, so push them to GitHub, wait for Netlify to deploy, then <a href="#" id="mcagain">check again</a>.</p>` : ""}
+        <p class="hint">This only ever makes or updates a draft. It never sends or schedules. ${live
+          ? "Updating replaces the draft's HTML, subject and preview text, and leaves the From line and recipients as they are set in Mailchimp."
+          : "The new draft is addressed to the whole audience. Choose the segment or tag in Mailchimp before sending."}</p>`;
+      $("#mcpush").onclick = async () => {
+        $("#mcpush").disabled = true; $("#mcpush").textContent = "Pushing…"; status("Pushing to Mailchimp…");
+        try {
+          const r = await api("/api/mailchimp/" + encodeURIComponent(email.name), { rev: email.rev });
+          email = r.email; mcDone = r; mc = null; status("Mailchimp draft " + r.note.split(" (")[0]); renderPane();
+        } catch (e) { status(e.message, true); renderPane(); }
+      };
+    }
+    const again = $("#mcagain", pane); if (again) again.onclick = ev => { ev.preventDefault(); mc = null; renderPane(); };
+    const retry = $("#mcretry", pane); if (retry) retry.onclick = () => { mc = null; renderPane(); };
   }
 
   const seg = $('[data-seg="version"]', pane); if (seg) seg.onclick = ev => { if (ev.target.dataset.v) { version = +ev.target.dataset.v; renderPane(); } };

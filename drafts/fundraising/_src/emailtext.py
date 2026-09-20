@@ -25,13 +25,20 @@ class Extractor(HTMLParser):
         self.anchor = None
         self.hidden = []
         self.in_body = False
+        self.only = None   # platform named by an open <!--@only x--> marker
+
+    def handle_comment(self, data):
+        marker = re.fullmatch(r"@(?:only ([a-z]+)|end)", data.strip())
+        if marker:
+            self.flush()
+            self.only = marker.group(1)
 
     def at(self):
         line, col = self.getpos()
         return self.line_starts[line - 1] + col
 
     def open(self, kind=None, start_tag=None):
-        self.cur = {"kind": kind, "parts": [], "anchors": [], "locked": False, "linked": False,
+        self.cur = {"kind": kind, "parts": [], "anchors": [], "locked": False, "linked": False, "only": self.only,
                     "unlinked": False, "start_tag": start_tag}
         if start_tag:
             self.cur["outer_start"] = self.at()

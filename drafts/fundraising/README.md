@@ -10,9 +10,10 @@ for each system. This applies to fundraising emails only, not to the rest of `dr
 |---|---|---|
 | Preheader | the `*\|MC_PREVIEW_TEXT\|*` tag; you type the sentence into Mailchimp's preview field | the sentence itself, inside the hidden div in the HTML |
 | Greeting | a Mailchimp merge tag, e.g. `*\|IF:GREET\|*Dear *\|GREET\|*,*\|ELSE:\|*Dear Friend of GYE,*\|END:IF\|*` | plain text, e.g. `Dear Member,` |
-| Footer | our Unsubscribe pill. It sits above the footer Mailchimp appends and is not a duplicate of it | the members footer: address, Manage Your Preferences (`{{preferenceUrl}}`), Unsubscribe from this list (`{{leaveCurrentSeriesOrListUrl}}`) |
+| Footer | our Unsubscribe pill (not a duplicate of Mailchimp's link), then our own footer: "To donate by check" with `*\|LIST:ADDRESSLINE\|*` (one plain line that takes our styling; `*\|HTML:LIST_ADDRESS_HTML\|*` prints its own unstyled block with an "Add us to your address book" link), copyright, update preferences / `*\|UNSUB\|*`. Because the address and unsubscribe are Mailchimp's own tags, Mailchimp does not append its footer bar and the blank lines that come with it. A typed-out address does not count | the members footer: address, Manage Your Preferences (`{{preferenceUrl}}`), Unsubscribe from this list (`{{leaveCurrentSeriesOrListUrl}}`) |
 | `utm_source` | `mc` | `members` |
 | `utm_content` | the same in both, e.g. `erev-yk-teshuva` | |
+| "Prefer to mail a check?" line | left out; the footer has the address | in the body |
 
 ## Changing the text
 
@@ -44,6 +45,18 @@ top. It runs on this machine only.
   site do. "Check that the links load" opens each one without its tracking tags, so the check is
   not counted as a click from the email.
 - **Settings.** Subject, preheader, the two greetings and `utm_content`.
+- **Mailchimp.** "Create a Mailchimp draft" puts the Mailchimp version into Mailchimp as a draft
+  campaign named after the email, with the subject and the preview text filled in. It never sends
+  or schedules. Pressing it again updates the same draft (HTML, subject, preview text) and leaves
+  the From line and the recipients as set in Mailchimp. The draft's id is kept in the source as
+  `mailchimp.campaign_id`; if that campaign was already sent, the next push starts a new draft. A
+  new draft is addressed to the whole audience, with the From line of the last campaign sent, so
+  choose the segment in Mailchimp before sending. Images load from their web address
+  (`gyenewsletters.netlify.app/images/...`), so a new image has to be committed, pushed and deployed
+  first: the tab lists every image, says which are not on the web yet and why, and will not push
+  until they all are. The API key is read at run time from
+  `../gye-crm/.env` (`MAILCHIMP_API_KEY`, `MAILCHIMP_AUDIENCE_ID`). It is never stored in this
+  repo, which is published.
 
 ## The source file
 
@@ -79,6 +92,7 @@ The HTML uses these slots where the versions differ:
 | `{{UTM_SOURCE}}` | `mc` or `members` |
 | `{{UTM}}` | the `utm` setting |
 | `{{FOOTER}}` | the platform's footer from `_src/partials/`. Goes alone on its own line, inside the last cell of the email |
+| `<!--@only gyemailer-->` … `<!--@end-->` | not a slot: the lines between the two markers go into that version alone (`mailchimp` works the same way). The tool labels such a paragraph |
 | `{{FOOTER_GAP}}` | bottom padding of that last cell: `0` when a footer follows, `40px` when none does |
 
 ## Starting a new email

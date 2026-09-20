@@ -6,10 +6,12 @@
 It runs on this machine only. Saving in the page writes to _src/<name>.src.html and rebuilds
 every version, exactly as editing the file and running build.py would.
 """
+import base64
 import hashlib
 import html
 import json
 import re
+import subprocess
 import sys
 import urllib.error
 import urllib.request
@@ -25,6 +27,9 @@ PORT = 8822
 REPO = build.SRC.parents[2]
 OUT_URL = "/" + build.OUT.relative_to(REPO).as_posix() + "/"
 MERGE = re.compile(r"\{\{|\*\||\*%7C", re.I)
+CRM_ENV = REPO.parent / "gye-crm" / ".env"   # the Mailchimp key lives there, never in this (public) repo
+SITE_HOST = "gyenewsletters.netlify.app"   # this repo, as published by Netlify
+IMG = re.compile(r'<img\b[^>]*?\bsrc="([^"]*)"', re.I)
 LINK = re.compile(r'<(a|v:roundrect)\b[^>]*?href="([^"]*)"[^>]*>(.*?)</\1>', re.S)
 
 
@@ -64,7 +69,6 @@ def describe(name):
     path = src_path(name)
     text = path.read_text(encoding="utf-8")
     settings, body = build.parse(path)
-    header_len = len(text) - len(body)
     title = build.TITLE.search(body)
     versions = []
     for platform in build.PLATFORMS:
@@ -91,8 +95,7 @@ def describe(name):
         "utm": settings.get("utm", ""),
         "versions": versions,
         "blocks": [{"i": i, "kind": b["kind"], "html": b.get("html", ""), "locked": b["locked"],
-                    "alt": b.get("alt"), "src": b.get("src"), "href": b.get("href")} for i, b in enumerate(blocks)],
-        "_header_len": header_len,
+                    "alt": b.get("alt"), "src": b.get("src"), "href": b.get("href"), "only": b.get("only")} for i, b in enumerate(blocks)],
     }
 
 
@@ -148,6 +151,153 @@ def change(name, payload):
     return describe(name)
 
 
+def mailchimp_env():
+    if not CRM_ENV.exists():
+        raise ValueError(f"Mailchimp key not found: {CRM_ENV} does not exist.")
+    values = {}
+    for line in CRM_ENV.read_text(encoding="utf-8").splitlines():
+        key, sep, value = line.strip().removeprefix("export ").partition("=")
+        if sep and key.strip() in ("MAILCHIMP_API_KEY", "MAILCHIMP_AUDIENCE_ID"):
+            values[key.strip()] = value.strip().strip("'\"")
+    if len(values) < 2 or "-" not in values.get("MAILCHIMP_API_KEY", ""):
+        raise ValueError(f"MAILCHIMP_API_KEY and MAILCHIMP_AUDIENCE_ID are not both set in {CRM_ENV}.")
+    return values["MAILCHIMP_API_KEY"], values["MAILCHIMP_AUDIENCE_ID"]
+
+
+def mailchimp(method, path, body=None, missing_ok=False):
+    key, _ = mailchimp_env()
+    request = urllib.request.Request(
+        f"https://{key.rsplit('-', 1)[1]}.api.mailchimp.com/3.0{path}", method=method,
+        data=json.dumps(body).encode() if body is not None else None,
+        headers={"Authorization": "Basic " + base64.b64encode(f"tool:{key}".encode()).decode(),
+                 "Content-Type": "application/json"})
+    try:
+        with urllib.request.urlopen(request, timeout=30) as response:
+            return json.loads(response.read() or b"{}")
+    except urllib.error.HTTPError as e:
+        if e.code == 404 and missing_ok:
+            return None
+        try:
+            problem = json.loads(e.read())
+            detail = problem.get("detail", "") + " " + "; ".join(
+                f"{x.get('field')}: {x.get('message')}" for x in problem.get("errors", []))
+        except ValueError:
+            detail = ""
+        raise ValueError(f"Mailchimp said no ({e.code}). {detail.strip()}")
+    except urllib.error.URLError as e:
+        raise ValueError(f"Could not reach Mailchimp: {e.reason}")
+
+
+def mailchimp_edit_url(campaign):
+    key, _ = mailchimp_env()
+    return f"https://{key.rsplit('-', 1)[1]}.admin.mailchimp.com/campaigns/edit?id={campaign['web_id']}"
+
+
+def git(*args):
+    return subprocess.run(["git", "-C", str(REPO), *args], capture_output=True, text=True).stdout.strip()
+
+
+def image_report(built):
+    """Every image in the email, and whether it is reachable on the web yet.
+
+    Mailchimp (and every reader) loads images from their web address, so an image that lives in this
+    repo has to be committed and pushed, and deployed by Netlify, before a draft can show it.
+    """
+    urls = list(dict.fromkeys(html.unescape(u) for u in IMG.findall(built)))
+    with ThreadPoolExecutor(8) as pool:
+        loads = list(pool.map(check_url, urls))
+    report = []
+    for url, load in zip(urls, loads):
+        live = load["ok"] and load["status"] == 200
+        why = ""
+        parts = urlsplit(url)
+        if not live and parts.netloc == SITE_HOST:
+            rel = parts.path.lstrip("/")
+            if not (REPO / rel).is_file():
+                why = f"There is no {rel} in this repo."
+            elif git("status", "--porcelain", "--", rel):
+                why = "The file is in this folder but not committed. Commit and push it first."
+            elif git("log", "--oneline", "origin/main..HEAD", "--", rel):
+                why = "The file is committed but not pushed. Push it first."
+            else:
+                why = "The file is pushed. Netlify may still be deploying; try again in a minute."
+        elif not live:
+            why = f"It did not load ({load['status']})."
+        report.append({"url": url, "live": live, "why": why})
+    return report
+
+
+def mailchimp_version(name):
+    version = next((v for v in describe(name)["versions"] if v["platform"] == "mailchimp"), None)
+    if not version:
+        raise ValueError("This email has no Mailchimp version (no mailchimp.out line in its settings).")
+    return version
+
+
+def mailchimp_from(audience_id):
+    """The From line for a new draft: whatever the last sent campaign used, else the audience default."""
+    sent = mailchimp("GET", f"/campaigns?status=sent&list_id={audience_id}&sort_field=send_time&sort_dir=DESC&count=1"
+                            "&fields=campaigns.settings.from_name,campaigns.settings.reply_to")["campaigns"]
+    if sent and sent[0]["settings"].get("from_name"):
+        return sent[0]["settings"]["from_name"], sent[0]["settings"]["reply_to"], "same as the last campaign sent"
+    defaults = mailchimp("GET", f"/lists/{audience_id}?fields=campaign_defaults").get("campaign_defaults", {})
+    return defaults.get("from_name", ""), defaults.get("from_email", ""), "the audience default"
+
+
+def mailchimp_status(name):
+    """What the Mailchimp tab shows before anything is pushed. Reads only."""
+    _, audience_id = mailchimp_env()
+    audience = mailchimp("GET", f"/lists/{audience_id}?fields=name,stats.member_count")
+    from_name, from_email, from_why = mailchimp_from(audience_id)
+    settings, _ = build.parse(src_path(name))
+    draft = None
+    if settings.get("mailchimp.campaign_id"):
+        found = mailchimp("GET", f"/campaigns/{settings['mailchimp.campaign_id']}?fields=id,web_id,status,settings.title",
+                          missing_ok=True)
+        if found:
+            draft = {"status": found["status"], "title": found["settings"].get("title", ""),
+                     "url": mailchimp_edit_url(found)}
+    return {"audience": audience["name"], "members": audience["stats"]["member_count"],
+            "images": image_report(mailchimp_version(name)["html"]),
+            "from_name": from_name, "from_email": from_email, "from_why": from_why, "draft": draft}
+
+
+def mailchimp_push(name, rev):
+    """Create this email's Mailchimp draft, or update the draft made last time. Never sends anything."""
+    path = src_path(name)
+    text = path.read_text(encoding="utf-8")
+    if rev != hashlib.sha1(text.encode()).hexdigest():
+        raise ValueError("The source file changed since this page loaded. Reload and try again.")
+    email = describe(name)
+    version = mailchimp_version(name)
+    missing = [i for i in image_report(version["html"]) if not i["live"]]
+    if missing:
+        raise ValueError("Not pushed to Mailchimp: " + " ".join(f"{i['url']} is not on the web yet. {i['why']}" for i in missing))
+    _, audience_id = mailchimp_env()
+    settings, _ = build.parse(path)
+    wording = {"subject_line": email["subject"], "preview_text": email["preheader"], "title": name}
+
+    campaign, note = None, "created"
+    if settings.get("mailchimp.campaign_id"):
+        campaign = mailchimp("GET", f"/campaigns/{settings['mailchimp.campaign_id']}?fields=id,web_id,status",
+                             missing_ok=True)
+        if campaign and campaign["status"] != "save":   # sent or scheduled: leave it alone, start a new draft
+            campaign, note = None, "created (the earlier campaign was already sent or scheduled, so it was left alone)"
+    if campaign:
+        mailchimp("PATCH", f"/campaigns/{campaign['id']}", {"settings": wording})   # keeps the From and audience set in Mailchimp
+        note = "updated"
+    else:
+        from_name, from_email, _ = mailchimp_from(audience_id)
+        campaign = mailchimp("POST", "/campaigns", {
+            "type": "regular", "recipients": {"list_id": audience_id},
+            "settings": {**wording, "from_name": from_name, "reply_to": from_email}})
+    mailchimp("PUT", f"/campaigns/{campaign['id']}/content", {"html": version["html"]})
+
+    if settings.get("mailchimp.campaign_id") != campaign["id"]:   # remember the draft so the next push updates it
+        path.write_text(set_setting(text, "mailchimp.campaign_id", campaign["id"]), encoding="utf-8")
+    return {"note": note, "url": mailchimp_edit_url(campaign), "email": describe(name)}
+
+
 def check_url(url):
     parts = urlsplit(url)
     query = [(k, v) for k, v in parse_qsl(parts.query, keep_blank_values=True)
@@ -193,6 +343,8 @@ class Handler(SimpleHTTPRequestHandler):
                 self.wfile.write(body)
             elif path == "/api/emails":
                 self.send_json(sorted(p.name[:-len(".src.html")] for p in build.SRC.glob("*.src.html")))
+            elif path.startswith("/api/mailchimp/"):
+                self.send_json(mailchimp_status(path.rsplit("/", 1)[1]))
             elif path.startswith("/api/email/"):
                 self.send_json(describe(path.rsplit("/", 1)[1]))
             else:
@@ -207,7 +359,9 @@ class Handler(SimpleHTTPRequestHandler):
         path = urlsplit(self.path).path
         try:
             payload = json.loads(self.rfile.read(int(self.headers.get("Content-Length") or 0)) or b"{}")
-            if path.startswith("/api/email/"):
+            if path.startswith("/api/mailchimp/"):
+                self.send_json(mailchimp_push(path.rsplit("/", 1)[1], payload.get("rev")))
+            elif path.startswith("/api/email/"):
                 self.send_json(change(path.rsplit("/", 1)[1], payload))
             elif path == "/api/check":
                 urls = [u for u in dict.fromkeys(payload.get("urls", [])) if u.startswith(("http://", "https://"))][:60]
