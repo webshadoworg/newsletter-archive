@@ -96,6 +96,7 @@ The HTML uses these slots where the versions differ:
 | `{{PREHEADER}}` | the Mailchimp tag, or the preheader sentence |
 | `{{GREETING}}` | the `greeting` setting |
 | `{{UTM_SOURCE}}` | `mc` or `members` |
+| `{{EMAIL_TAG}}` | the reader's own email address: `*\|EMAIL\|*` for Mailchimp, `{{email}}` for GYE mailer |
 | `{{UTM}}` | the `utm` setting |
 | `{{FOOTER}}` | the platform's footer from `_src/partials/`. Goes alone on its own line, inside the last cell of the email |
 | `<!--@only gyemailer-->` … `<!--@end-->` | not a slot: the lines between the two markers go into that version alone (`mailchimp` works the same way). The tool labels such a paragraph |

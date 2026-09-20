@@ -18,6 +18,7 @@ Only platforms that have an "out" line are built. The body uses these slots:
     {{PREHEADER}}   Mailchimp: its *|MC_PREVIEW_TEXT|* tag. GYE mailer: the sentence itself.
     {{GREETING}}    the "greeting" setting
     {{UTM}}         the "utm" setting (utm_content)
+    {{EMAIL_TAG}}   the reader's own email address, as each system writes it: *|EMAIL|* / {{email}}
     {{UTM_SOURCE}}  Mailchimp: mc. GYE mailer: members. A "utm_source" setting overrides it.
     {{FOOTER}}      alone on its own line; replaced by the platform's footer partial:
                     Mailchimp gets the Unsubscribe pill (it sits above the footer Mailchimp
@@ -43,8 +44,10 @@ OUT = SRC.parent
 PARTIALS = SRC / "partials"
 
 PLATFORMS = {
-    "mailchimp": {"preheader": "*|MC_PREVIEW_TEXT|*", "footer": "footer-mailchimp.html", "utm_source": "mc"},
-    "gyemailer": {"preheader": None, "footer": "footer-gyemailer.html", "utm_source": "members"},
+    "mailchimp": {"preheader": "*|MC_PREVIEW_TEXT|*", "footer": "footer-mailchimp.html", "utm_source": "mc",
+                  "email_tag": "*|EMAIL|*"},
+    "gyemailer": {"preheader": None, "footer": "footer-gyemailer.html", "utm_source": "members",
+                  "email_tag": "{{email}}"},
 }
 
 HEADER = re.compile(r"\A<!--@email\n(.*?)\n-->\n", re.S)
@@ -85,6 +88,7 @@ def resolve(settings, platform):
         "greeting": get("greeting"),
         "utm": get("utm"),
         "utm_source": get("utm_source") or PLATFORMS[platform]["utm_source"],
+        "email_tag": PLATFORMS[platform]["email_tag"],
         "footer_file": footer_file,
         "footer_html": (PARTIALS / footer_file).read_text(encoding="utf-8").rstrip("\n") if footer_file else "",
     }
@@ -97,6 +101,7 @@ def render(src_path, body, v):
         "GREETING": v["greeting"],
         "UTM": v["utm"],
         "UTM_SOURCE": v["utm_source"],
+        "EMAIL_TAG": v["email_tag"],
         "FOOTER": footer,
         "FOOTER_GAP": "0" if footer else "40px",
     }
