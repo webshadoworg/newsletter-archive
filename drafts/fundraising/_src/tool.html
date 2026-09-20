@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Fundraising emails</title>
+<style>
+  :root { --red:#ab0001; --ink:#222; --soft:#666; --line:#e6e1dc; --bg:#f4f2f0; --card:#fff; --warn:#fff8e6; --warnline:#d99b00; --bad:#fdecec; --ok:#1d7a46; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink); font-family:'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif; font-size:15px; line-height:24px; }
+  button, select, input, textarea { font:inherit; color:inherit; }
+  .top { position:sticky; top:0; z-index:5; background:var(--card); border-bottom:1px solid var(--line); padding:10px 22px; display:flex; gap:14px; align-items:center; flex-wrap:wrap; }
+  .top h1 { font-size:17px; margin:0; }
+  .top select { padding:6px 10px; border:1px solid #ccc; border-radius:6px; background:#fff; max-width:100%; }
+  .status { font-size:13px; color:var(--soft); margin-left:auto; }
+  .status.err { color:var(--red); font-weight:700; }
+  .main { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:22px; padding:22px; max-width:1500px; margin:0 auto; align-items:start; }
+  @media (max-width:980px) { .main { grid-template-columns:minmax(0,1fr); padding:16px; } .side { position:static !important; max-height:none !important; } }
+  .card { background:var(--card); border-radius:10px; padding:20px 22px; box-shadow:0 1px 3px rgba(0,0,0,.08); }
+  .card + .card { margin-top:22px; }
+  h2 { font-size:13px; letter-spacing:1.2px; text-transform:uppercase; color:var(--soft); margin:0 0 12px; }
+  .subj { font-size:17px; font-weight:700; margin:0 0 2px; }
+  .pre { color:var(--soft); margin:0; }
+  .hint { font-size:13px; line-height:20px; color:var(--soft); margin:0 0 14px; }
+
+  .block { position:relative; margin:0 -10px 6px; padding:6px 10px; border-radius:6px; font-size:16px; line-height:27px; border:1px solid transparent; overflow-wrap:anywhere; }
+  .block.can { cursor:text; }
+  .block.can:hover { background:#faf8f6; border-color:var(--line); }
+  .block.editing { background:#fff; border-color:var(--red); box-shadow:0 0 0 3px rgba(171,0,1,.1); }
+  .block [contenteditable] { outline:none; }
+  a { color:var(--red); }
+  a.btn { text-decoration:none; color:inherit; }
+  .block.button .body a { display:inline-block; background:var(--red); color:#fff; text-decoration:none; font-weight:700; border-radius:22px; padding:6px 22px; font-size:15px; }
+  .block.image, .block.locked { color:#555; }
+  .block.image { font-size:14px; line-height:22px; background:var(--bg); margin:0 0 12px; padding:9px 12px; }
+  .note { display:block; font-size:12px; line-height:18px; color:#999; }
+  .greet { border-left:3px solid var(--line); padding-left:12px; margin:0 0 12px; font-size:16px; line-height:27px; overflow-wrap:anywhere; }
+  .tag { display:inline-block; font-size:11px; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:#777; background:var(--bg); border-radius:3px; padding:0 6px; margin-right:6px; line-height:18px; vertical-align:2px; }
+  .bar { display:flex; gap:6px; flex-wrap:wrap; margin-top:8px; align-items:center; }
+  .bar .gap { flex:1; }
+  .btn { border:1px solid #ccc; background:#fff; border-radius:6px; padding:4px 12px; font-size:13px; line-height:20px; cursor:pointer; }
+  .btn:hover { border-color:#999; }
+  .btn.primary { background:var(--red); border-color:var(--red); color:#fff; font-weight:700; }
+  .btn.danger { color:var(--red); }
+  .btn.done { border-color:var(--ok); color:var(--ok); }
+  .foot { border-top:1px solid var(--line); padding-top:12px; margin-top:12px; font-size:14px; line-height:22px; color:#555; }
+  .foot p { margin:0 0 6px; }
+
+  .side { position:sticky; top:64px; max-height:calc(100vh - 86px); display:flex; flex-direction:column; padding:0; overflow:hidden; }
+  .tabs { display:flex; border-bottom:1px solid var(--line); overflow-x:auto; flex:none; }
+  .tab { border:0; background:none; padding:12px 18px; font-size:14px; font-weight:700; color:var(--soft); cursor:pointer; border-bottom:3px solid transparent; white-space:nowrap; }
+  .tab.on { color:var(--red); border-bottom-color:var(--red); }
+  .pane { padding:18px 22px; overflow:auto; flex:1; min-height:0; }
+  .row { display:flex; gap:8px; flex-wrap:wrap; align-items:center; margin:0 0 12px; }
+  .seg { display:inline-flex; border:1px solid #ccc; border-radius:6px; overflow:hidden; }
+  .seg button { border:0; background:#fff; padding:4px 12px; font-size:13px; cursor:pointer; }
+  .seg button.on { background:var(--ink); color:#fff; }
+  .frame { background:var(--bg); border-radius:8px; padding:12px; overflow:auto; }
+  iframe { display:block; margin:0 auto; width:100%; height:70vh; border:1px solid var(--line); background:#fff; border-radius:4px; }
+  .copyrow { display:flex; justify-content:space-between; gap:12px; align-items:center; padding:10px 0; border-top:1px solid var(--line); }
+  .copyrow:first-of-type { border-top:0; }
+  .copyrow div { min-width:0; }
+  .copyrow small { display:block; color:var(--soft); font-size:13px; line-height:19px; overflow-wrap:anywhere; }
+  .scroll { overflow-x:auto; }
+  table { border-collapse:collapse; width:100%; font-size:13px; line-height:19px; }
+  th, td { text-align:left; vertical-align:top; padding:7px 10px 7px 0; border-top:1px solid var(--line); }
+  th { border-top:0; color:var(--soft); font-weight:600; white-space:nowrap; }
+  td.url { overflow-wrap:anywhere; min-width:150px; }
+  .flag { display:block; background:var(--warn); border-left:3px solid var(--warnline); padding:2px 8px; margin-top:4px; }
+  .pill { display:inline-block; border-radius:10px; padding:0 8px; font-size:12px; font-weight:700; white-space:nowrap; }
+  .pill.ok { background:#e5f4ec; color:var(--ok); } .pill.bad { background:var(--bad); color:var(--red); } .pill.na { background:var(--bg); color:#777; }
+  .summary { padding:8px 12px; border-radius:6px; margin:0 0 12px; font-size:14px; }
+  .summary.ok { background:#e5f4ec; color:var(--ok); } .summary.bad { background:var(--warn); }
+  label { display:block; font-size:13px; font-weight:700; margin:0 0 4px; }
+  .field { margin:0 0 14px; }
+  .field input, .field textarea { width:100%; padding:7px 10px; border:1px solid #ccc; border-radius:6px; background:#fff; }
+  .field textarea { min-height:64px; resize:vertical; }
+  .field small { display:block; font-size:12px; line-height:18px; color:var(--soft); margin-top:3px; }
+  code { font-size:12px; background:var(--bg); border-radius:3px; padding:1px 5px; overflow-wrap:anywhere; }
+</style>
+</head>
+<body>
+<div class="top">
+  <h1>Fundraising emails</h1>
+  <select id="pick" aria-label="Email"></select>
+  <span class="status" id="status"></span>
+</div>
+
+<div class="main">
+  <div>
+    <div class="card">
+      <h2>Inbox line</h2>
+      <p class="subj" id="subj"></p>
+      <p class="pre" id="pre"></p>
+    </div>
+    <div class="card">
+      <h2>Text</h2>
+      <p class="hint">Click a paragraph to change it. Saving writes to <code id="srcpath"></code> and rebuilds every version.</p>
+      <div id="blocks"></div>
+      <div id="feet"></div>
+    </div>
+  </div>
+
+  <div class="card side">
+    <div class="tabs" role="tablist">
+      <button class="tab on" data-tab="preview">Preview</button>
+      <button class="tab" data-tab="copy">Copy</button>
+      <button class="tab" data-tab="links">Links</button>
+      <button class="tab" data-tab="settings">Settings</button>
+    </div>
+    <div class="pane" id="pane"></div>
+  </div>
+</div>
+
+<script>
+const $ = (s, el = document) => el.querySelector(s);
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const NAMES = { mailchimp: "Mailchimp", gyemailer: "GYE mailer" };
+let email = null, tab = "preview", version = 0, width = "desktop", checks = {};
+
+function status(msg, err) { const s = $("#status"); s.textContent = msg; s.className = "status" + (err ? " err" : ""); }
+
+async function api(path, body) {
+  const r = await fetch(path, body ? { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) } : {});
+  const data = await r.json();
+  if (!r.ok) throw new Error(data.error || "Something went wrong");
+  return data;
+}
+
+async function load(name) {
+  try {
+    email = await api("/api/email/" + encodeURIComponent(name));
+    try { localStorage.setItem("fundraising-tool-email", name); } catch (e) {}
+    checks = {};
+    render();
+    const stale = email.versions.filter(v => v.stale).map(v => v.out);
+    status(stale.length ? "Not built yet: " + stale.join(", ") + ". Save any change, or run build.py." : "Built files are up to date", stale.length);
+  } catch (e) { status(e.message, true); }
+}
+
+async function change(body, done) {
+  try {
+    status("Saving…");
+    email = await api("/api/email/" + encodeURIComponent(email.name), { rev: email.rev, ...body });
+    checks = {};
+    render();
+    status(done || "Saved and rebuilt");
+  } catch (e) { status(e.message, true); }
+}
+
+function render() {
+  $("#subj").textContent = email.subject || "(no subject)";
+  $("#pre").textContent = email.preheader || "(no preheader)";
+  $("#srcpath").textContent = email.source;
+  const box = $("#blocks"); box.innerHTML = "";
+  for (const b of email.blocks) box.appendChild(blockEl(b));
+  $("#feet").innerHTML = email.versions.map(v => `<div class="foot"><p><span class="tag">${esc(NAMES[v.platform] || v.platform)} footer</span>
+    ${v.footer_file ? `<code>partials/${esc(v.footer_file)}</code>` : "none"}</p>${v.footer_text.map(t => `<p>${t}</p>`).join("")}</div>`).join("");
+  for (const a of document.querySelectorAll("#blocks a, #feet a")) { a.target = "_blank"; a.rel = "noopener"; }
+  renderPane();
+}
+
+function blockEl(b) {
+  const el = document.createElement("div");
+  if (b.kind === "greeting") {
+    el.className = "greet";
+    el.innerHTML = email.versions.map(v => `<div><span class="tag">${esc(NAMES[v.platform] || v.platform)}</span>${esc(v.greeting)}</div>`).join("")
+      + `<span class="note">The greeting differs per version. Change it under Settings.</span>`;
+    return el;
+  }
+  if (b.kind === "image") {
+    el.className = "block image";
+    el.innerHTML = `<a href="${esc(b.src)}">Image</a>: ${esc(b.alt || "no alt text")}` + (b.href ? `<span class="note">links to ${esc(b.href.split("?")[0])}</span>` : "");
+    return el;
+  }
+  el.className = "block " + b.kind + (b.locked ? " locked" : " can");
+  el.innerHTML = `<div class="body">${b.html}</div>` + (b.locked ? `<span class="note">Has special formatting, so it can only be changed in the source file.</span>` : "");
+  if (!b.locked) el.addEventListener("click", ev => { if (!el.classList.contains("editing")) { ev.preventDefault(); startEdit(el, b); } });
+  return el;
+}
+
+function startEdit(el, b, adding) {
+  const open = $(".block.editing"); if (open) return open.querySelector("[contenteditable]").focus();
+  const body = $(".body", el), original = body.innerHTML;
+  el.classList.add("editing");
+  const field = b.kind === "button" ? $("a", body) : body;
+  field.contentEditable = "true";
+  const bar = document.createElement("div"); bar.className = "bar";
+  bar.innerHTML = (b.kind === "button" ? "" : `<button class="btn" data-do="bold"><b>B</b></button><button class="btn" data-do="link">Link</button>`)
+    + `<button class="btn primary" data-do="save">Save</button><button class="btn" data-do="cancel">Cancel</button><span class="gap"></span>`
+    + (b.kind === "p" && !adding ? `<button class="btn" data-do="add">Add paragraph below</button>` : "")
+    + (b.kind !== "button" && !adding ? `<button class="btn danger" data-do="delete">Delete</button>` : "");
+  el.appendChild(bar);
+  field.focus();
+
+  const cancel = () => { if (adding) return el.remove(); body.innerHTML = original; field.contentEditable = "false"; el.classList.remove("editing"); bar.remove(); };
+  const save = () => {
+    const html = b.kind === "button" ? esc(field.textContent.trim()) : serialize(body).trim();
+    if (adding) return change({ action: "add", index: adding.i, html }, "Paragraph added and rebuilt");
+    if (html === b.html) return cancel();
+    change({ action: "edit", index: b.i, html });
+  };
+  bar.addEventListener("mousedown", ev => ev.preventDefault());   // keep the text selection while clicking the bar
+  bar.addEventListener("click", ev => {
+    ev.stopPropagation();
+    const what = ev.target.closest("[data-do]")?.dataset.do;
+    if (what === "bold") document.execCommand("bold");
+    if (what === "link") { const url = prompt("Link address (select the words first):", "https://"); if (url && url !== "https://") document.execCommand("createLink", false, url); }
+    if (what === "save") save();
+    if (what === "cancel") cancel();
+    if (what === "delete" && confirm("Delete this paragraph from every version?")) change({ action: "delete", index: b.i }, "Paragraph deleted and rebuilt");
+    if (what === "add") { cancel(); const fresh = blockEl({ kind: "p", html: "", locked: false }); el.after(fresh); startEdit(fresh, { kind: "p", html: "" }, b); }
+  });
+  field.addEventListener("keydown", ev => {
+    if (ev.key === "Escape") cancel();
+    else if (ev.key === "Enter" && (ev.ctrlKey || ev.metaKey)) { ev.preventDefault(); save(); }
+    else if (ev.key === "Enter") { ev.preventDefault(); if (b.kind !== "button") document.execCommand("insertLineBreak"); }
+  });
+  field.addEventListener("paste", ev => { ev.preventDefault(); document.execCommand("insertText", false, ev.clipboardData.getData("text/plain").replace(/\s*\n\s*/g, " ")); });
+  field.addEventListener("click", ev => { if (ev.target.closest("a")) ev.preventDefault(); });
+}
+
+// The edited paragraph, reduced to the few tags the server accepts: b, i, u, a, br
+function serialize(node) {
+  let out = "";
+  for (const n of node.childNodes) {
+    if (n.nodeType === 3) { out += esc(n.nodeValue); continue; }
+    if (n.nodeType !== 1) continue;
+    const tag = n.tagName, inner = serialize(n), weight = n.style && n.style.fontWeight;
+    if (tag === "BR") out += "<br>";
+    else if (tag === "B" || tag === "STRONG" || weight === "bold" || +weight >= 600) out += inner ? `<b>${inner}</b>` : "";
+    else if (tag === "I" || tag === "EM") out += inner ? `<i>${inner}</i>` : "";
+    else if (tag === "U") out += inner ? `<u>${inner}</u>` : "";
+    else if (tag === "A") out += inner ? `<a ${n.dataset.i !== undefined ? `data-i="${esc(n.dataset.i)}" ` : ""}href="${esc(n.getAttribute("href"))}">${inner}</a>` : "";
+    else out += inner;
+  }
+  return out;
+}
+
+function plainText() {
+  const lines = [];
+  for (const b of email.blocks) {
+    if (b.kind === "greeting") lines.push(email.versions.map(v => v.greeting).join("  /  "));
+    else if (b.kind === "image") lines.push(`[Image: ${b.alt}]`);
+    else { const d = document.createElement("div"); d.innerHTML = b.html.replace(/<br>/g, "\n"); lines.push(b.kind === "button" ? `[${d.textContent}]` : d.textContent); }
+  }
+  return lines.join("\n\n");
+}
+
+function renderPane() {
+  for (const t of document.querySelectorAll(".tab")) t.classList.toggle("on", t.dataset.tab === tab);
+  const pane = $("#pane"), v = email.versions[version] || email.versions[0];
+  const picker = `<div class="seg" data-seg="version">${email.versions.map((x, i) => `<button class="${x === v ? "on" : ""}" data-v="${i}">${esc(NAMES[x.platform] || x.platform)}</button>`).join("")}</div>`;
+
+  if (tab === "preview") {
+    pane.innerHTML = `<div class="row">${picker}
+      <div class="seg" data-seg="width">${["desktop", "phone"].map(w => `<button class="${w === width ? "on" : ""}" data-w="${w}">${w[0].toUpperCase() + w.slice(1)}</button>`).join("")}</div>
+      <a class="btn" href="${esc(v.url)}" target="_blank" rel="noopener">Open ${esc(v.out)}</a></div>
+      <div class="frame"><iframe title="Preview" style="max-width:${width === "phone" ? "375px" : "100%"}"></iframe></div>
+      <p class="hint" style="margin-top:10px">Merge tags such as <code>*|GREET|*</code> or <code>{{preferenceUrl}}</code> show as written here. The mail system fills them in when it sends.</p>`;
+    $("iframe", pane).srcdoc = v.html;
+  }
+
+  if (tab === "copy") {
+    const items = email.versions.map((x, i) => ({ key: "v" + i, title: `${NAMES[x.platform] || x.platform} HTML`, sub: `${x.out} · ${Math.round(x.html.length / 1024)} KB · paste into ${NAMES[x.platform] || x.platform}`, text: x.html }));
+    items.push({ key: "subject", title: "Subject", sub: email.subject, text: email.subject },
+      { key: "pre", title: "Preheader", sub: email.preheader + "  (for Mailchimp's preview text field)", text: email.preheader },
+      { key: "plain", title: "Plain text", sub: "The wording only, no HTML", text: plainText() });
+    pane.innerHTML = items.map(it => `<div class="copyrow"><div><b>${esc(it.title)}</b><small>${esc(it.sub)}</small></div><button class="btn" data-copy="${it.key}">Copy</button></div>`).join("");
+    pane.onclick = async ev => {
+      const btn = ev.target.closest("[data-copy]"); if (!btn) return;
+      try { await navigator.clipboard.writeText(items.find(it => it.key === btn.dataset.copy).text); btn.textContent = "Copied"; btn.classList.add("done"); setTimeout(() => { btn.textContent = "Copy"; btn.classList.remove("done"); }, 1600); }
+      catch (e) { status("The browser blocked copying. Click the page and try again.", true); }
+    };
+  } else pane.onclick = null;
+
+  if (tab === "links") {
+    const flagged = v.links.filter(l => l.flags.length).length, dead = v.links.filter(l => checks[l.url] && !checks[l.url].ok).length;
+    const checked = Object.keys(checks).length > 0;
+    pane.innerHTML = `<div class="row">${picker}<button class="btn" id="check">Check that the links load</button></div>
+      <div class="summary ${flagged || dead ? "bad" : "ok"}">${v.links.length} links. ${flagged ? flagged + " with a tagging problem." : `Every tagged link has utm_source=${esc(v.utm_source)} and utm_content=${esc(v.utm)}.`} ${checked ? (dead ? dead + " did not load." : "All of them load.") : ""}</div>
+      <div class="scroll"><table><tr><th>Link</th><th>Goes to</th><th>utm_source</th><th>utm_content</th><th>Loads</th></tr>
+      ${v.links.map(l => { const c = checks[l.url]; return `<tr><td>${esc(l.label)}${l.outlook ? ` <span class="tag">Outlook copy</span>` : ""}</td>
+        <td class="url"><a href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.show)}</a>${l.flags.map(f => `<span class="flag">${esc(f)}</span>`).join("")}</td>
+        <td>${esc(l.utm_source) || "–"}</td><td>${esc(l.utm_content) || "–"}</td>
+        <td>${l.merge && !/^https?:/.test(l.url) ? `<span class="pill na">set when sent</span>` : c ? `<span class="pill ${c.ok ? "ok" : "bad"}">${esc(c.status)}</span>` : ""}</td></tr>`; }).join("")}</table></div>
+      <p class="hint" style="margin-top:12px">The load check leaves the tracking tags off, so it does not count as a click from the email.</p>`;
+    $("#check").onclick = async () => {
+      $("#check").textContent = "Checking…";
+      try { checks = await api("/api/check", { urls: v.links.map(l => l.url) }); renderPane(); } catch (e) { status(e.message, true); renderPane(); }
+    };
+  }
+
+  if (tab === "settings") {
+    const g = email.versions.map(x => `<div class="field"><label>${esc(NAMES[x.platform] || x.platform)} greeting</label><input data-key="${esc(x.platform)}.greeting" value="${esc(x.greeting)}"></div>`).join("");
+    pane.innerHTML = `<div class="field"><label>Subject</label><input data-key="subject" value="${esc(email.subject)}"><small>Stored as the page title of the email. You still type the subject into the mail system.</small></div>
+      <div class="field"><label>Preheader</label><textarea data-key="preheader">${esc(email.preheader)}</textarea><small>GYE mailer gets it inside the HTML. For Mailchimp, paste it into the preview text field.</small></div>
+      ${g}
+      <div class="field"><label>utm_content</label><input data-key="utm" value="${esc(email.utm)}"><small>The same in every version. utm_source is set per system: ${email.versions.map(x => `${esc(NAMES[x.platform] || x.platform)} = <code>${esc(x.utm_source)}</code>`).join(", ")}.</small></div>
+      <button class="btn primary" id="saveset">Save settings</button>`;
+    $("#saveset").onclick = () => {
+      const values = {};
+      for (const f of pane.querySelectorAll("[data-key]")) values[f.dataset.key] = f.value;
+      change({ action: "settings", values }, "Settings saved and rebuilt");
+    };
+  }
+
+  const seg = $('[data-seg="version"]', pane); if (seg) seg.onclick = ev => { if (ev.target.dataset.v) { version = +ev.target.dataset.v; renderPane(); } };
+  const wseg = $('[data-seg="width"]', pane); if (wseg) wseg.onclick = ev => { if (ev.target.dataset.w) { width = ev.target.dataset.w; renderPane(); } };
+}
+
+$(".tabs").addEventListener("click", ev => { if (ev.target.dataset.tab) { tab = ev.target.dataset.tab; if (email) renderPane(); } });
+$("#pick").addEventListener("change", ev => load(ev.target.value));
+
+(async () => {
+  try {
+    const names = await api("/api/emails");
+    $("#pick").innerHTML = names.map(n => `<option>${esc(n)}</option>`).join("");
+    if (!names.length) return status("No emails in _src/ yet", true);
+    let last = null; try { last = localStorage.getItem("fundraising-tool-email"); } catch (e) {}
+    const first = names.includes(last) ? last : names[0];
+    $("#pick").value = first;
+    load(first);
+  } catch (e) { status(e.message, true); }
+})();
+</script>
+</body>
+</html>
