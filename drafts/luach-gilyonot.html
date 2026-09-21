@@ -29,8 +29,14 @@
   td.s { width:120px; color:#8a6d00; font-size:12px }
   tr.gold td { background:#fdf6e3 }
   tr.chag td:nth-child(3) { font-weight:700; color:#8a6d00 }
-  tr.done td:nth-child(3)::after { content:" ✓"; color:#2e7d32; font-weight:700 }
-  tr.wip td:nth-child(3)::after { content:" ✎"; color:#c47b00; font-weight:700 }
+  /* ⚠ שני התווים האלה אינם באף פונט **בקונטיינר הזה** (fc-list :charset=2713 מחזיר כלום),
+     ולכן בצילום מסך מקומי הם מרובעים ריקים - ובטלפון ובמחשב הם נראים כמו שצריך. שרשרת
+     הפולבאק כאן היא ביטוח, לא תיקון: בלעדיה הדפדפן לא מחפש בפונטי הסמלים של המערכת. */
+  tr.done td:nth-child(3)::after, tr.wip td:nth-child(3)::after {
+    font-family:"Segoe UI Symbol","Apple Symbols","Noto Sans Symbols 2",
+                "DejaVu Sans",Assistant,sans-serif; font-weight:700 }
+  tr.done td:nth-child(3)::after { content:" ✓"; color:#2e7d32 }
+  tr.wip td:nth-child(3)::after { content:" ✎"; color:#c47b00 }
   tr.done td:nth-child(3) a, tr.wip td:nth-child(3) a { color:var(--ink) }
   .note { background:#fff; border:1px solid var(--line); border-right:4px solid var(--gold);
           padding:10px 12px; margin:14px 0; font-size:14px; color:#444 }
