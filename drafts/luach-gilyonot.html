@@ -27,10 +27,11 @@
   td.n { width:58px; color:#8a93a0; font-weight:600 }
   td.d { width:92px; color:#5b6470; font-size:13px; white-space:nowrap }
   td.s { width:120px; color:#8a6d00; font-size:12px }
-  tr.chag td { background:#fdf6e3 }
+  tr.gold td { background:#fdf6e3 }
   tr.chag td:nth-child(3) { font-weight:700; color:#8a6d00 }
   tr.done td:nth-child(3)::after { content:" ✓"; color:#2e7d32; font-weight:700 }
-  tr.done td:nth-child(3) a { color:var(--ink) }
+  tr.wip td:nth-child(3)::after { content:" ✎"; color:#c47b00; font-weight:700 }
+  tr.done td:nth-child(3) a, tr.wip td:nth-child(3) a { color:var(--ink) }
   .note { background:#fff; border:1px solid var(--line); border-right:4px solid var(--gold);
           padding:10px 12px; margin:14px 0; font-size:14px; color:#444 }
   footer { text-align:center; color:#8a93a0; font-size:12px; padding:20px }
@@ -46,7 +47,8 @@
 <main>
   <div class="note">המספרים מניחים <strong>גיליון אחד בכל שבת, ברצף</strong>. הפסקה של שבוע אחת
   מזיזה את כל המספרים שאחריה באחד — ולכן שם הפרשה הוא המפתח היציב, והמספר הוא כינוי.
-  שורה מודגשת בצהוב = שבת שהיא יום טוב. ✓ = גיליון שכבר נפתח.</div>
+  שורה מודגשת בצהוב = שבת של יום טוב או שבת חנוכה.
+  <strong>✓</strong> = גיליון שנשלח · <strong>✎</strong> = גיליון בעבודה, טרם נשלח.</div>
   <section id="y5786">
   <h2>תשפ"ו</h2>
   <table>
@@ -64,11 +66,11 @@
   <table>
     <thead><tr><th class="n">גיליון</th><th class="d">שבת</th><th>פרשה / חג</th><th class="s">הערה</th></tr></thead>
     <tbody>
-      <tr class="chag done"><td class="n">5</td><td class="d">12.9.2026</td><td><a href="https://gyenewsletters.netlify.app/drafts/rosh-hashana-5787.html">ראש השנה</a></td><td class="s"></td></tr>
+      <tr class="gold chag done"><td class="n">5</td><td class="d">12.9.2026</td><td><a href="https://gyenewsletters.netlify.app/drafts/rosh-hashana-5787.html">ראש השנה</a></td><td class="s"></td></tr>
       <tr class="done"><td class="n">6</td><td class="d">19.9.2026</td><td><a href="https://gyenewsletters.netlify.app/drafts/haazinu-5787.html">פרשת האזינו</a></td><td class="s">שבת שובה</td></tr>
-      <tr class="chag done"><td class="n">7</td><td class="d">26.9.2026</td><td><a href="https://gyenewsletters.netlify.app/drafts/sukkot-5787.html">סוכות א׳</a></td><td class="s"></td></tr>
-      <tr class="chag done"><td class="n">8</td><td class="d">3.10.2026</td><td><a href="https://gyenewsletters.netlify.app/drafts/simchat-torah-5787.html">שמחת תורה</a></td><td class="s">שמיני עצרת</td></tr>
-      <tr class="done"><td class="n">9</td><td class="d">10.10.2026</td><td><a href="https://gyenewsletters.netlify.app/drafts/bereishit-5787.html">פרשת בראשית</a></td><td class="s"></td></tr>
+      <tr class="gold chag wip"><td class="n">7</td><td class="d">26.9.2026</td><td><a href="https://gyenewsletters.netlify.app/drafts/sukkot-5787.html">סוכות א׳</a></td><td class="s"></td></tr>
+      <tr class="gold chag wip"><td class="n">8</td><td class="d">3.10.2026</td><td><a href="https://gyenewsletters.netlify.app/drafts/simchat-torah-5787.html">שמחת תורה</a></td><td class="s">שמיני עצרת</td></tr>
+      <tr class="wip"><td class="n">9</td><td class="d">10.10.2026</td><td><a href="https://gyenewsletters.netlify.app/drafts/bereishit-5787.html">פרשת בראשית</a></td><td class="s"></td></tr>
       <tr class=""><td class="n">10</td><td class="d">17.10.2026</td><td>פרשת נח</td><td class="s"></td></tr>
       <tr class=""><td class="n">11</td><td class="d">24.10.2026</td><td>פרשת לך לך</td><td class="s"></td></tr>
       <tr class=""><td class="n">12</td><td class="d">31.10.2026</td><td>פרשת וירא</td><td class="s"></td></tr>
@@ -76,8 +78,8 @@
       <tr class=""><td class="n">14</td><td class="d">14.11.2026</td><td>פרשת תולדות</td><td class="s"></td></tr>
       <tr class=""><td class="n">15</td><td class="d">21.11.2026</td><td>פרשת ויצא</td><td class="s"></td></tr>
       <tr class=""><td class="n">16</td><td class="d">28.11.2026</td><td>פרשת וישלח</td><td class="s"></td></tr>
-      <tr class=""><td class="n">17</td><td class="d">5.12.2026</td><td>פרשת וישב</td><td class="s"></td></tr>
-      <tr class=""><td class="n">18</td><td class="d">12.12.2026</td><td>פרשת מקץ</td><td class="s"></td></tr>
+      <tr class="gold"><td class="n">17</td><td class="d">5.12.2026</td><td>פרשת וישב</td><td class="s">שבת חנוכה</td></tr>
+      <tr class="gold"><td class="n">18</td><td class="d">12.12.2026</td><td>פרשת מקץ</td><td class="s">שבת חנוכה · זאת חנוכה</td></tr>
       <tr class=""><td class="n">19</td><td class="d">19.12.2026</td><td>פרשת ויגש</td><td class="s"></td></tr>
       <tr class=""><td class="n">20</td><td class="d">26.12.2026</td><td>פרשת ויחי</td><td class="s"></td></tr>
       <tr class=""><td class="n">21</td><td class="d">2.1.2027</td><td>פרשת שמות</td><td class="s"></td></tr>
@@ -96,7 +98,7 @@
       <tr class=""><td class="n">34</td><td class="d">3.4.2027</td><td>פרשת שמיני</td><td class="s">שבת החדש</td></tr>
       <tr class=""><td class="n">35</td><td class="d">10.4.2027</td><td>פרשת תזריע</td><td class="s"></td></tr>
       <tr class=""><td class="n">36</td><td class="d">17.4.2027</td><td>פרשת מצורע</td><td class="s">שבת הגדול</td></tr>
-      <tr class="chag"><td class="n">37</td><td class="d">24.4.2027</td><td>שבת חול המועד פסח</td><td class="s"></td></tr>
+      <tr class="gold chag"><td class="n">37</td><td class="d">24.4.2027</td><td>שבת חול המועד פסח</td><td class="s"></td></tr>
       <tr class=""><td class="n">38</td><td class="d">1.5.2027</td><td>פרשת אחרי מות</td><td class="s"></td></tr>
       <tr class=""><td class="n">39</td><td class="d">8.5.2027</td><td>פרשת קדושים</td><td class="s"></td></tr>
       <tr class=""><td class="n">40</td><td class="d">15.5.2027</td><td>פרשת אמור</td><td class="s"></td></tr>
@@ -127,10 +129,10 @@
   <table>
     <thead><tr><th class="n">גיליון</th><th class="d">שבת</th><th>פרשה / חג</th><th class="s">הערה</th></tr></thead>
     <tbody>
-      <tr class="chag"><td class="n">60</td><td class="d">2.10.2027</td><td>ראש השנה</td><td class="s"></td></tr>
+      <tr class="gold chag"><td class="n">60</td><td class="d">2.10.2027</td><td>ראש השנה</td><td class="s"></td></tr>
       <tr class=""><td class="n">61</td><td class="d">9.10.2027</td><td>פרשת האזינו</td><td class="s">שבת שובה</td></tr>
-      <tr class="chag"><td class="n">62</td><td class="d">16.10.2027</td><td>סוכות א׳</td><td class="s"></td></tr>
-      <tr class="chag"><td class="n">63</td><td class="d">23.10.2027</td><td>שמחת תורה</td><td class="s">שמיני עצרת</td></tr>
+      <tr class="gold chag"><td class="n">62</td><td class="d">16.10.2027</td><td>סוכות א׳</td><td class="s"></td></tr>
+      <tr class="gold chag"><td class="n">63</td><td class="d">23.10.2027</td><td>שמחת תורה</td><td class="s">שמיני עצרת</td></tr>
       <tr class=""><td class="n">64</td><td class="d">30.10.2027</td><td>פרשת בראשית</td><td class="s"></td></tr>
       <tr class=""><td class="n">65</td><td class="d">6.11.2027</td><td>פרשת נח</td><td class="s"></td></tr>
       <tr class=""><td class="n">66</td><td class="d">13.11.2027</td><td>פרשת לך לך</td><td class="s"></td></tr>
@@ -139,8 +141,8 @@
       <tr class=""><td class="n">69</td><td class="d">4.12.2027</td><td>פרשת תולדות</td><td class="s"></td></tr>
       <tr class=""><td class="n">70</td><td class="d">11.12.2027</td><td>פרשת ויצא</td><td class="s"></td></tr>
       <tr class=""><td class="n">71</td><td class="d">18.12.2027</td><td>פרשת וישלח</td><td class="s"></td></tr>
-      <tr class=""><td class="n">72</td><td class="d">25.12.2027</td><td>פרשת וישב</td><td class="s"></td></tr>
-      <tr class=""><td class="n">73</td><td class="d">1.1.2028</td><td>פרשת מקץ</td><td class="s"></td></tr>
+      <tr class="gold"><td class="n">72</td><td class="d">25.12.2027</td><td>פרשת וישב</td><td class="s">שבת חנוכה</td></tr>
+      <tr class="gold"><td class="n">73</td><td class="d">1.1.2028</td><td>פרשת מקץ</td><td class="s">שבת חנוכה · זאת חנוכה</td></tr>
       <tr class=""><td class="n">74</td><td class="d">8.1.2028</td><td>פרשת ויגש</td><td class="s"></td></tr>
       <tr class=""><td class="n">75</td><td class="d">15.1.2028</td><td>פרשת ויחי</td><td class="s"></td></tr>
       <tr class=""><td class="n">76</td><td class="d">22.1.2028</td><td>פרשת שמות</td><td class="s"></td></tr>
@@ -155,7 +157,7 @@
       <tr class=""><td class="n">85</td><td class="d">25.3.2028</td><td>פרשת ויקהל-פקודי</td><td class="s">שבת החדש</td></tr>
       <tr class=""><td class="n">86</td><td class="d">1.4.2028</td><td>פרשת ויקרא</td><td class="s"></td></tr>
       <tr class=""><td class="n">87</td><td class="d">8.4.2028</td><td>פרשת צו</td><td class="s">שבת הגדול</td></tr>
-      <tr class="chag"><td class="n">88</td><td class="d">15.4.2028</td><td>שבת חול המועד פסח</td><td class="s"></td></tr>
+      <tr class="gold chag"><td class="n">88</td><td class="d">15.4.2028</td><td>שבת חול המועד פסח</td><td class="s"></td></tr>
       <tr class=""><td class="n">89</td><td class="d">22.4.2028</td><td>פרשת שמיני</td><td class="s"></td></tr>
       <tr class=""><td class="n">90</td><td class="d">29.4.2028</td><td>פרשת תזריע-מצורע</td><td class="s"></td></tr>
       <tr class=""><td class="n">91</td><td class="d">6.5.2028</td><td>פרשת אחרי מות-קדושים</td><td class="s"></td></tr>
