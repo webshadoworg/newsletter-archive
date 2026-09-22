@@ -1,0 +1,260 @@
+<!DOCTYPE html><html lang="he" dir="rtl"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>סימון "בעבודה" בלוח הגיליונות — אפשרויות</title>
+<link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root { --ink:#1c4587; --line:#d9dde3; --gold:#e9b308 }
+  * { box-sizing:border-box }
+  body { margin:0; font-family:Assistant,Arial,sans-serif; background:#f4f6f8; color:#1b1f24 }
+  header { background:var(--ink); color:#fff; padding:18px 14px; text-align:center }
+  header h1 { margin:0; font-size:21px }
+  header p { margin:6px 0 0; font-size:13px; opacity:.85 }
+  main { max-width:900px; margin:0 auto; padding:14px }
+  .intro { background:#fff; border:1px solid var(--line); border-right:4px solid var(--gold);
+           padding:11px 13px; font-size:14px; color:#444; margin-bottom:16px }
+  section.opt { background:#fff; border:1px solid var(--line); border-radius:6px;
+                padding:14px; margin-bottom:18px }
+  section.opt h2 { margin:0 0 4px; font-size:18px; color:var(--ink) }
+  .rec { color:#1e6b33; font-style:normal; font-size:14px; font-weight:700 }
+  p.d { margin:0 0 10px; font-size:14px; color:#555 }
+  .ok, .warn { font-size:11px; padding:1px 7px; border-radius:9px; white-space:nowrap }
+  .ok { background:#e6f4ea; color:#1e6b33 }
+  .warn { background:#fdecea; color:#a3281c }
+  table { width:100%; border-collapse:collapse; border:1px solid var(--line) }
+  th, td { text-align:right; padding:6px 9px; border-bottom:1px solid var(--line) }
+  th { background:var(--ink); color:#fff; font-size:12px; font-weight:600 }
+  td { font-size:15px }
+  td.n { width:56px; color:#8a93a0; font-weight:600 }
+  td.d { width:88px; color:#5b6470; font-size:13px; white-space:nowrap }
+  td.s { width:110px; color:#8a6d00; font-size:12px }
+  tr.gold td { background:#fdf6e3 }
+  .lg { margin-top:9px; font-size:12.5px; color:#666 }
+  /* שתי התצוגות זו לצד זו בדסקטופ; בטלפון אמיתי רק הרחבה נשארת, ואז היא ממילא צרה. */
+  .wide, .phone { display:inline-block; vertical-align:top }
+  .wide { width:calc(100% - 410px); min-width:280px; margin-left:12px }
+  .phone { width:390px }
+  .ph { width:390px; border:1px solid #c7ccd3; border-radius:6px; overflow:hidden }
+  .cap { display:block; font-size:11px; color:#8a93a0; margin-top:4px; text-align:center }
+  @media (max-width:860px) { .wide, .phone { display:block; width:100%; margin:0 0 12px }
+                             .ph { width:100% } }
+  footer { text-align:center; color:#8a93a0; font-size:12px; padding:20px }
+.oA tr.done td.p::after{content:" ✓";color:#2e7d32;font-weight:700}
+    .oA tr.wip  td.p::after{content:" ✎";color:#c47b00;font-weight:700}
+.oB td.p .tag{font-size:11px;padding:1px 7px;border-radius:9px;margin-right:6px;
+      font-weight:700;vertical-align:1px;white-space:nowrap}
+    .oB tr.done td.p .tag{background:#e6f4ea;color:#1e6b33;border:1px solid #bfe0c9}
+    .oB tr.wip  td.p .tag{background:#fdf0d8;color:#8a5b00;border:1px solid #edd3a0}
+.oC tr.done td.p::after{content:" ✓";color:#2e7d32;font-weight:700}
+    .oC tr.wip td.p .tag{font-size:11px;padding:1px 7px;border-radius:9px;margin-right:6px;
+      font-weight:700;vertical-align:1px;background:#fdf0d8;color:#8a5b00;border:1px solid #edd3a0}
+.oD td.p .dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:7px}
+    .oD tr.done td.p .dot{background:#2e7d32;border:1px solid #2e7d32}
+    .oD tr.wip  td.p .dot{background:#fff;border:2px solid #c47b00}
+.oE tr.done td.n{box-shadow:inset -4px 0 0 #2e7d32}
+    .oE tr.wip  td.n{box-shadow:inset -4px 0 0 #c47b00}
+.oF tr.done td.p::after{content:" ✅";font-size:13px}
+    .oF tr.wip  td.p::after{content:" ⏳";font-size:13px}
+.oG td.p .tag{font-size:11px;padding:2px 8px;border-radius:4px;margin-right:6px;
+      font-weight:700;vertical-align:1px;color:#fff;white-space:nowrap}
+    .oG tr.done td.p .tag{background:#2e7d32}
+    .oG tr.wip  td.p .tag{background:#c47b00}
+.oH tr.done td.p::after{content:" ✓";color:#2e7d32;font-weight:700}
+    .oH tr.wip td.p .tag{font-size:11px;padding:1px 7px;border-radius:9px;margin-right:6px;
+      font-weight:700;vertical-align:1px;background:#fdf0d8;color:#8a5b00;border:1px solid #edd3a0}
+</style></head>
+<body>
+<header><h1>סימון "גיליון בעבודה" — אפשרויות</h1>
+<p>לוח הגיליונות · 8 אפשרויות · כל אחת מוצגת גם ברוחב טלפון</p></header>
+<main>
+  <div class="intro">הסימון נגזר מ־<code>issues.json.status</code> — בדיוק אותו מקור כמו היום,
+  ולכן ההחלפה היא שינוי תצוגה בלבד. <strong>שים לב:</strong> האפשרויות המסומנות
+  <span class="warn">תלוי בגליף</span> נשענות על תו שהמכשיר צריך לצייר — בטלפון שלך הן ייראו
+  תקין, אבל אני לא יכול לוודא אותן מכאן. האפשרויות
+  <span class="ok">בטוח</span> נבנות מטקסט עברי או מ־CSS ונראות זהות בכל מקום.</div>
+<section class="opt">
+  <h2>A · הקיים — ✓ / ✎</h2>
+  <p class="d">מה שיש היום. העיפרון קטן, ובטלפון הוא כמעט לא נבדל מ-✓. <span class="warn">תלוי בגליף/אמוג'י של המכשיר</span></p>
+  <div class="oA">
+    <div class="wide"><table><thead><tr><th>גיליון</th><th>שבת</th><th>פרשה / חג</th><th>הערה</th></tr></thead><tbody>
+<tr class="done gold"><td class="n">5</td><td class="d">12.9.2026</td><td class="p">ראש השנה</td><td class="s"></td></tr>
+<tr class="done"><td class="n">6</td><td class="d">19.9.2026</td><td class="p">פרשת האזינו</td><td class="s">שבת שובה</td></tr>
+<tr class="wip gold"><td class="n">7</td><td class="d">26.9.2026</td><td class="p">סוכות א׳</td><td class="s"></td></tr>
+<tr class="wip gold"><td class="n">8</td><td class="d">3.10.2026</td><td class="p">שמחת תורה</td><td class="s">שמיני עצרת</td></tr>
+<tr class="wip"><td class="n">9</td><td class="d">10.10.2026</td><td class="p">פרשת בראשית</td><td class="s"></td></tr>
+<tr class=""><td class="n">10</td><td class="d">17.10.2026</td><td class="p">פרשת נח</td><td class="s"></td></tr>
+</tbody></table></div>
+    <div class="phone"><div class="ph"><table><thead><tr><th>גיליון</th><th>שבת</th><th>פרשה / חג</th><th>הערה</th></tr></thead><tbody>
+<tr class="done gold"><td class="n">5</td><td class="d">12.9.2026</td><td class="p">ראש השנה</td><td class="s"></td></tr>
+<tr class="done"><td class="n">6</td><td class="d">19.9.2026</td><td class="p">פרשת האזינו</td><td class="s">שבת שובה</td></tr>
+<tr class="wip gold"><td class="n">7</td><td class="d">26.9.2026</td><td class="p">סוכות א׳</td><td class="s"></td></tr>
+<tr class="wip gold"><td class="n">8</td><td class="d">3.10.2026</td><td class="p">שמחת תורה</td><td class="s">שמיני עצרת</td></tr>
+<tr class="wip"><td class="n">9</td><td class="d">10.10.2026</td><td class="p">פרשת בראשית</td><td class="s"></td></tr>
+<tr class=""><td class="n">10</td><td class="d">17.10.2026</td><td class="p">פרשת נח</td><td class="s"></td></tr>
+</tbody></table></div><span class="cap">390px — תצוגת טלפון</span></div>
+  </div>
+  <div class="lg"><b>✓</b> נשלח · <b>✎</b> בעבודה</div>
+</section>
+<section class="opt">
+  <h2>B · תגית טקסט: נשלח / בעבודה <em class="rec">← ההמלצה שלי</em></h2>
+  <p class="d">מילה, לא סמל. אין מה לפענח, אין תלות בפונט, וקריא בטלפון בלי להתקרב. <span class="ok">בטוח: לא תלוי בפונט</span></p>
+  <div class="oB">
+    <div class="wide"><table><thead><tr><th>גיליון</th><th>שבת</th><th>פרשה / חג</th><th>הערה</th></tr></thead><tbody>
+<tr class="done gold"><td class="n">5</td><td class="d">12.9.2026</td><td class="p">ראש השנה<span class="tag">נשלח</span></td><td class="s"></td></tr>
+<tr class="done"><td class="n">6</td><td class="d">19.9.2026</td><td class="p">פרשת האזינו<span class="tag">נשלח</span></td><td class="s">שבת שובה</td></tr>
+<tr class="wip gold"><td class="n">7</td><td class="d">26.9.2026</td><td class="p">סוכות א׳<span class="tag">בעבודה</span></td><td class="s"></td></tr>
+<tr class="wip gold"><td class="n">8</td><td class="d">3.10.2026</td><td class="p">שמחת תורה<span class="tag">בעבודה</span></td><td class="s">שמיני עצרת</td></tr>
+<tr class="wip"><td class="n">9</td><td class="d">10.10.2026</td><td class="p">פרשת בראשית<span class="tag">בעבודה</span></td><td class="s"></td></tr>
+<tr class=""><td class="n">10</td><td class="d">17.10.2026</td><td class="p">פרשת נח</td><td class="s"></td></tr>
+</tbody></table></div>
+    <div class="phone"><div class="ph"><table><thead><tr><th>גיליון</th><th>שבת</th><th>פרשה / חג</th><th>הערה</th></tr></thead><tbody>
+<tr class="done gold"><td class="n">5</td><td class="d">12.9.2026</td><td class="p">ראש השנה<span class="tag">נשלח</span></td><td class="s"></td></tr>
+<tr class="done"><td class="n">6</td><td class="d">19.9.2026</td><td class="p">פרשת האזינו<span class="tag">נשלח</span></td><td class="s">שבת שובה</td></tr>
+<tr class="wip gold"><td class="n">7</td><td class="d">26.9.2026</td><td class="p">סוכות א׳<span class="tag">בעבודה</span></td><td class="s"></td></tr>
+<tr class="wip gold"><td class="n">8</td><td class="d">3.10.2026</td><td class="p">שמחת תורה<span class="tag">בעבודה</span></td><td class="s">שמיני עצרת</td></tr>
+<tr class="wip"><td class="n">9</td><td class="d">10.10.2026</td><td class="p">פרשת בראשית<span class="tag">בעבודה</span></td><td class="s"></td></tr>
+<tr class=""><td class="n">10</td><td class="d">17.10.2026</td><td class="p">פרשת נח</td><td class="s"></td></tr>
+</tbody></table></div><span class="cap">390px — תצוגת טלפון</span></div>
+  </div>
+  <div class="lg">התגית עצמה היא המקרא.</div>
+</section>
+<section class="opt">
+  <h2>C · ✓ בלבד לנשלח + תגית "בעבודה"</h2>
+  <p class="d">הווי נשאר על מה שנסגר, והבולט מבין השניים הוא דווקא מה שעדיין פתוח. <span class="ok">בטוח: לא תלוי בפונט</span></p>
+  <div class="oC">
+    <div class="wide"><table><thead><tr><th>גיליון</th><th>שבת</th><th>פרשה / חג</th><th>הערה</th></tr></thead><tbody>
+<tr class="done gold"><td class="n">5</td><td class="d">12.9.2026</td><td class="p">ראש השנה</td><td class="s"></td></tr>
+<tr class="done"><td class="n">6</td><td class="d">19.9.2026</td><td class="p">פרשת האזינו</td><td class="s">שבת שובה</td></tr>
+<tr class="wip gold"><td class="n">7</td><td class="d">26.9.2026</td><td class="p">סוכות א׳<span class="tag">בעבודה</span></td><td class="s"></td></tr>
+<tr class="wip gold"><td class="n">8</td><td class="d">3.10.2026</td><td class="p">שמחת תורה<span class="tag">בעבודה</span></td><td class="s">שמיני עצרת</td></tr>
+<tr class="wip"><td class="n">9</td><td class="d">10.10.2026</td><td class="p">פרשת בראשית<span class="tag">בעבודה</span></td><td class="s"></td></tr>
+<tr class=""><td class="n">10</td><td class="d">17.10.2026</td><td class="p">פרשת נח</td><td class="s"></td></tr>
+</tbody></table></div>
+    <div class="phone"><div class="ph"><table><thead><tr><th>גיליון</th><th>שבת</th><th>פרשה / חג</th><th>הערה</th></tr></thead><tbody>
+<tr class="done gold"><td class="n">5</td><td class="d">12.9.2026</td><td class="p">ראש השנה</td><td class="s"></td></tr>
+<tr class="done"><td class="n">6</td><td class="d">19.9.2026</td><td class="p">פרשת האזינו</td><td class="s">שבת שובה</td></tr>
+<tr class="wip gold"><td class="n">7</td><td class="d">26.9.2026</td><td class="p">סוכות א׳<span class="tag">בעבודה</span></td><td class="s"></td></tr>
+<tr class="wip gold"><td class="n">8</td><td class="d">3.10.2026</td><td class="p">שמחת תורה<span class="tag">בעבודה</span></td><td class="s">שמיני עצרת</td></tr>
+<tr class="wip"><td class="n">9</td><td class="d">10.10.2026</td><td class="p">פרשת בראשית<span class="tag">בעבודה</span></td><td class="s"></td></tr>
+<tr class=""><td class="n">10</td><td class="d">17.10.2026</td><td class="p">פרשת נח</td><td class="s"></td></tr>
+</tbody></table></div><span class="cap">390px — תצוגת טלפון</span></div>
+  </div>
+  <div class="lg"><b>✓</b> נשלח · תגית כתומה = בעבודה</div>
+</section>
+<section class="opt">
+  <h2>D · נקודה מלאה / נקודה חלולה</h2>
+  <p class="d">עיגולי CSS, לא גליפים. שקט מאוד — אבל דורש מקרא, ולא עומד לבד. <span class="ok">בטוח: לא תלוי בפונט</span></p>
+  <div class="oD">
+    <div class="wide"><table><thead><tr><th>גיליון</th><th>שבת</th><th>פרשה / חג</th><th>הערה</th></tr></thead><tbody>
+<tr class="done gold"><td class="n">5</td><td class="d">12.9.2026</td><td class="p">ראש השנה<span class="dot"></span></td><td class="s"></td></tr>
+<tr class="done"><td class="n">6</td><td class="d">19.9.2026</td><td class="p">פרשת האזינו<span class="dot"></span></td><td class="s">שבת שובה</td></tr>
+<tr class="wip gold"><td class="n">7</td><td class="d">26.9.2026</td><td class="p">סוכות א׳<span class="dot"></span></td><td class="s"></td></tr>
+<tr class="wip gold"><td class="n">8</td><td class="d">3.10.2026</td><td class="p">שמחת תורה<span class="dot"></span></td><td class="s">שמיני עצרת</td></tr>
+<tr class="wip"><td class="n">9</td><td class="d">10.10.2026</td><td class="p">פרשת בראשית<span class="dot"></span></td><td class="s"></td></tr>
+<tr class=""><td class="n">10</td><td class="d">17.10.2026</td><td class="p">פרשת נח</td><td class="s"></td></tr>
+</tbody></table></div>
+    <div class="phone"><div class="ph"><table><thead><tr><th>גיליון</th><th>שבת</th><th>פרשה / חג</th><th>הערה</th></tr></thead><tbody>
+<tr class="done gold"><td class="n">5</td><td class="d">12.9.2026</td><td class="p">ראש השנה<span class="dot"></span></td><td class="s"></td></tr>
+<tr class="done"><td class="n">6</td><td class="d">19.9.2026</td><td class="p">פרשת האזינו<span class="dot"></span></td><td class="s">שבת שובה</td></tr>
+<tr class="wip gold"><td class="n">7</td><td class="d">26.9.2026</td><td class="p">סוכות א׳<span class="dot"></span></td><td class="s"></td></tr>
+<tr class="wip gold"><td class="n">8</td><td class="d">3.10.2026</td><td class="p">שמחת תורה<span class="dot"></span></td><td class="s">שמיני עצרת</td></tr>
+<tr class="wip"><td class="n">9</td><td class="d">10.10.2026</td><td class="p">פרשת בראשית<span class="dot"></span></td><td class="s"></td></tr>
+<tr class=""><td class="n">10</td><td class="d">17.10.2026</td><td class="p">פרשת נח</td><td class="s"></td></tr>
+</tbody></table></div><span class="cap">390px — תצוגת טלפון</span></div>
+  </div>
+  <div class="lg">נקודה מלאה = נשלח · נקודה חלולה = בעבודה</div>
+</section>
+<section class="opt">
+  <h2>E · פס צבע בקצה השורה</h2>
+  <p class="d">בלי שום סימן בשורה: ירוק = נשלח, כתום = בעבודה. הכי נקי, הכי תלוי במקרא. <span class="ok">בטוח: לא תלוי בפונט</span></p>
+  <div class="oE">
+    <div class="wide"><table><thead><tr><th>גיליון</th><th>שבת</th><th>פרשה / חג</th><th>הערה</th></tr></thead><tbody>
+<tr class="done gold"><td class="n">5</td><td class="d">12.9.2026</td><td class="p">ראש השנה</td><td class="s"></td></tr>
+<tr class="done"><td class="n">6</td><td class="d">19.9.2026</td><td class="p">פרשת האזינו</td><td class="s">שבת שובה</td></tr>
+<tr class="wip gold"><td class="n">7</td><td class="d">26.9.2026</td><td class="p">סוכות א׳</td><td class="s"></td></tr>
+<tr class="wip gold"><td class="n">8</td><td class="d">3.10.2026</td><td class="p">שמחת תורה</td><td class="s">שמיני עצרת</td></tr>
+<tr class="wip"><td class="n">9</td><td class="d">10.10.2026</td><td class="p">פרשת בראשית</td><td class="s"></td></tr>
+<tr class=""><td class="n">10</td><td class="d">17.10.2026</td><td class="p">פרשת נח</td><td class="s"></td></tr>
+</tbody></table></div>
+    <div class="phone"><div class="ph"><table><thead><tr><th>גיליון</th><th>שבת</th><th>פרשה / חג</th><th>הערה</th></tr></thead><tbody>
+<tr class="done gold"><td class="n">5</td><td class="d">12.9.2026</td><td class="p">ראש השנה</td><td class="s"></td></tr>
+<tr class="done"><td class="n">6</td><td class="d">19.9.2026</td><td class="p">פרשת האזינו</td><td class="s">שבת שובה</td></tr>
+<tr class="wip gold"><td class="n">7</td><td class="d">26.9.2026</td><td class="p">סוכות א׳</td><td class="s"></td></tr>
+<tr class="wip gold"><td class="n">8</td><td class="d">3.10.2026</td><td class="p">שמחת תורה</td><td class="s">שמיני עצרת</td></tr>
+<tr class="wip"><td class="n">9</td><td class="d">10.10.2026</td><td class="p">פרשת בראשית</td><td class="s"></td></tr>
+<tr class=""><td class="n">10</td><td class="d">17.10.2026</td><td class="p">פרשת נח</td><td class="s"></td></tr>
+</tbody></table></div><span class="cap">390px — תצוגת טלפון</span></div>
+  </div>
+  <div class="lg">פס ירוק = נשלח · פס כתום = בעבודה</div>
+</section>
+<section class="opt">
+  <h2>F · ✓ / שעון חול ⏳</h2>
+  <p class="d">אמוג'י צבעוני, בולט מאוד בטלפון — ורועש קצת ליד שמות פרשות. <span class="warn">תלוי בגליף/אמוג'י של המכשיר</span></p>
+  <div class="oF">
+    <div class="wide"><table><thead><tr><th>גיליון</th><th>שבת</th><th>פרשה / חג</th><th>הערה</th></tr></thead><tbody>
+<tr class="done gold"><td class="n">5</td><td class="d">12.9.2026</td><td class="p">ראש השנה</td><td class="s"></td></tr>
+<tr class="done"><td class="n">6</td><td class="d">19.9.2026</td><td class="p">פרשת האזינו</td><td class="s">שבת שובה</td></tr>
+<tr class="wip gold"><td class="n">7</td><td class="d">26.9.2026</td><td class="p">סוכות א׳</td><td class="s"></td></tr>
+<tr class="wip gold"><td class="n">8</td><td class="d">3.10.2026</td><td class="p">שמחת תורה</td><td class="s">שמיני עצרת</td></tr>
+<tr class="wip"><td class="n">9</td><td class="d">10.10.2026</td><td class="p">פרשת בראשית</td><td class="s"></td></tr>
+<tr class=""><td class="n">10</td><td class="d">17.10.2026</td><td class="p">פרשת נח</td><td class="s"></td></tr>
+</tbody></table></div>
+    <div class="phone"><div class="ph"><table><thead><tr><th>גיליון</th><th>שבת</th><th>פרשה / חג</th><th>הערה</th></tr></thead><tbody>
+<tr class="done gold"><td class="n">5</td><td class="d">12.9.2026</td><td class="p">ראש השנה</td><td class="s"></td></tr>
+<tr class="done"><td class="n">6</td><td class="d">19.9.2026</td><td class="p">פרשת האזינו</td><td class="s">שבת שובה</td></tr>
+<tr class="wip gold"><td class="n">7</td><td class="d">26.9.2026</td><td class="p">סוכות א׳</td><td class="s"></td></tr>
+<tr class="wip gold"><td class="n">8</td><td class="d">3.10.2026</td><td class="p">שמחת תורה</td><td class="s">שמיני עצרת</td></tr>
+<tr class="wip"><td class="n">9</td><td class="d">10.10.2026</td><td class="p">פרשת בראשית</td><td class="s"></td></tr>
+<tr class=""><td class="n">10</td><td class="d">17.10.2026</td><td class="p">פרשת נח</td><td class="s"></td></tr>
+</tbody></table></div><span class="cap">390px — תצוגת טלפון</span></div>
+  </div>
+  <div class="lg">✅ נשלח · ⏳ בעבודה</div>
+</section>
+<section class="opt">
+  <h2>G · תגית מלאה בשני הצבעים</h2>
+  <p class="d">כמו B אבל עם רקע מלא בשני הצדדים. הכי ברור, והכי "ממשק" ופחות "לוח". <span class="ok">בטוח: לא תלוי בפונט</span></p>
+  <div class="oG">
+    <div class="wide"><table><thead><tr><th>גיליון</th><th>שבת</th><th>פרשה / חג</th><th>הערה</th></tr></thead><tbody>
+<tr class="done gold"><td class="n">5</td><td class="d">12.9.2026</td><td class="p">ראש השנה<span class="tag">נשלח</span></td><td class="s"></td></tr>
+<tr class="done"><td class="n">6</td><td class="d">19.9.2026</td><td class="p">פרשת האזינו<span class="tag">נשלח</span></td><td class="s">שבת שובה</td></tr>
+<tr class="wip gold"><td class="n">7</td><td class="d">26.9.2026</td><td class="p">סוכות א׳<span class="tag">בעבודה</span></td><td class="s"></td></tr>
+<tr class="wip gold"><td class="n">8</td><td class="d">3.10.2026</td><td class="p">שמחת תורה<span class="tag">בעבודה</span></td><td class="s">שמיני עצרת</td></tr>
+<tr class="wip"><td class="n">9</td><td class="d">10.10.2026</td><td class="p">פרשת בראשית<span class="tag">בעבודה</span></td><td class="s"></td></tr>
+<tr class=""><td class="n">10</td><td class="d">17.10.2026</td><td class="p">פרשת נח</td><td class="s"></td></tr>
+</tbody></table></div>
+    <div class="phone"><div class="ph"><table><thead><tr><th>גיליון</th><th>שבת</th><th>פרשה / חג</th><th>הערה</th></tr></thead><tbody>
+<tr class="done gold"><td class="n">5</td><td class="d">12.9.2026</td><td class="p">ראש השנה<span class="tag">נשלח</span></td><td class="s"></td></tr>
+<tr class="done"><td class="n">6</td><td class="d">19.9.2026</td><td class="p">פרשת האזינו<span class="tag">נשלח</span></td><td class="s">שבת שובה</td></tr>
+<tr class="wip gold"><td class="n">7</td><td class="d">26.9.2026</td><td class="p">סוכות א׳<span class="tag">בעבודה</span></td><td class="s"></td></tr>
+<tr class="wip gold"><td class="n">8</td><td class="d">3.10.2026</td><td class="p">שמחת תורה<span class="tag">בעבודה</span></td><td class="s">שמיני עצרת</td></tr>
+<tr class="wip"><td class="n">9</td><td class="d">10.10.2026</td><td class="p">פרשת בראשית<span class="tag">בעבודה</span></td><td class="s"></td></tr>
+<tr class=""><td class="n">10</td><td class="d">17.10.2026</td><td class="p">פרשת נח</td><td class="s"></td></tr>
+</tbody></table></div><span class="cap">390px — תצוגת טלפון</span></div>
+  </div>
+  <div class="lg">התגית עצמה היא המקרא.</div>
+</section>
+<section class="opt">
+  <h2>H · ✓ / "טיוטה"</h2>
+  <p class="d">אותה מכניקה של C, מילה אחרת. "טיוטה" קצרה מ"בעבודה" ותופסת פחות רוחב. <span class="ok">בטוח: לא תלוי בפונט</span></p>
+  <div class="oH">
+    <div class="wide"><table><thead><tr><th>גיליון</th><th>שבת</th><th>פרשה / חג</th><th>הערה</th></tr></thead><tbody>
+<tr class="done gold"><td class="n">5</td><td class="d">12.9.2026</td><td class="p">ראש השנה</td><td class="s"></td></tr>
+<tr class="done"><td class="n">6</td><td class="d">19.9.2026</td><td class="p">פרשת האזינו</td><td class="s">שבת שובה</td></tr>
+<tr class="wip gold"><td class="n">7</td><td class="d">26.9.2026</td><td class="p">סוכות א׳<span class="tag">טיוטה</span></td><td class="s"></td></tr>
+<tr class="wip gold"><td class="n">8</td><td class="d">3.10.2026</td><td class="p">שמחת תורה<span class="tag">טיוטה</span></td><td class="s">שמיני עצרת</td></tr>
+<tr class="wip"><td class="n">9</td><td class="d">10.10.2026</td><td class="p">פרשת בראשית<span class="tag">טיוטה</span></td><td class="s"></td></tr>
+<tr class=""><td class="n">10</td><td class="d">17.10.2026</td><td class="p">פרשת נח</td><td class="s"></td></tr>
+</tbody></table></div>
+    <div class="phone"><div class="ph"><table><thead><tr><th>גיליון</th><th>שבת</th><th>פרשה / חג</th><th>הערה</th></tr></thead><tbody>
+<tr class="done gold"><td class="n">5</td><td class="d">12.9.2026</td><td class="p">ראש השנה</td><td class="s"></td></tr>
+<tr class="done"><td class="n">6</td><td class="d">19.9.2026</td><td class="p">פרשת האזינו</td><td class="s">שבת שובה</td></tr>
+<tr class="wip gold"><td class="n">7</td><td class="d">26.9.2026</td><td class="p">סוכות א׳<span class="tag">טיוטה</span></td><td class="s"></td></tr>
+<tr class="wip gold"><td class="n">8</td><td class="d">3.10.2026</td><td class="p">שמחת תורה<span class="tag">טיוטה</span></td><td class="s">שמיני עצרת</td></tr>
+<tr class="wip"><td class="n">9</td><td class="d">10.10.2026</td><td class="p">פרשת בראשית<span class="tag">טיוטה</span></td><td class="s"></td></tr>
+<tr class=""><td class="n">10</td><td class="d">17.10.2026</td><td class="p">פרשת נח</td><td class="s"></td></tr>
+</tbody></table></div><span class="cap">390px — תצוגת טלפון</span></div>
+  </div>
+  <div class="lg"><b>✓</b> נשלח · תגית "טיוטה" = בעבודה</div>
+</section>
+</main>
+<footer>GYE · לוח הגיליונות</footer>
+</body></html>
