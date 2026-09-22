@@ -29,14 +29,12 @@
   td.s { width:120px; color:#8a6d00; font-size:12px }
   tr.gold td { background:#fdf6e3 }
   tr.chag td:nth-child(3) { font-weight:700; color:#8a6d00 }
-  /* ⚠ שני התווים האלה אינם באף פונט **בקונטיינר הזה** (fc-list :charset=2713 מחזיר כלום),
-     ולכן בצילום מסך מקומי הם מרובעים ריקים - ובטלפון ובמחשב הם נראים כמו שצריך. שרשרת
-     הפולבאק כאן היא ביטוח, לא תיקון: בלעדיה הדפדפן לא מחפש בפונטי הסמלים של המערכת. */
-  tr.done td:nth-child(3)::after, tr.wip td:nth-child(3)::after {
-    font-family:"Segoe UI Symbol","Apple Symbols","Noto Sans Symbols 2",
-                "DejaVu Sans",Assistant,sans-serif; font-weight:700 }
-  tr.done td:nth-child(3)::after { content:" ✓"; color:#2e7d32 }
-  tr.wip td:nth-child(3)::after { content:" ✎"; color:#c47b00 }
+  /* סימון המצב = תגית טקסט, לא גליף (רפאל #492). הכל מטקסט עברי ו-CSS, כך שאין כאן שום
+     תו שהמכשיר צריך "לדעת לצייר" - וזו בדיוק הסיבה שהעיפרון הוחלף. */
+  td .tag { font-size:11px; font-weight:700; padding:1px 7px; border-radius:9px;
+            margin-right:6px; vertical-align:1px; white-space:nowrap }
+  tr.done td .tag { background:#e6f4ea; color:#1e6b33; border:1px solid #bfe0c9 }
+  tr.wip  td .tag { background:#fdf0d8; color:#8a5b00; border:1px solid #edd3a0 }
   tr.done td:nth-child(3) a, tr.wip td:nth-child(3) a { color:var(--ink) }
   .note { background:#fff; border:1px solid var(--line); border-right:4px solid var(--gold);
           padding:10px 12px; margin:14px 0; font-size:14px; color:#444 }
@@ -54,16 +52,18 @@
   <div class="note">המספרים מניחים <strong>גיליון אחד בכל שבת, ברצף</strong>. הפסקה של שבוע אחת
   מזיזה את כל המספרים שאחריה באחד — ולכן שם הפרשה הוא המפתח היציב, והמספר הוא כינוי.
   שורה מודגשת בצהוב = שבת של יום טוב או שבת חנוכה.
-  <strong>✓</strong> = גיליון שנשלח · <strong>✎</strong> = גיליון בעבודה, טרם נשלח.</div>
+  תגית <span class="tag" style="background:#e6f4ea;color:#1e6b33;border:1px solid #bfe0c9">נשלח</span>
+  = גיליון שיצא לקוראים · <span class="tag" style="background:#fdf0d8;color:#8a5b00;border:1px solid #edd3a0">בעבודה</span>
+  = גיליון שהתחלנו, טרם נשלח.</div>
   <section id="y5786">
   <h2>תשפ"ו</h2>
   <table>
     <thead><tr><th class="n">גיליון</th><th class="d">שבת</th><th>פרשה / חג</th><th class="s">הערה</th></tr></thead>
     <tbody>
-      <tr class="done"><td class="n">1</td><td class="d">15.8.2026</td><td><a href="https://gyenewsletters.netlify.app/drafts/hebrew-header-test.html">פרשת שופטים</a></td><td class="s"></td></tr>
-      <tr class="done"><td class="n">2</td><td class="d">22.8.2026</td><td><a href="https://gyenewsletters.netlify.app/drafts/ki-tetze-5786.html">פרשת כי תצא</a></td><td class="s"></td></tr>
-      <tr class="done"><td class="n">3</td><td class="d">29.8.2026</td><td><a href="https://gyenewsletters.netlify.app/drafts/ki-tavo-5786.html">פרשת כי תבוא</a></td><td class="s"></td></tr>
-      <tr class="done"><td class="n">4</td><td class="d">5.9.2026</td><td><a href="https://gyenewsletters.netlify.app/drafts/nitzavim-5786.html">פרשת ניצבים-וילך</a></td><td class="s"></td></tr>
+      <tr class="done"><td class="n">1</td><td class="d">15.8.2026</td><td><a href="https://gyenewsletters.netlify.app/drafts/hebrew-header-test.html">פרשת שופטים</a><span class="tag">נשלח</span></td><td class="s"></td></tr>
+      <tr class="done"><td class="n">2</td><td class="d">22.8.2026</td><td><a href="https://gyenewsletters.netlify.app/drafts/ki-tetze-5786.html">פרשת כי תצא</a><span class="tag">נשלח</span></td><td class="s"></td></tr>
+      <tr class="done"><td class="n">3</td><td class="d">29.8.2026</td><td><a href="https://gyenewsletters.netlify.app/drafts/ki-tavo-5786.html">פרשת כי תבוא</a><span class="tag">נשלח</span></td><td class="s"></td></tr>
+      <tr class="done"><td class="n">4</td><td class="d">5.9.2026</td><td><a href="https://gyenewsletters.netlify.app/drafts/nitzavim-5786.html">פרשת ניצבים-וילך</a><span class="tag">נשלח</span></td><td class="s"></td></tr>
     </tbody>
   </table>
 </section>
@@ -72,11 +72,11 @@
   <table>
     <thead><tr><th class="n">גיליון</th><th class="d">שבת</th><th>פרשה / חג</th><th class="s">הערה</th></tr></thead>
     <tbody>
-      <tr class="gold chag done"><td class="n">5</td><td class="d">12.9.2026</td><td><a href="https://gyenewsletters.netlify.app/drafts/rosh-hashana-5787.html">ראש השנה</a></td><td class="s"></td></tr>
-      <tr class="done"><td class="n">6</td><td class="d">19.9.2026</td><td><a href="https://gyenewsletters.netlify.app/drafts/haazinu-5787.html">פרשת האזינו</a></td><td class="s">שבת שובה</td></tr>
-      <tr class="gold chag wip"><td class="n">7</td><td class="d">26.9.2026</td><td><a href="https://gyenewsletters.netlify.app/drafts/sukkot-5787.html">סוכות א׳</a></td><td class="s"></td></tr>
-      <tr class="gold chag wip"><td class="n">8</td><td class="d">3.10.2026</td><td><a href="https://gyenewsletters.netlify.app/drafts/simchat-torah-5787.html">שמחת תורה</a></td><td class="s">שמיני עצרת</td></tr>
-      <tr class="wip"><td class="n">9</td><td class="d">10.10.2026</td><td><a href="https://gyenewsletters.netlify.app/drafts/bereishit-5787.html">פרשת בראשית</a></td><td class="s"></td></tr>
+      <tr class="gold chag done"><td class="n">5</td><td class="d">12.9.2026</td><td><a href="https://gyenewsletters.netlify.app/drafts/rosh-hashana-5787.html">ראש השנה</a><span class="tag">נשלח</span></td><td class="s"></td></tr>
+      <tr class="done"><td class="n">6</td><td class="d">19.9.2026</td><td><a href="https://gyenewsletters.netlify.app/drafts/haazinu-5787.html">פרשת האזינו</a><span class="tag">נשלח</span></td><td class="s">שבת שובה</td></tr>
+      <tr class="gold chag wip"><td class="n">7</td><td class="d">26.9.2026</td><td><a href="https://gyenewsletters.netlify.app/drafts/sukkot-5787.html">סוכות א׳</a><span class="tag">בעבודה</span></td><td class="s"></td></tr>
+      <tr class="gold chag wip"><td class="n">8</td><td class="d">3.10.2026</td><td><a href="https://gyenewsletters.netlify.app/drafts/simchat-torah-5787.html">שמחת תורה</a><span class="tag">בעבודה</span></td><td class="s">שמיני עצרת</td></tr>
+      <tr class="wip"><td class="n">9</td><td class="d">10.10.2026</td><td><a href="https://gyenewsletters.netlify.app/drafts/bereishit-5787.html">פרשת בראשית</a><span class="tag">בעבודה</span></td><td class="s"></td></tr>
       <tr class=""><td class="n">10</td><td class="d">17.10.2026</td><td>פרשת נח</td><td class="s"></td></tr>
       <tr class=""><td class="n">11</td><td class="d">24.10.2026</td><td>פרשת לך לך</td><td class="s"></td></tr>
       <tr class=""><td class="n">12</td><td class="d">31.10.2026</td><td>פרשת וירא</td><td class="s"></td></tr>
