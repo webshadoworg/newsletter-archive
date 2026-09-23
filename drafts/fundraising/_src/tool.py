@@ -72,14 +72,18 @@ def describe(name):
     title = build.TITLE.search(body)
     versions = []
     for platform in build.PLATFORMS:
-        if not settings.get(f"{platform}.out"):
-            continue
         v = build.resolve(settings, platform)
+        if not v["out"] and platform != "constantcontact":
+            continue
         built = build.render(path, body, v)
-        out_path = build.OUT / v["out"]
         v["html"] = built
-        v["url"] = OUT_URL + v["out"]
-        v["stale"] = not out_path.exists() or out_path.read_text(encoding="utf-8") != built
+        if v["out"]:   # a version written to a file; Constant Contact is usually rendered here only
+            out_path = build.OUT / v["out"]
+            v["url"] = OUT_URL + v["out"]
+            v["stale"] = not out_path.exists() or out_path.read_text(encoding="utf-8") != built
+        else:
+            v["url"] = None
+            v["stale"] = False
         v["footer_text"] = [b.get("html") for b in emailtext.extract("<body>" + v.pop("footer_html")) if b.get("html")]
         versions.append(v)
     for v in versions:
@@ -231,6 +235,8 @@ def share_status(name):
     """The public address of each built version on the Netlify site, and whether that page is current."""
     rows = []
     for v in describe(name)["versions"]:
+        if not v["out"]:   # not written to a file, so not on the site
+            continue
         rel = (build.OUT / v["out"]).relative_to(REPO).as_posix()
         url = f"https://{SITE_HOST}/{rel}"
         try:

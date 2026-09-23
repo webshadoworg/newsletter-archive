@@ -118,7 +118,7 @@
 <script>
 const $ = (s, el = document) => el.querySelector(s);
 const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
-const NAMES = { mailchimp: "Mailchimp", gyemailer: "GYE mailer" };
+const NAMES = { mailchimp: "Mailchimp", gyemailer: "GYE mailer", constantcontact: "Constant Contact" };
 let email = null, tab = "preview", version = 0, width = "desktop", checks = {}, mc = null, mcDone = null, share = null;
 
 function status(msg, err) { const s = $("#status"); s.textContent = msg; s.className = "status" + (err ? " err" : ""); }
@@ -269,16 +269,16 @@ function renderPane() {
   if (tab === "preview") {
     pane.innerHTML = `<div class="row">${picker}
       <div class="seg" data-seg="width">${["desktop", "phone"].map(w => `<button class="${w === width ? "on" : ""}" data-w="${w}">${w[0].toUpperCase() + w.slice(1)}</button>`).join("")}</div>
-      <a class="btn" href="${esc(v.url)}" target="_blank" rel="noopener">Open ${esc(v.out)}</a></div>
+      ${v.out ? `<a class="btn" href="${esc(v.url)}" target="_blank" rel="noopener">Open ${esc(v.out)}</a>` : `<span class="hint">Not written to a file; copy it from the Copy tab</span>`}</div>
       <div class="frame"><iframe title="Preview" style="max-width:${width === "phone" ? "375px" : "100%"}"></iframe></div>
       <p class="hint" style="margin-top:10px">Merge tags such as <code>*|GREET|*</code> or <code>{{preferenceUrl}}</code> show as written here. The mail system fills them in when it sends.</p>`;
     $("iframe", pane).srcdoc = v.html;
   }
 
   if (tab === "copy") {
-    const items = email.versions.map((x, i) => ({ key: "v" + i, title: `${NAMES[x.platform] || x.platform} HTML`, sub: `${x.out} · ${Math.round(x.html.length / 1024)} KB · paste into ${NAMES[x.platform] || x.platform}`, text: x.html }));
+    const items = email.versions.map((x, i) => ({ key: "v" + i, title: `${NAMES[x.platform] || x.platform} HTML`, sub: `${x.out || "built here, no file"} · ${Math.round(x.html.length / 1024)} KB · paste into ${NAMES[x.platform] || x.platform}`, text: x.html }));
     items.push({ key: "subject", title: "Subject", sub: email.subject, text: email.subject },
-      { key: "pre", title: "Preheader", sub: email.preheader + "  (for Mailchimp's preview text field)", text: email.preheader },
+      { key: "pre", title: "Preheader", sub: email.preheader + "  (for Mailchimp's and Constant Contact's preview text field)", text: email.preheader },
       { key: "plain", title: "Plain text", sub: "The wording only, no HTML", text: plainText() });
     pane.innerHTML = items.map(it => `<div class="copyrow"><div><b>${esc(it.title)}</b><small>${esc(it.sub)}</small></div><button class="btn" data-copy="${it.key}">Copy</button></div>`).join("");
     pane.onclick = async ev => {

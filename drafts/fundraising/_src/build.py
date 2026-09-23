@@ -13,7 +13,10 @@ Each _src/<name>.src.html is the one file you edit. It starts with a settings bl
     -->
 
 A plain key is shared by every version; "<platform>.key" overrides it for one platform.
-Only platforms that have an "out" line are built. The body uses these slots:
+Only platforms that have an "out" line are written to a file. The third platform, constantcontact,
+normally has none: the tool builds it on the fly for its Copy tab, with "Dear Supporter," as the
+greeting, the preheader sentence in the HTML, utm_source=cc and no footer (Constant Contact adds
+its own). Add "constantcontact.out: <name>-cc.html" to write it out too. The body uses these slots:
 
     {{PREHEADER}}   Mailchimp: its *|MC_PREVIEW_TEXT|* tag. GYE mailer: the sentence itself.
     {{GREETING}}    the "greeting" setting
@@ -45,9 +48,14 @@ PARTIALS = SRC / "partials"
 
 PLATFORMS = {
     "mailchimp": {"preheader": "*|MC_PREVIEW_TEXT|*", "footer": "footer-mailchimp.html", "utm_source": "mc",
-                  "email_tag": "*|EMAIL|*"},
+                  "email_tag": "*|EMAIL|*", "greeting": None},
     "gyemailer": {"preheader": None, "footer": "footer-gyemailer.html", "utm_source": "members",
-                  "email_tag": "{{email}}"},
+                  "email_tag": "{{email}}", "greeting": None},
+    # Constant Contact: no out file unless the email asks for one; the tool renders it for the Copy tab.
+    # Constant Contact appends its own footer (address, unsubscribe), so ours is left out, and it has
+    # no merge tag for the reader's address, so the wording says "this one".
+    "constantcontact": {"preheader": None, "footer": None, "utm_source": "cc",
+                        "email_tag": "this one", "greeting": "Dear Supporter,"},
 }
 
 HEADER = re.compile(r"\A<!--@email\n(.*?)\n-->\n", re.S)
@@ -82,10 +90,10 @@ def resolve(settings, platform):
         footer_file = None
     return {
         "platform": platform,
-        "out": settings[f"{platform}.out"],
+        "out": settings.get(f"{platform}.out"),
         "preheader": PLATFORMS[platform]["preheader"] or get("preheader"),
         "preheader_is_tag": bool(PLATFORMS[platform]["preheader"]),
-        "greeting": get("greeting"),
+        "greeting": get("greeting") or PLATFORMS[platform]["greeting"],
         "utm": get("utm"),
         "utm_source": get("utm_source") or PLATFORMS[platform]["utm_source"],
         "email_tag": PLATFORMS[platform]["email_tag"],

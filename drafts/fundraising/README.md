@@ -15,6 +15,13 @@ for each system. This applies to fundraising emails only, not to the rest of `dr
 | `utm_content` | the same in both, e.g. `erev-yk-teshuva` | |
 | "Prefer to mail a check?" line | left out; the footer has the address | in the body |
 
+A third version, **Constant Contact**, is not written to a file: the tool builds it when you open
+an email and offers it under Copy. It has `Dear Supporter,` as the greeting (change it with a
+`constantcontact.greeting` line, or under Settings), the preheader sentence in the HTML like the
+GYE mailer version, `utm_source=cc`, no footer (Constant Contact appends its own address and
+unsubscribe), and "this one" where the other versions print the reader's email address. Add
+`constantcontact.out: <name>-cc.html` to write it to a file as well.
+
 ## Changing the text
 
 1. Edit `_src/<name>.src.html`. This is the only file you edit.
@@ -38,7 +45,7 @@ top. It runs on this machine only.
   example) is marked and can only be changed in the source file. Changing a button's label also
   changes the copy of it that Outlook uses.
 - **Preview.** Either version, at desktop or phone width.
-- **Copy.** One click copies a version's full HTML, the subject, the preheader (for Mailchimp's
+- **Copy.** One click copies a version's full HTML (including the Constant Contact one), the subject, the preheader (for Mailchimp's
   preview text field), or the plain text.
 - **Links.** Every link in a version with its `utm_source` and `utm_content`. It flags a link whose
   tags differ from what that version should have, or that has none when other links to the same
