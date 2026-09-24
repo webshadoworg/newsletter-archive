@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
-"""The fundraising email tool: read the wording, edit it, preview and copy each version, check the links.
+"""The email tool: read the wording, edit it, preview and copy each version, check the links.
 
     python3 drafts/fundraising/_src/tool.py          then open http://127.0.0.1:8822/
 
-It runs on this machine only. Saving in the page writes to _src/<name>.src.html and rebuilds
-every version, exactly as editing the file and running build.py would.
+It runs on this machine only. For a fundraising email, saving in the page writes to
+_src/<name>.src.html and rebuilds every version, exactly as editing the file and running build.py
+would. It also opens the plain newsletter drafts in drafts/ (the ones that carry the GYE mailer's
+unsubscribe tags); there it writes straight into drafts/<name>.html, and there is nothing to build.
 """
 import base64
 import hashlib
@@ -31,15 +33,96 @@ CRM_ENV = REPO.parent / "gye-crm" / ".env"   # the Mailchimp key lives there, ne
 SITE_HOST = "gyenewsletters.netlify.app"   # this repo, as published by Netlify
 IMG = re.compile(r'<img\b[^>]*?\bsrc="([^"]*)"', re.I)
 LINK = re.compile(r'<(a|v:roundrect)\b[^>]*?href="([^"]*)"[^>]*>(.*?)</\1>', re.S)
+DRAFTS = REPO / "drafts"   # plain newsletter drafts: one hand-written HTML file each, sent through the GYE mailer
+MAILER_TAG = re.compile(r"\{\{(?:preferenceUrl|unsubscribeFromAll|leaveCurrentSeriesOrListUrl)\}\}")
+# the hidden preheader div at the top of the body; "spacer" is the invisible padding some drafts put there
+PREHEADER_DIV = re.compile(r"(<div\b[^>]*display:\s*none[^>]*>)(.*?)(</div>)", re.S | re.I)
+SPACER = re.compile(r"&#847;|&zwnj;|&nbsp;|[\u034f\u200c\u00a0]")
+
+
+def check_name(name):
+    if not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9._-]*", name):
+        raise ValueError("bad email name")
 
 
 def src_path(name):
-    if not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9._-]*", name):
-        raise ValueError("bad email name")
+    """The source file of a fundraising email. A plain draft has none."""
+    check_name(name)
     path = build.SRC / f"{name}.src.html"
     if not path.exists():
+        if (DRAFTS / f"{name}.html").is_file():
+            raise ValueError(f"{name} is a plain newsletter draft, not a fundraising email. It has no source file "
+                             "and no Mailchimp version.")
         raise ValueError(f"no such email: {name}")
     return path
+
+
+def plain_path(name):
+    """A plain draft's file, or None when the name is a fundraising email (which comes first)."""
+    check_name(name)
+    if (build.SRC / f"{name}.src.html").exists():
+        return None
+    path = DRAFTS / f"{name}.html"
+    if not path.is_file():
+        raise ValueError(f"no such email: {name}")
+    return path
+
+
+def is_plain_draft(path):
+    """A file in drafts/ counts as an email when it carries the GYE mailer's footer tags. The rest of the
+    folder (option pages, reviews, banner tests) is left out."""
+    try:
+        return bool(MAILER_TAG.search(path.read_text(encoding="utf-8")))
+    except (UnicodeDecodeError, OSError):
+        return False
+
+
+def list_emails():
+    fundraising = sorted(p.name[:-len(".src.html")] for p in build.SRC.glob("*.src.html"))
+    # newest first, by the last commit that touched the file (a fresh checkout gives every file the same mtime)
+    committed, when = {}, None
+    for line in git("log", "--format=%ct", "--name-only", "--", "drafts/*.html").splitlines():
+        if line.isdigit():
+            when = int(line)
+        elif line and line not in committed:
+            committed[line] = when
+    drafts = sorted((p for p in DRAFTS.glob("*.html") if is_plain_draft(p)),
+                    key=lambda p: committed.get(p.relative_to(REPO).as_posix()) or p.stat().st_mtime, reverse=True)
+    drafts = [p.name[:-len(".html")] for p in drafts]
+    return [{"name": n, "group": "Fundraising"} for n in fundraising] + \
+           [{"name": n, "group": "Newsletters"} for n in drafts if n not in fundraising]
+
+
+def preheader_of(text):
+    """The text of the hidden preheader div, if the draft has one. (found, text)"""
+    body = text.find("<body")
+    m = PREHEADER_DIV.search(text, body if body >= 0 else 0)
+    if not m:
+        return False, ""
+    inner = html.unescape(SPACER.sub(" ", re.sub(r"<[^>]+>", "", m.group(2))))
+    return True, re.sub(r"\s+", " ", inner).strip()
+
+
+def set_preheader(text, value):
+    """Write the preheader sentence into the hidden div, adding the div under <body> when there is none."""
+    body = text.find("<body")
+    m = PREHEADER_DIV.search(text, body if body >= 0 else 0)
+    if m:
+        return text[:m.start(2)] + value + text[m.end(2):]
+    if not value:
+        return text
+    tag = re.compile(r"<body\b[^>]*>", re.I).search(text)
+    if not tag:
+        raise ValueError("The file has no <body> tag to put the preheader under.")
+    div = ('<div style="display:none;font-size:1px;color:#ffffff;line-height:1px;max-height:0;max-width:0;'
+           f'opacity:0;overflow:hidden;">{value}</div>')
+    return text[:tag.end()] + "\n" + div + text[tag.end():]
+
+
+def common(values):
+    """The value most links agree on, else an empty string."""
+    values = [v for v in values if v]
+    return max(set(values), key=values.count) if values else ""
 
 
 def links_of(built, v, tracked_hosts):
@@ -66,6 +149,8 @@ def links_of(built, v, tracked_hosts):
 
 
 def describe(name):
+    if path := plain_path(name):
+        return describe_plain(name, path)
     path = src_path(name)
     text = path.read_text(encoding="utf-8")
     settings, body = build.parse(path)
@@ -79,6 +164,7 @@ def describe(name):
         v["html"] = built
         if v["out"]:   # a version written to a file; Constant Contact is usually rendered here only
             out_path = build.OUT / v["out"]
+            v["rel"] = out_path.relative_to(REPO).as_posix()
             v["url"] = OUT_URL + v["out"]
             v["stale"] = not out_path.exists() or out_path.read_text(encoding="utf-8") != built
         else:
@@ -92,14 +178,46 @@ def describe(name):
     blocks = emailtext.extract(text)
     return {
         "name": name,
+        "plain": False,
         "rev": hashlib.sha1(text.encode()).hexdigest(),
         "source": f"drafts/fundraising/_src/{path.name}",
         "subject": html.unescape(title.group(1)) if title else "",
         "preheader": html.unescape(settings.get("preheader", "")),
         "utm": settings.get("utm", ""),
         "versions": versions,
-        "blocks": [{"i": i, "kind": b["kind"], "html": b.get("html", ""), "locked": b["locked"],
-                    "alt": b.get("alt"), "src": b.get("src"), "href": b.get("href"), "only": b.get("only")} for i, b in enumerate(blocks)],
+        "blocks": block_rows(blocks),
+    }
+
+
+def block_rows(blocks):
+    return [{"i": i, "kind": b["kind"], "html": b.get("html", ""), "locked": b["locked"],
+             "alt": b.get("alt"), "src": b.get("src"), "href": b.get("href"), "only": b.get("only")} for i, b in enumerate(blocks)]
+
+
+def describe_plain(name, path):
+    """A plain draft: one version, the file itself, with nothing rendered or built."""
+    text = path.read_text(encoding="utf-8")
+    title = build.TITLE.search(text)
+    rel = path.relative_to(REPO).as_posix()
+    tagged = [dict(parse_qsl(urlsplit(html.unescape(h)).query)) for _, h, _ in LINK.findall(text) if "utm_source=" in h]
+    v = {"platform": "gyemailer", "out": path.name, "rel": rel, "url": "/" + rel, "html": text, "stale": False,
+         "greeting": "", "footer_file": None, "footer_text": [],
+         # the tags most links carry; the Links tab then points out the odd one out
+         "utm_source": common(q.get("utm_source") for q in tagged), "utm": common(q.get("utm_content") for q in tagged)}
+    hosts = {urlsplit(html.unescape(h)).netloc for _, h, _ in LINK.findall(text) if "utm_source=" in h}
+    v["links"] = links_of(text, v, hosts)
+    has_preheader, preheader = preheader_of(text)
+    return {
+        "name": name,
+        "plain": True,
+        "rev": hashlib.sha1(text.encode()).hexdigest(),
+        "source": rel,
+        "subject": html.unescape(title.group(1)) if title else "",
+        "preheader": preheader,
+        "preheader_div": has_preheader,
+        "utm": v["utm"],
+        "versions": [v],
+        "blocks": block_rows(emailtext.extract(text)),
     }
 
 
@@ -115,12 +233,14 @@ def set_setting(text, key, value):
 
 
 def change(name, payload):
-    path = src_path(name)
+    plain = plain_path(name)
+    path = plain or src_path(name)
     text = path.read_text(encoding="utf-8")
     if payload.get("rev") != hashlib.sha1(text.encode()).hexdigest():
         raise ValueError("The source file changed since this page loaded. Reload and try again.")
     action = payload.get("action")
     blocks = emailtext.extract(text)
+    one_line = lambda s: re.sub(r"\s+", " ", s).strip()
     if action in ("edit", "delete", "add"):
         index = payload.get("index")
         if not isinstance(index, int) or not 0 <= index < len(blocks):
@@ -131,9 +251,15 @@ def change(name, payload):
             text = emailtext.delete_block(text, blocks, index)
         else:
             text = emailtext.add_after(text, blocks, index, payload.get("html", ""))
+    elif action == "settings" and plain:
+        values = payload.get("values", {})
+        if "subject" in values:
+            subject = emailtext.encode(one_line(values["subject"]))
+            text = build.TITLE.sub(lambda _: f"<title>{subject}</title>", text, count=1)
+        if "preheader" in values:
+            text = set_preheader(text, emailtext.encode(one_line(values["preheader"])))
     elif action == "settings":
         values = payload.get("values", {})
-        one_line = lambda s: re.sub(r"\s+", " ", s).strip()
         if "subject" in values:
             subject = emailtext.encode(one_line(values["subject"]))
             text = build.TITLE.sub(lambda _: f"<title>{subject}</title>", text, count=1)
@@ -151,7 +277,8 @@ def change(name, payload):
     else:
         raise ValueError("unknown action")
     path.write_text(text, encoding="utf-8")
-    build.build_email(path)
+    if not plain:
+        build.build_email(path)
     return describe(name)
 
 
@@ -237,7 +364,7 @@ def share_status(name):
     for v in describe(name)["versions"]:
         if not v["out"]:   # not written to a file, so not on the site
             continue
-        rel = (build.OUT / v["out"]).relative_to(REPO).as_posix()
+        rel = v["rel"]
         url = f"https://{SITE_HOST}/{rel}"
         try:
             request = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 (share check)", "Cache-Control": "no-cache"})
@@ -394,7 +521,7 @@ class Handler(SimpleHTTPRequestHandler):
                 self.end_headers()
                 self.wfile.write(body)
             elif path == "/api/emails":
-                self.send_json(sorted(p.name[:-len(".src.html")] for p in build.SRC.glob("*.src.html")))
+                self.send_json(list_emails())
             elif path.startswith("/api/share/"):
                 self.send_json(share_status(path.rsplit("/", 1)[1]))
             elif path.startswith("/api/mailchimp/"):
@@ -429,7 +556,7 @@ class Handler(SimpleHTTPRequestHandler):
 
 if __name__ == "__main__":
     server = ThreadingHTTPServer(("127.0.0.1", PORT), partial(Handler, directory=str(REPO)))
-    print(f"Fundraising email tool: http://127.0.0.1:{PORT}/   (Ctrl+C to stop)")
+    print(f"Email tool: http://127.0.0.1:{PORT}/   (Ctrl+C to stop)")
     try:
         server.serve_forever()
     except KeyboardInterrupt:

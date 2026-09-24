@@ -140,3 +140,25 @@ Then change `utm` and both `out` lines first, or the build overwrites the older 
 
 Emails written before this setup have no file in `_src/` and are still plain hand-edited HTML.
 Convert one when it next needs a change.
+
+## Plain newsletter drafts
+
+The tool also opens the weekly newsletters and the other one-off emails that live directly in
+`drafts/` (`drafts/sukkos-2026.html`, for example). They appear in the picker under **Newsletters**,
+newest first. A file counts as an email when it carries one of the GYE mailer's footer tags
+(`{{preferenceUrl}}`, `{{unsubscribeFromAll}}`, `{{leaveCurrentSeriesOrListUrl}}`); the option
+pages and review pages in the same folder are left out.
+
+A plain draft has one version and no source file, so:
+
+- **Text** edits write straight into `drafts/<name>.html`. There is nothing to build.
+- **Settings** has the subject and the preheader only. The preheader is the hidden line at the top
+  of the body; if the draft has none, typing one adds it. Greetings, footers and utm tags are
+  ordinary text in the file, so they are changed in the Text pane or the file itself.
+- **Links** reports the utm tags the links carry and flags one that differs from the rest. A draft
+  whose links have no tags at all is reported as such, not as a problem.
+- **Mailchimp** does nothing for a plain draft. Copy the HTML from the Copy tab into the GYE mailer.
+- **Share** and **Copy** work the same as for a fundraising email.
+
+A name that exists both as `_src/<name>.src.html` and as `drafts/<name>.html` opens the
+fundraising email.

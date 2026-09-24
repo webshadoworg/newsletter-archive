@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Fundraising emails</title>
+<title>GYE emails</title>
 <style>
   :root { --red:#ab0001; --ink:#222; --soft:#666; --line:#e6e1dc; --bg:#f4f2f0; --card:#fff; --warn:#fff8e6; --warnline:#d99b00; --bad:#fdecec; --ok:#1d7a46; }
   * { box-sizing:border-box; }
@@ -82,7 +82,7 @@
 </head>
 <body>
 <div class="top">
-  <h1>Fundraising emails</h1>
+  <h1>GYE emails</h1>
   <select id="pick" aria-label="Email"></select>
   <span class="status" id="status"></span>
 </div>
@@ -96,7 +96,7 @@
     </div>
     <div class="card">
       <h2>Text</h2>
-      <p class="hint">Click a paragraph to change it. Saving writes to <code id="srcpath"></code> and rebuilds every version.</p>
+      <p class="hint" id="texthint">Click a paragraph to change it. Saving writes to <code id="srcpath"></code><span id="rebuild"> and rebuilds every version</span>.</p>
       <div id="blocks"></div>
       <div id="feet"></div>
     </div>
@@ -137,7 +137,7 @@ async function load(name) {
     checks = {}; mc = null; mcDone = null; share = null;
     render();
     const stale = email.versions.filter(v => v.stale).map(v => v.out);
-    status(stale.length ? "Not built yet: " + stale.join(", ") + ". Save any change, or run build.py." : "Built files are up to date", stale.length);
+    status(email.plain ? "Loaded " + email.source : stale.length ? "Not built yet: " + stale.join(", ") + ". Save any change, or run build.py." : "Built files are up to date", stale.length);
   } catch (e) { status(e.message, true); }
 }
 
@@ -147,7 +147,7 @@ async function change(body, done) {
     email = await api("/api/email/" + encodeURIComponent(email.name), { rev: email.rev, ...body });
     checks = {}; mcDone = null; share = null;
     render();
-    status(done || "Saved and rebuilt");
+    status(email.plain ? (done || "Saved").replace(" and rebuilt", "") : done || "Saved and rebuilt");
   } catch (e) { status(e.message, true); }
 }
 
@@ -155,9 +155,10 @@ function render() {
   $("#subj").textContent = email.subject || "(no subject)";
   $("#pre").textContent = email.preheader || "(no preheader)";
   $("#srcpath").textContent = email.source;
+  $("#rebuild").style.display = email.plain ? "none" : "";
   const box = $("#blocks"); box.innerHTML = "";
   for (const b of email.blocks) box.appendChild(blockEl(b));
-  $("#feet").innerHTML = email.versions.map(v => `<div class="foot"><p><span class="tag">${esc(NAMES[v.platform] || v.platform)} footer</span>
+  $("#feet").innerHTML = email.plain ? "" : email.versions.map(v => `<div class="foot"><p><span class="tag">${esc(NAMES[v.platform] || v.platform)} footer</span>
     ${v.footer_file ? `<code>partials/${esc(v.footer_file)}</code>` : "none"}</p>${v.footer_text.map(t => `<p>${t}</p>`).join("")}</div>`).join("");
   for (const a of document.querySelectorAll("#blocks a, #feet a")) { a.target = "_blank"; a.rel = "noopener"; }
   renderPane();
@@ -271,15 +272,16 @@ function renderPane() {
       <div class="seg" data-seg="width">${["desktop", "phone"].map(w => `<button class="${w === width ? "on" : ""}" data-w="${w}">${w[0].toUpperCase() + w.slice(1)}</button>`).join("")}</div>
       ${v.out ? `<a class="btn" href="${esc(v.url)}" target="_blank" rel="noopener">Open ${esc(v.out)}</a>` : `<span class="hint">Not written to a file; copy it from the Copy tab</span>`}</div>
       <div class="frame"><iframe title="Preview" style="max-width:${width === "phone" ? "375px" : "100%"}"></iframe></div>
-      <p class="hint" style="margin-top:10px">Merge tags such as <code>*|GREET|*</code> or <code>{{preferenceUrl}}</code> show as written here. The mail system fills them in when it sends.</p>`;
+      <p class="hint" style="margin-top:10px">Merge tags such as ${email.plain ? "" : "<code>*|GREET|*</code> or "}<code>{{preferenceUrl}}</code> show as written here. The mail system fills them in when it sends.</p>`;
     $("iframe", pane).srcdoc = v.html;
   }
 
   if (tab === "copy") {
     const items = email.versions.map((x, i) => ({ key: "v" + i, title: `${NAMES[x.platform] || x.platform} HTML`, sub: `${x.out || "built here, no file"} · ${Math.round(x.html.length / 1024)} KB · paste into ${NAMES[x.platform] || x.platform}`, text: x.html }));
-    items.push({ key: "subject", title: "Subject", sub: email.subject, text: email.subject },
-      { key: "pre", title: "Preheader", sub: email.preheader + "  (for Mailchimp's and Constant Contact's preview text field)", text: email.preheader },
-      { key: "plain", title: "Plain text", sub: "The wording only, no HTML", text: plainText() });
+    items.push({ key: "subject", title: "Subject", sub: email.subject, text: email.subject });
+    if (!email.plain) items.push({ key: "pre", title: "Preheader", sub: email.preheader + "  (for Mailchimp's and Constant Contact's preview text field)", text: email.preheader });
+    else if (email.preheader) items.push({ key: "pre", title: "Preheader", sub: email.preheader, text: email.preheader });
+    items.push({ key: "plain", title: "Plain text", sub: "The wording only, no HTML", text: plainText() });
     pane.innerHTML = items.map(it => `<div class="copyrow"><div><b>${esc(it.title)}</b><small>${esc(it.sub)}</small></div><button class="btn" data-copy="${it.key}">Copy</button></div>`).join("");
     pane.onclick = async ev => {
       const btn = ev.target.closest("[data-copy]"); if (!btn) return;
@@ -292,7 +294,7 @@ function renderPane() {
     const flagged = v.links.filter(l => l.flags.length).length, dead = v.links.filter(l => checks[l.url] && !checks[l.url].ok).length;
     const checked = Object.keys(checks).length > 0;
     pane.innerHTML = `<div class="row">${picker}<button class="btn" id="check">Check that the links load</button></div>
-      <div class="summary ${flagged || dead ? "bad" : "ok"}">${v.links.length} links. ${flagged ? flagged + " with a tagging problem." : `Every tagged link has utm_source=${esc(v.utm_source)} and utm_content=${esc(v.utm)}.`} ${checked ? (dead ? dead + " did not load." : "All of them load.") : ""}</div>
+      <div class="summary ${flagged || dead ? "bad" : "ok"}">${v.links.length} links. ${flagged ? flagged + " with a tagging problem." : !v.utm_source ? "None of them carries utm tags." : `Every tagged link has utm_source=${esc(v.utm_source)} and utm_content=${esc(v.utm)}.`} ${checked ? (dead ? dead + " did not load." : "All of them load.") : ""}</div>
       <div class="scroll"><table><tr><th>Link</th><th>Goes to</th><th>utm_source</th><th>utm_content</th><th>Loads</th></tr>
       ${v.links.map(l => { const c = checks[l.url]; return `<tr><td>${esc(l.label)}${l.outlook ? ` <span class="tag">Outlook copy</span>` : ""}</td>
         <td class="url"><a href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.show)}</a>${l.flags.map(f => `<span class="flag">${esc(f)}</span>`).join("")}</td>
@@ -305,7 +307,21 @@ function renderPane() {
     };
   }
 
-  if (tab === "settings") {
+  if (tab === "settings" && email.plain) {
+    pane.innerHTML = `<div class="field"><label>Subject</label><input data-key="subject" value="${esc(email.subject)}"><small>Stored as the page title of the email. You still type the subject into the mail system.</small></div>
+      <div class="field"><label>Preheader</label><textarea data-key="preheader">${esc(email.preheader)}</textarea><small>${email.preheader_div
+        ? "The hidden line at the top of the HTML that the inbox shows under the subject."
+        : "This draft has no preheader line yet. Type one and it is added at the top of the HTML, hidden from the page and shown by the inbox under the subject."}</small></div>
+      <p class="hint">Greetings, footers and utm tags are written straight into the HTML of a plain draft. Change them in the text above or in the file.</p>
+      <button class="btn primary" id="saveset">Save settings</button>`;
+    $("#saveset").onclick = () => {
+      const values = {};
+      for (const f of pane.querySelectorAll("[data-key]")) values[f.dataset.key] = f.value;
+      change({ action: "settings", values }, "Settings saved");
+    };
+  }
+
+  if (tab === "settings" && !email.plain) {
     const g = email.versions.map(x => `<div class="field"><label>${esc(NAMES[x.platform] || x.platform)} greeting</label><input data-key="${esc(x.platform)}.greeting" value="${esc(x.greeting)}"></div>`).join("");
     pane.innerHTML = `<div class="field"><label>Subject</label><input data-key="subject" value="${esc(email.subject)}"><small>Stored as the page title of the email. You still type the subject into the mail system.</small></div>
       <div class="field"><label>Preheader</label><textarea data-key="preheader">${esc(email.preheader)}</textarea><small>GYE mailer gets it inside the HTML. For Mailchimp, paste it into the preview text field.</small></div>
@@ -321,7 +337,8 @@ function renderPane() {
 
   if (tab === "mailchimp") {
     const has = email.versions.some(x => x.platform === "mailchimp");
-    if (!has) pane.innerHTML = `<p class="hint">This email has no Mailchimp version.</p>`;
+    if (email.plain) pane.innerHTML = `<p class="hint">This is a plain newsletter draft. It goes out through the GYE mailer: copy its HTML from the Copy tab. Mailchimp drafts are made for fundraising emails, which are written in <code>_src/</code>.</p>`;
+    else if (!has) pane.innerHTML = `<p class="hint">This email has no Mailchimp version.</p>`;
     else if (!mc) { pane.innerHTML = `<p class="hint">Asking Mailchimp…</p>`; loadMailchimp(email.name); }
     else if (mc.error) pane.innerHTML = `<div class="summary bad">${esc(mc.error)}</div><button class="btn" id="mcretry">Try again</button>`;
     else {
@@ -366,7 +383,7 @@ function renderPane() {
           <small><a href="${esc(r.url)}" target="_blank" rel="noopener">${esc(r.url)}</a></small>${r.why ? `<span class="flag">${esc(r.why)}</span>` : ""}</div>
           <button class="btn" data-share="${i}">Copy link</button></div>`).join("")
         + `<div class="row" style="margin-top:14px"><button class="btn" id="shagain">Check again</button></div>
-        <p class="hint">Anyone with the link can open it, with no sign-in. A link shows what was last pushed to GitHub, not what is saved here, so push before you share. The Mailchimp version shows its merge tags as written (the greeting, the address line), so the GYE mailer link reads better for a person.</p>`;
+        <p class="hint">Anyone with the link can open it, with no sign-in. A link shows what was last pushed to GitHub, not what is saved here, so push before you share.${email.plain ? "" : " The Mailchimp version shows its merge tags as written (the greeting, the address line), so the GYE mailer link reads better for a person."}</p>`;
       pane.onclick = async ev => {
         const btn = ev.target.closest("[data-share]"); if (!btn) return;
         try { await navigator.clipboard.writeText(share[+btn.dataset.share].url); btn.textContent = "Copied"; btn.classList.add("done"); setTimeout(() => { btn.textContent = "Copy link"; btn.classList.remove("done"); }, 1600); }
@@ -385,9 +402,10 @@ $("#pick").addEventListener("change", ev => load(ev.target.value));
 
 (async () => {
   try {
-    const names = await api("/api/emails");
-    $("#pick").innerHTML = names.map(n => `<option>${esc(n)}</option>`).join("");
-    if (!names.length) return status("No emails in _src/ yet", true);
+    const rows = await api("/api/emails"), names = rows.map(r => r.name);
+    const groups = [...new Set(rows.map(r => r.group))];
+    $("#pick").innerHTML = groups.map(g => `<optgroup label="${esc(g)}">${rows.filter(r => r.group === g).map(r => `<option>${esc(r.name)}</option>`).join("")}</optgroup>`).join("");
+    if (!names.length) return status("No emails found", true);
     let last = null; try { last = localStorage.getItem("fundraising-tool-email"); } catch (e) {}
     const first = names.includes(last) ? last : names[0];
     $("#pick").value = first;
