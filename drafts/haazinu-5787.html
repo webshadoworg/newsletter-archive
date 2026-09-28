@@ -57,6 +57,16 @@
       .tbl .c1   { border-top:0 !important; font-size:16px !important; }
       .tbl .lbl  { display:block !important; margin:0 0 2px !important; }
       .tbl .cap, .cap { font-size:16px !important; }
+      /* ==== תג הצעד (#832) - הפריסה של הנייד. מיובא מ-../step-tag.mjs, אל תערוך כאן.
+         ⚠ הכללים יושבים **בתוך** ה-@media הזה בכוונה: .stag{width:1%} גלובלי היה
+         מכווץ גם את הדסקטופ ל-min-content, כלומר לשתי שורות - ההפך מ-#832. ==== */
+      .stag      { width:1% !important; }
+      .stag-i    { width:100% !important; }
+      .stag-c, .stag-t { display:block !important; width:auto !important; text-align:center !important; }
+      .stag-c    { background-color:transparent !important; padding:9px 16px 0 16px !important; }
+      .stag-b    { display:inline-block; background-color:#1c4587; border-radius:999px; padding:7px 21px; font-size:16px; line-height:1.2; font-weight:700; letter-spacing:.4px; color:#ffffff; }
+      .stag-t    { padding:6px 16px 10px 16px !important; }
+      /* ==== סוף הבלוק המנוהל של מדור 3 ==== */
     }
   </style>
 </head>
@@ -335,10 +345,18 @@
           <tr>
             <td class="pad txt" style="padding:0 34px 10px 34px;">
               
-              <p class="note disc" style="Margin:0 0 18px; font-size:13px; line-height:1.6; text-align:justify; color:#6a6a6a;"><span style="color:#1c4587; font-weight:700;">הערה:</span> מדור זה עוסק בתוכנית 12 הצעדים, שמתאימה למצבים של התמודדות יומיומית קשה שנחשבת &#39;התמכרות&#39;. אם אתם בספק, אתם מוזמנים לפנות לרפאל בטלפון <a href="tel:+9720587004152" style="color:#1c4587; text-decoration:underline;"><span dir="ltr" style="unicode-bidi:embed;">058-7004152</span></a> או במייל <a href="mailto:shmor.help@gmail.com" style="color:#1c4587; text-decoration:underline;"><span dir="ltr" style="unicode-bidi:embed;">shmor.help@gmail.com</span></a></p>
+              <p class="note disc" style="Margin:0 0 0px; font-size:13px; line-height:1.6; text-align:justify; text-align-last:center; color:#6a6a6a;"><span style="color:#1c4587; font-weight:700;">הערה:</span> מדור זה עוסק בתוכנית 12 הצעדים, שמתאימה להתמודדות יומיומית קשה שנחשבת &#39;התמכרות&#39;.</p>
+              <p class="note disc" style="Margin:0 0 18px; font-size:13px; line-height:1.6; text-align:center; color:#6a6a6a;">אם אתם בספק, אתם מוזמנים לפנות לרפאל בטלפון <a href="tel:+9720587004152" style="color:#1c4587; text-decoration:none;"><span dir="ltr" style="unicode-bidi:embed;">058-7004152</span></a> <span style="white-space:nowrap;">או במייל <a href="mailto:shmor.help@gmail.com" style="color:#1c4587; text-decoration:none;"><span dir="ltr" style="unicode-bidi:embed;">shmor.help@gmail.com</span></a></span></p>
               
-              <table role="presentation" align="center" cellpadding="0" cellspacing="0" border="0" style="margin:0 auto 15px; border-collapse:separate !important; border-spacing:0;">
-                <tr><td class="pill" align="center" style="padding:9px 24px; background-color:#e7f0f9; border:1px solid #b9cfe6; border-radius:999px; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:16px; line-height:1.2; font-weight:700; letter-spacing:.4px; color:#1c4587; white-space:nowrap;">צעד 2</td></tr>
+              <table role="presentation" align="center" cellpadding="0" cellspacing="0" border="0" class="stag" style="margin:0 auto 15px; border-collapse:separate !important; border-spacing:0;">
+                <tr><td style="padding:0; background-color:#e7f0f9; border:1px solid #b9cfe6; border-radius:999px;">
+                  <table role="presentation" cellpadding="0" cellspacing="0" border="0" class="stag-i" style="border-collapse:separate !important; border-spacing:0;">
+                    <tr>
+                      <td class="stag-c" align="center" valign="middle" style="padding:4px 12px; background-color:#1c4587; border-radius:999px; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:12px; line-height:1.2; font-weight:700; letter-spacing:.4px; color:#ffffff; white-space:nowrap;"><span class="stag-b">צעד 2</span></td>
+                      <td class="stag-t" align="center" valign="middle" style="padding:4px 11px 4px 13px; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:15px; line-height:1.35; color:#1c4587;"><span style="white-space:nowrap;">הגענו להאמין שכוח גדול מעצמנו</span> <span style="white-space:nowrap;">יכול להחזיר אותנו לשפיות</span></td>
+                    </tr>
+                  </table>
+                </td></tr>
               </table>
               
               <h1 class="h1" style="Margin:0 0 12px; font-family:&#39;Open Sans&#39;,&#39;Arial Hebrew&#39;,Arial,sans-serif; font-size:22px; line-height:1.22; color:#1c4587; font-weight:700; text-align:center;">עד ה&#39; אלקיך</h1>
