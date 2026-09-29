@@ -41,6 +41,16 @@
       .foot p    { font-size:13px !important; }
       .foot .addr { font-size:11px !important; }
       .tak p     { font-size:15px !important; }
+      /* ==== תג הצעד של מדור 3 (#832) - פריסת הנייד. מיובא מ-../step-tag.mjs, אל תערוך כאן.
+         ⚠ הכללים יושבים **בתוך** ה-@media בכוונה: .stag{width:1%} גלובלי היה מכווץ גם את
+         הדסקטופ ל-min-content, כלומר לשתי שורות - ההפך מ-#832. ==== */
+      .stag      { width:1% !important; }
+      .stag-i    { width:100% !important; }
+      .stag-c, .stag-t { display:block !important; width:auto !important; text-align:center !important; }
+      .stag-c    { background-color:transparent !important; padding:9px 16px 0 16px !important; }
+      .stag-b    { display:inline-block; background-color:#1c4587; border-radius:999px; padding:7px 21px; font-size:16px; line-height:1.2; font-weight:700; letter-spacing:.4px; color:#ffffff; }
+      .stag-t    { padding:6px 16px 10px 16px !important; }
+      /* ==== סוף הבלוק המנוהל של מדור 3 ==== */
     }
   </style>
 </head>
@@ -257,14 +267,40 @@
               
               <p class="note disc" style="Margin:0 0 0px; font-size:13px; line-height:1.6; text-align:justify; text-align-last:center; color:#6a6a6a;"><span style="color:#1c4587; font-weight:700;">הערה:</span> מדור זה עוסק בתוכנית 12 הצעדים, שמתאימה להתמודדות יומיומית קשה שנחשבת &#39;התמכרות&#39;.</p>
               <p class="note disc" style="Margin:0 0 18px; font-size:13px; line-height:1.6; text-align:center; color:#6a6a6a;">אם אתם בספק, אתם מוזמנים לפנות לרפאל בטלפון <a href="tel:+9720587004152" style="color:#1c4587; text-decoration:none; white-space:nowrap;"><span dir="ltr" style="unicode-bidi:embed;">058-7004152</span></a> <span style="white-space:nowrap;">או במייל <a href="mailto:shmor.help@gmail.com" style="color:#1c4587; text-decoration:none;"><span dir="ltr" style="unicode-bidi:embed;">shmor.help@gmail.com</span></a></span></p>
-
-              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" dir="rtl" style="width:100%;">
-                <tr>
-                  <td style="padding:16px 18px; background-color:#f7f4ea; border:2px dashed #cbb96a;">
-                    <p style="Margin:0; font-size:15px; line-height:1.7; text-align:right; color:#8a7524;"><strong>[ממלא מקום]</strong> מדור 3 (צעדני ואושעה) - חסרים הכותרת, הטקסט ומשפט המפתח להדגשה.</p>
-                  </td>
-                </tr>
+              
+              <table role="presentation" align="center" cellpadding="0" cellspacing="0" border="0" class="stag" style="margin:0 auto 15px; border-collapse:separate !important; border-spacing:0;">
+                <tr><td style="padding:0; background-color:#e7f0f9; border:1px solid #b9cfe6; border-radius:999px;">
+                  <table role="presentation" cellpadding="0" cellspacing="0" border="0" class="stag-i" style="border-collapse:separate !important; border-spacing:0;">
+                    <tr>
+                      <td class="stag-c" align="center" valign="middle" style="padding:4px 12px; background-color:#1c4587; border-radius:999px; font-family:'Open Sans','Arial Hebrew',Arial,sans-serif; font-size:12px; line-height:1.2; font-weight:700; letter-spacing:.4px; color:#ffffff; white-space:nowrap;"><span class="stag-b">צעד 2</span></td>
+                      <td class="stag-t" align="center" valign="middle" style="padding:4px 11px 4px 13px; font-family:'Open Sans','Arial Hebrew',Arial,sans-serif; font-size:15px; line-height:1.35; color:#1c4587;"><span style="white-space:nowrap;">הגענו להאמין שכוח גדול מעצמנו</span> <span style="white-space:nowrap;">יכול להחזיר אותנו לשפיות</span></td>
+                    </tr>
+                  </table>
+                </td></tr>
               </table>
+              
+              <h1 class="h1" style="Margin:0 0 12px; font-family:'Open Sans','Arial Hebrew',Arial,sans-serif; font-size:22px; line-height:1.22; color:#1c4587; font-weight:700; text-align:center;">להזעיק עזרה!</h1>
+
+              <p style="Margin:0 0 18px; font-size:16px; line-height:1.75; text-align:justify;">באחד מבתי החולים בארץ יש מחלקת טיפול נמרץ עמוסה במיוחד. בגלל המציאות המורכבת, שוהים בדרך כלל במשמרת הלילה שלושה רופאים. אולם באחד הלילות, כאשר לרופאים רבים לא התאפשר להגיע, מינו בלית ברירה רופא בכיר כאחראי יחיד על המחלקה.</p>
+              <p style="Margin:0 0 18px; font-size:16px; line-height:1.75; text-align:justify;">המשמרת התחילה בשקט יחסי, אולם עד מהרה התברר שהיה זה השקט שלפני הסערה. חולה אחד התעורר כשהוא גונח בכאבים עזים, ואחריו חולה שני, שלישי ורביעי. הרופא מצא את עצמו רץ לאורך כל הלילה ממיטה למיטה, ולמרבה הצער, לפנות בוקר, נפטר אחד החולים.</p>
+              <p style="Margin:0 0 18px; font-size:16px; line-height:1.75; text-align:justify;">שבועות ספורים לאחר מכן, נדהם הרופא לקבל מכתב תביעה לדין באשמת רשלנות רפואית. &quot;אבל מה יכולתי לעשות?&quot; טען בבית המשפט בלהט, &quot;הרי המצב הזה היה מעל ומעבר לכוחותיי!&quot; אולם השופט סירב לקבל את טענותיו וקבע בפנים חמורות סבר: &quot;היית צריך להזעיק עזרה!&quot;</p>
+              <p style="Margin:0 0 18px; font-size:16px; line-height:1.75; text-align:justify;">את המעשה הזה סיפר רבי שמשון דוד פינקוס זצ&quot;ל, כשהוא מדגיש שהדבר נכון בכל התמודדות רוחנית. אם אתה לא מסתדר לבד, זה לא פוטר אותך מאחריות. זה רק אומר שאתה חייב להזעיק עזרה. ובמקרה שלנו זה אומר שאנחנו חייבים לפנות אל היחיד שיכול לעזור - שהוא הקב&quot;ה.</p>
+              <p style="Margin:0 0 18px; font-size:16px; line-height:1.75; text-align:justify;">חשוב להדגיש כמה דברים לגבי <span style="color:#1c4587; font-weight:700;">האופן</span> שבו נכון לפנות אליו:</p>
+              <p class="sub" style="Margin:26px 0 10px; font-family:'Open Sans','Arial Hebrew',Arial,sans-serif; font-size:18px; line-height:1.3; color:#624b78; font-weight:700; text-align:right;">בחוסר אונים</p>
+              <p style="Margin:0 0 18px; font-size:16px; line-height:1.75; text-align:justify;">הפנייה לקב&quot;ה צריכה להיות מתוך חוסר אונים. הרי מה ההבדל, שאל רבי שמשון, בין תינוק קטן שאמו קמה להאכיל אותו בכל שעה באמצע הלילה, לבין ילד בן ארבע שקורא באמצע הלילה: &quot;אמא, אני צמא!&quot; והיא נשארת במיטה ומשיבה: &quot;לך למטבח חמודי וקח כוס מים&quot;?</p>
+              <p style="Margin:0 0 18px; font-size:16px; line-height:1.75; text-align:justify;">ההבדל הוא כמובן, שהתינוק חסר אונים, ולכן היא חשה כלפיו יותר אחריות, מה שאין כן הילד הגדול שיכול להסתדר לבד. כך נוהג גם הקב&quot;ה, אמר רבי שמשון. מי שפונה אליו בהכרה ברורה שהוא בשום אופן לא יכול לבד - הקב&quot;ה עוזר לו, אך מי שמרגיש &#39;ילד גדול&#39; - הקב&quot;ה נותן לו להמשיך להסתדר לבד.</p>
+              <p class="sub" style="Margin:26px 0 10px; font-family:'Open Sans','Arial Hebrew',Arial,sans-serif; font-size:18px; line-height:1.3; color:#624b78; font-weight:700; text-align:right;">בעקביות</p>
+              <p style="Margin:0 0 18px; font-size:16px; line-height:1.75; text-align:justify;">הפנייה לקב&quot;ה לא יכולה להתבצע כלאחר יד, רק כדי &#39;לסמן וי&#39; או &#39;לצאת ידי חובה&#39;. היא צריכה להיות רצינית, רצופה ועקבית. וכמו בכל פנייה למוקד חירום - לא מפסיקים להתקשר עד שהעזרה מגיעה! ברוח זו הדריך רבי שמשון בן ישיבה במכתב חיזוק מרגש: &quot;לבקש ממנו עוד פעם ועוד פעם… תתפוס אותו ואל תעזוב אותו, עד שהשגת את שלבך חפץ&quot;.</p>
+              <p style="Margin:0 0 18px; font-size:16px; line-height:1.75; text-align:justify;">רבי שמשון עצמו סיפר כי בימי בחרותו, כאשר חש רפיון בעבודת ה&#39;, היה עולה אל גג בית כנסת שממנו נשקף מקום המקדש, וזועק פעם אחר פעם: &quot;לֵב טָהוֹר בְּרָא לִי אֱלוֹקִים וְרוּחַ נָכוֹן חַדֵּשׁ בְּקִרְבִּי&quot;. לפעמים היה מבקש זאת מאות פעמים ביום אחד!</p>
+              <p style="Margin:0 0 18px; font-size:16px; line-height:1.75; text-align:justify;">דברים אלה דומים להפליא למה שסיפר יהודי ירא שמיים וחבר ותיק בתוכנית 12 הצעדים, שנקי כיום מעל 30 שנה. בתחילת הדרך הוא היה מבקש 200 פעמים ביום (והוא תמיד מדגיש שהמספר הזה לא נאמר בלשון גוזמא): &quot;אבא, תעזור לי! אני לא יכול לבד!&quot;</p>
+              <p class="sub" style="Margin:26px 0 10px; font-family:'Open Sans','Arial Hebrew',Arial,sans-serif; font-size:18px; line-height:1.3; color:#624b78; font-weight:700; text-align:right;">בלי הסחת דעת</p>
+              <p style="Margin:0 0 18px; font-size:16px; line-height:1.75; text-align:justify;">חלק מהעקביות הוא לא להסיח את הדעת מהפנייה לקב&quot;ה. לא לחפש במקביל פתרונות אחרים. רבי שמשון סיפר, שכאשר למד בישיבת &#39;בית התלמוד&#39;, חלה אחד מראשי הישיבה. כשמצבו החמיר, החליטה הנהלת הישיבה להעמיד משמרות שיאמרו תהילים לרפואתו בכל שעות היממה.</p>
+              <p style="Margin:0 0 18px; font-size:16px; line-height:1.75; text-align:justify;">באמצע אמירת התהילים חשב רבי שמשון שכדאי להודיע גם לישיבות אחרות על המצב, כדי שגם שם יתפללו. הוא יצא אל הטלפון הציבורי, אך ראש הישיבה השני, רבי לייב מאלין זצ&quot;ל, שעבר במקום, גער בו בחומרה: &quot;למה אתה מדבר בטלפון, ולא אומר תהילים עם כולם?&quot; רבי שמשון מיהר להסביר את מטרת השיחה, אך רבי לייב לא קיבל את הדברים ואמר: &quot;אין צורך בתוכניות! עכשיו צריך להתפלל!&quot;</p>
+              <p style="Margin:0 0 18px; font-size:16px; line-height:1.75; text-align:justify;">גם אנחנו כמכורים נדרשים לעשות את המעבר הזה בדיוק - מתודעה של &#39;חיפוש פתרונות&#39; לתודעה של &#39;בקשת עזרה&#39;. כל עוד אנחנו חושבים במקביל על פתרונות נוספים, בקשת העזרה שלנו לא תהיה שלמה. רק כשאנחנו מכירים בכך שהקב&quot;ה הוא באמת האחד והיחיד שיכול לעזור לנו, רק אז נבקש עזרה בשלמות ומעומק הלב.</p>
+              <p style="Margin:6px 0 18px; font-size:16px; line-height:1.75; text-align:center; color:#1c4587; font-weight:700;">תפסיק לחפש פתרונות ותזעיק עזרה!</p>
+              <p class="note" style="Margin:0 0 20px; font-size:13px; line-height:1.6; text-align:center; color:#6a6a6a;">(ע&quot;פ הספר: &quot;השמש בגבורתו&quot; ח&quot;א עמודים 172, 259, 310, 311, 539)</p>
+              <p style="Margin:0 0 4px; font-size:16px; line-height:1.75; text-align:justify;"><span style="color:#1c4587; font-weight:700;">הערה חשובה:</span> אין כאן כל כוונה לפטור אותנו מהשתתפות בקבוצה, הרמת טלפון לחבר או עבודת צעדים עם מאמן (ספונסר). ההיפך הוא הנכון. כל הפעולות האלה נחוצות כדי שתוכנית הצעדים תעבוד עבורנו. אך באמת אין כאן כל סתירה, כיוון שמטרת כל הפעולות האלה היא לחזק את הפנייה והחיבור שלנו לקב&quot;ה.</p>
+
               <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" dir="rtl" style="width:100%; margin-top:26px;">
                 <tr>
                   <td class="cta" style="padding:20px 0 20px 0; border-top:4px solid #d3e2e5; border-bottom:4px solid #d3e2e5;">
