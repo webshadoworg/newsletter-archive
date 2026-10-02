@@ -45,13 +45,16 @@
   .note{background:#fff;border:1px solid #e2dac6;border-radius:7px;padding:14px 17px;
         margin-bottom:22px;font-size:15px;line-height:1.7;color:#4b4437;}
   /* #894 + #912 - שני כפתורי בנק הרעיונות, בדף הפנימי בלבד. שניים זה לצד זה במסך רחב
-     ומוערמים בצר: הוא קורא בטלפון, ושתי התוויות המנוקדות ארוכות מכדי לחלוק שורה שם. */
+     ומוערמים בצר: הוא קורא בטלפון, ושתי התוויות ארוכות מכדי לחלוק שורה שם.
+     ⚠ #930 - *"בלי ניקוד ובלי כותרת משנה. פשוט שמות המדורים בגדול וברור."* כותרת המשנה
+     נמחקה והגופן גדל 17→22px. **נמדד ב-320px לפני ההגדלה** (#126: הוא מזהה שינוי גופן
+     בדקה, ולכן גם לא יוכנס כאן לעולם media query שמקטין אותו).
+     ⚠ הערה זו יושבת בתוך template literal - בלי גרשיים אחוריות, הן סוגרות אותו. */
   .banks{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:22px;}
   .banks a{flex:1 1 240px;display:block;text-align:center;text-decoration:none;
-           background:#624b78;color:#fff;border-radius:7px;padding:13px 14px;
-           font-size:17px;font-weight:700;line-height:1.4;}
+           background:#624b78;color:#fff;border-radius:7px;padding:18px 14px;
+           font-size:22px;font-weight:700;line-height:1.3;}
   .banks a:hover{background:#523e65;}
-  .banks small{display:block;font-size:13px;font-weight:400;color:#e6dcf0;margin-top:2px;}
   footer{text-align:center;font-size:14px;color:#8a8272;padding:26px 18px 0;line-height:1.8;}
   footer a{color:#1376c8;}
   @media (max-width:520px){header h1{font-size:25px}.ttl{font-size:20px}}
@@ -72,8 +75,8 @@
     <a href="https://gyenewsletters.netlify.app/archive/" target="_blank">https://gyenewsletters.netlify.app/archive/</a>
   </div>
   <div class="banks">
-    <a href="https://docs.google.com/spreadsheets/d/1H7MMicOITrkfCuYbmzznMsgo6hx22z11YykcylExYe8/edit#gid=0" target="_blank" rel="noopener">מָתוֹק לַנֶּפֶשׁ<small>בנק רעיונות</small></a>
-    <a href="https://docs.google.com/spreadsheets/d/1H7MMicOITrkfCuYbmzznMsgo6hx22z11YykcylExYe8/edit#gid=384804558" target="_blank" rel="noopener">צְעָדֵנִי וְאִוָּשֵׁעָה<small>בנק רעיונות</small></a>
+    <a href="https://docs.google.com/spreadsheets/d/1H7MMicOITrkfCuYbmzznMsgo6hx22z11YykcylExYe8/edit#gid=0" target="_blank" rel="noopener">מתוק לנפש</a>
+    <a href="https://docs.google.com/spreadsheets/d/1H7MMicOITrkfCuYbmzznMsgo6hx22z11YykcylExYe8/edit#gid=384804558" target="_blank" rel="noopener">צעדני ואושעה</a>
   </div>
     <div class="card">
       <span class="num">גיליון 9</span><span class="ttl">בראשית תשפ&quot;ז</span><span class="tag draft">בעבודה</span>
