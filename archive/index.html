@@ -44,6 +44,14 @@
   .tag.draft{background:#fdf1d5;color:#8a6a08;}
   .note{background:#fff;border:1px solid #e2dac6;border-radius:7px;padding:14px 17px;
         margin-bottom:22px;font-size:15px;line-height:1.7;color:#4b4437;}
+  /* #894 + #912 - שני כפתורי בנק הרעיונות, בדף הפנימי בלבד. שניים זה לצד זה במסך רחב
+     ומוערמים בצר: הוא קורא בטלפון, ושתי התוויות המנוקדות ארוכות מכדי לחלוק שורה שם. */
+  .banks{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:22px;}
+  .banks a{flex:1 1 240px;display:block;text-align:center;text-decoration:none;
+           background:#624b78;color:#fff;border-radius:7px;padding:13px 14px;
+           font-size:17px;font-weight:700;line-height:1.4;}
+  .banks a:hover{background:#523e65;}
+  .banks small{display:block;font-size:13px;font-weight:400;color:#e6dcf0;margin-top:2px;}
   footer{text-align:center;font-size:14px;color:#8a8272;padding:26px 18px 0;line-height:1.8;}
   footer a{color:#1376c8;}
   @media (max-width:520px){header h1{font-size:25px}.ttl{font-size:20px}}
