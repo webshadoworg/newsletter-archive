@@ -66,6 +66,11 @@ Build, push, reply. Nothing else.
 - **Verify the actual send.** The ESP rewrites the HTML on import; decode the test `.eml`, do not
   trust the draft.
 - **During live review, run fast:** edit, publish, reply. Batch the logging.
+- **After editing anything in `rules/`, run `node push-rules.mjs`.** The repo carries a mirror of
+  these files, genericized and unlinked (Mendy, Oct 13). Skip it and the repo copy goes stale
+  silently.
+- **The repo is public and Netlify serves it as-is**, so every file in it has a world-readable URL at
+  the same path. Check what is in a file before pushing it, not after.
 
 ## Slack
 
