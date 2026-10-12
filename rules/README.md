@@ -23,9 +23,9 @@ The operative rules. Short on purpose. Every rule here was asked for by Mendy, R
 or was written after a mistake.
 
 **The evidence behind them lives in `newsletter-rules.md` in the bot workspace**: the verbatim
-quotes, dates, before and after. That file is not in this repo. Go there when you need to know *why*
-a rule exists or what exactly was said. Never change a rule here without a ruling; if the two files
-disagree, the long one is the record and this one has drifted.
+quotes, dates, before and after. Go there when you need to know *why* a rule exists or what exactly
+was said. Never change a rule here without a ruling; if the two files disagree, the long one is the
+record and this one has drifted.
 
 ## Open questions nobody has ruled on
 
