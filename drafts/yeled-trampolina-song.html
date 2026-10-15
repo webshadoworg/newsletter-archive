@@ -29,9 +29,9 @@
   .dl:hover { background:#cfe0f1; }
   .lyr { margin:0; }
   .lyr p { margin:0 0 22px; font-size:17px; line-height:1.9; text-align:center; }
-  .lyr .band { background:#e8f1f9; border-radius:5px; padding:20px 14px; margin:0 0 22px; }
-  .lyr .band p { color:var(--ink); font-weight:600; margin-bottom:0; }
-  .lyr > p:last-child { margin-bottom:0; }
+  .lyr .pizmon { background:#e8f1f9; border-radius:5px; padding:20px 14px; margin:0 0 22px; }
+  .lyr .pizmon p { color:var(--ink); font-weight:600; margin-bottom:0; }
+  .lyr > p:last-child, .lyr > .pizmon:last-child { margin-bottom:0; }
   .note { font-size:13px; line-height:1.7; color:#6a6a6a; margin:22px 0 0; text-align:center; }
   .help { margin:22px 0 0; font-size:15px; line-height:1.5; font-weight:700;
           color:var(--ink); text-align:center; }
@@ -40,7 +40,7 @@
   .foot a { color:var(--ink); }
   @media (max-width:680px){ .wrap{padding:0 0 22px;} .card{border-radius:0;}
     .pad{padding:18px 18px 8px;} .top{padding:18px 18px 16px;} .top h1{font-size:20px;}
-    .lyr .band{padding:16px 10px;} }
+    .lyr .pizmon{padding:16px 10px;} }
 </style>
 </head>
 <body>
@@ -66,15 +66,19 @@
 
       <h2>מילות השיר</h2>
       <div class="lyr">
-        <p>אני ילד טרמפולינה<br>
+        <div class="pizmon">
+          <p>אני ילד טרמפולינה<br>
            כל היום קופץ על הכסא<br>
            גם הגננת כבר הבינה<br>
            אם יש כפתור אני עוד אנסה</p>
+        </div>
 
-        <p>כי אני ילד טרמפולינה<br>
+        <div class="pizmon">
+          <p>כי אני ילד טרמפולינה<br>
            שלפעמים הולך על הקצה<br>
            מזל שאמא האמינה<br>
            שיום אחד על זה עוד אפצה</p>
+        </div>
 
         <p>בכל יום בבית ספר<br>
            קוראים אותי לסדר<br>
@@ -94,15 +98,19 @@
            וזה עצוב לי וגם קצת מפחיד<br>
            אז לפעמים אני רוצה רק להגיד ש....</p>
 
-        <p>אני ילד טרמפולינה<br>
+        <div class="pizmon">
+          <p>אני ילד טרמפולינה<br>
            כל היום קופץ על הכסא<br>
            גם דודה חנה כבר הבינה<br>
            אם יש כפתור אני עוד אנסה</p>
+        </div>
 
-        <p>כי אני ילד טרמפולינה<br>
+        <div class="pizmon">
+          <p>כי אני ילד טרמפולינה<br>
            וכל יום מחדש אני רוצה<br>
            מזל שסבתא האמינה<br>
            כי מי שמחפש בסוף מוצא</p>
+        </div>
 
         <p>ויום אחד הלכתי<br>
            לסבא במושב<br>
@@ -122,36 +130,42 @@
            וזה הדליק בי שוב את החיוך<br>
            יש מישהו שרואה את זה הפוך</p>
 
-        <p>כי אני ילד טרמפולינה<br>
+        <div class="pizmon">
+          <p>כי אני ילד טרמפולינה<br>
            כל היום קופץ על הכסא<br>
            גם השכונה שלי הבינה<br>
            אם יש כפתור אני עוד אנסה</p>
+        </div>
 
-        <p>כי אני ילד טרמפולינה<br>
+        <div class="pizmon">
+          <p>כי אני ילד טרמפולינה<br>
            כל יום מחדש אני רוצה<br>
            מזל שאמא האמינה<br>
            כי מי שמחפש - בסוף מוצא!</p>
+        </div>
 
-        <div class="band">
-          <p>&quot;מה מצחיק? ספר לנו, שגם אנחנו נצחק!&quot;<br>
+        <p>&quot;מה מצחיק? ספר לנו, שגם אנחנו נצחק!&quot;<br>
            &quot;רגע, מי מנהל פה את השיעור, אני או אתה?&quot;<br>
            &quot;כמה פעמים אפשר לומר לך לשבת בכסא?&quot;<br>
            &quot;רגע אחד של שקט, זה מה שאני מבקש!&quot;</p>
-        </div>
 
         <p>אבל היום כבר התבגרתי כך אומרים<br>
            צברתי הצלחות והישגים<br>
            ובחיוך קטן אני נזכר ש...</p>
 
-        <p>הייתי ילד טרמפולינה<br>
+        <div class="pizmon">
+          <p>הייתי ילד טרמפולינה<br>
            שכל היום קופץ על הכסא<br>
            היום אני צועד קדימה<br>
            הולך אל החלום ומנסה</p>
+        </div>
 
-        <p>אני ילד טרמפולינה<br>
+        <div class="pizmon">
+          <p>אני ילד טרמפולינה<br>
            אומרים שאני איש של מעשים<br>
            מזל שאמא האמינה<br>
            עכשיו זורמות לה מחמאות אל הכיסים</p>
+        </div>
       </div>
 
       <p class="note">אנו מודים לבעלי הזכויות שנתנו את רשותם.</p>
