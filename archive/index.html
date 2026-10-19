@@ -64,6 +64,21 @@
   footer{text-align:center;font-size:14px;color:#8a8272;padding:26px 18px 0;line-height:1.8;}
   footer a{color:#1376c8;}
   @media (max-width:520px){header h1{font-size:25px}.ttl{font-size:20px}}
+
+  /* תיבת החיפוש יושבת מעל הגיליונות. היא רכיב עבודה אחד ולא בלוק הסבר - אין כאן
+     שורת הדרכה (#2298/#2460: בלוקי הסבר שאני כותב אינם מוצר, והוא קורא בטלפון). */
+  .srch{margin:0 0 18px;}
+  .srch input{width:100%;font-family:inherit;font-size:18px;padding:13px 15px;
+              border:1px solid #d8cfb8;border-radius:7px;background:#fff;color:#2b2b2b;}
+  .srch input:focus{outline:none;border-color:#624b78;}
+  .rinfo{margin:0 0 12px;font-size:15px;color:#6b6355;line-height:1.7;}
+  .rerr{margin:0 0 12px;font-size:16px;color:#b03030;font-weight:700;line-height:1.7;}
+  .rhit{background:#fff;border:1px solid #e2dac6;border-right:5px solid #6fcac0;
+        border-radius:7px;padding:13px 16px;margin-bottom:11px;}
+  .rhit a{color:#1c4587;text-decoration:none;font-weight:700;font-size:17px;}
+  .rhit a:hover{text-decoration:underline}
+  .rhit p{margin:7px 0 0;font-size:16px;line-height:1.8;color:#4b4437;}
+  .rhit mark{background:#fdf1d5;color:#7a5c07;padding:0 2px;border-radius:3px;}
 </style>
 </head>
 <body>
@@ -72,6 +87,13 @@
        alt="רק חזק ואמץ! — העלון השבועי של GYE - ארכיון גיליונות">
 </div>
 <div class="wrap">
+  <div class="srch">
+    <input id="q" type="search" autocomplete="off" spellcheck="false"
+           placeholder="חיפוש מילים בכל הגיליונות"
+           aria-label="חיפוש מילים בכל הגיליונות">
+  </div>
+  <div id="res"></div>
+<div id="list">
     <div class="card">
       <span class="num">גיליון 10</span><span class="ttl">נח תשפ&quot;ז</span>
       <p class="links"><a href="https://gyenewsletters.netlify.app/drafts/noach-5787.html" target="_blank">קריאת הגיליון</a><span>|</span><a href="https://gyenewsletters.netlify.app/pdf/gye-noach-5787.pdf" target="_blank">הורדה להדפסה (PDF)</a></p>
@@ -112,10 +134,111 @@
       <span class="num">גיליון 1</span><span class="ttl">שופטים תשפ&quot;ו</span>
       <p class="links"><a href="https://gyenewsletters.netlify.app/drafts/hebrew-header-test.html" target="_blank">קריאת הגיליון</a><span>|</span><a href="https://gyenewsletters.netlify.app/pdf/gye-shoftim-5786.pdf" target="_blank">הורדה להדפסה (PDF)</a></p>
     </div>
+</div>
   <footer>
     לתגובות והצעות: <a href="mailto:shmor.help@gmail.com">shmor.help@gmail.com</a><br>
     <a href="https://gye.org.il" target="_blank">gye.org.il</a>
   </footer>
 </div>
+<script>
+function normMap(s){
+  var t='',m=[],prev='';
+  for(var i=0;i<s.length;i++){
+    var c=s[i];
+    if(c>='\u0591'&&c<='\u05c7')continue;
+    if("\u05f3\u2018\u2019'".indexOf(c)>=0)c="'";
+    else if('\u05f4\u201c\u201d"'.indexOf(c)>=0)c='"';
+    else if(c==='\u00a0'||/\s/.test(c))c=' ';
+    if(c===' '&&prev===' ')continue;
+    t+=c;m.push(i);prev=c;
+  }
+  return {t:t,map:m};
+}
+function skelMap(t){
+  var u='',m=[];
+  for(var i=0;i<t.length;i++){var c=t[i];if(c==='\u05d5'||c==='\u05d9')continue;u+=c;m.push(i);}
+  return {t:u,map:m};
+}
+function norm(s){return normMap(s).t.trim();}
+function skel(s){return skelMap(norm(s)).t;}
+(function(){
+  var IDX="search-index.json", SITE="https://gyenewsletters.netlify.app/";
+  var data=null, pend=null, tmr=0;
+  var q=document.getElementById('q'), res=document.getElementById('res'),
+      list=document.getElementById('list');
+  function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+  // קטע התצוגה נגזר מ**המקור** ולא מהטקסט המנורמל: הניקוד הוא חלק מהכתיבה שלו
+  // (ולפעמים הוא העניין עצמו), ולהציג אותו מופשט היה לשנות את הטקסט שלו.
+  function snip(p,a,b){
+    var s=Math.max(0,a-70), e=Math.min(p.length,b+90);
+    return (s>0?'… ':'')+esc(p.slice(s,a))+'<mark>'+esc(p.slice(a,b))+'</mark>'+
+           esc(p.slice(b,e))+(e<p.length?' …':'');
+  }
+  function scan(tier,needle){
+    var out=[],i,j,k;
+    for(i=0;i<data.issues.length;i++){var r=data.issues[i];
+      for(j=0;j<r.secs.length;j++){var s=r.secs[j];
+        for(k=0;k<s.paras.length;k++){
+          var p=s.paras[k], nm=normMap(p), a, b, at;
+          if(tier===2){
+            var sm=skelMap(nm.t); at=sm.t.indexOf(needle);
+            if(at<0)continue;
+            a=nm.map[sm.map[at]]; b=nm.map[sm.map[at+needle.length-1]]+1;
+          }else{
+            at=nm.t.indexOf(needle);
+            if(at<0)continue;
+            a=nm.map[at]; b=nm.map[at+needle.length-1]+1;
+          }
+          out.push({r:r,s:s,h:snip(p,a,b)});
+          break;   // מדור אחד = תוצאה אחת. הקישור מקפיץ למדור, לא לפסקה.
+        }
+      }
+    }
+    return out;
+  }
+  function render(raw){
+    var nq=norm(raw), sq=skel(raw), hits=scan(1,nq), tier=1;
+    // רמה 2 (שלד המילה) רק כשרמה 1 ריקה, **ומסומנת במפורש** - אחרת היא מתחזה
+    // להתאמה מדויקת. ראה search-shared.mjs: כתיב חסר מול כתיב מלא.
+    if(!hits.length&&sq){var h2=scan(2,sq); if(h2.length){hits=h2;tier=2;}}
+    if(!hits.length){
+      res.innerHTML='<p class="rinfo">לא נמצא "'+esc(raw)+'" באף גיליון.</p>';
+      return;
+    }
+    var CAP=50, h='';
+    h+='<p class="rinfo">'+hits.length+(hits.length===1?' מדור':' מדורים')+
+       ' עם "'+esc(raw)+'"'+
+       (tier===2?' · <b>התאמה מקורבת</b> - לא נמצאה התאמה מדויקת':'')+
+       // **בלי קיצוץ שקט** (#550): אם משהו לא מוצג - כתוב כמה.
+       (hits.length>CAP?' · מוצגים '+CAP+' הראשונים':'')+'</p>';
+    for(var i=0;i<Math.min(hits.length,CAP);i++){
+      var x=hits[i];
+      h+='<div class="rhit"><a href="'+SITE+esc(x.r.url)+'#maamar'+x.s.n+'">'+
+         'גיליון '+x.r.n+' · '+esc(x.r.label)+' · '+esc(x.s.label)+'</a>'+
+         '<p>'+x.h+'</p></div>';
+    }
+    res.innerHTML=h;
+  }
+  function run(){
+    var raw=q.value.trim();
+    if(norm(raw).length<2){ res.innerHTML=''; list.style.display=''; return; }
+    list.style.display='none';
+    if(data){ render(raw); return; }
+    res.innerHTML='<p class="rinfo">טוען…</p>';
+    if(!pend) pend=fetch(IDX,{cache:'no-cache'}).then(function(r){
+      if(!r.ok) throw new Error('שגיאה '+r.status);
+      return r.json();
+    });
+    pend.then(function(j){ data=j; run(); })
+        .catch(function(e){
+          pend=null;
+          res.innerHTML='<p class="rerr">החיפוש לא נטען ('+esc(e.message||e)+
+                        '). נסו לרענן את הדף.</p>';
+        });
+  }
+  q.addEventListener('input',function(){clearTimeout(tmr);tmr=setTimeout(run,130);});
+  q.addEventListener('search',run);
+})();
+</script>
 </body>
 </html>
