@@ -14,6 +14,9 @@ with my recommendation marked**.
 - **An earlier decision is not ironclad.** Do it his way, one line on the collision, no case.
 - **Ask every time.** Even a rule he asked for himself needs a fresh yes each issue.
 - **Do not generalize one instruction.** A change asked for in one place is not a change everywhere.
+- **Permission and copyright are the editors', not mine.** Mendy, Oct 27 2026: *"permission is
+  beyond your scope, that's on the editors."* Do not raise it as a flag, do not track it as a
+  blocker, do not chase an unanswered one. Screen the content.
 
 ## Supplied copy
 
