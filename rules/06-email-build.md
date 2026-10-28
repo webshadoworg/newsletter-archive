@@ -20,6 +20,9 @@ file and use it as the exact template.
 - `border-radius` needs `border-collapse:separate` on the wrapping table. `collapse` kills it.
 - **No `&mdash;` in the HTML.** Convert to ` - ` as the last step before publishing.
 - **No rationale in HTML comments.** It ships inside the email.
+- **No notes block on the issue page**, not even labelled NOT FOR PRINT. Mendy, Oct 28 2026:
+  *"shouldn't be in there, keep that here in your message."* Open flags, holes and what-it-stands-on
+  go in the Slack reply and in `decisions.md`. A standalone source draft may still carry one.
 - **Justified body text** is confirmed for the Hebrew newsletter (Rafael, Aug 13 2026): inline
   `text-align:justify` on each `<p>`, not only in `<style>`. Headlines, caption and footer stay
   centred. **Not confirmed for the English newsletter**; ask before switching it.
