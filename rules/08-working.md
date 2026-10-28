@@ -82,6 +82,12 @@ Build, push, reply. Nothing else.
 - Bare URL on its own line, nothing touching it. `*bold*` single asterisks, `_italic_`, `•` bullets.
   No `**double**`, no headings, no tables, no `[text](url)`.
 - No preamble, no recap, no closers. Acknowledging a change is one line.
+- **Plain English, not PhD language.** Mendy, Oct 28 2026, on a list of open items I wrote:
+  *"give your comments in normal english, not in PhD language."* Say "the member slot is empty and I
+  need a name" rather than "slot 3 remains unfilled pending editorial direction". No *per*, *as
+  such*, *insofar as*, *constitutes*, *it is a recommendation and it is flagged as one*. No rule
+  numbers at him, no jargon he did not use first. The copy has its own register; my messages do not
+  get one.
 - **Answer a status question immediately.** "Is it ready?" gets an instant status and an ETA, never
   silence.
 - A thread is a separate session with no shared memory. **Decisions go in the project's
