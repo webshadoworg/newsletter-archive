@@ -38,6 +38,19 @@
   .secs a:hover{text-decoration:underline}
   .prog{margin:9px 0 0;font-size:14.5px;color:#8a7524;background:#f7f4ea;
         border:1px dashed #cbb96a;border-radius:5px;padding:8px 11px;line-height:1.6;}
+  /* 🔴 #3934/#3940, רפאל 5.11.2026: *"ואיפה txt לפורום של כל המדורים?"* + *"היה קישור
+     שעשית להורדת כל הקבצים, לא?"*. **לא נבנה דף שני** - דף הורדות נפרד היה רשימה שנייה
+     שמתיישנת בשקט מול issues.json, בדיוק הכשל של #506. הקבצים נתלים על הכרטיס שכבר קיים,
+     והארכיון הפנימי **הוא** דף ההורדות.
+     ⚠ **הרשימה נגזרת מהדיסק**, לא נכתבת: forumFiles() סורק את drafts/ לפי ה-slug של
+     הגיליון. קובץ שייבנה בשבוע הבא יופיע מעצמו, ורשימה ידנית הייתה נשארת מאחור.
+     ⚠ הדף הפנימי בלבד - קובץ הפורום הוא כלי עבודה שלו, לא תוכן לקורא (כמו .banks/.luach).
+     ⚠ ובתוך בלוק ה-CSS הזה אסור בקטיק, גם בהערה - הוא סוגר את תבנית המחרוזת. */
+  .dl{margin:9px 0 0;font-size:15px;color:#4b4437;line-height:1.9;}
+  .dl b{font-weight:700;color:#6b6355;font-size:14px;}
+  .dl a{display:inline-block;color:#1c4587;text-decoration:none;background:#eef3fa;
+        border:1px solid #cfdcee;border-radius:5px;padding:2px 10px;margin:0 0 0 6px;font-size:14px;}
+  .dl a:hover{background:#dbe8f5;}
   .tag{display:inline-block;font-size:13px;font-weight:700;border-radius:4px;
        padding:2px 9px;vertical-align:3px;margin-right:8px;}
   .tag.sent{background:#e3f4f2;color:#1d7d72;}
