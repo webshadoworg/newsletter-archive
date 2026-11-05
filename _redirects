@@ -8,3 +8,10 @@
 # accept-ranges, ולכן הנגן וגם הדילוג בתוך הסרטון ממשיכים לעבוד.
 /media/no-shtus-avraham-fried-720p.mp4  https://github.com/webshadoworg/newsletter-archive/releases/download/media-v1/no-shtus-avraham-fried-720p.mp4  302
 /media/no-shtus-avraham-fried.mp3       https://raw.githubusercontent.com/webshadoworg/newsletter-archive/media-archive/media/no-shtus-avraham-fried.mp3  302
+
+# קיצור כתובת לתיקיית הדרייב של הגיליונות (רפאל #3958 + #3960, 5.11.2026 - "אולי אתה
+# יכול להפוך את זה לקישור מקוצר"). הכתובת המלאה היא 86 תווים ויושבת בחתימה של כל קובץ
+# פורום; כאן היא 39. ⚠ **מקצר משלנו ולא שירות חיצוני** - שירות קיצור הוא צד שלישי שיכול
+# למות או להיחסם (אותו שיקול שבגללו נדחה CDN לכוכבים, #1966), והכתובת הזאת כבר יוצאת
+# לפורום הציבורי. אין קובץ בנתיב /drive, ולכן ההפניה פעילה בלי force.
+/drive  https://drive.google.com/drive/folders/1ypMONNWbrQg3OsJWqFxmJjW7TShqIQTq?usp=sharing  302
