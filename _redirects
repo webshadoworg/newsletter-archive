@@ -15,3 +15,11 @@
 # למות או להיחסם (אותו שיקול שבגללו נדחה CDN לכוכבים, #1966), והכתובת הזאת כבר יוצאת
 # לפורום הציבורי. אין קובץ בנתיב /drive, ולכן ההפניה פעילה בלי force.
 /drive  https://drive.google.com/drive/folders/1ypMONNWbrQg3OsJWqFxmJjW7TShqIQTq?usp=sharing  302
+
+# השיר של גיליון 4 ("כל יום", גולן אזולאי) - רפאל #4210, 9.11.2026: "כן. תסיר".
+# הוא היה המדיה הכבדה האחרונה שנותרה באתר (7.9MB), והוראה להסירו אחרי גיליון ראש
+# השנה עמדה מאז 4.9. ⚠ **אין מוחקים בלי הפניה**: הכתובת הזאת כבר יצאה במייל של
+# גיליון 4 לקוראים, והמייל שנשלח נעול. הקובץ שמור בענף media-archive בגודל זהה
+# (8,258,876 בתים, אותו sha), ו-mp3 מוגש מ-raw כ-audio/mpeg ולכן הנגן ממשיך לעבוד -
+# להבדיל מווידאו, שחייב להגיע מנכס של release (ראו ההערה למעלה).
+/media/kol-yom-golan-azulai.mp3  https://raw.githubusercontent.com/webshadoworg/newsletter-archive/media-archive/media/kol-yom-golan-azulai.mp3  302
