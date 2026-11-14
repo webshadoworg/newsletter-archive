@@ -55,6 +55,12 @@ var HOLIDAY = '0';
 function title_(g, s) {
   return (TITLES[String(g)] || {})[String(s)] || '';
 }
+
+function label_(g, p, s) {
+  var t = title_(g, s);
+  if (!t) return NAMES[String(s)] || '';
+  return p ? (p + ' - ' + t) : t;
+}
 var HEAD = ['\u05ea\u05d0\u05e8\u05d9\u05da', '\u05de\u05d6\u05d4\u05d4', '\u05d2\u05d9\u05dc\u05d9\u05d5\u05df', '\u05e4\u05e8\u05e9\u05d4', '\u05de\u05d3\u05d5\u05e8', '\u05e9\u05dd \u05d4\u05de\u05d3\u05d5\u05e8', '\u05d3\u05d9\u05e8\u05d5\u05d2', '\u05d4\u05e2\u05e8\u05d4', '\u05de\u05d9\u05d9\u05dc', '\u05de\u05d6\u05d4\u05d4 \u05e7\u05d5\u05e8\u05d0'];
 
 function sheet_() {
@@ -73,6 +79,66 @@ function sheet_() {
   return sh;
 }
 
+/* ==================================================================
+   ------------------------------------------------------------------
+
+================================================================== */
+var QSHEET = '\u05e1\u05d5\u05e0\u05e0\u05d5';
+var MAX_AGE_DAYS = 21;
+var BLOCK = {};
+
+function qsheet_() {
+  var ss = SpreadsheetApp.getActiveSpreadsheet();
+  var sh = ss.getSheetByName(QSHEET);
+  if (!sh) {
+    sh = ss.insertSheet(QSHEET);
+    sh.appendRow(HEAD.concat(['\u05e1\u05d9\u05d1\u05d4']));
+    sh.setFrozenRows(1);
+    sh.getRange(1, 1, 1, HEAD.length + 1).setFontWeight('bold');
+    sh.setRightToLeft(true);
+  }
+  return sh;
+}
+
+function upsert_(sh, vals, id, width) {
+  var last = sh.getLastRow();
+  var row = 0;
+  if (last &gt; 1 &amp;&amp; id) {
+    var ids = sh.getRange(2, 2, last - 1, 1).getValues();
+    for (var i = 0; i &lt; ids.length; i++) {
+      if (String(ids[i][0]) === String(id)) { row = i + 2; break; }
+    }
+  }
+  if (row) {
+    var cur = sh.getRange(row, 1, 1, width).getValues()[0];
+    vals[0] = cur[0];
+    for (var j = 6; j &lt;= 9; j++) if (!vals[j]) vals[j] = cur[j];
+    sh.getRange(row, 1, 1, width).setValues([vals]);
+  } else {
+    sh.appendRow(vals);
+  }
+  return row;
+}
+
+function blockReason_(d, rows) {
+  var g = String(d.g || '');
+  if (!g) return '';
+  if (BLOCK[g]) return '\u05d2\u05d9\u05dc\u05d9\u05d5\u05df \u05d7\u05e1\u05d5\u05dd \u05d9\u05d3\u05e0\u05d9\u05ea';
+
+  var first = null;
+  for (var i = 0; i &lt; rows.length; i++) {
+    if (String(rows[i][2]) !== g) continue;
+    var t = rows[i][0];
+    if (!(t instanceof Date)) continue;
+    if (first === null || t &lt; first) first = t;
+  }
+  if (first === null) return '';
+
+  var age = (new Date() - first) / 86400000;
+  if (age &gt; MAX_AGE_DAYS) return '\u05d2\u05d9\u05dc\u05d9\u05d5\u05df \u05d9\u05e9\u05df - ' + Math.round(age) + ' \u05d9\u05de\u05d9\u05dd';
+  return '';
+}
+
 function doPost(e) {
   var lock = LockService.getScriptLock();
   lock.waitLock(20000);
@@ -82,24 +148,34 @@ function doPost(e) {
     var t = title_(d.g, d.s);
     var vals = [new Date(), d.id || '', d.g || '', d.p || '',
                 t ? HOLIDAY : (d.s || ''),
-                t || NAMES[d.s] || '', d.r || '', d.c || '', d.e || '', d.rid || ''];
+                label_(d.g, d.p, d.s), d.r || '', d.c || '', d.e || '', d.rid || ''];
 
     var last = sh.getLastRow();
-    var row = 0;
-    if (last &gt; 1 &amp;&amp; d.id) {
-      var ids = sh.getRange(2, 2, last - 1, 1).getValues();
-      for (var i = 0; i &lt; ids.length; i++) {
-        if (String(ids[i][0]) === String(d.id)) { row = i + 2; break; }
+    var rows = last &gt; 1 ? sh.getRange(2, 1, last - 1, 3).getValues() : [];
+
+    var inQ = false;
+    if (d.id) {
+      var qs = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(QSHEET);
+      if (qs &amp;&amp; qs.getLastRow() &gt; 1) {
+        var qids = qs.getRange(2, 2, qs.getLastRow() - 1, 1).getValues();
+        for (var k = 0; k &lt; qids.length; k++) {
+          if (String(qids[k][0]) === String(d.id)) { inQ = true; break; }
+        }
       }
     }
 
-    if (row) {
-      var cur = sh.getRange(row, 1, 1, HEAD.length).getValues()[0];
-      vals[0] = cur[0];
-      for (var j = 6; j &lt;= 9; j++) if (!vals[j]) vals[j] = cur[j];
-      sh.getRange(row, 1, 1, HEAD.length).setValues([vals]);
+    var inMain = false;
+    if (d.id) {
+      for (var m = 0; m &lt; rows.length; m++) {
+        if (String(rows[m][1]) === String(d.id)) { inMain = true; break; }
+      }
+    }
+
+    var why = inMain ? '' : (inQ ? '\u05d4\u05de\u05e9\u05da \u05e9\u05d5\u05e8\u05d4 \u05e9\u05e1\u05d5\u05e0\u05e0\u05d4' : blockReason_(d, rows));
+    if (why) {
+      upsert_(qsheet_(), vals.concat([why]), d.id, HEAD.length + 1);
     } else {
-      sh.appendRow(vals);
+      upsert_(sh, vals, d.id, HEAD.length);
     }
   } catch (err) {
     Logger.log(err);
@@ -124,11 +200,22 @@ function fixHistory() {
   var v = rng.getValues();
   var n = 0;
   for (var i = 0; i &lt; v.length; i++) {
-    var t = title_(v[i][0], v[i][2]);
-    if (!t) continue;
-    v[i][2] = HOLIDAY;
-    v[i][3] = t;
-    n++;
+    var g = v[i][0], p = v[i][1], s = v[i][2], f = String(v[i][3] || '');
+
+    var t = title_(g, s);
+    if (t) {
+      v[i][2] = HOLIDAY;
+      v[i][3] = p ? (p + ' - ' + t) : t;
+      n++;
+      continue;
+    }
+
+    if (String(s) === HOLIDAY &amp;&amp; p &amp;&amp; f &amp;&amp; f.indexOf(' - ') === -1) {
+      var ts = TITLES[String(g)] || {};
+      for (var key in ts) {
+        if (ts[key] === f) { v[i][3] = p + ' - ' + f; n++; break; }
+      }
+    }
   }
   if (n) rng.setValues(v);
   SpreadsheetApp.flush();
@@ -162,7 +249,8 @@ var L = {
   issues:'\u05d2\u05d9\u05dc\u05d9\u05d5\u05e0\u05d5\u05ea',
   fb:    '\u05de\u05e9\u05d5\u05d1\u05d9\u05dd',
   ppl:   '\u05e7\u05d5\u05e8\u05d0\u05d9\u05dd \u05e9\u05d5\u05e0\u05d9\u05dd (\u05de\u05d9\u05e0\u05d9\u05de\u05d5\u05dd)',
-  perp:  '\u05de\u05e9\u05d5\u05d1\u05d9\u05dd \u05dc\u05e7\u05d5\u05e8\u05d0'
+  perp:  '\u05de\u05e9\u05d5\u05d1\u05d9\u05dd \u05dc\u05e7\u05d5\u05e8\u05d0',
+  filt:  '\u05e1\u05d5\u05e0\u05e0\u05d5 (\u05d6\u05d7\u05dc\u05df)'
 };
 
 function setupSummary() {
@@ -201,7 +289,8 @@ function setupSummary() {
     [L.mail,  '=COUNTIF(' + "'" + SHEET + "'!I2:I,\"&lt;&gt;\")"],
     [L.gavg,  '=IFERROR(AVERAGE(' + "'" + SHEET + "'!G2:G),\"\")"],
     [L.ppl,   '=IFERROR(COUNTA(UNIQUE(FILTER(' + "'" + SHEET + "'!J2:J," + "'" + SHEET + "'!J2:J&lt;&gt;\"\"))),0)"],
-    [L.perp,  '=IFERROR(COUNTIF(' + "'" + SHEET + "'!J2:J,\"&lt;&gt;\")/B39,\"\")"]
+    [L.perp,  '=IFERROR(COUNTIF(' + "'" + SHEET + "'!J2:J,\"&lt;&gt;\")/B39,\"\")"],
+    [L.filt,  '=IFERROR(COUNTA(' + "'" + QSHEET + "'!B2:B),0)"]
   ];
   for (var k = 0; k &lt; stats.length; k++) {
     sh.getRange(35 + k, 1).setValue(stats[k][0]);
