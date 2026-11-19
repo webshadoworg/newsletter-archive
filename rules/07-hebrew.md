@@ -4,8 +4,12 @@
 
 - **Wrap in `<span dir="rtl">`** inside the LTR paragraph, so bidi does not drag the surrounding
   punctuation around. The issue builder's `H()` helper does this.
-- Use a Hebrew font stack. The default body stack (`'open sans', 'helvetica neue', helvetica, arial`)
-  contains no Hebrew.
+- **Arial, at the size of the paragraph it sits in.** Mendy, Nov 3 2026: *"The Hebrew fonts are
+  strange. We have style guides for these things. We always use Arial font. The font size has to be
+  consistent."* The stack is `arial,'helvetica neue',helvetica,sans-serif`, 16px, line-height 24px,
+  matching the body. Arial carries Hebrew and nikud; the default body stack
+  (`'open sans', 'helvetica neue', helvetica, arial`) leads with a font that has none. A serif or a
+  larger size turns a quote into a display element, which is the thing he ruled out at #1282.
 - **Never a real geresh or gershayim.** Write `&rsquo;` for geresh and `&rdquo;` for gershayim.
   U+05F3 and U+05F4 are *punctuation*, so the font stack is consulted from the top for them and Open
   Sans has neither; the result is tofu, which most mail clients draw as nothing at all. `מהנ״ל`
