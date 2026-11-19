@@ -88,6 +88,24 @@ Build, push, reply. Nothing else.
   such*, *insofar as*, *constitutes*, *it is a recommendation and it is flagged as one*. No rule
   numbers at him, no jargon he did not use first. The copy has its own register; my messages do not
   get one.
+- **Short means fewer sentences, not sentences with the words taken out.** Mendy, Nov 19 2026,
+  quoting me back at myself: *"What is it in your rules that you write things like the following
+  sentence, which is very shorthand and not normal English? 'Holding it one more round: copy-check
+  caught a rule 01 line in it...'"* "One short line per topic" and "no preamble" are about how many
+  things I say, not about dropping the subject and the verb. Every sentence gets a subject and a
+  verb: "I am holding it one more round", not "Holding it one more round". No colon used to bolt a
+  clause onto a fragment. And "a rule 01 line" breaks the rule two lines below this one: say what is
+  actually wrong, in words, not a file number.
+- **He has not read it. Quote the line.** Mendy, Nov 19 2026: *"Don't assume that I remember what it
+  says in the English or the Hebrew. I might just send you a link. I didn't even read it myself so
+  you have to explain exactly what you mean so that, as I spoon-feed me the questions, I can give you
+  an answer."* A link he sent is not a text he knows. Never name a thing inside a piece and expect it
+  to mean something: "the force-fed child comes out" is nothing to him until he sees *"like a child
+  forced to eat something he doesn't like, until in the end he throws up."* Every reference to a
+  line, an image, a source or a cut carries the line itself, translated if it is Hebrew, before the
+  comment on it. The same goes for anything an agent hands me: its shorthand is for me, and I unpack
+  it before it goes to an editor. A question he cannot answer without going and reading the file is a
+  question I asked wrong.
 - **Answer a status question immediately.** "Is it ready?" gets an instant status and an ETA, never
   silence.
 - A thread is a separate session with no shared memory. **Decisions go in the project's
