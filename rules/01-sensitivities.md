@@ -42,6 +42,13 @@ week, and opened the email anyway.
 - **No homework without the tool.** Do not ask him to list his triggers before the thing he is meant
   to pair them with exists.
 - **No driving metaphors for a fall.** "Turning the car around" goes.
+- **Death is not the deadline.** "Do not trust yourself until the day you die", "as long as a person
+  is alive there is no finish line", "in this world there is no let-up": three ways of saying the
+  only release is dying. Mendy, Nov 2 2026, on the Chayei Sarah dvar Torah: *"Talking about death
+  matter of factky, like yeh - so just like Abraham, expect the worst. That's life..."* A parsha
+  that opens on a burial does not license a matter-of-fact register about it, and "what was so hard
+  about haggling over a burial plot?" is a man's wife reduced to an errand. Count these lines. Three
+  in three hundred words is the piece's spine, not a paragraph you can cut.
 
 ## Who else is reading
 
