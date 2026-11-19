@@ -53,6 +53,11 @@ How the copy sounds. Applies to anything I write. **Never to copy a human suppli
 
 - **Plain words. No vocabulary from another field.** "The bad feeling is the delivery mechanism"
   became "Feeling bad is the opening it needs."
+- **No conventions from another field either, credit lines included.** "After an essay by Rabbi YY
+  Jacobson" is the art catalogue formula for a work in someone's manner. Mendy, Nov 2 2026:
+  *"After? What the heck does that mean? That's not English. No one knows what you're talking
+  about. You could say based on the shiur of Rabbi YY Jacobson. That's all."* A credit is
+  **"Based on an essay by X"**. A second source goes in a footnote, not stacked under the first.
 - **Name the actor.** "much harder to catch" becomes "much harder for the yetzer hara to catch."
 - **Only expressions Americans actually say.** When a Hebrew source leans on an idiom, swap the whole
   image, not the wording. Same test for anything British, Israeli, or yeshivish-literal.
