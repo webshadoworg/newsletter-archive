@@ -41,6 +41,17 @@ Getting these backwards on Haazinu left the column with no card for its CTA and 
 - **Never repeat the section heading as a bold line inside the body.** The h2 is the title; the body
   opens on content.
 - **No subheads.** Prose only.
+- **Open cold, inside the story.** No setup paragraph before the parsha arrives. Mendy, rewriting
+  Chayei Sarah 2026 by hand: his first sentence is "Avraham comes to Chevron to buy a burial plot
+  for Sarah." Mine spent two paragraphs on the idea first. The idea arrives out of the story.
+- **Mekoros in the first third, application in the rest.** Sources up front read as the thing being
+  applied. Sources in the middle, wrapped in my framing, read as evidence for my argument.
+- **An abstract word owes the reader a test he can run.** If the piece names a trap, give him the
+  question that tells him whether he is in it: *"Will this change what I do tonight or tomorrow?
+  If it will, you're planning. If it won't, you're philosophizing."*
+- **Close on the mekor, short.** Four words in bold beats a paragraph of reassurance. The
+  wind-down paragraph is the one that always gets cut.
+- **About 300 words.** Chayei Sarah 2026 ran 299 after he cut 424.
 
 ## Marriage column
 
