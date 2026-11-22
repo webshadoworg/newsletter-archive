@@ -29,7 +29,9 @@
   .lyr { margin:0; }
   .lyr p { margin:0 0 22px; font-size:18px; line-height:2.1; text-align:center;
            color:var(--ink); font-weight:600; }
-  .lyr p:last-child { margin-bottom:0; }
+  .lyr .pizmon { background:#e8f1f9; border-radius:5px; padding:20px 14px; margin:0 0 22px; }
+  .lyr .pizmon p:last-child { margin-bottom:0; }
+  .lyr > p:last-child, .lyr > .pizmon:last-child { margin-bottom:0; }
   .note { font-size:13px; line-height:1.7; color:#6a6a6a; margin:22px 0 0; text-align:center; }
   .help { margin:26px 0 0; font-size:15px; line-height:1.5; font-weight:700;
           color:var(--ink); text-align:center; }
@@ -38,7 +40,7 @@
   .foot a { color:var(--ink); }
   @media (max-width:680px){ .wrap{padding:0 0 22px;} .card{border-radius:0;}
     .pad{padding:18px 18px 8px;} .top{padding:18px 18px 16px;} .top h1{font-size:20px;}
-    .lyr p{font-size:17px;} }
+    .lyr p{font-size:17px;} .lyr .pizmon{padding:16px 10px;} }
 </style>
 </head>
 <body>
@@ -58,7 +60,7 @@
         הורדת השיר (MP3) <span dir="ltr">4.0 MB</span></a>
 
       <a class="dl" href="https://gyenewsletters.netlify.app/pdf/ma-tzrichim-milim-5787.pdf" target="_blank">
-        הורדת המילים להדפסה (PDF) <span dir="ltr">23 KB</span></a>
+        הורדת המילים להדפסה (PDF) <span dir="ltr">24 KB</span></a>
 
       <h2>מילות השיר</h2>
       <div class="lyr">
@@ -80,9 +82,11 @@
            אני צריך רוח<br>
            אני צריך להיות תמיד מוגן</p>
 
-        <p>אבל מה צריכים ממני ?</p>
+        <div class="pizmon">
+          <p>אבל מה צריכים ממני ?</p>
 
-        <p>עכשיו !</p>
+          <p>עכשיו !</p>
+        </div>
 
         <p>אני צריך לרוץ צריך אני להיות חרוץ<br>
            אני צריך להיות גם אבא לדוגמא<br>
@@ -100,7 +104,9 @@
            אני צריך לנוח<br>
            אני צריך למצוא את הנקודה</p>
 
-        <p>אבל מה צריכים ממני???</p>
+        <div class="pizmon">
+          <p>אבל מה צריכים ממני???</p>
+        </div>
       </div>
 
       <p class="note">אנו מודים לבעלי הזכויות שנתנו את רשותם.</p>
