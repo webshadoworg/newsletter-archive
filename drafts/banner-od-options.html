@@ -19,7 +19,9 @@
   .d { margin:0 0 12px; font-size:14px; line-height:1.6; color:#555; }
   .full { display:block; width:100%; max-width:660px; height:auto; }
   .cl { margin:14px 0 6px; font-size:13px; color:#777; }
-  .crop { overflow:hidden; border:1px solid #cfdce8; background:#fff; max-width:100%; }
+  /* direction:ltr בכוונה - חלון החיתוך נקבע ב-margin שלילי, ובהקשר RTL הדפדפן
+     מיישר את התמונה לקצה הימני ומבטל את החישוב בשקט. */
+  .crop { overflow:hidden; border:1px solid #cfdce8; background:#fff; max-width:100%; direction:ltr; }
   .crop img { display:block; max-width:none; }
   .foot { font-size:14px; color:#555; background:#fff; padding:16px 22px; border-radius:4px; }
 </style>
@@ -35,8 +37,8 @@
     <p class="d">כתב היד כמו שהוא, בלי הטיה. השקט מבין השישה.</p>
     <img class="full" src="https://gyenewsletters.netlify.app/images/od-opt-a.png" alt="כתב יד, ישר - הבאנר המלא">
     <p class="cl">הפינה בגודל מלא:</p>
-    <div class="crop" style="width:438px;height:230px">
-      <img src="https://gyenewsletters.netlify.app/images/od-opt-a.png" style="margin:-5px 0 0 -1426px" alt="כתב יד, ישר - הפינה בגודל מלא">
+    <div class="crop" style="width:313px;height:208px">
+      <img src="https://gyenewsletters.netlify.app/images/od-opt-a.png" style="margin:-0px 0 0 -1416px" alt="כתב יד, ישר - הפינה בגודל מלא">
     </div>
   </div>
 
@@ -45,8 +47,8 @@
     <p class="d">אותו כתב יד בהטיה קלה - נקרא כמילה שנוספה ביד על באנר מודפס.</p>
     <img class="full" src="https://gyenewsletters.netlify.app/images/od-opt-b.png" alt="כתב יד, מוטה קלות - הבאנר המלא">
     <p class="cl">הפינה בגודל מלא:</p>
-    <div class="crop" style="width:441px;height:230px">
-      <img src="https://gyenewsletters.netlify.app/images/od-opt-b.png" style="margin:-9px 0 0 -1423px" alt="כתב יד, מוטה קלות - הפינה בגודל מלא">
+    <div class="crop" style="width:310px;height:213px">
+      <img src="https://gyenewsletters.netlify.app/images/od-opt-b.png" style="margin:-0px 0 0 -1413px" alt="כתב יד, מוטה קלות - הפינה בגודל מלא">
     </div>
   </div>
 
@@ -55,8 +57,8 @@
     <p class="d">אותו כתב יד בצבע הזהב של העלון, כדי שלא ייבלע בכחול של הכותרת.</p>
     <img class="full" src="https://gyenewsletters.netlify.app/images/od-opt-c.png" alt="כתב יד בזהב - הבאנר המלא">
     <p class="cl">הפינה בגודל מלא:</p>
-    <div class="crop" style="width:438px;height:230px">
-      <img src="https://gyenewsletters.netlify.app/images/od-opt-c.png" style="margin:-5px 0 0 -1426px" alt="כתב יד בזהב - הפינה בגודל מלא">
+    <div class="crop" style="width:313px;height:208px">
+      <img src="https://gyenewsletters.netlify.app/images/od-opt-c.png" style="margin:-0px 0 0 -1416px" alt="כתב יד בזהב - הפינה בגודל מלא">
     </div>
   </div>
 
@@ -65,8 +67,8 @@
     <p class="d">כתב יד ישר עם משיכת קו מתחת, כמו הדגשה בעט.</p>
     <img class="full" src="https://gyenewsletters.netlify.app/images/od-opt-d.png" alt="כתב יד עם קו תחתון ביד - הבאנר המלא">
     <p class="cl">הפינה בגודל מלא:</p>
-    <div class="crop" style="width:451px;height:230px">
-      <img src="https://gyenewsletters.netlify.app/images/od-opt-d.png" style="margin:-5px 0 0 -1413px" alt="כתב יד עם קו תחתון ביד - הפינה בגודל מלא">
+    <div class="crop" style="width:331px;height:221px">
+      <img src="https://gyenewsletters.netlify.app/images/od-opt-d.png" style="margin:-0px 0 0 -1403px" alt="כתב יד עם קו תחתון ביד - הפינה בגודל מלא">
     </div>
   </div>
 
@@ -75,8 +77,8 @@
     <p class="d">אות מכחול משופעת - פחות "כתב יד", יותר "כתב אמן".</p>
     <img class="full" src="https://gyenewsletters.netlify.app/images/od-opt-e.png" alt="מכחול מוטה - הבאנר המלא">
     <p class="cl">הפינה בגודל מלא:</p>
-    <div class="crop" style="width:457px;height:230px">
-      <img src="https://gyenewsletters.netlify.app/images/od-opt-e.png" style="margin:-25px 0 0 -1407px" alt="מכחול מוטה - הפינה בגודל מלא">
+    <div class="crop" style="width:328px;height:194px">
+      <img src="https://gyenewsletters.netlify.app/images/od-opt-e.png" style="margin:-15px 0 0 -1397px" alt="מכחול מוטה - הפינה בגודל מלא">
     </div>
   </div>
 
@@ -85,8 +87,8 @@
     <p class="d">כתב סופר. לא כתב יד אישי, אבל כתוב-ביד ומתכתב עם האופי של העלון.</p>
     <img class="full" src="https://gyenewsletters.netlify.app/images/od-opt-f.png" alt="כתב סת"ם - הבאנר המלא">
     <p class="cl">הפינה בגודל מלא:</p>
-    <div class="crop" style="width:438px;height:230px">
-      <img src="https://gyenewsletters.netlify.app/images/od-opt-f.png" style="margin:-14px 0 0 -1426px" alt="כתב סת"ם - הפינה בגודל מלא">
+    <div class="crop" style="width:306px;height:200px">
+      <img src="https://gyenewsletters.netlify.app/images/od-opt-f.png" style="margin:-4px 0 0 -1416px" alt="כתב סת"ם - הפינה בגודל מלא">
     </div>
   </div>
   <p class="foot">ההמלצה שלי: <b>ב</b> - כתב היד בהטיה קלה. זה מה שקורא כתוספת שנכתבה ביד על באנר מודפס, וזו המשמעות של "עוד".<br>
