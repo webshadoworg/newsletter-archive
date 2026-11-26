@@ -80,7 +80,25 @@
 var ENDPOINT = "https://script.google.com/macros/s/AKfycbzvxZLP7x3EtVl3CzrJSm_BJx2HKBFvK9AfKOOxJzs7YTD7K4LdoW9jCLdExyw3iOb_/exec";
 
 var q = new URLSearchParams(location.search);
-var SECTIONS = { "1":"המאור שבה", "2":"מתוק לנפש", "3":"צעדני ואושעה", "4":"צידה לדרך" };
+// 25.11.2026, #870 + #904 - מדור 5 = "צידה לדרך" שני באותו גיליון ("יהיה לנו פעמיים
+// את המדור צידה לדרך"). s נפרד לכל אחד (#502), אותו שם מוצג. **כאן ולא ב-TITLES**:
+// TITLES מפעיל את תחילית הפרשה של #4758 ומפצל את הפילוח. הטבלה חייבת להישאר
+// זהה ל-NAMES שב-apps-script.gs - to-ascii.mjs מפיל את הבנייה אם הן נפרדו.
+var SECTIONS = { "1":"המאור שבה", "2":"מתוק לנפש", "3":"צעדני ואושעה", "4":"צידה לדרך", "5":"צידה לדרך" };
+// 26.11.2026, רפאל #1026: *"ולגבי קובץ המשובים - צריך להבחין בין שני המדורים של
+// צידה לדרך מבחינת מספור"*. ההכרעה הקודמת (#904) הייתה להפך - לצבור את שניהם תחת
+// שם אחד - ולכן **השער התהפך באותו סבב שבו התהפכה ההכרעה** (#444/#446).
+// 🔴 **המספר כאן הוא מיקום בגיליון, לא מספר המדור**: בגיליון 16 מדור 5 הוא הראשון
+//    ומדור 4 הוא השני (#1016, "ואתה מתכוון לצידה לדרך השני"). הטבלה נראית הפוכה
+//    והיא נכונה; קורא שמדרג את הראשון חייב לראות "1".
+// 🔴 הטבלה **נבדקת מול מבנה הגיליון עצמו** ב-to-ascii.mjs ואינה נסמכת על כך שהקלדתי
+//    אותה נכון: שם נגזר מכל קובץ גיליון מי המדורים הכפולים ובאיזה סדר. השער דו-כיווני -
+//    גיליון עם שני מדורים באותו שם ובלי רשומה כאן מפיל את הבנייה, ולהפך.
+// ⚠ **כאן ולא ב-TITLES**: TITLES מפעיל את תחילית הפרשה של #4758 ומפצל את הפילוח
+//   לשורה לכל גיליון. כאן הפיצול הוא לשתי שורות יציבות שחוזרות בכל גיליון כפול.
+// ⚠ עמודה E (מדור) נשארת 4/5 ללא שינוי - ההבחנה נוספת, לא מחליפה; שורות העבר
+//   ממשיכות להתקבץ תחת "צידה לדרך" בגיליונות שבהם המדור הופיע פעם אחת.
+var DUPS = { "16": { "5":"צידה לדרך 1", "4":"צידה לדרך 2" } };
 // 4.9.2026 - בגיליון של חג שחל בשבת **אין המדורים הקבועים** (#1842): יש מאמרים, וכותרת המאמר
 // יושבת בבאנר. עד כה SECTIONS השטוח היה כותב "המאור שבה" גם שם, כלומר בגיליון 5 (ראש השנה)
 // כל דירוג נכתב לשיטס תחת שם מדור שלא היה בגיליון. זו טבלת חריגים לפי גיליון, והיא גם
@@ -113,12 +131,27 @@ var ISSUES = {
   // 4.9.2026 - גיליונות 7, 8 ו-9 נוספו ברגע פתיחת השלדים (#40 / #42 / #44), מאותה סיבה.
   "7":"https://gyenewsletters.netlify.app/drafts/sukkot-5787.html",
   "8":"https://gyenewsletters.netlify.app/drafts/simchat-torah-5787.html",
-  "9":"https://gyenewsletters.netlify.app/drafts/bereishit-5787.html"
+  "9":"https://gyenewsletters.netlify.app/drafts/bereishit-5787.html",
+  // 🔴 26.11.2026 - **הטבלה נעצרה בגיליון 9.** ההערות שמעל מתעדות פעמיים "נוסף
+  //    ברגע פתיחת השלד כדי שלא יישכח", ומאז גיליון 10 זה נשכח בכל גיליון: שבעה
+  //    גיליונות שבהם הכפתור "חזרה לגיליון" החזיר את הקורא ל-gye.org.il במקום
+  //    לגיליון שהוא בדיוק דירג. ברירת המחדל שב-HTML היא שהסתירה את זה - הדף
+  //    נראה תקין לחלוטין. נוסף כאן יחד עם שער **נגזר** ב-to-ascii.mjs שמשווה
+  //    את הטבלה ל-issues.json בשני הכיוונים, כי הערה שמזכירה לא לשכוח כבר
+  //    נכתבה כאן פעמיים ונשכחה שבע פעמים.
+  "10":"https://gyenewsletters.netlify.app/drafts/noach-5787.html",
+  "11":"https://gyenewsletters.netlify.app/drafts/lech-lecha-5787.html",
+  "12":"https://gyenewsletters.netlify.app/drafts/vayera-5787.html",
+  "13":"https://gyenewsletters.netlify.app/drafts/chayei-sarah-5787.html",
+  "14":"https://gyenewsletters.netlify.app/drafts/toldot-5787.html",
+  "15":"https://gyenewsletters.netlify.app/drafts/vayetze-5787.html",
+  "16":"https://gyenewsletters.netlify.app/drafts/vayishlach-5787.html"
 };
 
 var g = q.get("g") || "", p = q.get("p") || "", s = q.get("s") || "";
 var r = Math.max(0, Math.min(5, parseInt(q.get("r") || "0", 10)));
-var name = (TITLES[g] && TITLES[g][s]) || SECTIONS[s] || "";
+// סדר החיפוש: חריג חג (TITLES) -> מדור כפול באותו גיליון (DUPS) -> השם הקבוע.
+var name = (TITLES[g] && TITLES[g][s]) || (DUPS[g] && DUPS[g][s]) || SECTIONS[s] || "";
 function uuid() {
   return (crypto && crypto.randomUUID) ? crypto.randomUUID()
        : String(Date.now()) + "-" + Math.round(Math.random() * 1e6);
